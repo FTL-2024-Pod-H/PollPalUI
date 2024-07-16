@@ -23,7 +23,7 @@ function ForumModal({onClose, onAddPost}){
           {/* <div className="forum-modal-body"> */}
             <form className="new-card-form" onSubmit={handleSubmit} >
               <div class="post-box">
-                <h1 class="text-center text-slate-200 text-xl font-bold">Add a Forum</h1>
+                <h1 class="text-center text-slate-200 text-xl font-bold">Add a Post</h1>
                 <textarea 
                     placeholder="Your content..." 
                     class="post-content" 
@@ -38,6 +38,7 @@ function ForumModal({onClose, onAddPost}){
                     <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" d="M10.11 13.6501L13.69 10.0601"></path>
                   </svg>
                 </button>
+                
               </div>
               {/* <button className="submit" type="submit">
                 Add Post

@@ -57,8 +57,34 @@ function Post({userFullName, username, userPostContent, onDelete, originalLikeCo
 
                             <span className="like-count">{likeCount}</span>
                         </button>
+                        {/* REPLY BUTTON */}
+                        <div class="group relative">
+                            <button className="comment-button">
+                                <svg
+                                    stroke-linejoin="round"
+                                    stroke-linecap="round"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    viewBox="0 0 24 24"
+                                    height="44"
+                                    width="44"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="comment-icon"
+                                    fill="none"
+                                >
+                                <path fill="none" d="M0 0h24v24H0z" stroke="none"></path>
+                                <path d="M8 9h8"></path>
+                                <path d="M8 13h6"></path>
+                                <path
+                                    d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"
+                                ></path>
+                                </svg>
+                            </button>
+                            {/* <span class="tooltip">Comment</span> */}
+                        </div>
+
                         <button className="btn" onClick={onDelete}>
-                            <svg viewBox="0 0 15 17.5" height="17.5" width="15" xmlns="http://www.w3.org/2000/svg" className="icon">
+                            <svg viewBox="0 0 15 17.5" height="17.5" width="15" xmlns="http://www.w3.org/2000/svg" className="delete-icon">
                             <path transform="translate(-2.5 -1.25)" d="M15,18.75H5A1.251,1.251,0,0,1,3.75,17.5V5H2.5V3.75h15V5H16.25V17.5A1.251,1.251,0,0,1,15,18.75ZM5,5V17.5H15V5Zm7.5,10H11.25V7.5H12.5V15ZM8.75,15H7.5V7.5H8.75V15ZM12.5,2.5h-5V1.25h5V2.5Z" id="Fill"></path>
                             </svg>
                         </button>
