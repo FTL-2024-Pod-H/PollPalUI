@@ -2,12 +2,15 @@
 .forum-post {
     position:relative;
     display:flex;
+
+    align-items: flex-start;
+    flex-direction: column;
     justify-content: center;
     border: .5px solid black;
     box-shadow: 0 0px 6px ;
-    padding: 10px;
+    padding: 20px;
     border-radius: 35px;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 20px auto;
     background: white;
     z-index: 1;
@@ -63,7 +66,8 @@
 }
 
 .forum-post-text {
-    margin: 10px 0;
+    margin: 6px 0;
+    margin-left: 90px;
 }
 
  /* Like Button!!!! */
@@ -97,7 +101,11 @@
 .like-and-delete{
     display:flex;
     justify-content: space-between;
-    width: 100%;
+    width: 95%;
+    align-self: flex-end;
+    position: absolute;
+    bottom: 10px;
+    right: 13px;
 }
 
 /* DELETE BUTTON */

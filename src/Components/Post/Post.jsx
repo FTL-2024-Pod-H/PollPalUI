@@ -40,7 +40,7 @@ function Post({userFullName, username, userPostContent, onDelete, originalLikeCo
                         <h3 className="forum-username">@username</h3>
                         {/* <h3 className="forum-username">@{username}</h3> */}
                     </div>
-                    <p className="forum-post-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, neque, obcaecati laboriosam dolores ratione ullam commodi porro, voluptas earum suscipit esse? Numquam obcaecati veritatis ullam voluptas dolorum quam asperiores iure.</p>
+                    <p className="forum-post-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque assumenda, deserunt ullam consectetur laudantium totam consequuntur recusandae! Tenetur libero ea nulla, quo cumque sint obcaecati esse? Sunt culpa sapiente et?</p>
                     {/* <p className="forum-post-text">{userPostContent}</p> */}
                     <div className="like-and-delete">
                         <button 
