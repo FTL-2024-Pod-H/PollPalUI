@@ -16,7 +16,7 @@ function Forum(){
     };
 
     const handleAddPost = (newPost) => {
-        setPosts([...posts, newPost]);
+        setPosts([newPost, ...posts]);
     };
 
     const handleDeletePost = (index) => {

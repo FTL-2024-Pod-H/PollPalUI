@@ -66,8 +66,9 @@
 }
 
 .forum-post-text {
-    margin: 6px 0;
-    margin-left: 90px;
+    /* margin: 6px 0; */
+    margin-top: -10px;
+    margin-left: 65px;
 }
 
  /* Like Button!!!! */
