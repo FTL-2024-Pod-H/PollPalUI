@@ -1,11 +1,14 @@
 
 .forum-post {
+    display:flex;
+    justify-content: center;
     border: .5px solid black;
     box-shadow: 0 0px 6px ;
     padding: 10px;
     border-radius: 35px;
+    max-width: 800px;
     /* width: 300px; */
-    margin: 20px;
+    margin: 20px auto;
     /* min-width: 252px; */
 }
 
@@ -54,15 +57,13 @@
 }
 
 .like-icon {
-    /* width: 50%; 
-    height: 50%; */
-    width: 35px; 
-    height: 35px; 
+    width: 24px;
+    height: 24px;
     margin-right: 3px;
-    margin-bottom:10px;
 }
+
 .like-count {
-    font-size: 16px; 
+    font-size: 16px;
 }
 
 /* LIKE AND DELETE */
