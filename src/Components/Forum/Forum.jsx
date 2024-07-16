@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import "./Forum.css"
 import Post from "../Post/Post";
+import ForumModal from "../ForumModal/ForumModal";
 
 function Forum(){
 
@@ -27,16 +28,16 @@ function Forum(){
                 <h1 className="forum-title">Forum</h1>
                 <h2 className="forum-description">See what other Poll Pals have to say</h2>
             </div>
-            <button class="Btn"
-                onlick={handleCreatePost}
+            <button className="Btn"
+                onClick={handleCreatePost}
             >
-                <div class="sign">+</div>
-                <div class="text">Create</div>
+                <div className="sign">+</div>
+                <div className="text">Create</div>
             </button>
 
             {showCreatePostModal && (
                 <div className="post-form">
-                    <CreatePost
+                    <ForumModal
                         onClose={handleCloseCreatePost}
                         onAddPost={handleAddPost}
                     />
@@ -50,9 +51,6 @@ function Forum(){
                         onDelete={()=> handleDeletePost(index)}
                     />
                 ))}
-                <Post />
-                <Post />
-                <Post />
             </div>
         </>
     )
