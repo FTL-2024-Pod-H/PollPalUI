@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <>
       <header className="header">
-        <div className="logo">
+        <div className="logo-container">
           <img
             src="public/assets/poll-pal-icon.png"
             alt="Poll Pal Logo"
@@ -14,6 +14,7 @@ const Header = () => {
           ></img>
           <h1 className="title"> Poll Pal</h1>
         </div>
+        <div className="nav-auth-container">
         <nav className="nav">
           <ul className="nav-links">
             <li className="nav-item">Home</li>
@@ -24,6 +25,7 @@ const Header = () => {
         <div className="auth-buttons">
           <button className="sign-in-btn">Sign in</button>
           <button className="register-btn">Register</button>
+        </div>
         </div>
       </header>
     </>
