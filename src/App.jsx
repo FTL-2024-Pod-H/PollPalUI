@@ -12,9 +12,10 @@ function App() {
 
 
       {/* <HomePage/> */}
-      <Forum/>
+      
       <Header/>
       <HomePage/>
+      <Forum/>
     </>
   )
 }
