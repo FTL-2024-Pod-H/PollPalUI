@@ -1,16 +1,40 @@
 
 .forum-post {
-    padding: 10px;
+    position:relative;
     display:flex;
+
+    align-items: flex-start;
+    flex-direction: column;
     justify-content: center;
     border: .5px solid black;
     box-shadow: 0 0px 6px ;
+    padding: 20px;
     border-radius: 35px;
-    max-width: 1400px;
+    max-width: 1000px;
     margin: 20px auto;
     background: white;
     z-index: 1;
 }
+
+/* GETTING THE LINEAR GRADIENT ON THE BORDER */
+.forum-post::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit; 
+    padding: 1.5px; 
+    background: linear-gradient(to bottom right, #E6117C, #4A3CDB);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude; 
+    z-index: -1; 
+}
+
 
 .forum-post-details {
     display: flex;
@@ -42,7 +66,8 @@
 }
 
 .forum-post-text {
-    margin: 10px 0;
+    margin: 6px 0;
+    margin-left: 90px;
 }
 
  /* Like Button!!!! */
@@ -57,15 +82,18 @@
 }
 
 .like-icon {
-    /* width: 50%; 
-    height: 50%; */
-    width: 35px; 
-    height: 35px; 
+    width: 24px;
+    height: 24px;
     margin-right: 3px;
-    margin-bottom:10px;
+    transform: scale(1);
+    transition: .2s linear;
 }
+.like-icon:hover{
+    transform: scale(1.2);
+}
+
 .like-count {
-    font-size: 16px; 
+    font-size: 16px;
 }
 
 /* LIKE AND DELETE */
@@ -73,7 +101,11 @@
 .like-and-delete{
     display:flex;
     justify-content: space-between;
-    width: 100%;
+    width: 95%;
+    align-self: flex-end;
+    position: absolute;
+    bottom: 10px;
+    right: 13px;
 }
 
 /* DELETE BUTTON */
@@ -85,18 +117,16 @@
     margin-left: auto; 
     display: inline-block; 
     cursor: pointer;
-  }
-  .icon {
+}
+.icon {
     transform: scale(1.2);
     transition: .2s linear;
-  }
+}
   
-  .btn:hover > .icon {
+.btn:hover > .icon {
     transform: scale(1.5);
-  }
+}
   
-  .btn:hover > .icon path {
+.btn:hover > .icon path {
     fill: rgb(168, 7, 7);
-  }
-  
-  
+}
