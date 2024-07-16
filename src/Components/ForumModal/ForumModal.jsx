@@ -6,9 +6,9 @@ function ForumModal({onClose, onAddPost}){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newPost = { userPostContent: userContent};
+        // const newPost = { userPostContent: userContent};
         console.log("Content: ", userContent)
-        onAddPost(newPost);
+        onAddPost(userContent);
         // setUserContent("");
         onClose();
     };
@@ -38,7 +38,6 @@ function ForumModal({onClose, onAddPost}){
                     <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" d="M10.11 13.6501L13.69 10.0601"></path>
                   </svg>
                 </button>
-                
               </div>
               {/* <button className="submit" type="submit">
                 Add Post

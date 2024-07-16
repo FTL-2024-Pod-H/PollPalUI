@@ -111,7 +111,7 @@
 
 /* DELETE BUTTON */
 
-.btn {
+.delete-button {
     background-color: transparent;
     position: relative;
     border: none;
@@ -124,11 +124,11 @@
     transition: .2s linear;
 }
   
-.btn:hover > .delete-icon {
+.delete-button:hover > .delete-icon {
     transform: scale(1.5);
 }
   
-.btn:hover > .delete-icon path {
+.delete-button:hover > .delete-icon path {
     fill: rgb(168, 7, 7);
 }
 

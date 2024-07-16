@@ -6,7 +6,36 @@ import ForumModal from "../ForumModal/ForumModal";
 function Forum(){
 
     const [showCreatePostModal, setShowCreatePostModal] = useState(false);
-    const [posts, setPosts] = useState([]);
+    // const [posts, setPosts] = useState([]);
+    // Test with already added (dummy data)
+
+
+     // logged-in user
+     // currentUser would be passed in data to userId
+
+    // const currentUser = "current_user"; //view signed in
+    // to test not logged in, change to none
+    const currentUser = "k_isadore"; 
+    const currentUserUsername = "kisadore";
+    const currentUserFullName = "Kiahna Isadore";
+    
+    
+
+    const [posts, setPosts] = useState([
+        { userFullName: "Alice Smith", username: "alice", userPostContent: "This is Alice's post.", userId: "alice_id" },
+        { userFullName: "Bob Johnson", username: "bobj", userPostContent: "This is Bob's post.", userId: "bob_id" },
+        { userFullName: "Kiahna Isadore", username: "kisadore", userPostContent: "Hi, My name is Kiahna, who do I vote for!!!", userId: currentUser },
+        { userFullName: "Kiahna Isadore", username: "kisadore", userPostContent: "Ughh Im so overwhelmed", userId: currentUser }
+    ]);
+
+    const[viewMode, setViewMode] = useState("all");
+    console.log("Current view mode: ", viewMode);
+
+    const filteredPosts = viewMode === 'your'
+        ? posts.filter(post => post.userId === currentUser)
+        : posts;
+    
+        console.log("Filtered Posts:", filteredPosts);
 
     const handleCreatePost = () => {
         setShowCreatePostModal(true);
@@ -15,7 +44,14 @@ function Forum(){
         setShowCreatePostModal(false);
     };
 
-    const handleAddPost = (newPost) => {
+    const handleAddPost = (postContent) => {
+        // takes the current users info in order to create post
+        const newPost = {
+            userFullName: currentUserFullName,
+            username: currentUserUsername,
+            userPostContent: postContent,
+            userId: currentUser
+        };
         setPosts([newPost, ...posts]);
     };
 
@@ -36,10 +72,10 @@ function Forum(){
                 <div className="text">Create</div>
             </button>
             <div className="switch-posts-buttons-container">
-                <button className="view-all-posts">
+                <button className="view-all-posts" onClick={() => setViewMode("all")}>
                     View All Posts
                 </button>
-                <button className="your-posts">
+                <button className="your-posts" onClick={() => setViewMode("your")}>
                     Your Posts
                 </button>
             </div>
@@ -54,10 +90,13 @@ function Forum(){
                 </div>
             )}
             <div className="posts-container">
-                {posts.map((post, index) => (
+                {filteredPosts.map((post, index) => (
                     <Post
                         key={index}
+                        userFullName={post.userFullName}
+                        username={post.username}
                         userPostContent={post.userPostContent}
+                        showDelete={post.userId === currentUser}
                         onDelete={()=> handleDeletePost(index)}
                     />
                 ))}

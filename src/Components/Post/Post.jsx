@@ -4,10 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp as faThumbsUpRegular } from '@fortawesome/free-regular-svg-icons';
 import { faThumbsUp as faThumbsUpSolid, faReply } from '@fortawesome/free-solid-svg-icons';
 
+// DUMMY DATA
+const dummyUserFullName = "John Doe";
+const dummyUsername = "johndoe";
+const dummyUserPostContent = "This is a dummy post content. Lorem ipsum dolor sit amet.";
+
 
 // DUMMY DATA
 // COMMENT OUT AND UNCOMMENT WHEN READY TO PASS INFO
-function Post({userFullName, username, userPostContent, onDelete, originalLikeCount}){
+function Post({userFullName, username, userPostContent, onDelete, originalLikeCount, showDelete}){
     
     const initialLikeCount = 100;
     const[likeCount, setLikeCount] = useState(initialLikeCount);
@@ -36,10 +41,10 @@ function Post({userFullName, username, userPostContent, onDelete, originalLikeCo
                             alt="Default User"
                             className="user-image"
                         />
-                        <h2 className="forum-fullname">Full Name</h2>
-                        {/* <h2 className="forum-fullname">{userFullName}</h2> */}
-                        <h3 className="forum-username">@username</h3>
-                        {/* <h3 className="forum-username">@{username}</h3> */}
+                        {/* <h2 className="forum-fullname">Full Name</h2> */}
+                        <h2 className="forum-fullname">{userFullName}</h2>
+                        {/* <h3 className="forum-username">@username</h3> */}
+                        <h3 className="forum-username">@{username}</h3>
                     </div>
 
                     {/* <p className="forum-post-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, neque, obcaecati laboriosam dolores ratione ullam commodi porro, voluptas earum suscipit esse? Numquam obcaecati veritatis ullam voluptas dolorum quam asperiores iure.</p> */}
@@ -58,18 +63,18 @@ function Post({userFullName, username, userPostContent, onDelete, originalLikeCo
                             <span className="like-count">{likeCount}</span>
                         </button>
                         {/* REPLY BUTTON */}
-                        <div class="group relative">
+                        <div className="group relative">
                             <button className="comment-button">
                                 <svg
-                                    stroke-linejoin="round"
-                                    stroke-linecap="round"
+                                    strokeLinejoin="round"
+                                    strokeLinecap="round"
                                     stroke="currentColor"
-                                    stroke-width="2"
+                                    strokeWidth="1.3"
                                     viewBox="0 0 24 24"
                                     height="44"
                                     width="44"
                                     xmlns="http://www.w3.org/2000/svg"
-                                    class="comment-icon"
+                                    className="comment-icon"
                                     fill="none"
                                 >
                                 <path fill="none" d="M0 0h24v24H0z" stroke="none"></path>
@@ -82,12 +87,13 @@ function Post({userFullName, username, userPostContent, onDelete, originalLikeCo
                             </button>
                             {/* <span class="tooltip">Comment</span> */}
                         </div>
-
-                        <button className="btn" onClick={onDelete}>
-                            <svg viewBox="0 0 15 17.5" height="17.5" width="15" xmlns="http://www.w3.org/2000/svg" className="delete-icon">
-                            <path transform="translate(-2.5 -1.25)" d="M15,18.75H5A1.251,1.251,0,0,1,3.75,17.5V5H2.5V3.75h15V5H16.25V17.5A1.251,1.251,0,0,1,15,18.75ZM5,5V17.5H15V5Zm7.5,10H11.25V7.5H12.5V15ZM8.75,15H7.5V7.5H8.75V15ZM12.5,2.5h-5V1.25h5V2.5Z" id="Fill"></path>
-                            </svg>
-                        </button>
+                        {showDelete && (
+                            <button className="delete-button" onClick={onDelete}>
+                                <svg viewBox="0 0 15 17.5" height="17.5" width="15" xmlns="http://www.w3.org/2000/svg" className="delete-icon">
+                                <path transform="translate(-2.5 -1.25)" d="M15,18.75H5A1.251,1.251,0,0,1,3.75,17.5V5H2.5V3.75h15V5H16.25V17.5A1.251,1.251,0,0,1,15,18.75ZM5,5V17.5H15V5Zm7.5,10H11.25V7.5H12.5V15ZM8.75,15H7.5V7.5H8.75V15ZM12.5,2.5h-5V1.25h5V2.5Z" id="Fill"></path>
+                                </svg>
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>
