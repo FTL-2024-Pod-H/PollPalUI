@@ -15,7 +15,7 @@ function Forum(){
 
     // const currentUser = "current_user"; //view signed in
     // to test not logged in, change to none
-    const currentUser = "k_isadore"; 
+    const currentUser = "alice_id"; 
     const currentUserUsername = "kisadore";
     const currentUserFullName = "Kiahna Isadore";
     
@@ -24,8 +24,8 @@ function Forum(){
     const [posts, setPosts] = useState([
         { userFullName: "Alice Smith", username: "alice", userPostContent: "This is Alice's post.", userId: "alice_id" },
         { userFullName: "Bob Johnson", username: "bobj", userPostContent: "This is Bob's post.", userId: "bob_id" },
-        { userFullName: "Kiahna Isadore", username: "kisadore", userPostContent: "Hi, My name is Kiahna, who do I vote for!!!", userId: currentUser },
-        { userFullName: "Kiahna Isadore", username: "kisadore", userPostContent: "Ughh Im so overwhelmed", userId: currentUser }
+        { userFullName: "Kiahna Isadore", username: "kisadore", userPostContent: "Hi, My name is Kiahna, who do I vote for!!!", userId: "k_isadore" },
+        { userFullName: "Kiahna Isadore", username: "kisadore", userPostContent: "Ughh Im so overwhelmed", userId: "k_isadore" }
     ]);
 
     const[viewMode, setViewMode] = useState("all");
