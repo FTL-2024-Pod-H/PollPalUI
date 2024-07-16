@@ -23,6 +23,7 @@ function Forum(){
     };
     return(
         <>
+            <div className="form-title-button">
             <div className="forum-info-section">
                 <h1 className="forum-title">Forum</h1>
                 <h2 className="forum-description">See what other Poll Pals have to say</h2>
@@ -33,6 +34,7 @@ function Forum(){
                 <div class="sign">+</div>
                 <div class="text">Create</div>
             </button>
+            </div>
 
             {showCreatePostModal && (
                 <div className="post-form">
