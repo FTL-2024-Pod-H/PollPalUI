@@ -91,4 +91,35 @@
     transform: translate(2px ,2px);
 }
 
+.switch-posts-buttons-container{
+    display:flex;
+    justify-content: center;
+    justify-content: space-between;
+    width:100%;
+    margin:20px auto;
+}
+.view-all-posts, .your-posts{
+    border:none;
+    background:white;
+    font-size: 22px;
+    margin:0 18%;
+    position:relative;
+
+}
+.view-all-posts::after, .your-posts::after{
+    content: '';
+    /* text-decoration: underline; */
+    background: linear-gradient( #E6117C, #4A3CDB);
+    width:0;
+    height:2px;
+    position: absolute;
+    bottom: -2px; 
+    left: 0;
+    transition: width 0.3s ease-in-out;
+}
+.view-all-posts:hover::after, 
+.your-posts:hover::after {
+    width: 100%;
+}
+
 

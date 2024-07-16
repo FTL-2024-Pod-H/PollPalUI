@@ -35,6 +35,14 @@ function Forum(){
                 <div className="sign">+</div>
                 <div className="text">Create</div>
             </button>
+            <div className="switch-posts-buttons-container">
+                <button className="view-all-posts">
+                    View All Posts
+                </button>
+                <button className="your-posts">
+                    Your Posts
+                </button>
+            </div>
             </div>
 
             {showCreatePostModal && (
