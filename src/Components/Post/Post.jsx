@@ -1,7 +1,8 @@
 import "./Post.css";
 import React, {useState} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp as faThumbsUpRegular } from '@fortawesome/free-regular-svg-icons';
+import { faThumbsUp as faThumbsUpSolid, faReply } from '@fortawesome/free-solid-svg-icons';
 
 
 // DUMMY DATA
@@ -15,7 +16,6 @@ function Post({userFullName, username, userPostContent, onDelete, originalLikeCo
     
     const handleLikeClick = () => {
         if(isLiked){
-            setLikeCount(likeCount - 1);
             setLikeCount(likeCount - 1);
         }
         else{
@@ -41,18 +41,20 @@ function Post({userFullName, username, userPostContent, onDelete, originalLikeCo
                         <h3 className="forum-username">@username</h3>
                         {/* <h3 className="forum-username">@{username}</h3> */}
                     </div>
+
                     {/* <p className="forum-post-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, neque, obcaecati laboriosam dolores ratione ullam commodi porro, voluptas earum suscipit esse? Numquam obcaecati veritatis ullam voluptas dolorum quam asperiores iure.</p> */}
                     <p className="forum-post-text">{userPostContent}</p>
+
                     <div className="like-and-delete">
                         <button 
                             className="forum-like-button" 
                             onClick={handleLikeClick}
                         >
-                            <img
-                                src="public/assets/like-icon.png"
-                                alt="Liked "
-                                className="like-icon"
-                            />
+                            <FontAwesomeIcon
+                               icon={isLiked ? faThumbsUpSolid : faThumbsUpRegular}
+                               className="like-icon"
+                           />
+
                             <span className="like-count">{likeCount}</span>
                         </button>
                         <button className="btn" onClick={onDelete}>
