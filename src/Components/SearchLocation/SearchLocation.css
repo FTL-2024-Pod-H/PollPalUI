@@ -24,6 +24,7 @@
     background-color: #fff;
     border: 1px solid #ccc;
     font-family: Arial, sans-serif;
+    border-radius: 10px;
     z-index: 10000;
 }
 .pac-item {
