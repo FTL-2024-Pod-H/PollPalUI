@@ -7,7 +7,10 @@ function App() {
 
   return (
     <>
-      <HomePage/>
+      <Post/>
+      <Post/>
+      <Post/>
+      <Post/>
     </>
   )
 }

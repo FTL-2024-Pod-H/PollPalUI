@@ -1,8 +1,9 @@
 
 .forum-post {
-    border: 2px solid black;
+    border: .5px solid black;
+    box-shadow: 0 0px 6px ;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 35px;
     /* width: 300px; */
     margin: 20px;
     /* min-width: 252px; */
@@ -97,4 +98,5 @@
   
   
 
+  
 
