@@ -1,11 +1,15 @@
 
 .forum-post {
-    border: 2px solid black;
     padding: 10px;
-    border-radius: 5px;
-    /* width: 300px; */
-    margin: 20px;
-    /* min-width: 252px; */
+    display:flex;
+    justify-content: center;
+    border: .5px solid black;
+    box-shadow: 0 0px 6px ;
+    border-radius: 35px;
+    max-width: 1400px;
+    margin: 20px auto;
+    background: white;
+    z-index: 1;
 }
 
 .forum-post-details {
@@ -96,5 +100,3 @@
   }
   
   
-
-
