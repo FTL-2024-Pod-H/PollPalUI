@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import "./AboutSection.css";
 import infoIcon from "../../../../public/assets/info-icon.svg";
 
