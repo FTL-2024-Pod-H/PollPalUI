@@ -1,0 +1,26 @@
+.election-listing{
+
+}
+.each-election{
+    position:relative;
+    display:flex;
+
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    border: .5px solid black;
+    box-shadow: 0 0px 6px ;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 1000px;
+    margin: 20px auto;
+    background: white;
+    z-index: 1;
+    
+}
+.election-title{
+
+}
+.election-day{
+
+}

@@ -16,8 +16,8 @@ function Forum(){
     // const currentUser = "current_user"; //view signed in
     // to test not logged in, change to none
     const currentUser = "alice_id"; 
-    const currentUserUsername = "kisadore";
-    const currentUserFullName = "Kiahna Isadore";
+    const currentUserUsername = "alice";
+    const currentUserFullName = "Alice Smith";
     
     
 
