@@ -5,12 +5,12 @@ import "./ElectionResults.css";
 
 function ElectionResults() {
     const [electionData, setElectionData] = useState(null);
-    const [error, setError] = useState(null);
     const [filteredElectionData, setFilteredElectionData] = useState([]);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const location = useLocation();
     const address = location.state?.address;
-    console.log("Inputed address", address);
+    // console.log("Inputed address", address);
 
     useEffect(() => {
         const fetchElectionData = async () => {
@@ -24,9 +24,10 @@ function ElectionResults() {
                 const data = await response.json();
                 console.log("Election Data:", data);
                 setElectionData(data);
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching election data:', error);
-                // setError(error.message || 'Failed to fetch');
+                setLoading(false);
             }
         };
         if (address){
@@ -34,15 +35,9 @@ function ElectionResults() {
         }
     }, [address]);
 
-    // const parts = address.split(',');
-    // const stateZip = parts[parts.length - 2].trim();
-    // const stateAbbreviation = stateZip.split(' ')[0].toLowerCase();
-
-    
-
     useEffect(() => {
         if (electionData && address) {
-            console.log("election data:", electionData);
+            // console.log("election data:", electionData);
             const parts = address.split(',');
             const stateZip = parts[parts.length - 2].trim();
             const stateAbbreviation = stateZip.split(' ')[0].toLowerCase();
@@ -63,16 +58,21 @@ function ElectionResults() {
                     <h1 className="showing-elections-for">Showing Elections for <span className="address">{address} | </span><button className="change-address-button" onClick={() => navigate('/')}>Change Address</button>  </h1>
                     {/* <button className="change-address-button" onClick={() => navigate('/')}>Change Address</button> */}
                 </div>
-            {electionData ? (
-                // <ElectionListing electionData={electionData} />
-                filteredElectionData.length > 0 ? (
-                    <ElectionListing electionData={filteredElectionData} />
+            {loading ? ( 
+                    <div className="custom-loader">
+                        <div className="dot"></div>
+                        <div className="dot"></div>
+                        <div className="dot"></div>
+                    </div>
                 ) : (
-                    <p>No elections in your area</p>
-                )
-            ) : (
-                <p>Loading election data...</p>
-            )}
+                    electionData ? (
+                        filteredElectionData.length > 0 ? (
+                            <ElectionListing electionData={filteredElectionData} />
+                        ) : (
+                            <p>No elections in your area</p>
+                        )
+                    ) : null 
+                )}
             </div>
         </>
     )
