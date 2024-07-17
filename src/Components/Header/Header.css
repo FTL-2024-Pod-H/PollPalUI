@@ -60,3 +60,12 @@
     color: white;
 
 }
+
+.map-name-link, .home-name-link, .forum-name-link{
+  text-decoration: none;
+  color:black;
+}
+.map-name-link:hover, .home-name-link:hover, .forum-name-link:hover{
+  text-decoration: none;
+  color:black;
+}

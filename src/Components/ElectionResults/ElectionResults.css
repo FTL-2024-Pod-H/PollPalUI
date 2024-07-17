@@ -1,0 +1,94 @@
+.election-results{
+
+}
+.title-section{
+    position:relative;
+    display:flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 1000px;
+    margin: 20px auto;
+    background: white;
+    z-index: 1;
+}
+.change-address-button{
+    color: black;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: -10px;
+    position:relative;
+}
+.change-address-button::after{
+    content: '';
+    /* text-decoration: underline; */
+    background: linear-gradient( #E6117C, #4A3CDB);
+    width:0;
+    height:2px;
+    position: absolute;
+    bottom: -2px; 
+    left: 0;
+    transition: width 0.3s ease-in-out;
+}
+.change-address-button:hover::after{
+    width: 100%;
+}
+.showing-elections-for{
+    font-size: 20px;
+}
+.address{
+    font-size: 1rem;
+    color: grey;
+    margin-right: 5px;
+}
+
+/* LOADING.... */
+
+.custom-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px; /* Adjust height as needed */
+  }
+  
+  .dot {
+    height: 20px;
+    width: 20px;
+    margin: 0 5px; /* Adjust spacing between dots */
+    border-radius: 50%;
+    background-color: #E6117C;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  .dot:nth-child(2) {
+    animation-delay: -0.1s;
+  }
+  
+  .dot:nth-child(3) {
+    animation-delay: -0.2s;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.8);
+      background-color: #4A3CDB;
+      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+    }
+    50% {
+      transform: scale(1.2);
+      background-color: #E6117C;
+      box-shadow: 0 0 0 10px rgba(178, 212, 252, 0);
+    }
+    100% {
+      transform: scale(0.8);
+      background-color: #b3d4fc;
+      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+    }
+  }
+  
