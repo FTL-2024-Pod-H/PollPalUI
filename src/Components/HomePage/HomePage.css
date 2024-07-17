@@ -1,4 +1,6 @@
-
+.homepage {
+    min-height: 100vh;
+}
 .search-location {
     display: flex;
     flex-direction: column;

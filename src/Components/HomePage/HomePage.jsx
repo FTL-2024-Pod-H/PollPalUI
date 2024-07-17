@@ -8,14 +8,14 @@ import ElectionEducation from "./ElectionEducation/ElectionEducation";
 function HomePage() {
     
     return (
-        <>
+        <div className="homepage">
             <div className="search-location">
                 <h2>Get election info based on your location</h2>
                 <SearchLocation/>
-                <AboutSection />
-                <ElectionEducation />
             </div>
-        </>
+            <AboutSection />
+            <ElectionEducation />
+        </div>
     );
 }
 
