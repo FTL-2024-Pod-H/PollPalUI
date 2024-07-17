@@ -6,7 +6,8 @@ import './Map.css';
 
 const geoUrl = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json';
 
-const Map = ({ onStateClick, selectedState }) => {
+// const Map = ({ onStateClick, selectedState }) => {
+const Map = ({ onStateClick }) => {
 
     const handleStateClick = (geo) => {
         const stateName= geo.properties.name;
@@ -59,7 +60,7 @@ const Map = ({ onStateClick, selectedState }) => {
 
 Map.propTypes = {
     onStateClick: PropTypes.func.isRequired,
-    selectedState: PropTypes.string.isRequired,
+    // selectedState: PropTypes.string.isRequired,
 };
 
 export default Map;
