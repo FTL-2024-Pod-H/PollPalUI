@@ -1,18 +1,24 @@
+
+import ElectionEducation from "./Components/HomePage/ElectionEducation/ElectionEducation";
 import './App.css'
-import Post from './Components/Post/Post';
+import Header from "./Components/Header/Header";
+import Post from './Components/Post/Post'
 import HomePage from './Components/HomePage/HomePage';
 import Footer from './Components/Footer/Footer';
 
 function App() {
-
   return (
-    <div id="root">
-        <main className="main-content">
-          <HomePage />
-        </main>
-        <Footer />
-    </div> 
-  )
+    <>
+      <div id="root">
+          <Header/>
+          <main className="main-content">
+            <HomePage />
+            {/* <ElectionEducation /> */}
+          </main>
+          <Footer />
+      </div>
+    </>
+  );
 }
 
-export default App
+export default App;
