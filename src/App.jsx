@@ -17,6 +17,7 @@ function App() {
     <BrowserRouter>
       <div id="root">
           <Header/>
+          <main className="main-content">
               <Routes>
                   <Route path="/" element={<HomePage />} />
 
@@ -30,21 +31,10 @@ function App() {
                   {/* Change to map */}
                   <Route path="/map" element={<InteractiveMap/>} />
               </Routes>
+              </main>
+              <Footer />
           </div>
         </BrowserRouter>
-
-//     <>
-//       <div id="root">
-//           <Header/>
-//           <main className="main-content">
-//             <HomePage />
-//             {/* <ElectionEducation /> */}
-//             {/* <InteractiveMap/> */}
-//             {/* <AboutSection /> */}
-//           </main>
-//           <Footer />
-//       </div>
-//     </>
   );
 
 }
