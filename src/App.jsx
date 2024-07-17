@@ -5,6 +5,7 @@ import Header from "./Components/Header/Header";
 import Post from './Components/Post/Post'
 import HomePage from './Components/HomePage/HomePage';
 import Footer from './Components/Footer/Footer';
+import InteractiveMap from './Components/InteractiveMap/InteractiveMap';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <main className="main-content">
             <HomePage />
             {/* <ElectionEducation /> */}
+            {/* <InteractiveMap/> */}
           </main>
           <Footer />
       </div>
