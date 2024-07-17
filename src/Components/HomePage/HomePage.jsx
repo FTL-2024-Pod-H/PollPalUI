@@ -2,6 +2,7 @@ import React from "react";
 import "./HomePage.css";
 import SearchLocation from "../SearchLocation/SearchLocation";
 
+
 function HomePage() {
     
     return (
