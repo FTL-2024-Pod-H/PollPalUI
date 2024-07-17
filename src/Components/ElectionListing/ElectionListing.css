@@ -1,5 +1,9 @@
-.election-listing{
-
+.election-listing {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 20px auto;
 }
 .each-election{
     position:relative;
@@ -12,15 +16,58 @@
     box-shadow: 0 0px 6px ;
     padding: 20px;
     border-radius: 15px;
-    max-width: 1000px;
     margin: 20px auto;
     background: white;
     z-index: 1;
-    
+    width: 100%; 
+    max-width: 1000px; 
 }
-.election-title{
+.each-election::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit; 
+    padding: 1.5px; 
+    background: linear-gradient(to bottom right, #E6117C, #4A3CDB);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude; 
+    z-index: -1; 
+}
 
+.election-name-link {
+    color: black;
+    text-decoration: none;
+    position: relative;
+}
+
+.election-name-link::after {
+    content: '';
+    background: linear-gradient(#E6117C, #4A3CDB);
+    width: 0;
+    height: 2px;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+.election-name-link:hover::after {
+    width: 100%;
+}
+
+.election-name{
+    color: black;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
 }
 .election-day{
-
+    margin-top: 0px;
+    font-size: .9rem;
+    color: grey;
 }

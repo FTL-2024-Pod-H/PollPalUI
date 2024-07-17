@@ -17,14 +17,33 @@
     z-index: 1;
 }
 .change-address-button{
-    margin-bottom: -100px;
     color: black;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: -10px;
+    position:relative;
+}
+.change-address-button::after{
+    content: '';
+    /* text-decoration: underline; */
+    background: linear-gradient( #E6117C, #4A3CDB);
+    width:0;
+    height:2px;
+    position: absolute;
+    bottom: -2px; 
+    left: 0;
+    transition: width 0.3s ease-in-out;
+}
+.change-address-button:hover::after{
+    width: 100%;
 }
 .showing-elections-for{
-    font-size: 25px;
+    font-size: 20px;
 }
 .address{
-    font-size: 1.1rem; 
-    color: #888; 
+    font-size: 1rem;
+    color: grey;
     margin-right: 5px;
 }
