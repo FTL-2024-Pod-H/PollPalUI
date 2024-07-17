@@ -9,7 +9,7 @@ const Header = () => {
         <div className="logo-container">
           <Link to="/" className="logo-link">
             <img
-              src="public/assets/poll-pal-icon.png"
+              src="/assets/poll-pal-icon.png"
               alt="Poll Pal Logo"
               className="logo"
             ></img>

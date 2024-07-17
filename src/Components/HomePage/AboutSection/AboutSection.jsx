@@ -1,6 +1,6 @@
 import React from "react";
 import "./AboutSection.css";
-import infoIcon from "../../../../public/assets/info-icon.svg";
+import infoIcon from "/assets/info-icon.svg";
 
 const AboutSection = () => {
   return (
