@@ -1,11 +1,13 @@
 import React, {useState} from "react";
 import "./Forum.css"
-import Post from "../Post/Post";
-import ForumModal from "../ForumModal/ForumModal";
+import Post from "./Post/Post";
+import ForumModal from "./ForumModal/ForumModal";
+import NotLoggedPrompt from "./NotLoggedPrompt/NotLoggedPrompt";
 
 function Forum(){
 
     const [showCreatePostModal, setShowCreatePostModal] = useState(false);
+    const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
     // const [posts, setPosts] = useState([]);
     // Test with already added (dummy data)
 
@@ -15,7 +17,8 @@ function Forum(){
 
     // const currentUser = "current_user"; //view signed in
     // to test not logged in, change to none
-    const currentUser = "alice_id"; 
+    const currentUser = null; 
+    // const currentUser = "alice_id";
     const currentUserUsername = "alice";
     const currentUserFullName = "Alice Smith";
     
@@ -37,8 +40,15 @@ function Forum(){
     
         console.log("Filtered Posts:", filteredPosts);
 
+    // const handleCreatePost = () => {
+    //     setShowCreatePostModal(true);
+    // };
     const handleCreatePost = () => {
-        setShowCreatePostModal(true);
+        if (currentUser) {
+            setShowCreatePostModal(true);
+        } else {
+            setShowLoginPromptModal(true);
+        }
     };
     const handleCloseCreatePost = () => {
         setShowCreatePostModal(false);
@@ -75,7 +85,16 @@ function Forum(){
                 <button className="view-all-posts" onClick={() => setViewMode("all")}>
                     View All Posts
                 </button>
-                <button className="your-posts" onClick={() => setViewMode("your")}>
+                {/* <button className="your-posts" onClick={() => setViewMode("your")}>
+                    Your Posts
+                </button> */}
+                <button className="your-posts" onClick={() => {
+                        if (currentUser) {
+                            setViewMode("your");
+                        } else {
+                            setShowLoginPromptModal(true);
+                        }
+                    }}>
                     Your Posts
                 </button>
             </div>
@@ -88,6 +107,9 @@ function Forum(){
                         onAddPost={handleAddPost}
                     />
                 </div>
+            )}
+            {showLoginPromptModal && (
+                <NotLoggedPrompt onClose={() => setShowLoginPromptModal(false)} />
             )}
             <div className="posts-container">
                 {filteredPosts.map((post, index) => (

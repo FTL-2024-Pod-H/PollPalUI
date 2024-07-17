@@ -4,7 +4,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AboutSection from "./Components/HomePage/AboutSection/AboutSection.jsx"
 import Header from "./Components/Header/Header";
-import Post from './Components/Post/Post'
+import Post from './Components/Forum/Post/Post.jsx'
 import Forum from './Components/Forum/Forum';
 import HomePage from './Components/HomePage/HomePage';
 import ElectionResults from './Components/ElectionResults/ElectionResults';
