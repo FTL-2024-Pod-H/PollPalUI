@@ -1,0 +1,127 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 10px 20px;  */
+    border-top: 2px solid #eee;
+    /* margin-top: 20px; */
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 100px;
+}
+
+.branding {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.poll-pal-icon {
+    width: 40px; 
+    height: auto;
+    margin-right: 10px;
+}
+
+.description {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0; 
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 100px;
+}
+
+.students {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.student {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px; 
+}
+
+.student-image {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.student-name {
+    margin-right: 10px;
+    font-size: 14px; 
+}
+
+.linkedin-icon {
+    width: 20px; 
+    height: 20px;
+    margin-left: 5px;
+}
+
+.copyright {
+    font-size: 12px; 
+    margin-top: 10px; 
+}
+
+@media (max-width: 768px) {
+    .description {
+        font-size: 20px; 
+    }
+
+    .student-image {
+        width: 30px; 
+        height: 30px;
+    }
+
+    .copyright {
+        font-size: 8px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-left,
+    .footer-right {
+        align-items: center;
+        margin: 0;
+    }
+
+    .students {
+        align-items: center;
+    }
+
+    .student {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .student-image {
+        width: 30px;
+        height: 30px;
+    }
+
+    .student-name,
+    .linkedin-link {
+        margin: 5px 0;
+    }
+
+    .copyright {
+        margin-top: 5px; 
+    }
+}
