@@ -4,7 +4,7 @@ import "./ElectionListing.css";
 
 function ElectionListing({electionData}) {
     if (!electionData || electionData.elections === 0) {
-        return <p>No upcoming elections in your area</p>; // Handle case where electionData is null or elections array is missing
+        return <p>No upcoming elections in your area</p>; 
     }
 
     const formatDate = (dateString) => {

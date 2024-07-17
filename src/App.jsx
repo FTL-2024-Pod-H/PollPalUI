@@ -28,6 +28,8 @@ function App() {
                 <Route path="/results" element={<ElectionResults />} />
                 <Route path="/search" element={<SearchLocation />} />
                 <Route path="/forum" element={<Forum />} />
+                {/* Change to map */}
+                {/* <Route path="/map" element={<Forum />} /> */}
             </Routes>
         </BrowserRouter>
   )
