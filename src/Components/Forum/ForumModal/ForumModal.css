@@ -34,12 +34,12 @@
     max-width: 800px;
     margin: 20px auto;
     width:100%;
-    height: 100%;;
+    height: 100%;
 }
   
 .post-box h1 {
     text-align: center;
-    color: #718096;
+    color: black;
     font-size: 2rem;
     font-weight: bold;
 }
@@ -48,7 +48,7 @@
     width: 90%;
     min-height: 100px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid black;
     border-radius: 4px;
     font-size: 0.875rem; /* 14px */
     resize: vertical;
@@ -60,16 +60,16 @@
   
 .post-content::placeholder {
     color: #718096;
-    opacity: 0.5;
+    opacity: 0.7;
 }
   
-.post-content:focus {
+/* .post-content:focus {
     border-color: #4a90e2;
-}
+} */
   
 .post-button {
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid black;
     border-radius: 4px;
     padding: 8px 16px;
     cursor: pointer;
@@ -77,18 +77,25 @@
 }
   
 .post-button:hover {
-    background-color: #e2e8f0;
+    /* background-color: #e2e8f0; */
+    background: linear-gradient(144deg,#E6117C,#4A3CDB 50%,#00ddeb);
     border-color: #4a90e2;
 }
   
  .post-button svg {
     height: 20px;
     width: 20px;
-    fill: #718096;
+    fill: black;
 }
+.post-button:hover svg {
+    height: 20px;
+    width: 20px;
+    fill: white;
+}
+
   
-.post-button:focus {
+/* .post-button:focus {
     outline: none;
-}
+} */
 
 
