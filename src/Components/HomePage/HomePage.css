@@ -1,5 +1,7 @@
 .homepage {
     min-height: 100vh;
+    display: flex;
+flex-direction: column;
 }
 .search-location {
     display: flex;
@@ -7,10 +9,41 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 20px;
+    padding: 10px;
+    min-height: 75vh;
 }
 
 .search-location h2 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
+/* HomePage.css */
+
+/* .fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+} */
+
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(100px); /* Increased from 20px to 50px */
+    transition: opacity 2s ease-out, transform 2s ease-out; /* Increased duration to 1s */
+}
+
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.search-location{
+    min-height: 75vh; 
+}
+.about-section{
+    min-height: 80vh; 
+}
+.election-education {
+    min-height: 100vh; 
+}
+
 

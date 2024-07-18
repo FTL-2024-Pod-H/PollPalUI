@@ -6,6 +6,8 @@ import NotLoggedPrompt from "./NotLoggedPrompt/NotLoggedPrompt";
 
 function Forum(){
 
+    const dummyTimestamp = new Date().toISOString();
+
     const [showCreatePostModal, setShowCreatePostModal] = useState(false);
     const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
     // const [posts, setPosts] = useState([]);
@@ -17,8 +19,8 @@ function Forum(){
 
     // const currentUser = "current_user"; //view signed in
     // to test not logged in, change to none
-    const currentUser = null; 
-    // const currentUser = "alice_id";
+    // const currentUser = null; 
+    const currentUser = "alice_id";
     const currentUserUsername = "alice";
     const currentUserFullName = "Alice Smith";
     
@@ -118,6 +120,7 @@ function Forum(){
                         userFullName={post.userFullName}
                         username={post.username}
                         userPostContent={post.userPostContent}
+                        timestamp={dummyTimestamp}
                         showDelete={post.userId === currentUser}
                         onDelete={()=> handleDeletePost(index)}
                     />

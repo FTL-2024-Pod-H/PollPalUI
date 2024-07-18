@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: white;
+  background: #F6E6CB;
   border-bottom: 1px solid #ddd;
 }
 .logo-container {
@@ -68,4 +68,18 @@
 .map-name-link:hover, .home-name-link:hover, .forum-name-link:hover{
   text-decoration: none;
   color:black;
+}
+.map-name-link:after, .home-name-link:after, .forum-name-link:after{
+  content: '';
+  /* text-decoration: underline; */
+  background: linear-gradient( #E6117C, #4A3CDB);
+  width:0;
+  height:2px;
+  position: absolute;
+  bottom: -2px; 
+  left: 0;
+  transition: width 0.3s ease-in-out;
+}
+.map-name-link:hover::after, .home-name-link:hover:after, .forum-name-link:hover:after{
+  width: 100%;
 }
