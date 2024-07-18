@@ -32,6 +32,7 @@ const Register = () => {
       <input
       type="text"
       placeholder="Username"
+      /*when user types something it updates the Username*/
       onChange={(e) => setUsername(e.target.value)}
       />
       <input
