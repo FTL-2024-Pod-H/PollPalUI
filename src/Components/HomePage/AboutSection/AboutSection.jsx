@@ -5,10 +5,12 @@ import infoIcon from "/assets/info-icon.svg";
 const AboutSection = () => {
   return (
     <section className="about-section">
-      <h2 className="about-title">What is PollPal?</h2>
-      <h3 className="about-subtitle">Main Features</h3>
+      <div className="text-container">
+        <h2 className="about-title">What is PollPal?</h2>
+        <h3 className="about-subtitle">Main Features</h3>
+      </div>
       <div className="features-container">
-        <div className="feature">
+        <div className="card">
           <img className="info-icon" src={infoIcon} />
           <div className="feature-content">
             <h4 className="feature-title">Elections</h4>
@@ -19,18 +21,18 @@ const AboutSection = () => {
           </div>
         </div>
 
-        <div className="feature">
-        <img className="info-icon" src={infoIcon} />
+        <div className="card">
+          <img className="info-icon" src={infoIcon} />
           <div className="feature-content">
             <h4 className="feature-title">Representatives</h4>
             <p className="feature-description">
               Discover information about your local, state, and national
-              representatives. Learn about their roles and responsibilties.
+              representatives. Learn about their roles and responsibilities.
             </p>
           </div>
         </div>
-        <div className="feature">
-        <img className="info-icon" src={infoIcon} />
+        <div className="card">
+          <img className="info-icon" src={infoIcon} />
           <div className="feature-content">
             <h4 className="feature-title">Interactive Map</h4>
             <p className="feature-description">
@@ -39,8 +41,8 @@ const AboutSection = () => {
             </p>
           </div>
         </div>
-        <div className="feature">
-        <img className="info-icon" src={infoIcon} />
+        <div className="card">
+          <img className="info-icon" src={infoIcon} />
           <div className="feature-content">
             <h4 className="feature-title">Forum</h4>
             <p className="feature-description">
@@ -49,8 +51,8 @@ const AboutSection = () => {
             </p>
           </div>
         </div>
-        <div className="feature">
-        <img className="info-icon" src={infoIcon} />
+        <div className="card">
+          <img className="info-icon" src={infoIcon} />
           <div className="feature-content">
             <h4 className="feature-title">Reminders</h4>
             <p className="feature-description">

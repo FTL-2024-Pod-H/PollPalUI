@@ -1,1 +1,27 @@
+#root {
+    background: linear-gradient(to right, #000000, #2D0047);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
+/* body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+  } */
+
+/* .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+} */
+
+
+.main-content {
+    flex-grow: 1;
+    /* padding: 80px;  */
+    /* background-color: #f0f0f0;  */
+}

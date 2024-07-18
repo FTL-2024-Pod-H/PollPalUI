@@ -1,43 +1,75 @@
 .header {
   display: flex;
+  justify-content: center; 
+  align-items: center;
+  padding: 10px 0; 
+  color: white;
+  transition: background-color 0.3s ease; 
+  width: 100%; 
+  position: fixed; 
+  top: 0;
+  z-index: 1000;
+}
+
+.header-scrolled {
+  background-color: rgba(0, 0, 0, 0.8); 
+}
+
+.header-content {
+  width: 80%; 
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: white;
-  border-bottom: 1px solid #ddd;
 }
+
 .logo-container {
   display: flex;
   align-items: center;
 }
+
 .logo {
   height: 50px;
   width: 50px;
   margin-right: 10px;
 }
-.title {
-  font-size: 24px;
-  font-weight: bold;
-  color: black;
+
+.header-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
 }
+
+.header-title .poll {
+  color: #fff;
+}
+
+.header-title .pal {
+  background: linear-gradient(to right, #E6117C, #4A3CDB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .nav {
   flex-grow: 1;
   display: flex;
   justify-content: center;
   margin-right: 20px;
 }
+
 .nav-links {
   list-style: none;
   display: flex;
   gap: 20px;
-  padding: 0;
-  margin: 0;
+  /* padding: 0; */
+  /* margin: 0; */
+  color: white;
 }
+
 .nav-item {
   cursor: pointer;
   font-size: 18px;
-  color: black;
 }
+
 .nav-item:hover {
   color: #555;
 }
@@ -45,9 +77,14 @@
 .auth-buttons,
 .nav-auth-container {
   display: flex;
-  gap: 15px;
+  gap: 20px;
 }
-.sign-in-btn,
+
+.auth-buttons{
+  padding-top: 8px;
+}
+
+/* .sign-in-btn,
 .register-btn {
   background-color: #f0f0f0;
   color: black;
@@ -55,17 +92,116 @@
   cursor: pointer;
   font-size: 16px;
 }
-.sign-in-btn:hover, .register-btn:hover {
-    background: linear-gradient(to bottom right, #E6117C, #4A3CDB); /* Updated background */
-    color: white;
 
+.sign-in-btn:hover,
+.register-btn:hover {
+  background: linear-gradient(to bottom right, #E6117C, #4A3CDB); 
+  color: white;
+} */
+
+.animated-button {
+  /* position: relative; */
+  display: flex;
+  align-items: center;
+  /* gap: 4px; */
+  padding: 0px 15px;
+  /* border: 3px solid; */
+  max-height: 40px;
+  border-color: #E6117C;
+  /* border-color: linear-gradient(to right, #E6117C, #4A3CDB); */
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 900;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  box-shadow: 0 0 0 .9px #4A3CDB;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.map-name-link, .home-name-link, .forum-name-link{
-  text-decoration: none;
-  color:black;
+.animated-button svg {
+  position: absolute;
+  width: 24px;
+  fill: #E6117C;
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.map-name-link:hover, .home-name-link:hover, .forum-name-link:hover{
+
+.animated-button .arr-1 {
+  right: 16px;
+}
+
+.animated-button .arr-2 {
+  left: -25%;
+}
+
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #E6117C;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 12px transparent;
+  color: white;
+  border-radius: 12px;
+}
+
+.animated-button:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+  left: 16px;
+}
+
+.animated-button:hover .text {
+  transform: translateX(12px);
+}
+
+.animated-button:hover svg {
+  fill: white;
+}
+
+.animated-button:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 4px #E6117C;
+}
+
+.animated-button:hover .circle {
+  width: 220px;
+  height: 220px;
+  opacity: 1;
+}
+
+
+.map-name-link,
+.home-name-link,
+.forum-name-link {
   text-decoration: none;
-  color:black;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+.map-name-link:hover,
+.home-name-link:hover,
+.forum-name-link:hover {
+  text-decoration: none;
+  color: #E6117C;
 }

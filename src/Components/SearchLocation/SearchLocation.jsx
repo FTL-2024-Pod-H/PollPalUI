@@ -39,6 +39,7 @@ const SearchLocation = () => {
                         type="text"
                         placeholder="Search a location"
                         id="place-input"
+                        className="input"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
                     />

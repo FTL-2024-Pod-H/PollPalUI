@@ -17,7 +17,7 @@ function App() {
     <BrowserRouter>
       <div id="root">
           <Header/>
-          <main className="main-content">
+            <main className="main-content">
               <Routes>
                   <Route path="/" element={<HomePage />} />
 
@@ -31,10 +31,10 @@ function App() {
                   {/* Change to map */}
                   <Route path="/map" element={<InteractiveMap/>} />
               </Routes>
-              </main>
-              <Footer />
-          </div>
-        </BrowserRouter>
+            </main>
+          <Footer />
+      </div>
+    </BrowserRouter>
   );
 
 }
