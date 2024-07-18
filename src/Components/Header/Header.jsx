@@ -37,8 +37,10 @@ const Header = () => {
           </ul>
         </nav>
         <div className="auth-buttons">
+          <Link to="/login">
           <button className="sign-in-btn">Sign in</button>
           <button className="register-btn">Register</button>
+          </Link>
         </div>
         </div>
       </header>
