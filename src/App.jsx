@@ -1,8 +1,7 @@
-
 import ElectionEducation from "./Components/HomePage/ElectionEducation/ElectionEducation";
-import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AboutSection from "./Components/HomePage/AboutSection/AboutSection.jsx"
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AboutSection from "./Components/HomePage/AboutSection/AboutSection.jsx";
 import Header from "./Components/Header/Header";
 import Post from './Components/Forum/Post/Post.jsx'
 import Forum from './Components/Forum/Forum';
@@ -14,18 +13,19 @@ import InteractiveMap from './Components/InteractiveMap/InteractiveMap';
 import Register from "./Components/Register/Register"
 import Login from "./Components/Login/Login"
 
+
 function App() {
   return (
     <BrowserRouter>
       <div id="root">
-          <Header/>
-          <main className="main-content">
-              <Routes>
-                  <Route path="/" element={<HomePage />} />
+        <Header />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
 
-                   {/* <ElectionEducation /> */}
-                   {/* <InteractiveMap/> */}
-                   {/* <AboutSection /> */}
+            {/* <ElectionEducation /> */}
+            {/* <InteractiveMap/> */}
+            {/* <AboutSection /> */}
 
                   <Route path="/results" element={<ElectionResults />} />
                   <Route path="/search" element={<SearchLocation />} />
@@ -40,8 +40,8 @@ function App() {
               <Footer />
           </div>
         </BrowserRouter>
-  );
 
+  );
 }
 
 export default App;
