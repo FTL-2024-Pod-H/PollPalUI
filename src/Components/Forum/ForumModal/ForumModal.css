@@ -78,8 +78,9 @@
   
 .post-button:hover {
     /* background-color: #e2e8f0; */
-    background: linear-gradient(144deg,#E6117C,#4A3CDB 50%,#00ddeb);
+    background: linear-gradient( #E6117C, #4A3CDB);
     border-color: #4a90e2;
+    color:white;
 }
   
  .post-button svg {

@@ -79,7 +79,7 @@ function HomePage() {
     return (
         <div className="homepage">
             <div className="search-location fade-in-section" ref={searchLocationRef}>
-                <h2>Get election info based on your location</h2>
+                <h2 className="get-election-info-title">Get election info based on your location</h2>
                 <SearchLocation />
             </div>
             <div className="fade-in-section" ref={aboutSectionRef}>

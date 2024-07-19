@@ -91,16 +91,28 @@ const ElectionEducation = () => {
 
   return (
     <>
-      <h2>Civics Lesson</h2>
+      <div className="ee-title-container">
+        <h2 className="election-education-title">Civic Education</h2>
+      </div>
       <div id="education-section">
         {infoItems.map((item, index) => (
           <div
             className="info-item"
             key={index}
-            onClick={() => handleItemClick(index)}
+            // onClick={() => handleItemClick(index)}
           >
-            <img src={item.images[0]} alt={item.title} />
+            <div className="content">
             <h3>{item.title}</h3>
+            <img src={item.images[0]} alt={item.title} />
+            <p>{item.blurbs[0]}</p>
+            <button class="learn-more-button" onClick={() => handleItemClick(index)}>
+              <span aria-hidden="true" class="circle">
+                <span class="icon arrow"></span>
+              </span>
+              <span class="learn-more-button-text">Learn More</span>
+            </button>
+            
+            </div>
           </div>
         ))}
       </div>

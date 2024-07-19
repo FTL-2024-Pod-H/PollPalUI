@@ -45,5 +45,8 @@ flex-direction: column;
 .election-education {
     min-height: 100vh; 
 }
+.get-election-info-title{
+    color: white;
+}
 
 
