@@ -1,28 +1,28 @@
 .homepage {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-top: 80px;
-    overflow-x: hidden;
+    /* height: 200vh; 
+    overflow: hidden;  */
 }
+
 .search-location {
+    margin-bottom: 40px; 
+    margin-top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 10px;
-    min-height: 75vh;
+    width: 100%;
 }
 
 .search-location h2 {
+    /* font-size: 34px; */
     margin-bottom: 10px;
 }
 
 .fade-in-section {
     opacity: 0;
     transform: translateY(100px); 
-    transition: opacity 2s ease-out, transform 2s ease-out;
+    transition: opacity 2s ease-out, transform 2s ease-out; 
 }
 
 .fade-in-section.visible {
@@ -32,18 +32,16 @@
 
 .search-location{
     min-height: 75vh; 
+    display: flex;
+    justify-content: center;
+    height: 100vh;
 }
 .about-section{
     min-height: 80vh; 
 }
 .election-education {
-    min-height: 100vh; 
+    min-height: 85vh;     
 }
 .get-election-info-title{
     color: white;
 }
-.white-space {
-    height: 100px;
-  }
-
-

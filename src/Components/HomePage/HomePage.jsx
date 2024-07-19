@@ -5,59 +5,47 @@ import AboutSection from "./AboutSection/AboutSection";
 import ElectionEducation from "./ElectionEducation/ElectionEducation";
 
 function HomePage() {
-    const searchLocationRef = useRef(null);
-    const aboutSectionRef = useRef(null);
-    const electionEducationRef = useRef(null);
 
     useEffect(() => {
+        const sections = document.querySelectorAll('.fade-in-section');
+
         const options = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1,
+            threshold: 0.1
         };
 
-        const handleIntersection = (entries, observer) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                console.log('Entry:', entry);  // Add this line
                 if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                    observer.unobserve(entry.target);
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
                 }
             });
-        };
+        }, options);
 
-        const observer = new IntersectionObserver(handleIntersection, options);
-
-        const sections = [searchLocationRef.current, aboutSectionRef.current, electionEducationRef.current];
         sections.forEach(section => {
-            if (section) {
-                observer.observe(section);
-            }
+            observer.observe(section);
         });
 
         return () => {
             sections.forEach(section => {
-                if (section) {
-                    observer.unobserve(section);
-                }
+                observer.unobserve(section);
             });
         };
     }, []);
 
     return (
         <div className="homepage">
-            <div className="search-location fade-in-section" ref={searchLocationRef}>
+            <div className="search-location fade-in-section" >
                 <h2 className="get-election-info-title">Get election info based on your location</h2>
                 <SearchLocation />
             </div>
-            <div className="fade-in-section" ref={aboutSectionRef}>
+            <div className="about-section fade-in-section" >
                 <AboutSection />
             </div>
-            <div className="fade-in-section" ref={electionEducationRef}>
+            <div className="election-education fade-in-section" >
                 <ElectionEducation />
             </div>
-            {/* White space under ElectionEducation */}
-            <div className="white-space" style={{ height: "100px" }} />
         </div>
     );
 }
