@@ -11,6 +11,8 @@ import ElectionResults from './Components/ElectionResults/ElectionResults';
 import SearchLocation from './Components/SearchLocation/SearchLocation';
 import Footer from './Components/Footer/Footer';
 import InteractiveMap from './Components/InteractiveMap/InteractiveMap';
+import Register from "./Components/Register/Register"
+import Login from "./Components/Login/Login"
 
 function App() {
   return (
@@ -30,6 +32,9 @@ function App() {
                   <Route path="/forum" element={<Forum />} />
                   {/* Change to map */}
                   <Route path="/map" element={<InteractiveMap/>} />
+                  <Route path="/login" element={<Register/>} />
+                  
+
               </Routes>
               </main>
               <Footer />
