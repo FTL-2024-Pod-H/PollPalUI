@@ -10,10 +10,13 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  color: black;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 
 .modal-content {
-  background: rgb(252, 243, 254);
+  background: black;
   padding: 20px;
   border-radius: 8px;
   width: 900px;
@@ -21,20 +24,16 @@
 }
 
 .close-button {
-  background: linear-gradient(
-    to bottom right,
-    #e6117c,
-    #4a3cdb
-  ); /* Correct gradient syntax */
-  color: white; /* Set text color */
+  background: linear-gradient(to bottom right, #e6117c, #4a3cdb);
+  color: white;
   padding: 10px 20px;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 50%;
   font-size: 16px;
-  border: none; /* Remove default border */
-  position: relative; /* Position relative for pseudo-element */
-
-  /* Optional box-shadow for better visual appearance */
+  border: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
@@ -42,7 +41,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 20px;
 }
 
 .modal-body h3 {
@@ -51,35 +50,38 @@
 
 .modal-text {
   display: flex;
-  justify-content: space-between;
-  width: 800px;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
 }
 
 .modal-text img {
   width: 500px;
   height: auto;
-}
-
-.modal-footer {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
+  border-radius: 8px;
 }
 
 .next-button {
-  background: linear-gradient(
-    to bottom right,
-    #e6117c,
-    #4a3cdb
-  ); /* Correct gradient syntax */
-  color: white; /* Set text color */
+  background: linear-gradient(to bottom right, #e6117c, #4a3cdb);
+  opacity: 0.8;
+  /* color: rgba(255, 255, 255, 0.7); */
+  color: white;
   padding: 10px 20px;
   cursor: pointer;
-  border-radius: 4px;
-  font-size: 16px;
-  border: none; /* Remove default border */
-  position: relative; /* Position relative for pseudo-element */
-
-  /* Optional box-shadow for better visual appearance */
+  border-radius: 50%;
+  font-size: 24px;
+  border: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -30px; /* Adjust this value to control how much of the button sticks out */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s, color 0.3s;
+}
+
+.next-button:hover {
+  background: linear-gradient(to bottom right, #e6117c, #4a3cdb);
+  opacity: 1;
+  color: rgba(255, 255, 255, 0.9);
 }

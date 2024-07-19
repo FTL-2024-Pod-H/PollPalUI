@@ -3,7 +3,8 @@
   justify-content: center; 
   align-items: center;
   padding: 10px 0; 
-  color: white;
+  /* color: white; */
+  color: black;
   transition: background-color 0.3s ease; 
   width: 100%; 
   position: fixed; 
@@ -12,7 +13,8 @@
 }
 
 .header-scrolled {
-  background-color: rgba(0, 0, 0, 0.8); 
+  /* background-color: rgba(0, 0, 0, 0.8);  */
+  background-color: rgba(211, 193, 215, 0.8);
 }
 
 .header-content {
@@ -40,7 +42,8 @@
 }
 
 .header-title .poll {
-  color: #fff;
+  /* color: #fff; */
+  color: black
 }
 
 .header-title .pal {
@@ -114,7 +117,8 @@
   border-radius: 100px;
   font-weight: 900;
   font-family: 'Poppins', sans-serif;
-  color: white;
+  /* color: white; */
+  color: black;
   box-shadow: 0 0 0 .9px #4A3CDB;
   cursor: pointer;
   overflow: hidden;
@@ -159,7 +163,8 @@
 
 .animated-button:hover {
   box-shadow: 0 0 0 12px transparent;
-  color: white;
+  /* color: white; */
+  color: black;
   border-radius: 12px;
 }
 
@@ -196,7 +201,8 @@
 .forum-name-link {
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
-  color: white;
+  /* color: white; */
+  color: black;
 }
 
 .map-name-link:hover,

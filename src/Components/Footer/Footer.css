@@ -2,28 +2,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* padding: 10px 20px;  */
-    /* border-top: 2px solid #eee; */
-    /* margin-top: 20px; */
-    
+    /* padding: 20px; */
+    background-color: #100720;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
 }
 
 .footer-left {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-    margin-left: 100px;
+    margin-left: 50px;
 }
 
 .branding {
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
 }
 
 .poll-pal-icon {
-    width: 40px; 
+    width: 50px; 
     height: auto;
     margin-right: 10px;
 }
@@ -31,49 +28,63 @@
 .description {
     font-size: 24px;
     font-weight: bold;
-    margin: 0; 
+    margin: 0;
+    display: flex;
+    align-items: center;
 }
 
-.footer-right {
+.poll-white {
+    background: linear-gradient(to right, #E6117C, #4A3CDB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer-center {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    margin-right: 100px;
+    align-items: center;
 }
 
 .students {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
 }
 
 .student {
     display: flex;
     align-items: center;
-    margin-bottom: 5px; 
-}
-
-.student-image {
-    width: 40px; 
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
+    margin-bottom: 0cqb;
 }
 
 .student-name {
     margin-right: 10px;
-    font-size: 14px; 
+    font-size: 14px;
 }
 
-.linkedin-icon {
-    width: 20px; 
-    height: 20px;
+.linkedin-link,
+.gmail-link {
     margin-left: 5px;
 }
 
+.linkedin-icon,
+.github-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.github-icon{
+    border-radius: 8px;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+}
+
 .copyright {
-    font-size: 12px; 
-    margin-top: 10px; 
+    font-size: 14px;
 }
 
 @media (max-width: 768px) {
@@ -81,13 +92,8 @@
         font-size: 20px; 
     }
 
-    .student-image {
-        width: 30px; 
-        height: 30px;
-    }
-
     .copyright {
-        font-size: 8px; 
+        font-size: 12px;
     }
 }
 
@@ -100,7 +106,7 @@
     .footer-left,
     .footer-right {
         align-items: center;
-        margin: 0;
+        margin: 10px 0;
     }
 
     .students {
@@ -112,17 +118,9 @@
         align-items: center;
     }
 
-    .student-image {
-        width: 30px;
-        height: 30px;
-    }
-
     .student-name,
-    .linkedin-link {
+    .linkedin-link,
+    .gmail-link {
         margin: 5px 0;
-    }
-
-    .copyright {
-        margin-top: 5px; 
     }
 }

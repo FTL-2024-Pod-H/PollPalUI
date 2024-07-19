@@ -8,7 +8,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to bottom,rgb(227, 213, 255),rgb(255, 231, 231));
+    /* background: linear-gradient(to bottom,rgb(227, 213, 255),rgb(255, 231, 231)); */
+    /* background: linear-gradient(to bottom, #000000, #2D0047); */
+    background: linear-gradient(to bottom, #E6117C, #4A3CDB);
     border-radius: 30px;
     overflow: hidden;
     cursor: pointer;
@@ -55,9 +57,11 @@
     border: none;
     outline: none;
     /* caret-color: rgb(255, 81, 0); */
-    background: linear-gradient(to right, #000000, #2D0047);;
+    /* background: linear-gradient(to right, #000000, #2D0047);; */
+    /* background: linear-gradient(to right, #E6117C, #4A3CDB); */
     /* background-color: rgb(255, 255, 255); */
     /* background-color: inherit; */
+    background-color: black;
     border-radius: 30px;
     padding-left: 15px;
     letter-spacing: 0.8px;

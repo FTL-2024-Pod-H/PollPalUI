@@ -5,7 +5,8 @@
     flex-wrap: wrap;
     /* height: 100%; */
     /* background-color: white; */
-    background: linear-gradient(to bottom,rgb(227, 213, 255),rgb(255, 231, 231));
+    /* background: linear-gradient(to bottom,rgb(227, 213, 255),rgb(255, 231, 231)); */
+    background: linear-gradient(to right, #000000, #2D0047);
 }
 
 .text-container {
@@ -26,15 +27,18 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     /* font-family: 'Arial', sans-serif; */
-    font-family: 'Times New Roman', Times, serif;
+    /* font-family: 'Times New Roman', Times, serif; */
+    font-family: 'Poppins', sans-serif;
 }
+
 
 .about-subtitle {
     font-size: 24px;
-    color: #333;
+    /* color: #333; */
     margin-bottom: 40px;
     /* font-family: 'Arial', sans-serif; */
-    font-family: 'Times New Roman', Times, serif;
+    /* font-family: 'Times New Roman', Times, serif; */
+    font-family: 'Poppins', sans-serif;
 }
 
 .features-container {
@@ -79,12 +83,14 @@
     margin-bottom: 5px;
     display: flex;
     align-items: center;
+    /* color:white; */
 }
 
 .feature-description {
     font-size: 16px;
     /* color: #333; */
     font-family: 'Poppins', sans-serif;
+    /* color: white; */
 }
 
 .info-icon {
@@ -97,7 +103,7 @@
     height: 200px;
     padding: 20px;
     color: black;
-    background: linear-gradient(to bottom,rgb(227, 213, 255),rgb(255, 231, 231)) padding-box,
+    background: linear-gradient(to right, #ffffff, #ffffff) padding-box,
                 linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
     border: 2px solid transparent;
     border-radius: 8px;
