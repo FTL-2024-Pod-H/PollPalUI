@@ -1,20 +1,5 @@
-/* HomePage.css */
-/* 
-.homepage {
-    overflow: hidden; 
-}
 
-
-
-.search-about-container {
-    min-height: 100vh; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-} */
-
-#initial-viewport {
+/* #initial-viewport {
     height: 100%; 
     overflow-y: auto; 
     display: flex;
@@ -22,16 +7,16 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-}
+} */
 
 .homepage {
     display: flex;
     flex-direction: column;
-    height: 200vh; 
-    overflow: hidden; 
+    /* height: 200vh; 
+    overflow: hidden;  */
 }
 
-.search-location,
+/* .search-location,
 .about-section,
 .election-education {
     height: 100vh; 
@@ -39,8 +24,22 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
-    /* overflow: hidden; */
     overflow-y: auto;
+} */
+
+.section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .search-location {

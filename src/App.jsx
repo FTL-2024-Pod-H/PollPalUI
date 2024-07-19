@@ -20,15 +20,9 @@ function App() {
             <main className="main-content">
               <Routes>
                   <Route path="/" element={<HomePage />} />
-
-                   {/* <ElectionEducation /> */}
-                   {/* <InteractiveMap/> */}
-                   {/* <AboutSection /> */}
-
                   <Route path="/results" element={<ElectionResults />} />
                   <Route path="/search" element={<SearchLocation />} />
                   <Route path="/forum" element={<Forum />} />
-                  {/* Change to map */}
                   <Route path="/map" element={<InteractiveMap/>} />
               </Routes>
             </main>

@@ -7,34 +7,45 @@ import ElectionEducation from "./ElectionEducation/ElectionEducation";
 function HomePage() {
     
     useEffect(() => {
-        const handleScroll = () => {
-            const homepage = document.querySelector(".homepage");
-            const aboutSection = document.querySelector(".about-section");
-            const aboutSectionRect = aboutSection.getBoundingClientRect();
+        const sections = document.querySelectorAll('.section');
 
-            if (aboutSectionRect.top < window.innerHeight && aboutSectionRect.bottom >= 0) {
-                homepage.classList.add("scrolled");
-            } else {
-                homepage.classList.remove("scrolled");
-            }
+        const options = {
+            threshold: 0.1
         };
 
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        return () => {
+            sections.forEach(section => {
+                observer.unobserve(section);
+            });
+        };
     }, []);
 
     return (
         <div className="homepage">
-            <div className="search-location" id="initial-viewport">
+            <section className="section search-location" id="initial-viewport">
                 <h2>Get election info based on your location</h2>
                 <SearchLocation />
-            </div>
-            {/* <div className="about-section"> */}
+            </section>
+            <section className="section about-section">
                 <AboutSection/>
-            {/* </div> */}
-            {/* <div className="election-education"> */}
+            </section>
+            <section className="section election-education">
                 <ElectionEducation />
-            {/* </div> */}
+            </section>
         </div>
     );
 }
