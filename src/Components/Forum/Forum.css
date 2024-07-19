@@ -1,5 +1,6 @@
 .forum-page-container{
     padding-top: 100px;
+    
 }
 .forum-title{
     margin-bottom: 13px;
@@ -74,7 +75,7 @@
     transition-duration: .3s;
     
 }
-  /* hover effect on button width */
+ 
 .Btn:hover {
     width: 125px;
     transition-duration: .3s;
@@ -85,7 +86,7 @@
     transition-duration: .3s;
     padding-left: 5px;
 }
-  /* hover effect button's text */
+  
 .Btn:hover .text {
     opacity: 1;
     width: 70%;
@@ -93,7 +94,7 @@
     padding-right: 5px;
     padding-left: 5px;
 }
-  /* button click effect*/
+ 
 .Btn:active {
     transform: translate(2px ,2px);
 }

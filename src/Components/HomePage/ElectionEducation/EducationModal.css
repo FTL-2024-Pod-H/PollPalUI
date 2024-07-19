@@ -66,20 +66,46 @@
   margin-top: 20px;
 }
 
-.next-button {
+/* .next-button {
   background: linear-gradient(
     to bottom right,
     #e6117c,
     #4a3cdb
-  ); /* Correct gradient syntax */
-  color: white; /* Set text color */
+  );
+  color: white; 
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 4px;
   font-size: 16px;
-  border: none; /* Remove default border */
-  position: relative; /* Position relative for pseudo-element */
-
-  /* Optional box-shadow for better visual appearance */
+  border: none; 
+  position: relative; 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+} */
+.next-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  border-radius: 10px;
+  border: 1px solid #4a00e0;
+  padding: 10px 20px;
+  background-color: transparent;
+  
 }
+
+.next-button:hover {
+  box-shadow: 10px 10px 40px #d7c3ff;
+  transform: translateY(-5px);
+}
+
+.next-button > svg {
+  margin-left: 5px;
+  transition: all 0.4s ease-in;
+}
+
+.next-button:hover svg {
+  font-size: 1.2em;
+  transform: translateX(6px);
+}
+

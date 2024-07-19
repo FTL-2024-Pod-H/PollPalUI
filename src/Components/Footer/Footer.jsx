@@ -38,7 +38,7 @@ const Footer = () => {
                     </div>
                     <div className="student">
                         <p className="student-name">Kiahna Isadore</p>
-                        <a href="https://www.linkedin.com/in/luckymuhoza/" target="_blank" rel="noopener noreferrer" className="linkedin-link">
+                        <a href="https://www.linkedin.com/in/kiahna-isadore/" target="_blank" rel="noopener noreferrer" className="linkedin-link">
                             <img src={linkedinIcon} alt="LinkedIn" className="linkedin-icon" />
                         </a>
                     </div>

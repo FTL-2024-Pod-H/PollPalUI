@@ -18,8 +18,10 @@ const NotLoggedPrompt = ({onClose}) => {
                 <h2>Please Log In or Register</h2>
                 <p>You need to be logged in to create and view your posts.</p>
                 <div className="modal-buttons">
-                    <button onClick={() => window.location.href = '/login'}>Log In</button>
-                    <button onClick={() => window.location.href = '/register'}>Register</button>
+                    {/* <button onClick={() => window.location.href = '/login'}>Log In</button>
+                    <button onClick={() => window.location.href = '/register'}>Register</button> */}
+                    <button class="cssbuttons-io2" onClick={() => window.location.href = '/login'}><span>Sign In</span></button>
+                    <button class="cssbuttons-io2" onClick={() => window.location.href = '/register'}><span>Register</span></button>
                 </div>
             </div>
         </div>
