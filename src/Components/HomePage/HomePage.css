@@ -1,7 +1,9 @@
 .homepage {
     min-height: 100vh;
     display: flex;
-flex-direction: column;
+    flex-direction: column;
+    padding-top: 80px;
+    overflow-x: hidden;
 }
 .search-location {
     display: flex;
@@ -16,19 +18,11 @@ flex-direction: column;
 .search-location h2 {
     margin-bottom: 10px;
 }
-/* HomePage.css */
-
-/* .fade-in-section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-} */
-
 
 .fade-in-section {
     opacity: 0;
-    transform: translateY(100px); /* Increased from 20px to 50px */
-    transition: opacity 2s ease-out, transform 2s ease-out; /* Increased duration to 1s */
+    transform: translateY(100px); 
+    transition: opacity 2s ease-out, transform 2s ease-out;
 }
 
 .fade-in-section.visible {
@@ -48,5 +42,8 @@ flex-direction: column;
 .get-election-info-title{
     color: white;
 }
+.white-space {
+    height: 100px;
+  }
 
 

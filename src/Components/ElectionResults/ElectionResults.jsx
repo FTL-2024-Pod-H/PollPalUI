@@ -69,7 +69,7 @@ function ElectionResults() {
                         filteredElectionData.length > 0 ? (
                             <ElectionListing electionData={filteredElectionData} />
                         ) : (
-                            <p>No elections in your area</p>
+                            <p className="no-elections-response">No elections in your area</p>
                         )
                     ) : null 
                 )}

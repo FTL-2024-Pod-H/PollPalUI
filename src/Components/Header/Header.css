@@ -4,8 +4,19 @@
   align-items: center;
   padding: 10px 20px;
   background-color: white;
-  /* background-color: rgba(255, 255, 255, .2); */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
+
+.header.scrolled {
+  background-color: rgba(255, 255, 255, .3); 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
+}
+/* background-color: rgba(255, 255, 255, .2); */
 
 .logo-container {
   display: flex;
@@ -25,7 +36,8 @@
   flex-grow: 1;
   display: flex;
   justify-content: center;
-  margin-right: 20px;
+  margin-right: 25px;
+  margin-top: 10px;
 }
 .nav-links {
   list-style: none;
@@ -48,19 +60,73 @@
   display: flex;
   gap: 15px;
 }
-.sign-in-btn,
+/* .sign-in-btn,
 .register-btn {
   background-color: #f0f0f0;
   color: black;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
 }
 .sign-in-btn:hover, .register-btn:hover {
-    background: linear-gradient(to bottom right, #E6117C, #4A3CDB); /* Updated background */
+    background: linear-gradient(to bottom right, #E6117C, #4A3CDB);
     color: white;
 
+} */
+.cssbuttons-io {
+  position: relative;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  border-radius: 0.8em;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+  color: ghostwhite;
+  overflow: hidden;
+  margin-right: 40px;
 }
+
+/* SIGN IN BUTTON */
+
+.cssbuttons-io span {
+  position: relative;
+  z-index: 10;
+  transition: color 0.4s;
+  display: inline-flex;
+  align-items: center;
+  /* padding: 0.8em 1.2em 0.8em 1.05em; */
+  padding: 0.5em 1em;
+}
+
+.cssbuttons-io::before,
+.cssbuttons-io::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.cssbuttons-io::before {
+  content: "";
+  background: #000;
+  width: 120%;
+  left: -10%;
+  transform: skew(30deg);
+  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+.cssbuttons-io:hover::before {
+  transform: translate3d(100%, 0, 0);
+}
+
+.cssbuttons-io:active {
+  transform: scale(0.95);
+}
+
 
 .map-name-link, .home-name-link, .forum-name-link{
   text-decoration: none;

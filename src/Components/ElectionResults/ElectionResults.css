@@ -1,5 +1,9 @@
 .election-results{
   min-height: 100vh;
+  padding-top: 100px;
+}
+.no-elections-response{
+  color: white;
 }
 .title-section{
     position:relative;

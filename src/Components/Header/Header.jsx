@@ -1,11 +1,29 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Header.css";
 
+
 const Header = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 50) { //when you want the color to change
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <header className="header">
+      <header className={`header ${scrolled ? 'scrolled' : ''}`}>
         <div className="logo-container">
           <Link to="/" className="logo-link">
             <img
@@ -37,8 +55,10 @@ const Header = () => {
           </ul>
         </nav>
         <div className="auth-buttons">
-          <button className="sign-in-btn">Sign in</button>
-          <button className="register-btn">Register</button>
+        <button class="cssbuttons-io">
+          <span>Sign In</span>
+        </button>
+          {/* <button className="register-btn">Register</button> */}
         </div>
         </div>
       </header>

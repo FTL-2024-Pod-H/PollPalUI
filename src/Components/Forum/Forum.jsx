@@ -72,6 +72,7 @@ function Forum(){
     };
     return(
         <>
+            <div className="forum-page-container"></div>
             <div className="form-title-button">
             <div className="forum-info-section">
                 <h1 className="forum-title">Forum</h1>
