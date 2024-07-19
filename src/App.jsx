@@ -10,7 +10,6 @@ import ElectionResults from "./Components/ElectionResults/ElectionResults";
 import SearchLocation from "./Components/SearchLocation/SearchLocation";
 import Footer from "./Components/Footer/Footer";
 import InteractiveMap from "./Components/InteractiveMap/InteractiveMap";
-import ActualElection from "./Components/ActualElection/ActualElection.jsx";
 
 function App() {
   return (
