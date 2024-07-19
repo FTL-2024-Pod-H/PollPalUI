@@ -21,8 +21,8 @@ const ElectionEducation = () => {
       blurbs: [
         "Let's take a general look at the difference between Primary and General Elections",
         "A primary election is held by political parties to choose their candidates for various offices. There are different types of primaries, such as open primaries, where any registerd voter can participate, and closed primaries, where only registered party members can vote.",
-        "The general election is the 'big' election you here about in the news. The is where everyone votes among the candiates nominated by each party.",
-        "Primary and General elections are held for all offices, including presidents. The general election chooses between the winners of each primary election, and tipically take place on the Tuesday after the first Monday in Novemeber",
+        "The general election is the 'big' election you hear about in the news. The is where everyone votes among the candiates nominated by each party.",
+        "Primary and General elections are held for all offices, including presidents. The general election chooses between the winners of each primary election, and typically takes place on the Tuesday after the first Monday in November",
       ],
     },
     {
@@ -37,7 +37,7 @@ const ElectionEducation = () => {
       blurbs: [
         "Let's go over how the United States uses the Electoral College to elect its president",
         "Every U.S. state has a certain amount of votes: number of Senators + number of Representatives.\n\n Every state has 2 senators, but the number of representatives a state has depends on the state's population according to the most recent U.S. Census. Let's use California as an example, which, in 2016, had 53 representatives and 2 senators.\n\n Thus, California has 55 electoral votes. ",
-        "If a candidate wins the majority vote in a state, the candidate takes all of that states Electoral Votes. In California, the majority voted for Hillary Clinton (61.7%). Because of this, Clinton took all 55 of California's electoral votes.",
+        "If a candidate wins the majority vote in a state, the candidate takes all of that state's Electoral Votes. In California, the majority voted for Hillary Clinton (61.7%). Because of this, Clinton took all 55 of California's electoral votes.",
         "To win the Presidential Election, a candidate must receive the most electoral votes, which currently totals to 270 out of 538.",
         "Just because a candidate wins the popular vote, does not mean they will win the electoral vote. In 2016, more people in the U.S. voted for Clinton than Trump. However, Trump had more Electoral Votes, giving him the Presidency.",
       ],
@@ -90,8 +90,11 @@ const ElectionEducation = () => {
   };
 
   return (
-    <>
-      <h2>Civics Lesson</h2>
+    <div className="info-section">
+      <div className="info-title">
+        <h2>Learn about elections in the United States</h2>
+        <p>Click on a card to read more</p>
+      </div>
       <div id="education-section">
         {infoItems.map((item, index) => (
           <div
@@ -99,7 +102,6 @@ const ElectionEducation = () => {
             key={index}
             onClick={() => handleItemClick(index)}
           >
-            <img src={item.images[0]} alt={item.title} />
             <h3>{item.title}</h3>
           </div>
         ))}
@@ -114,7 +116,7 @@ const ElectionEducation = () => {
         nextBlurb={handleNextBlurb}
         modalAnimation={modalAnimation}
       />
-    </>
+    </div>
   );
 };
 

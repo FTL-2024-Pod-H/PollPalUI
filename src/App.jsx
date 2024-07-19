@@ -18,19 +18,14 @@ function App() {
   return (
     <BrowserRouter>
       <div id="root">
-        <Header />
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-
-            {/* <ElectionEducation /> */}
-            {/* <InteractiveMap/> */}
-            {/* <AboutSection /> */}
+          <Header/>
+            <main className="main-content">
+              <Routes>
+                  <Route path="/" element={<HomePage />} />
 
                   <Route path="/results" element={<ElectionResults />} />
                   <Route path="/search" element={<SearchLocation />} />
                   <Route path="/forum" element={<Forum />} />
-                  {/* Change to map */}
                   <Route path="/map" element={<InteractiveMap/>} />
                   <Route path="/login" element={<Register/>} />
                   
@@ -40,7 +35,6 @@ function App() {
               <Footer />
           </div>
         </BrowserRouter>
-
   );
 }
 
