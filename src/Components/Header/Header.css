@@ -81,6 +81,7 @@
 .nav-auth-container {
   display: flex;
   gap: 20px;
+  margin-top: 10px;
 }
 
 .auth-buttons{
@@ -198,7 +199,7 @@
 
 .map-name-link,
 .home-name-link,
-.forum-name-link {
+.forum-name-link, .sign-in-link {
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
   /* color: white; */

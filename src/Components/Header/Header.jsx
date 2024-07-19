@@ -60,8 +60,10 @@ const Header = () => {
             <div className="auth-buttons">
               {/* <button className="sign-in-btn">Sign in</button>
               <button className="register-btn">Register</button> */}
-              <button className="animated-button">Sign in</button>
-              <button className="animated-button">Register</button>
+              <Link to={`/login`} className="sign-in-link">
+                <button className="animated-button">Sign in</button>
+              </Link>
+              {/* <button className="animated-button">Register</button> */}
             </div>
           </div>
 
