@@ -30,7 +30,7 @@ function Forum(){
         { userFullName: "Alice Smith", username: "alice", userPostContent: "This is Alice's post.", userId: "alice_id" },
         { userFullName: "Bob Johnson", username: "bobj", userPostContent: "This is Bob's post.", userId: "bob_id" },
         { userFullName: "Kiahna Isadore", username: "kisadore", userPostContent: "Hi, My name is Kiahna, who do I vote for!!!", userId: "k_isadore" },
-        { userFullName: "Kiahna Isadore", username: "kisadore", userPostContent: "Ughh Im so overwhelmed", userId: "k_isadore" }
+        { userFullName: "Kiahna Isadore", username: "kisadore", userPostContent: "Testing", userId: "k_isadore" }
     ]);
 
     const[viewMode, setViewMode] = useState("all");
