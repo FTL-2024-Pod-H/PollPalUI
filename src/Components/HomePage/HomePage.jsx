@@ -1,35 +1,3 @@
-// import React, { useEffect } from "react";
-// import "./HomePage.css";
-// import SearchLocation from "../SearchLocation/SearchLocation";
-// import AboutSection from "./AboutSection/AboutSection";
-// import ElectionEducation from "./ElectionEducation/ElectionEducation";
-// import AOS from "aos";
-// import "aos/dist/aos.css";
-
-
-// function HomePage() {
-//     useEffect(() => {
-//         AOS.init({
-//             duration: 1000,
-//             offset: 200,
-//             delay: 100,
-//             once: true,
-//         });
-//     }, []);
-//     return (
-//         <div className="homepage">
-//             <div className="search-location" data-aos="fade-up">
-//                 <h2>Get election info based on your location</h2>
-//                 <SearchLocation/>
-//             </div>
-//             <AboutSection data-aos="fade-up"/>
-//             <ElectionEducation data-aos="fade-up" />
-//         </div>
-//     );
-// }
-
-// export default HomePage;
-
 import React, { useEffect, useRef } from "react";
 import "./HomePage.css";
 import SearchLocation from "../SearchLocation/SearchLocation";
