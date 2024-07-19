@@ -21,6 +21,7 @@ const Header = () => {
 
   return (
     <>
+
       <header className={`header ${scrolled ? "header-scrolled" : ""}`}>
         <div className="header-content">
           <div className="logo-container">
@@ -63,6 +64,7 @@ const Header = () => {
               <button className="animated-button">Register</button>
             </div>
           </div>
+
         </div>
       </header>
     </>
