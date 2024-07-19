@@ -33,6 +33,8 @@ function App() {
                   {/* Change to map */}
                   <Route path="/map" element={<InteractiveMap/>} />
                   <Route path="/login" element={<Register/>} />
+                  
+
               </Routes>
               </main>
               <Footer />
