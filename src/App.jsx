@@ -1,8 +1,7 @@
-
 import ElectionEducation from "./Components/HomePage/ElectionEducation/ElectionEducation";
-import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AboutSection from "./Components/HomePage/AboutSection/AboutSection.jsx"
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AboutSection from "./Components/HomePage/AboutSection/AboutSection.jsx";
 import Header from "./Components/Header/Header";
 import Post from './Components/Forum/Post/Post.jsx'
 import Forum from './Components/Forum/Forum';
@@ -11,6 +10,9 @@ import ElectionResults from './Components/ElectionResults/ElectionResults';
 import SearchLocation from './Components/SearchLocation/SearchLocation';
 import Footer from './Components/Footer/Footer';
 import InteractiveMap from './Components/InteractiveMap/InteractiveMap';
+import Register from "./Components/Register/Register"
+import Login from "./Components/Login/Login"
+
 
 function App() {
   return (
@@ -21,24 +23,26 @@ function App() {
             <div className="bg-img">
               <Routes>
                   <Route path="/" element={<HomePage />} />
-
-                   {/* <ElectionEducation /> */}
-                   {/* <InteractiveMap/> */}
-                   {/* <AboutSection /> */}
+            {/* <ElectionEducation /> */}
+            {/* <InteractiveMap/> */}
+            {/* <AboutSection /> */}
 
                   <Route path="/results" element={<ElectionResults />} />
                   <Route path="/search" element={<SearchLocation />} />
                   <Route path="/forum" element={<Forum />} />
                   {/* Change to map */}
                   <Route path="/map" element={<InteractiveMap/>} />
+                  <Route path="/login" element={<Register/>} />
+                  
+
               </Routes>
               </div>
               </main>
               <Footer />
           </div>
         </BrowserRouter>
-  );
 
+  );
 }
 
 export default App;

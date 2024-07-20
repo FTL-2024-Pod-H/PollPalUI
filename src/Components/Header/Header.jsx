@@ -55,10 +55,13 @@ const Header = () => {
           </ul>
         </nav>
         <div className="auth-buttons">
-        <button class="cssbuttons-io">
-          <span>Sign In</span>
-        </button>
-          {/* <button className="register-btn">Register</button> */}
+        <Link to="/login">
+          <button class="cssbuttons-io">
+            <span>Sign In</span>
+          </button>
+            {/* <button className="register-btn">Register</button> */}
+        </Link>
+
         </div>
         </div>
       </header>
