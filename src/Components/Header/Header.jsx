@@ -60,11 +60,14 @@ const Header = () => {
             <div className="auth-buttons">
               {/* <button className="sign-in-btn">Sign in</button>
               <button className="register-btn">Register</button> */}
+              <Link to="/login" className="link-button">
               <button className="animated-button">Sign in</button>
+              </Link>
+              <Link to="/register" className="link-button">
               <button className="animated-button">Register</button>
+              </Link>
             </div>
           </div>
-
         </div>
       </header>
     </>

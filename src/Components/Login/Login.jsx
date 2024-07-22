@@ -1,38 +1,39 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-    // handle login
+  // handle login
   const handleLogin = async () => {
     try {
-      // Mock API call
-      const response = await axios.post("/api/login", {
+      const response = await axios.post("http://localhost:3000/users/login", {
         username,
         password,
       });
-      toast.success(response.data.message);
 
-      // Simulate storing the token from a successful login response
-      const loginResponse = { data: { token: "mock-token" } };
-      localStorage.setItem("token", loginResponse.data.token);
-
-      // Navigate to another page, e.g., the dashboard
-      navigate("/dashboard");
+      //store the token in the localStorage as token
+      localStorage.setItem("token", response.data.token);
+      //navigating to homepage
+      navigate("/");
     } catch (error) {
-      toast.error("Login failed. Try again");
+      if (error.response && error.response.status === 401) {
+        toast.error("Invalid username or password");
+      } else {
+        toast.error("Login failed, please try again later");
+      }
     }
   };
 
-  
-
-    return (
-        <div className="login-container">
+  return (
+    <div className="login-container">
+      <ToastContainer position="top-center" autoClose={3000} hideProgressBar={true}/>
       <h1>Login to Poll Pal</h1>
       <input
         type="text"
@@ -48,10 +49,8 @@ const Login = () => {
       />
       <button onClick={handleLogin}>Login</button>
       <button onClick={() => navigate("/register")}>Go to register</button>
-      <ToastContainer />
     </div>
   );
 };
-
 
 export default Login;

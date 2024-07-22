@@ -1,6 +1,6 @@
 import ElectionEducation from "./Components/HomePage/ElectionEducation/ElectionEducation";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AboutSection from "./Components/HomePage/AboutSection/AboutSection.jsx";
 import Header from "./Components/Header/Header";
 import Post from './Components/Forum/Post/Post.jsx'
@@ -27,7 +27,8 @@ function App() {
                   <Route path="/search" element={<SearchLocation />} />
                   <Route path="/forum" element={<Forum />} />
                   <Route path="/map" element={<InteractiveMap/>} />
-                  <Route path="/login" element={<Register/>} />
+                  <Route path="/register" element={<Register/>} />
+                  <Route path="/login" element={<Login/>} />
                   
 
               </Routes>

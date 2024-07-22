@@ -9,6 +9,7 @@
 .register-container h1 {
     text-align: center;
     margin-bottom: 20px;
+    color: black
 }
 .register-container input {
     display: flex;
