@@ -6,6 +6,8 @@ import NotLoggedPrompt from "./NotLoggedPrompt/NotLoggedPrompt";
 
 function Forum(){
 
+    const dummyTimestamp = new Date().toISOString();
+
     const [showCreatePostModal, setShowCreatePostModal] = useState(false);
     const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
     // const [posts, setPosts] = useState([]);
@@ -28,7 +30,7 @@ function Forum(){
         { userFullName: "Alice Smith", username: "alice", userPostContent: "This is Alice's post.", userId: "alice_id" },
         { userFullName: "Bob Johnson", username: "bobj", userPostContent: "This is Bob's post.", userId: "bob_id" },
         { userFullName: "Kiahna Isadore", username: "kisadore", userPostContent: "Hi, My name is Kiahna, who do I vote for!!!", userId: "k_isadore" },
-        { userFullName: "Kiahna Isadore", username: "kisadore", userPostContent: "Ughh Im so overwhelmed", userId: "k_isadore" }
+        { userFullName: "Kiahna Isadore", username: "kisadore", userPostContent: "Testing", userId: "k_isadore" }
     ]);
 
     const[viewMode, setViewMode] = useState("all");
@@ -70,6 +72,7 @@ function Forum(){
     };
     return(
         <>
+            <div className="forum-page-container"></div>
             <div className="form-title-button">
             <div className="forum-info-section">
                 <h1 className="forum-title">Forum</h1>
@@ -118,6 +121,7 @@ function Forum(){
                         userFullName={post.userFullName}
                         username={post.username}
                         userPostContent={post.userPostContent}
+                        timestamp={dummyTimestamp}
                         showDelete={post.userId === currentUser}
                         onDelete={()=> handleDeletePost(index)}
                     />
