@@ -1,0 +1,22 @@
+.candidate-card {
+  border: 1px solid black;
+  width: max-content;
+  height: auto;
+  padding: 5px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.card-details,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.candidate-name {
+  font-size: 17px;
+}

@@ -38,3 +38,30 @@ h3 {
 .tabs .active::after {
   width: 100%;
 }
+
+.ballot-info {
+  max-height: 60vh; /* Adjust this to control the scrollable area height */
+  overflow-y: auto;
+}
+
+.candidates-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+
+.ballot-details,
+h4 {
+  margin: 0;
+}
+
+.race-title {
+  font-size: 20px;
+}
+
+.modal-election-name {
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 10px;
+}
