@@ -1,5 +1,10 @@
+.forum-page-container{
+    padding-top: 100px;
+    
+}
 .forum-title{
     margin-bottom: 13px;
+    color:white;
 }
 .forum-description{
     color: gray;
@@ -42,7 +47,10 @@
     overflow: hidden;
     transition-duration: .3s;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
-    background: linear-gradient(144deg,#af40ff,#5b42f3 50%,#00ddeb);
+    /* background: linear-gradient(144deg,#af40ff,#5b42f3 50%,#00ddeb); */
+    /* background: linear-gradient(to bottom right, #E6117C, #4A3CDB); */
+    /* background: linear-gradient(144deg,#E6117C,#4A3CDB 50%,#00ddeb); */
+    background: linear-gradient( #E6117C, #4A3CDB);
 }
   
   /* plus sign */
@@ -67,7 +75,7 @@
     transition-duration: .3s;
     
 }
-  /* hover effect on button width */
+ 
 .Btn:hover {
     width: 125px;
     transition-duration: .3s;
@@ -78,7 +86,7 @@
     transition-duration: .3s;
     padding-left: 5px;
 }
-  /* hover effect button's text */
+  
 .Btn:hover .text {
     opacity: 1;
     width: 70%;
@@ -86,7 +94,7 @@
     padding-right: 5px;
     padding-left: 5px;
 }
-  /* button click effect*/
+ 
 .Btn:active {
     transform: translate(2px ,2px);
 }
@@ -100,11 +108,12 @@
 }
 .view-all-posts, .your-posts{
     border:none;
-    background:white;
+    background: rgba(255, 255, 255, 0);
     font-size: 22px;
     margin:0 18%;
     position:relative;
     cursor: pointer;
+    color: white;
 
 }
 .view-all-posts::after, .your-posts::after{
@@ -122,5 +131,3 @@
 .your-posts:hover::after {
     width: 100%;
 }
-
-
