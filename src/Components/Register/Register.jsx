@@ -5,7 +5,7 @@ import "./Register.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Register = ( ) => {
+const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmedPassword] = useState("");
@@ -13,7 +13,7 @@ const Register = ( ) => {
   const [address, setAddress] = useState("");
   const navigate = useNavigate(); //navigating through different pages
 
-    //handle register and toast errors
+  //handle register and toast errors
   const handleRegister = async () => {
     if (!username || !password || !confirmPassword) {
       toast.error("Please fill in all fields.");
@@ -22,7 +22,7 @@ const Register = ( ) => {
     if (password !== confirmPassword) {
       toast.error("Passwords do not match!");
       return;
-    } 
+    }
     try {
       // register the user
       const response = await axios.post(
@@ -40,16 +40,23 @@ const Register = ( ) => {
       navigate("/");
     } catch (error) {
       if (error.response && error.response.status === 400) {
-        toast.error(error.response.data.error || "Registration failed: Username may already be taken or invalid.");
+        toast.error(
+          error.response.data.error ||
+            "Registration failed: Username may already be taken or invalid."
+        );
       } else {
-        toast.error("Registration failed, please try again")
+        toast.error("Registration failed, please try again");
       }
     }
   };
 
   return (
     <div className="register-container">
-        <ToastContainer  position="top-center" autoClose={3000} hideProgressBar={true}/>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={true}
+      />
       <h1>Welcome to Poll Pal, please register!</h1>
       <input
         type="name"
@@ -79,6 +86,19 @@ const Register = ( ) => {
       />
       <button onClick={handleRegister}>Register</button>
       <button onClick={() => navigate("/login")}>Go to login</button>
+
+      <div className="social-message">
+        <div className="line"></div>
+        <p className="message">Login with social accounts</p>
+        <div className="line"></div>
+      </div>
+
+
+
+
+    <p className="signup"> Don&apos;t have an account? <a rel="noopener noreferrer" href="#" class="">Sign up</a>
+	</p>
+
     </div>
   );
 };
