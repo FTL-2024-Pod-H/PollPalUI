@@ -35,25 +35,41 @@ function timeSince(date) {
 // DUMMY DATA
 // COMMENT OUT AND UNCOMMENT WHEN READY TO PASS INFO
 function Post({userFullName, username, userPostContent, onDelete, likeCount, showDelete, timestamp, postId, currentUser}){
-     console.log("Original Like: ", likeCount);
-     console.log("postid: ", postId);
-     console.log("content: ", userPostContent);
-    //const[likeCount, setLikeCount] = useState(originalLikeCount);
+
+    //  console.log("Original Like: ", likeCount);
+    //  console.log("postid: ", postId);
+    //  console.log("content: ", userPostContent);
+
+
+    // const[currentlikeCount, setCurrentLikeCount] = useState(likeCount);
     const[isLiked, setIsLiked] = useState(false);
     const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
-    
-    useEffect(() => {
-        const fetchLikeStatus = async () => {
-            try {
-                const response = await axios.get(`http://localhost:3000/posts/${postId}/liked-by/${currentUser}`);
-                setIsLiked(response.data.isLiked);
-            } catch (error) {
-                console.error('Error fetching like status:', error);
-            }
-        };
 
+    
+    const fetchLikeStatus = async () => {
+        try {
+            const response = await axios.get(`http://localhost:3000/posts/${postId}/liked-by/${currentUser}`);
+            setIsLiked(response.data.isLiked);
+        } catch (error) {
+            console.error('Error fetching like status:', error);
+        }
+    };
+
+    useEffect(() => {
+        
         fetchLikeStatus();
     }, [postId, currentUser]);
+
+    // const updateLikeCount = async () => {
+    //     try {
+    //         const response = await axios.get(`http://localhost:3000/posts/${postId}/like-count`);
+    //         // setLikeCount(response.data.likeCount);
+    //     } catch (error) {
+    //         console.error('Error fetching updated like count:', error);
+    //     }
+    // };
+
+    
 
 
     const handleLikeClick = async () => {
@@ -86,16 +102,13 @@ function Post({userFullName, username, userPostContent, onDelete, likeCount, sho
                             alt="Default User"
                             className="user-image"
                         />
-                        {/* <h2 className="forum-fullname">Full Name</h2> */}
                         <h2 className="forum-fullname">{userFullName}</h2>
                         <div className="forum-username-timestamp">
-                            {/* <h3 className="forum-username">@username</h3> */}
                             <h3 className="forum-username">@{username}</h3>
                             <span className="timestamp">{timeSince(timestamp)}</span>
                         </div>
                     </div>
 
-                    {/* <p className="forum-post-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, neque, obcaecati laboriosam dolores ratione ullam commodi porro, voluptas earum suscipit esse? Numquam obcaecati veritatis ullam voluptas dolorum quam asperiores iure.</p> */}
                     <p className="forum-post-text">{userPostContent}</p>
 
                     <div className="like-and-delete">
