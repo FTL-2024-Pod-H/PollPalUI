@@ -20,8 +20,9 @@ function Forum(){
     console.log("Current view mode: ", viewMode);
 
     useEffect(() => {
+
         fetchPosts();
-    }, [ viewMode]);
+    }, [ viewMode, ]);
 
     const fetchPosts = async () => {
         try {
@@ -129,6 +130,7 @@ function Forum(){
                         onDelete={()=> handleDeletePost(post.post_id)}
                         postId={post.post_id}
                         currentUser={currentUser}
+                        fetchPosts={fetchPosts}
                     />
                 ))}
             </div>
