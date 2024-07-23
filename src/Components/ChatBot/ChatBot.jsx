@@ -1,36 +1,48 @@
 // ChatBot.jsx
 import React, { useState, useEffect } from 'react';
 import './ChatBot.css';
+import axios from "axios";
 import chatbotIcon from '/assets/icons8-chatbot-24.png';
-import useIcon from '/assets/icons8-user-30.png';
+// import useIcon from '/assets/icons8-user-30.png';
 
 const emojiApi = import.meta.env.VITE_EMOJI_API_KEY;
 
 const ChatBot = () => {
-    const [messages, setMessages] = useState([{ text: 'Hi, how can I help you?', from: 'bot' }]);
-    const [message, setMessage] = useState('');
+    // const [botResponse, setBotResponse] = useState([{ text: 'Hi, how can I help you?', from: 'bot' }]);
+    // const [botMessage, setBotMessage] = useState([{ role: 'bot', content: 'Hi, how can I help you?' }]);
+    // const [message, setMessage] = useState('');
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [emojis, setEmojis] = useState([]);
     const [showEmojiPicker, setShowEmojiPicker] = useState(false);
     const [showChatBot, setShowChatBot] = useState(false);
+    const [prompt, setPrompt] = useState("");
+    const [chatHistory, setChatHistory] = useState([]);
+    const [conversationId, setConversationId] = useState(null);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try{
+            const res = await axios.post("http://localhost:3000/chat", {
+                prompt,
+                conversationId,
+            });
+            const userMessage = {role: 'user', content: prompt};
+            const botMessage = {role: 'bot', content: res.data.response};
+
+            setChatHistory([...chatHistory, userMessage, botMessage]);
+            setPrompt("");
+            setConversationId(res.data.conversationId);
+        } catch (error){
+            console.error("Error: ", error);
+        }
+    };
 
     useEffect(() => {
         if (showEmojiPicker) {
             fetchEmojis();
         }
     }, [showEmojiPicker]);
-
-    // useEffect(() => {
-    //     const timer = setTimeout(() => {
-    //         const floatingButton = document.querySelector('.floating-button');
-    //         if (floatingButton) {
-    //             floatingButton.classList.add('visible');
-    //         }
-    //     }, 3000); 
-
-    //     return () => clearTimeout(timer);
-    // }, []);
-
 
     const fetchEmojis = async () => {
         try {
@@ -42,16 +54,16 @@ const ChatBot = () => {
         }
     };
 
-    const handleSendMessage = () => {
-        if (message.trim() !== '') {
-            setMessages([...messages, { text: message, from: 'user' }]);
-            setMessage('');
-        }
-    };
+    // const handleSendMessage = () => {
+    //     if (prompt.trim() !== '') {
+    //         setBotResponse([...botResponse, { text: prompt, from: 'user' }]);
+    //         setPrompt('');
+    //     }
+    // };
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
-            handleSendMessage();
+            handleSubmit(e);
         }
     };
 
@@ -64,7 +76,7 @@ const ChatBot = () => {
     };
 
     const handleEmojiClick = (emoji) => {
-        setMessage(message + emoji.character);
+        setPrompt(prompt + emoji.character);
         setShowEmojiPicker(false);
     };
 
@@ -111,9 +123,14 @@ const ChatBot = () => {
                     {!isCollapsed && (
                         <>
                             <div className="messages-container">
-                                {messages.map((msg, index) => (
-                                    <div key={index} className={`message ${msg.from}`}>
-                                        {msg.text}
+                                {chatHistory.map((msg, index) => (
+                                    // <div key={index} className={`message ${msg.from}`}>
+                                    //     {msg.text}
+                                    // </div>
+                                    <div key={index} className={`message ${msg.role}`}>
+                                        {/* primary={msg.role === "user" ? "You" : "AI"}
+                                        secondary={msg.content} */}
+                                        {msg.content}
                                     </div>
                                 ))}
                             </div>
@@ -121,12 +138,12 @@ const ChatBot = () => {
                                 <input
                                     type="text"
                                     placeholder="Type a message..."
-                                    value={message}
-                                    onChange={(e) => setMessage(e.target.value)}
+                                    value={prompt}
+                                    onChange={(e) => setPrompt(e.target.value)}
                                     onKeyPress={handleKeyPress}
                                 />
                                 <button className="emoji-button" onClick={() => setShowEmojiPicker(!showEmojiPicker)}>😊</button>
-                                <button className="send-button" onClick={handleSendMessage}>
+                                <button className="send-button" onClick={handleSubmit}>
                                     <div className="svg-wrapper-1">
                                         <div className="svg-wrapper">
                                             <svg
@@ -143,7 +160,6 @@ const ChatBot = () => {
                                             </svg>
                                         </div>
                                     </div>
-                                    {/* <span>Send</span> */}
                                 </button>
                             </div>
                             {showEmojiPicker && (
