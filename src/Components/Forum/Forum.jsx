@@ -11,11 +11,11 @@ function Forum(){
 
     const [showCreatePostModal, setShowCreatePostModal] = useState(false);
     const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
-   
-    const currentUser = null; 
-    
-    
 
+    const [page, setPage] = useState(1);
+    const [limit] = useState(4);
+
+    const currentUser = 1; 
     const [posts, setPosts] = useState([ ]);
 
     const[viewMode, setViewMode] = useState("all");
@@ -23,15 +23,28 @@ function Forum(){
 
     useEffect(() => {
         fetchPosts();
-    }, []);
+    }, [page, viewMode]);
 
     const fetchPosts = async () => {
         try {
-            const response = await axios.get("http://localhost:3000/posts");
+            // const response = await axios.get("http://localhost:3000/posts");
+            // console.log("Fetched Posts:", response.data);
+            // setPosts(response.data);
+            const response = await axios.get(`http://localhost:3000/posts?page=${page}&limit=${limit}`);
             console.log("Fetched Posts:", response.data);
             setPosts(response.data);
         } catch (error) {
             console.error("Error fetching posts:", error);
+        }
+    };
+
+    const handleNextPage = () => {
+        setPage(page + 1);
+    };
+
+    const handlePreviousPage = () => {
+        if (page > 1) {
+            setPage(page - 1);
         }
     };
 
@@ -78,7 +91,7 @@ function Forum(){
     };
     return(
         <>
-            <div className="forum-page-container"></div>
+            <div className="forum-page-container">
             <div className="form-title-button">
             <div className="forum-info-section">
                 <h1 className="forum-title">Forum</h1>
@@ -132,6 +145,11 @@ function Forum(){
                         currentUser={currentUser}
                     />
                 ))}
+            </div>
+            <div className="pagination">
+                    <button onClick={handlePreviousPage} disabled={page === 1}>Previous</button>
+                    <button onClick={handleNextPage}>Next</button>
+                </div>
             </div>
         </>
     )
