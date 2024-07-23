@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Candidate.css";
 
 const Candidate = ({ name, party, position, district }) => {
+  // const [isFavorited, setIsFavorited] = useState(false);
+
+  // const toggleFavorite = () => {
+  //   setIsFavorited((prev) => !prev);
+  // };
+
   return (
     <div className="candidate-card">
       <div className="card-details">
@@ -11,6 +17,12 @@ const Candidate = ({ name, party, position, district }) => {
           {position} for {district}
         </h3>
       </div>
+      {/* <span
+        className={`star ${isFavorited ? "favorited" : ""}`}
+        onClick={toggleFavorite}
+      >
+        {isFavorited ? "★" : "☆"}
+      </span> */}
     </div>
   );
 };

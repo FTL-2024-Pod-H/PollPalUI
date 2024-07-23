@@ -174,7 +174,10 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
   return (
     <div>
       <div className={"modal-overlay"} onClick={onClose}>
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="election-modal-content"
+          onClick={(e) => e.stopPropagation()}
+        >
           <h3 className="modal-election-name">{electionName}</h3>
           <div className="tabs">
             <button

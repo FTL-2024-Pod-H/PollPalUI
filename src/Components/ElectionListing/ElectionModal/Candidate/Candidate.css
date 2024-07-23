@@ -1,8 +1,9 @@
 .candidate-card {
+  display: flex;
   border: 1px solid black;
+  border-radius: 5px;
   width: max-content;
-  height: auto;
-  padding: 5px;
+  padding: 10px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
@@ -20,3 +21,14 @@ h3 {
 .candidate-name {
   font-size: 17px;
 }
+
+/* .star {
+  font-size: 1.1em;
+  color: black;
+  cursor: pointer;
+  transition: color 0.15;
+}
+
+.star.favorited {
+  color: rgb(225, 225, 0);
+} */
