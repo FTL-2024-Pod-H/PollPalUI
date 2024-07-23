@@ -12,7 +12,7 @@ function Forum(){
     const [showCreatePostModal, setShowCreatePostModal] = useState(false);
     const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
    
-    const currentUser = null; 
+    const currentUser = 3; 
     
     
 
