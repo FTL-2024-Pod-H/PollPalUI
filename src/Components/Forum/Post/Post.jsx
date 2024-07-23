@@ -39,9 +39,9 @@ function timeSince(date) {
 // COMMENT OUT AND UNCOMMENT WHEN READY TO PASS INFO
 function Post({userFullName, username, userPostContent, onDelete, originalLikeCount, showDelete, timestamp}){
     
-    const initialLikeCount = 100;
-    const[likeCount, setLikeCount] = useState(initialLikeCount);
-    // const[likeCount, setLikeCount] = useState(original);
+    // const initialLikeCount = 100;
+    // const[likeCount, setLikeCount] = useState(initialLikeCount);
+    const[likeCount, setLikeCount] = useState(originalLikeCount);
     const[isLiked, setIsLiked] = useState(false);
     
     const handleLikeClick = () => {
