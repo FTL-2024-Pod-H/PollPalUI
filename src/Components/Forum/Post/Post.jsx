@@ -34,9 +34,11 @@ function timeSince(date) {
 
 // DUMMY DATA
 // COMMENT OUT AND UNCOMMENT WHEN READY TO PASS INFO
-function Post({userFullName, username, userPostContent, onDelete, originalLikeCount, showDelete, timestamp, postId, currentUser}){
-   
-    const[likeCount, setLikeCount] = useState(originalLikeCount);
+function Post({userFullName, username, userPostContent, onDelete, likeCount, showDelete, timestamp, postId, currentUser}){
+     console.log("Original Like: ", likeCount);
+     console.log("postid: ", postId);
+     console.log("content: ", userPostContent);
+    //const[likeCount, setLikeCount] = useState(originalLikeCount);
     const[isLiked, setIsLiked] = useState(false);
     const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
     
@@ -62,10 +64,10 @@ function Post({userFullName, username, userPostContent, onDelete, originalLikeCo
         try {
             if (isLiked) {
                 await axios.post(`http://localhost:3000/posts/${postId}/unlike`, { user_id: currentUser });
-                setLikeCount(likeCount - 1);
+                //setLikeCount(likeCount - 1);
             } else {
                 await axios.post(`http://localhost:3000/posts/${postId}/like`, { user_id: currentUser });
-                setLikeCount(likeCount + 1);
+                //setLikeCount(likeCount + 1);
             }
             setIsLiked(!isLiked);
         } catch (error) {

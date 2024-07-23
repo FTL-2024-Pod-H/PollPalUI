@@ -125,7 +125,7 @@ function Forum(){
                         userPostContent={post.content}
                         timestamp={post.createdAt}
                         showDelete={post.author_id === currentUser}
-                        originalLikeCount={post.likes.length}
+                        likeCount={post.likes.length}
                         onDelete={()=> handleDeletePost(post.post_id)}
                         postId={post.post_id}
                         currentUser={currentUser}
