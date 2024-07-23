@@ -20,6 +20,18 @@ const ChatBot = () => {
         }
     }, [showEmojiPicker]);
 
+    // useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //         const floatingButton = document.querySelector('.floating-button');
+    //         if (floatingButton) {
+    //             floatingButton.classList.add('visible');
+    //         }
+    //     }, 3000); 
+
+    //     return () => clearTimeout(timer);
+    // }, []);
+
+
     const fetchEmojis = async () => {
         try {
             const response = await fetch(`https://emoji-api.com/emojis?access_key=${emojiApi}`);

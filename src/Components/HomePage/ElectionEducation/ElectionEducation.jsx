@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ElectionEducation.css";
 import EducationModal from "./EducationModal";
-import ChatBot from "../../ChatBot/ChatBot";
+// import ChatBot from "../../ChatBot/ChatBot";
 
 const ElectionEducation = () => {
   const [showModal, setShowModal] = useState(false);
@@ -107,7 +107,7 @@ const ElectionEducation = () => {
           </div>
         ))}
       </div>
-      <ChatBot/>
+      {/* <ChatBot/> */}
       <EducationModal
         show={showModal}
         onClose={handleCloseModal}

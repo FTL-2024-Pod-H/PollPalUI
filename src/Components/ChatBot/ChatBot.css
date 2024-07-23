@@ -2,8 +2,8 @@
 
 .floating-button {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 50px;
+    right: 30px;
     background-color: #c28eff;
     color: white;
     border: none;
@@ -16,7 +16,15 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     z-index: 1000;
+    /* opacity: 0.6;
+    transform: translateY(20px); 
+    transition: opacity 1s ease, transform 1s ease;  */
 }
+
+/* .floating-button.visible {
+    opacity: 1; 
+    transform: translateY(0); 
+} */
 
 .floating-button img {
     width: 24px;
@@ -35,8 +43,8 @@
 .chatbot-container {
     width: 350px;
     height: 550px;
-    bottom: 20px;
-    right: 20px;
+    bottom: 50px;
+    right: 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     overflow: hidden;
@@ -58,7 +66,7 @@
     justify-content: space-between; 
     padding: 10px;
     color: black;
-    border-bottom: 2px groove #d8cfdf;
+    border-bottom: 1px groove #d8cfdf;
     max-height: 50px;
     background-color: #ffffff;
 }
@@ -71,7 +79,7 @@
 }
 
 .chatbot-header p {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .chatbot-logo {
@@ -168,17 +176,18 @@
     background-color: #49296D;
 }
 
-/* Styles for the message bubbles */
 .message {
+    margin-top: 5px;
     padding: 10px;
     border-radius: 10px;
     max-width: 80%;
     word-wrap: break-word;
-    align-self: flex-start;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .message.bot {
     background-color: #3b1c61;
+    align-self: flex-start;
 }
 
 .message.user {
