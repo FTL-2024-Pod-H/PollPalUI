@@ -5,21 +5,45 @@ import ForumModal from "./ForumModal/ForumModal";
 import NotLoggedPrompt from "./NotLoggedPrompt/NotLoggedPrompt";
 import axios from "axios";
 
-function Forum(){
+// DECODE TOKEN MANUALY
+function decodeJWT(token) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
 
-    // const dummyTimestamp = new Date().toISOString();
+    return JSON.parse(jsonPayload);
+}
+
+function getUserAvatar(username) {
+    // return `https://robohash.org/${username}.png?set=set1`;
+    // return `https://ui-avatars.com/api/?name=${username}&background=random`;
+    // return `https://robohash.org/${username}.png?set=set2`;
+    return `https://api.multiavatar.com/${username}.png`;
+}
+
+function Forum(){
 
     const [showCreatePostModal, setShowCreatePostModal] = useState(false);
     const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
-   
-    const currentUser = 2; 
-
+    const [currentUser, setCurrentUser] = useState(null);
     const [posts, setPosts] = useState([ ]);
-
     const[viewMode, setViewMode] = useState("all");
     console.log("Current view mode: ", viewMode);
 
+
     useEffect(() => {
+        // CHECK IF LOGGED IN WITH TOKEN
+        const token = localStorage.getItem("token");
+        if (token) {
+            try {
+                const decodedToken = decodeJWT(token);
+                setCurrentUser(decodedToken.userId);
+            } catch (error) {
+                console.error("Error decoding token: ", error);
+            }
+        }
 
         fetchPosts();
     }, [ viewMode, ]);
@@ -123,6 +147,7 @@ function Forum(){
                         key={index}
                         userFullName={post.author.name}
                         username={post.author.username}
+                        userAvatar={getUserAvatar(post.author.username)}
                         userPostContent={post.content}
                         timestamp={post.createdAt}
                         showDelete={post.author_id === currentUser}

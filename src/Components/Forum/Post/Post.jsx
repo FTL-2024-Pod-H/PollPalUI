@@ -32,14 +32,8 @@ function timeSince(date) {
 }
 
 
-// DUMMY DATA
-// COMMENT OUT AND UNCOMMENT WHEN READY TO PASS INFO
-function Post({userFullName, username, userPostContent, onDelete, likeCount, showDelete, timestamp, postId, currentUser, fetchPosts}){
 
-    //  console.log("Original Like: ", likeCount);
-    //  console.log("postid: ", postId);
-    //  console.log("content: ", userPostContent);
-
+function Post({userFullName, username, userAvatar, userPostContent, onDelete, likeCount, showDelete, timestamp, postId, currentUser, fetchPosts}){
 
     const[currentlikeCount, setCurrentLikeCount] = useState(likeCount);
     const[isLiked, setIsLiked] = useState(false);
@@ -60,18 +54,6 @@ function Post({userFullName, username, userPostContent, onDelete, likeCount, sho
         fetchLikeStatus();
     }, [postId, currentUser]);
 
-    // const updateLikeCount = async () => {
-    //     try {
-    //         const response = await axios.get(`http://localhost:3000/posts/${postId}/like-count`);
-    //         // setLikeCount(response.data.likeCount);
-    //     } catch (error) {
-    //         console.error('Error fetching updated like count:', error);
-    //     }
-    // };
-
-    
-
-
     const handleLikeClick = async () => {
         if (!currentUser) {
             setShowLoginPromptModal(true);
@@ -80,11 +62,9 @@ function Post({userFullName, username, userPostContent, onDelete, likeCount, sho
         try {
             if (isLiked) {
                 await axios.post(`http://localhost:3000/posts/${postId}/unlike`, { user_id: currentUser });
-                //setLikeCount(likeCount - 1);
                 fetchPosts();
             } else {
                 await axios.post(`http://localhost:3000/posts/${postId}/like`, { user_id: currentUser });
-                // setCurrentLikeCount(prevState => prevState + 1);
                 fetchPosts();
             }
             setIsLiked(!isLiked);
@@ -100,8 +80,10 @@ function Post({userFullName, username, userPostContent, onDelete, likeCount, sho
                 <div className="forum-post-details">
                     <div className="userinformation">
                         <img
-                            src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
-                            alt="Default User"
+                            // src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+                            // alt="Default User"
+                            src={userAvatar}
+                            alt="User Avatar"
                             className="user-image"
                         />
                         <h2 className="forum-fullname">{userFullName}</h2>
