@@ -12,7 +12,7 @@ function Forum(){
     const [showCreatePostModal, setShowCreatePostModal] = useState(false);
     const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
    
-    const currentUser = 2; 
+    const currentUser = null; 
     
     
 
@@ -127,7 +127,9 @@ function Forum(){
                         timestamp={post.createdAt}
                         showDelete={post.author_id === currentUser}
                         originalLikeCount={post.likes.length}
-                        onDelete={()=> handleDeletePost(post.post_id, index)}
+                        onDelete={()=> handleDeletePost(post.post_id)}
+                        postId={post.post_id}
+                        currentUser={currentUser}
                     />
                 ))}
             </div>

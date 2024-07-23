@@ -1,13 +1,10 @@
 import "./Post.css";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp as faThumbsUpRegular } from '@fortawesome/free-regular-svg-icons';
 import { faThumbsUp as faThumbsUpSolid, faReply } from '@fortawesome/free-solid-svg-icons';
-
-// DUMMY DATA
-const dummyUserFullName = "John Doe";
-const dummyUsername = "johndoe";
-const dummyUserPostContent = "This is a dummy post content. Lorem ipsum dolor sit amet.";
+import NotLoggedPrompt from "../NotLoggedPrompt/NotLoggedPrompt";
 
 function timeSince(date) {
     const seconds = Math.floor((new Date() - new Date(date)) / 1000);
@@ -37,23 +34,44 @@ function timeSince(date) {
 
 // DUMMY DATA
 // COMMENT OUT AND UNCOMMENT WHEN READY TO PASS INFO
-function Post({userFullName, username, userPostContent, onDelete, originalLikeCount, showDelete, timestamp}){
-    
-    // const initialLikeCount = 100;
-    // const[likeCount, setLikeCount] = useState(initialLikeCount);
+function Post({userFullName, username, userPostContent, onDelete, originalLikeCount, showDelete, timestamp, postId, currentUser}){
+   
     const[likeCount, setLikeCount] = useState(originalLikeCount);
     const[isLiked, setIsLiked] = useState(false);
+    const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
     
-    const handleLikeClick = () => {
-        if(isLiked){
-            setLikeCount(likeCount - 1);
+    useEffect(() => {
+        const fetchLikeStatus = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3000/posts/${postId}/liked-by/${currentUser}`);
+                setIsLiked(response.data.isLiked);
+            } catch (error) {
+                console.error('Error fetching like status:', error);
+            }
+        };
+
+        fetchLikeStatus();
+    }, [postId, currentUser]);
+
+
+    const handleLikeClick = async () => {
+        if (!currentUser) {
+            setShowLoginPromptModal(true);
+            return;
         }
-        else{
-            setLikeCount(likeCount + 1);
+        try {
+            if (isLiked) {
+                await axios.post(`http://localhost:3000/posts/${postId}/unlike`, { user_id: currentUser });
+                setLikeCount(likeCount - 1);
+            } else {
+                await axios.post(`http://localhost:3000/posts/${postId}/like`, { user_id: currentUser });
+                setLikeCount(likeCount + 1);
+            }
+            setIsLiked(!isLiked);
+        } catch (error) {
+            console.error("Error liking/unliking post:", error);
         }
-        setIsLiked(!isLiked);
-        
-    }
+    };
     
     return (
         <>
@@ -125,7 +143,9 @@ function Post({userFullName, username, userPostContent, onDelete, originalLikeCo
                     </div>
                 </div>
             </div>
-        
+            {showLoginPromptModal && (
+                <NotLoggedPrompt onClose={() => setShowLoginPromptModal(false)} />
+            )}
         </>
     )
 };
