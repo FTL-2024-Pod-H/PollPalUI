@@ -12,14 +12,8 @@ function Forum(){
     const [showCreatePostModal, setShowCreatePostModal] = useState(false);
     const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
    
-    // const currentUser = 3; 
-    
+    const currentUser = 2; 
 
-
-    const [page, setPage] = useState(1);
-    const [limit] = useState(4);
-
-    const currentUser = 3; 
     const [posts, setPosts] = useState([ ]);
 
     const[viewMode, setViewMode] = useState("all");
@@ -27,14 +21,11 @@ function Forum(){
 
     useEffect(() => {
         fetchPosts();
-    }, [page, viewMode]);
+    }, [ viewMode]);
 
     const fetchPosts = async () => {
         try {
-            // const response = await axios.get("http://localhost:3000/posts");
-            // console.log("Fetched Posts:", response.data);
-            // setPosts(response.data);
-            const response = await axios.get(`http://localhost:3000/posts?page=${page}&limit=${limit}`);
+            const response = await axios.get("http://localhost:3000/posts");
             console.log("Fetched Posts:", response.data);
             setPosts(response.data);
         } catch (error) {
@@ -42,15 +33,6 @@ function Forum(){
         }
     };
 
-    const handleNextPage = () => {
-        setPage(page + 1);
-    };
-
-    const handlePreviousPage = () => {
-        if (page > 1) {
-            setPage(page - 1);
-        }
-    };
 
     const filteredPosts = viewMode === 'your'
         ? posts.filter(post => post.author_id === currentUser)
@@ -150,10 +132,6 @@ function Forum(){
                     />
                 ))}
             </div>
-            <div className="pagination">
-                    <button onClick={handlePreviousPage} disabled={page === 1}>Previous</button>
-                    <button onClick={handleNextPage}>Next</button>
-                </div>
             </div>
         </>
     )
