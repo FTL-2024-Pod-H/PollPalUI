@@ -1,0 +1,289 @@
+/* ChatBot.css */
+
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #c28eff;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-button img {
+    width: 24px;
+    height: 24px;
+}
+
+.floating-button:hover {
+    background-color: #a35af7;
+}
+
+.floating-button span{
+    font-size: 16px;
+}
+
+
+.chatbot-container {
+    width: 350px;
+    height: 550px;
+    bottom: 20px;
+    right: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    transition: height 0.3s ease;
+    z-index: 1000;
+    
+}
+
+.chatbot-container.collapsed {
+    height: 70px;
+}
+
+.chatbot-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px;
+    color: black;
+    border-bottom: 2px groove #d8cfdf;
+    max-height: 50px;
+    background-color: #ffffff;
+}
+
+.chatbot-header-content {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+
+.chatbot-header p {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.chatbot-logo {
+    height: 30px;
+    margin-left: 5px;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+}
+
+.button {
+    display: inline-flex;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0 5px; 
+    border-radius: 50%;
+    width: 25px;
+    height: 25px; 
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.button svg {
+    width: 15px; 
+    height: 15px; 
+    fill: rgb(81, 81, 81); 
+    transition: fill 0.3s ease; 
+}
+
+.button:hover {
+    background-color: #c28eff; 
+}
+
+.button:hover svg {
+    fill: white; 
+}
+
+.messages-container {
+    flex: 1;
+    padding: 10px;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: calc(100% - 70px);
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    gap: 5px;
+}
+
+.input-container input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    font-style: italic;
+    margin-right: 10px;
+    word-wrap: break-word;
+}
+
+.input-container input:focus {
+    outline: none;
+    border: 1px solid #c28eff;
+    border-radius: 5px;
+    font-style: normal;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+.emoji-button {
+    background-color: #c28eff;
+    color: white;
+    padding: 0.5em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 16px;
+}
+
+.emoji-button:hover {
+    background-color: #49296D;
+}
+
+/* Styles for the message bubbles */
+.message {
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+    align-self: flex-start;
+}
+
+.message.bot {
+    background-color: #3b1c61;
+}
+
+.message.user {
+    background-color: #A367E7;
+    color: white;
+    align-self: flex-end;
+}
+
+.emoji-picker {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 60px;
+    width: 380px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.emoji-picker span {
+    cursor: pointer;
+    padding: 5px;
+    font-size: 24px;
+}
+
+.emoji-picker span:hover {
+    background-color: #f0f0f0;
+}
+
+.send-button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    background-color: #c28eff;
+    color: white;
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.send-button svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.send-button:hover .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+.send-button:hover svg {
+    transform: translateX(.1em) rotate(45deg) scale(1.1);
+}
+
+.send-button:hover {
+    background-color: #49296D;
+}
+
+.send-button:active {
+    transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+    from {
+        transform: translateY(0.1em);
+    }
+
+    to {
+        transform: translateY(-0.1em);
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .chatbot-container {
+        width: 90%; 
+        height: 400px;
+        bottom: 20px; 
+        right: 5%;
+    }
+
+    .floating-button {
+        bottom: 80px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .chatbot-container {
+        width: 95%; 
+        height: 350px;
+        bottom: 10px; 
+        right: 2.5%; 
+    }
+
+    .floating-button {
+        bottom: 70px;
+    }
+}
