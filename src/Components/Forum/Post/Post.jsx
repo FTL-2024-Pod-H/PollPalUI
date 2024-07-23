@@ -9,10 +9,35 @@ const dummyUserFullName = "John Doe";
 const dummyUsername = "johndoe";
 const dummyUserPostContent = "This is a dummy post content. Lorem ipsum dolor sit amet.";
 
+function timeSince(date) {
+    const seconds = Math.floor((new Date() - new Date(date)) / 1000);
+    let interval = seconds / 31536000;
+    if (interval > 1) {
+        return Math.floor(interval) + " years ago";
+    }
+    interval = seconds / 2592000;
+    if (interval > 1) {
+        return Math.floor(interval) + " months ago";
+    }
+    interval = seconds / 86400;
+    if (interval > 1) {
+        return Math.floor(interval) + " days ago";
+    }
+    interval = seconds / 3600;
+    if (interval > 1) {
+        return Math.floor(interval) + " hours ago";
+    }
+    interval = seconds / 60;
+    if (interval > 1) {
+        return Math.floor(interval) + " minutes ago";
+    }
+    return Math.floor(seconds) + " seconds ago";
+}
+
 
 // DUMMY DATA
 // COMMENT OUT AND UNCOMMENT WHEN READY TO PASS INFO
-function Post({userFullName, username, userPostContent, onDelete, originalLikeCount, showDelete}){
+function Post({userFullName, username, userPostContent, onDelete, originalLikeCount, showDelete, timestamp}){
     
     const initialLikeCount = 100;
     const[likeCount, setLikeCount] = useState(initialLikeCount);
@@ -43,8 +68,11 @@ function Post({userFullName, username, userPostContent, onDelete, originalLikeCo
                         />
                         {/* <h2 className="forum-fullname">Full Name</h2> */}
                         <h2 className="forum-fullname">{userFullName}</h2>
-                        {/* <h3 className="forum-username">@username</h3> */}
-                        <h3 className="forum-username">@{username}</h3>
+                        <div className="forum-username-timestamp">
+                            {/* <h3 className="forum-username">@username</h3> */}
+                            <h3 className="forum-username">@{username}</h3>
+                            <span className="timestamp">{timeSince(timestamp)}</span>
+                        </div>
                     </div>
 
                     {/* <p className="forum-post-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, neque, obcaecati laboriosam dolores ratione ullam commodi porro, voluptas earum suscipit esse? Numquam obcaecati veritatis ullam voluptas dolorum quam asperiores iure.</p> */}

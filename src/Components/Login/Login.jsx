@@ -31,6 +31,7 @@ const Login = () => {
     }
   };
 
+
   return (
     <div className="login-container">
       <ToastContainer position="top-center" autoClose={3000} hideProgressBar={true}/>
@@ -50,6 +51,7 @@ const Login = () => {
       <button onClick={handleLogin}>Login</button>
       <button onClick={() => navigate("/register")}>Go to register</button>
     </div>
+
   );
 };
 
