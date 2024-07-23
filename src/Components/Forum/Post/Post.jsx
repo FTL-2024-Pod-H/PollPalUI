@@ -33,7 +33,7 @@ function timeSince(date) {
 
 
 
-function Post({userFullName, username, userAvatar, userPostContent, onDelete, likeCount, showDelete, timestamp, postId, currentUser, fetchPosts}){
+function Post({userFullName, username, userAvatar, userPostContent, onDelete, likeCount, showDelete, timestamp, postId, currentUser, fetchPosts, page, limit}){
 
     const[currentlikeCount, setCurrentLikeCount] = useState(likeCount);
     const[isLiked, setIsLiked] = useState(false);
@@ -62,10 +62,10 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
         try {
             if (isLiked) {
                 await axios.post(`http://localhost:3000/posts/${postId}/unlike`, { user_id: currentUser });
-                fetchPosts();
+                fetchPosts(page, limit);
             } else {
                 await axios.post(`http://localhost:3000/posts/${postId}/like`, { user_id: currentUser });
-                fetchPosts();
+                fetchPosts(page, limit);
             }
             setIsLiked(!isLiked);
         } catch (error) {

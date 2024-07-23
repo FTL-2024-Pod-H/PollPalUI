@@ -32,6 +32,10 @@ function Forum(){
     const[viewMode, setViewMode] = useState("all");
     console.log("Current view mode: ", viewMode);
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage] = useState(4);
+    const [totalPosts, setTotalPosts] = useState(0);
+
 
     useEffect(() => {
         // CHECK IF LOGGED IN WITH TOKEN
@@ -45,14 +49,25 @@ function Forum(){
             }
         }
 
-        fetchPosts();
-    }, [ viewMode, ]);
+        // fetchPosts();
+        fetchPosts(currentPage, postsPerPage);
+    }, [ viewMode, currentPage ]);
 
-    const fetchPosts = async () => {
+    // const fetchPosts = async () => {
+    //     try {
+    //         const response = await axios.get("http://localhost:3000/posts");
+    //         console.log("Fetched Posts:", response.data);
+    //         setPosts(response.data);
+    //     } catch (error) {
+    //         console.error("Error fetching posts:", error);
+    //     }
+    // };
+    const fetchPosts = async (page = 1, limit = 10) => {
         try {
-            const response = await axios.get("http://localhost:3000/posts");
-            console.log("Fetched Posts:", response.data);
-            setPosts(response.data);
+            const response = await axios.get(`http://localhost:3000/posts?page=${page}&limit=${limit}`);
+            console.log("Fetched Posts:", response.data.posts);
+            setPosts(response.data.posts);
+            setTotalPosts(response.data.totalPosts);
         } catch (error) {
             console.error("Error fetching posts:", error);
         }
@@ -78,8 +93,22 @@ function Forum(){
     };
 
  
+    // const handleAddPost = async (postContent) => {
+    //     try{
+    //         const newPost = {
+    //             content: postContent,
+    //             author_id: currentUser
+    //         };
+    //         const response = await axios.post("http://localhost:3000/posts", newPost);
+    //         setPosts([response.data, ...posts]);
+    //         setShowCreatePostModal(false);
+    //     }catch (error){
+    //         console.error("Error adding posts:", error)
+    //     }
+    // };
+
     const handleAddPost = async (postContent) => {
-        try{
+        try {
             const newPost = {
                 content: postContent,
                 author_id: currentUser
@@ -87,19 +116,39 @@ function Forum(){
             const response = await axios.post("http://localhost:3000/posts", newPost);
             setPosts([response.data, ...posts]);
             setShowCreatePostModal(false);
-        }catch (error){
-            console.error("Error adding posts:", error)
+            setTotalPosts(totalPosts + 1);
+        } catch (error) {
+            console.error("Error adding posts:", error);
         }
     };
 
-    const handleDeletePost = (postId) => {
-        try{
-            axios.delete(`http://localhost:3000/posts/${postId}`);
+    // const handleDeletePost = (postId) => {
+    //     try{
+    //         axios.delete(`http://localhost:3000/posts/${postId}`);
+    //         setPosts(posts.filter(post => post.post_id !== postId));
+    //     }catch (error){
+    //         console.error("Error deleting post: ", error);
+    //     }
+    // };
+
+    const handleDeletePost = async (postId) => {
+        try {
+            await axios.delete(`http://localhost:3000/posts/${postId}`);
             setPosts(posts.filter(post => post.post_id !== postId));
-        }catch (error){
+            setTotalPosts(totalPosts - 1);
+        } catch (error) {
             console.error("Error deleting post: ", error);
         }
     };
+
+    const totalPages = Math.ceil(totalPosts / postsPerPage);
+
+    const handlePageClick = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        fetchPosts(pageNumber, postsPerPage);
+    };
+
+
     return(
         <>
             <div className="forum-page-container">
@@ -156,9 +205,28 @@ function Forum(){
                         postId={post.post_id}
                         currentUser={currentUser}
                         fetchPosts={fetchPosts}
+                        page={currentPage}
+                        limit={postsPerPage}
                     />
                 ))}
             </div>
+            <div className="pagination-buttons">
+                    <button onClick={() => handlePageClick(currentPage - 1)} disabled={currentPage === 1}>
+                        Previous
+                    </button>
+                    {[...Array(totalPages)].map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => handlePageClick(index + 1)}
+                            className={index + 1 === currentPage ? 'active' : ''}
+                        >
+                            {index + 1}
+                        </button>
+                    ))}
+                    <button onClick={() => handlePageClick(currentPage + 1)} disabled={currentPage === totalPages}>
+                        Next
+                    </button>
+                </div>
             </div>
         </>
     )
