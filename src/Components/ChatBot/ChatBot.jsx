@@ -8,9 +8,6 @@ import chatbotIcon from '/assets/icons8-chatbot-24.png';
 const emojiApi = import.meta.env.VITE_EMOJI_API_KEY;
 
 const ChatBot = () => {
-    // const [botResponse, setBotResponse] = useState([{ text: 'Hi, how can I help you?', from: 'bot' }]);
-    // const [botMessage, setBotMessage] = useState([{ role: 'bot', content: 'Hi, how can I help you?' }]);
-    // const [message, setMessage] = useState('');
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [emojis, setEmojis] = useState([]);
     const [showEmojiPicker, setShowEmojiPicker] = useState(false);
@@ -18,23 +15,31 @@ const ChatBot = () => {
     const [prompt, setPrompt] = useState("");
     const [chatHistory, setChatHistory] = useState([]);
     const [conversationId, setConversationId] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const userMessage = {role: 'user', content: prompt};
+        const loadingMessage = { role: 'bot', content: 'loading' };
+
+        setChatHistory([...chatHistory, userMessage, loadingMessage]);
+        setPrompt("");
+        setLoading(true);
 
         try{
             const res = await axios.post("http://localhost:3000/chat", {
                 prompt,
                 conversationId,
             });
-            const userMessage = {role: 'user', content: prompt};
             const botMessage = {role: 'bot', content: res.data.response};
-
+            
             setChatHistory([...chatHistory, userMessage, botMessage]);
-            setPrompt("");
-            setConversationId(res.data.conversationId);
+            setConversationId(res.data.conversationId);      
         } catch (error){
             console.error("Error: ", error);
+        }finally {
+            setLoading(false);
         }
     };
 
@@ -94,7 +99,7 @@ const ChatBot = () => {
                     <div className="chatbot-header">
                         <div className='chatbot-header-content'>
                             <img src="/assets/poll-pal-icon.png" alt="Website Logo" className="chatbot-logo" />
-                            <p>Hello, let's chat</p>
+                            <p>Hello, let's chat!</p>
                         </div>
                         <div className="button-group">
                             <button onClick={handleCollapse} className="button collapse-button">
@@ -124,13 +129,16 @@ const ChatBot = () => {
                         <>
                             <div className="messages-container">
                                 {chatHistory.map((msg, index) => (
-                                    // <div key={index} className={`message ${msg.from}`}>
-                                    //     {msg.text}
-                                    // </div>
                                     <div key={index} className={`message ${msg.role}`}>
-                                        {/* primary={msg.role === "user" ? "You" : "AI"}
-                                        secondary={msg.content} */}
-                                        {msg.content}
+                                        {msg.content === 'loading' ? (
+                                            <div className="loader">
+                                                <li class="dots" id="dot-1"></li>
+                                                <li class="dots" id="dot-2"></li>
+                                                <li class="dots" id="dot-3"></li>
+                                            </div>
+                                        ) : (
+                                            msg.content
+                                        )}
                                     </div>
                                 ))}
                             </div>
