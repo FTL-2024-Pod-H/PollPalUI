@@ -130,6 +130,7 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
                                 ></path>
                                 </svg>
                             </button>
+                            <span className="tooltip">Replies coming soon</span>
                             {/* <span class="tooltip">Comment</span> */}
                         </div>
                         {showDelete && (

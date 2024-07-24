@@ -126,7 +126,7 @@
 
 .like-and-delete{
     display:flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     width: 95%;
     align-self: flex-end;
     position: absolute;
@@ -202,4 +202,29 @@
     color: gray;
     font-size: 0.9em;
     white-space: nowrap;
+}
+
+.tooltip {
+    position: absolute;
+    /* bottom: 100%;
+    left: 50%; */
+    top: 10%;
+    left: 100%;
+    /* transform: translateX(-50%); */
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 10;
+    width: max-content;
+}
+
+.group:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
 }
