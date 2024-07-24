@@ -47,9 +47,6 @@
     overflow: hidden;
     transition-duration: .3s;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
-    /* background: linear-gradient(144deg,#af40ff,#5b42f3 50%,#00ddeb); */
-    /* background: linear-gradient(to bottom right, #E6117C, #4A3CDB); */
-    /* background: linear-gradient(144deg,#E6117C,#4A3CDB 50%,#00ddeb); */
     background: linear-gradient( #E6117C, #4A3CDB);
 }
   

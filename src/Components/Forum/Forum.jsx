@@ -61,15 +61,7 @@ function Forum(){
         fetchPosts(currentPage, postsPerPage);
     }, [ viewMode, currentPage ]);
 
-    // const fetchPosts = async () => {
-    //     try {
-    //         const response = await axios.get("http://localhost:3000/posts");
-    //         console.log("Fetched Posts:", response.data);
-    //         setPosts(response.data);
-    //     } catch (error) {
-    //         console.error("Error fetching posts:", error);
-    //     }
-    // };
+
     const fetchPosts = async (page = 1, limit = 10) => {
         try {
             const response = await axios.get(`http://localhost:3000/posts?page=${page}&limit=${limit}`);
@@ -101,19 +93,6 @@ function Forum(){
     };
 
  
-    // const handleAddPost = async (postContent) => {
-    //     try{
-    //         const newPost = {
-    //             content: postContent,
-    //             author_id: currentUser
-    //         };
-    //         const response = await axios.post("http://localhost:3000/posts", newPost);
-    //         setPosts([response.data, ...posts]);
-    //         setShowCreatePostModal(false);
-    //     }catch (error){
-    //         console.error("Error adding posts:", error)
-    //     }
-    // };
 
     const handleAddPost = async (postContent) => {
         try {
@@ -220,23 +199,6 @@ function Forum(){
                     />
                 ))}
             </div>
-            {/* <div className="pagination-buttons">
-                    <button onClick={() => handlePageClick(currentPage - 1)} disabled={currentPage === 1}>
-                        Previous
-                    </button>
-                    {[...Array(totalPages)].map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => handlePageClick(index + 1)}
-                            className={index + 1 === currentPage ? 'active' : ''}
-                        >
-                            {index + 1}
-                        </button>
-                    ))}
-                    <button onClick={() => handlePageClick(currentPage + 1)} disabled={currentPage === totalPages}>
-                        Next
-                    </button>
-                </div> */}
                 <Stack spacing={2}>
                     <Pagination
                         count={totalPages}
@@ -247,13 +209,13 @@ function Forum(){
                             slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
                             {...item}
                             sx={{
-                                color: item.page === currentPage ? 'black' : 'white', // Change text color for current page
-                                backgroundColor: item.page === currentPage ? '#E6117C' : 'transparent', // Background for current page
+                                color: item.page === currentPage ? 'black' : 'white', 
+                                backgroundColor: item.page === currentPage ? '#E6117C' : 'transparent', 
                                 borderRadius: 1,
-                                border: '1px solid', // Add border to make it stand out
-                                borderColor: item.page === currentPage ? '#E6117C' : 'transparent', // Border color for current page
+                                border: '1px solid', 
+                                borderColor: item.page === currentPage ? '#E6117C' : 'transparent', 
                                 '&:hover': {
-                                  backgroundColor: item.page === currentPage ? 'yellow' : '#555', // Background color on hover
+                                  backgroundColor: item.page === currentPage ? 'yellow' : '#555', 
                                 },
                                 marginBottom: '30px',
                               }}
@@ -261,10 +223,10 @@ function Forum(){
                         )}
                         sx={{
                         '.MuiPaginationItem-root': {
-                            color: 'white', // Adjust color here
+                            color: 'white', 
                         },
                         '.MuiPaginationItem-previousNext': {
-                            color: 'white', // Adjust color here
+                            color: 'white', 
                         }
                         }}
                     />
