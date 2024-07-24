@@ -3,7 +3,7 @@ import "./HomePage.css";
 import SearchLocation from "../SearchLocation/SearchLocation";
 import AboutSection from "./AboutSection/AboutSection";
 import ElectionEducation from "./ElectionEducation/ElectionEducation";
-import ChatBot from "../ChatBot/ChatBot";
+// import ChatBot from "../ChatBot/ChatBot";
 
 function HomePage() {
     
@@ -41,7 +41,7 @@ function HomePage() {
                 <h2>Get election info based on your location</h2>
                 <SearchLocation />
             </section>
-            <ChatBot/>
+            {/* <ChatBot/> */}
             <section className="section about-section">
                 <AboutSection/>
             </section>
