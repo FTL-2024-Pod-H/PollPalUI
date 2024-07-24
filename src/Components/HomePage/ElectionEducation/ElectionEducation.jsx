@@ -1,3 +1,4 @@
+// ElectionEducation.jsx
 import React, { useState } from "react";
 import "./ElectionEducation.css";
 import EducationModal from "./EducationModal";
