@@ -30,6 +30,12 @@ const Login = () => {
       }
     }
   };
+  // handle google login 
+  const handleGoogleLogin = () => {
+    // This needs to be a full page reload to navigate to the OAuth page
+    window.location.href = "http://localhost:3000/auth/login";
+  };
+
 
 
   return (
@@ -49,7 +55,10 @@ const Login = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleLogin}>Login</button>
-      <button onClick={() => navigate("/register")}>Go to register</button>
+
+      <p className="signup"> Don&apos;t have an account? 
+    <a rel="noopener noreferrer" href="http://localhost:5173/register" >Sign up</a>
+    </p>
     </div>
 
   );

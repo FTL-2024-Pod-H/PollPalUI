@@ -49,6 +49,11 @@ const Register = () => {
       }
     }
   };
+  const handleGoogleSignup = () => {
+    // This needs to be a full page reload to navigate to the OAuth page
+    window.location.href = "http://localhost:3000/auth/login";
+  };
+
 
   return (
     <div className="register-container">
@@ -85,19 +90,14 @@ const Register = () => {
         onChange={(e) => setAddress(e.target.value)}
       />
       <button onClick={handleRegister}>Register</button>
-      <button onClick={() => navigate("/login")}>Go to login</button>
 
       <div className="social-message">
         <div className="line"></div>
         <p className="message">Login with social accounts</p>
+        <button onClick={handleGoogleSignup}>Google Login</button>
         <div className="line"></div>
       </div>
 
-
-
-
-    <p className="signup"> Don&apos;t have an account? <a rel="noopener noreferrer" href="#" class="">Sign up</a>
-	</p>
 
     </div>
   );
