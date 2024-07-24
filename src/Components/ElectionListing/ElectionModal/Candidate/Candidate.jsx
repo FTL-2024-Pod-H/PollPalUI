@@ -12,8 +12,8 @@ const Candidate = ({ name, party, position, district }) => {
     <div className="candidate-card">
       <div className="card-details">
         <h2 className="candidate-name">{name}</h2>
-        <h3>{party} PARTY</h3>
-        <h3>
+        <h3 className="candidate-party">{party} PARTY</h3>
+        <h3 className="candidate-position">
           {position} for {district}
         </h3>
       </div>

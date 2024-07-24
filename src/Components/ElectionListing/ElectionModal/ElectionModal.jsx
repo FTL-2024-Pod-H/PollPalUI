@@ -31,12 +31,14 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
     console.log("Election infooo:", data);
 
     setBallotInfo(
-      data.contests.map((contest) => ({
-        race: contest.office,
-        party: contest.primaryParties,
-        district: contest.district.name,
-        candidates: contest.candidates,
-      }))
+      data.contests
+        ? data.contests.map((contest) => ({
+            race: contest.office,
+            party: contest.primaryParties,
+            district: contest.district.name,
+            candidates: contest.candidates,
+          }))
+        : "No ballot information available"
     );
 
     console.log("ballot INFO: ", ballotInfo);
@@ -122,31 +124,37 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
   //     }
   //   }, [pollingLocations, earlyVoteSites, dropOffLocations]);
 
-  const renderBallotInfo = (ballotInfo) => (
-    <div className="ballot-info">
-      {ballotInfo.map((info, index) => (
-        <div key={index} className="ballot-item">
-          <h3 className="race-title">
-            {info.race} ({info.party})
-          </h3>
-          <div className="ballot-details">
-            <h4>{info.district}</h4>
-            <ul className="candidates-list">
-              {info.candidates.map((candidate, idx) => (
-                <Candidate
-                  key={idx}
-                  name={candidate.name}
-                  party={info.party}
-                  position={info.race}
-                  district={info.district}
-                />
-              ))}
-            </ul>
-          </div>
+  const renderBallotInfo = (ballotInfo) => {
+    if (typeof ballotInfo === "string") {
+      return <p className="ballot-info-text">{ballotInfo}</p>;
+    } else {
+      return (
+        <div className="ballot-info">
+          {ballotInfo.map((info, index) => (
+            <div key={index} className="ballot-item">
+              <h3 className="race-title">
+                {info.race} ({info.party})
+              </h3>
+              <div className="ballot-details">
+                <h4>{info.district}</h4>
+                <ul className="candidates-list">
+                  {info.candidates.map((candidate, idx) => (
+                    <Candidate
+                      key={idx}
+                      name={candidate.name}
+                      party={info.party}
+                      position={info.race}
+                      district={info.district}
+                    />
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  );
+      );
+    }
+  };
 
   const renderMap = (locations) => {
     return <MapContainer locations={locations} />;

@@ -62,7 +62,7 @@ function ElectionResults() {
       <div className="election-results">
         <div className="title-section">
           <h1 className="showing-elections-for">
-            Showing Elections for <span className="address">{address} | </span>
+            Showing Elections for <span className="address">{address} </span>
             <button
               className="change-address-button"
               onClick={() => navigate("/")}
@@ -85,7 +85,7 @@ function ElectionResults() {
               uriAddress={encodeURIComponent(address)}
             />
           ) : (
-            <p>No elections in your area</p>
+            <p className="no-elections-response">No elections in your area</p>
           )
         ) : null}
       </div>
