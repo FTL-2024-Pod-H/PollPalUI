@@ -131,3 +131,19 @@
 .your-posts:hover::after {
     width: 100%;
 }
+
+.forum-page-container {
+    /* Your existing styles */
+  }
+  
+  .pagination-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .MuiPagination-ul {
+    justify-content: center;
+  }
+  
+

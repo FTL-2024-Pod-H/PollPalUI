@@ -4,6 +4,12 @@ import Post from "./Post/Post";
 import ForumModal from "./ForumModal/ForumModal";
 import NotLoggedPrompt from "./NotLoggedPrompt/NotLoggedPrompt";
 import axios from "axios";
+import Pagination from '@mui/material/Pagination';
+import PaginationItem from '@mui/material/PaginationItem';
+import Stack from '@mui/material/Stack';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+
 
 // DECODE TOKEN MANUALY
 function decodeJWT(token) {
@@ -18,9 +24,9 @@ function decodeJWT(token) {
 
 function getUserAvatar(username) {
     // return `https://robohash.org/${username}.png?set=set1`;
-    // return `https://ui-avatars.com/api/?name=${username}&background=random`;
+    return `https://ui-avatars.com/api/?name=${username}&background=random`;
     // return `https://robohash.org/${username}.png?set=set2`;
-    return `https://api.multiavatar.com/${username}.png`;
+    // return `https://api.multiavatar.com/${username}.png`;
 }
 
 function Forum(){
@@ -33,7 +39,7 @@ function Forum(){
     console.log("Current view mode: ", viewMode);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(4);
+    const [postsPerPage] = useState(7);
     const [totalPosts, setTotalPosts] = useState(0);
 
 
@@ -115,21 +121,16 @@ function Forum(){
             };
             const response = await axios.post("http://localhost:3000/posts", newPost);
             setPosts([response.data, ...posts]);
+            
             setShowCreatePostModal(false);
+            
             setTotalPosts(totalPosts + 1);
+            fetchPosts(currentPage, postsPerPage);
+            
         } catch (error) {
             console.error("Error adding posts:", error);
         }
     };
-
-    // const handleDeletePost = (postId) => {
-    //     try{
-    //         axios.delete(`http://localhost:3000/posts/${postId}`);
-    //         setPosts(posts.filter(post => post.post_id !== postId));
-    //     }catch (error){
-    //         console.error("Error deleting post: ", error);
-    //     }
-    // };
 
     const handleDeletePost = async (postId) => {
         try {
@@ -210,7 +211,7 @@ function Forum(){
                     />
                 ))}
             </div>
-            <div className="pagination-buttons">
+            {/* <div className="pagination-buttons">
                     <button onClick={() => handlePageClick(currentPage - 1)} disabled={currentPage === 1}>
                         Previous
                     </button>
@@ -226,7 +227,40 @@ function Forum(){
                     <button onClick={() => handlePageClick(currentPage + 1)} disabled={currentPage === totalPages}>
                         Next
                     </button>
-                </div>
+                </div> */}
+                <Stack spacing={2}>
+                    <Pagination
+                        count={totalPages}
+                        page={currentPage}
+                        onChange={(event, page) => handlePageClick(page)}
+                        renderItem={(item) => (
+                        <PaginationItem
+                            slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+                            {...item}
+                            sx={{
+                                color: item.page === currentPage ? 'black' : 'white', // Change text color for current page
+                                backgroundColor: item.page === currentPage ? '#E6117C' : 'transparent', // Background for current page
+                                borderRadius: 1,
+                                border: '1px solid', // Add border to make it stand out
+                                borderColor: item.page === currentPage ? '#E6117C' : 'transparent', // Border color for current page
+                                '&:hover': {
+                                  backgroundColor: item.page === currentPage ? 'yellow' : '#555', // Background color on hover
+                                },
+                                marginBottom: '30px',
+                              }}
+                        />
+                        )}
+                        sx={{
+                        '.MuiPaginationItem-root': {
+                            color: 'white', // Adjust color here
+                        },
+                        '.MuiPaginationItem-previousNext': {
+                            color: 'white', // Adjust color here
+                        }
+                        }}
+                    />
+                </Stack>
+               
             </div>
         </>
     )
