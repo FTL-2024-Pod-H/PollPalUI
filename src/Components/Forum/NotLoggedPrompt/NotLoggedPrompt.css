@@ -43,7 +43,7 @@
     cursor: pointer;
 }
 .not-logged-prompt-icon{
-    width: 8%; 
+    width: 14%; 
     height: auto;
     /* margin-right: 10px; */
     
@@ -66,10 +66,18 @@
     font-size: 15px;
     font-weight: 900;
 }
+.lptest1{
+  font-size: 22px;
+  margin-top: 10px;
+}
+.lptest2{
+  font-size: 15px;
+  margin-top: 10px;
+}
 
 .glow-on-hover {
     width: 90px;
-    height: 45px;
+    height: 35px;
     border: none;
     outline: none;
     /* color: #fff; */
