@@ -24,17 +24,16 @@
     margin-top: 20px;
 }
 
-.modal-buttons button {
+/* .modal-buttons button {
     margin: 0 10px;
     padding: 10px 20px;
     border: none;
-    /* background: linear-gradient(144deg,#af40ff,#5b42f3 50%,#00ddeb); */
-    /* background: linear-gradient(to bottom right, #E6117C, #E6117C); */
-    background: linear-gradient(144deg,#E6117C,#4A3CDB 50%,#00ddeb);
-    color: white;
+    /* background: linear-gradient( #E6117C, #4A3CDB); */
+    /*
+    color: black;
     cursor: pointer;
     border-radius: 5px;
-}
+} */
 
 .modal-close {
     margin-top: 20px;
@@ -55,3 +54,99 @@
     justify-content: center;
     /* margin-bottom: 5px; */
 }
+.modal-buttons button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    /* background: linear-gradient( #E6117C, #4A3CDB); */
+    /* color: black; */
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: inherit;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.glow-on-hover {
+    width: 90px;
+    height: 45px;
+    border: none;
+    outline: none;
+    /* color: #fff; */
+    /* border: 3px solid black; */
+    color: black;
+    background: rgb(255, 248, 248);
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    font-weight: 600;
+    text-align: center; /* Center text horizontally */
+    line-height: 45px; /* Center text vertically */
+    display: inline-flex; /* Allows proper vertical centering */
+    align-items: center; /* Center text vertically with flexbox */
+    justify-content: center;
+  }
+  
+  .glow-on-hover:before {
+    content: '';
+    
+    background: linear-gradient(45deg, #7a00ff, #ff00c8);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing_54134 20s linear infinite;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+  }
+  
+  .glow-on-hover:active {
+    color: #000
+  }
+  
+  .glow-on-hover:active:after {
+    background: transparent;
+  }
+  
+  /* .glow-on-hover:hover:before {
+    opacity: 1;
+  } */
+  .glow-on-hover:hover {
+    text-align: center;
+    background: rgb(255, 240, 240);
+    filter: brightness(1.2);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5), 0 0 20px rgba(0, 43, 255, 0.5);
+}
+  
+  .glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* border: 2px solid black; */
+    background: #fffefe;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+  
+  @keyframes glowing_54134 {
+    0% {
+      background-position: 0 0;
+    }
+  
+    50% {
+      background-position: 400% 0;
+    }
+  
+    100% {
+      background-position: 0 0;
+    }
+  }
