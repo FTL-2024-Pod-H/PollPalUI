@@ -32,6 +32,7 @@ function ForumModal({onClose, onAddPost}){
                     onChange={(e) => setUserContent(e.target.value)}
                     required>
                 </textarea>
+                
                 <button className="post-button" type="submit">
                   <div className="svg-wrapper-1">
                     <div className="svg-wrapper">

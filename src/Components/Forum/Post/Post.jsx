@@ -86,9 +86,10 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
                             alt="User Avatar"
                             className="user-image"
                         />
-                        <h2 className="forum-fullname">{userFullName}</h2>
+                        {/* <h2 className="forum-fullname">{userFullName}</h2> */}
+                        <h2 className="forum-fullname">@{username}</h2>
                         <div className="forum-username-timestamp">
-                            <h3 className="forum-username">@{username}</h3>
+                            {/* <h3 className="forum-username">@{username}</h3> */}
                             <span className="timestamp">{timeSince(timestamp)}</span>
                         </div>
                     </div>

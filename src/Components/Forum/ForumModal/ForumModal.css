@@ -60,6 +60,7 @@
     margin-top: 10px;
     outline: none;
     align-items: center;
+    /* margin-right: 40px; */
 }
   
 .post-content::placeholder {
@@ -123,4 +124,14 @@
       transform: translateY(-0.1em);
     }
 }
+
+
+.post-box {
+    position: relative;
+}
+
+.forum-modal-content {
+    position: relative;
+}
+
   
