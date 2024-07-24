@@ -39,8 +39,10 @@ function Forum(){
     console.log("Current view mode: ", viewMode);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(7);
+    const [postsPerPage] = useState(6);
     const [totalPosts, setTotalPosts] = useState(0);
+
+    const [clickedButton, setClickedButton] = useState(`all`);
 
 
     useEffect(() => {
@@ -165,12 +167,19 @@ function Forum(){
                 <div className="text">Create</div>
             </button>
             <div className="switch-posts-buttons-container">
-                <button className="view-all-posts" onClick={() => setViewMode("all")}>
+                <button 
+                    className={`view-all-posts ${clickedButton === 'all' ? 'clicked' : ''}`} 
+                    onClick={() => {
+                        setViewMode("all");
+                        setClickedButton('all');
+                    }}
+                >
                     View All Posts
                 </button>
-                <button className="your-posts" onClick={() => {
+                <button className={`your-posts ${clickedButton === 'your' ? 'clicked' : ''}`} onClick={() => {
                         if (currentUser) {
                             setViewMode("your");
+                            setClickedButton('your');
                         } else {
                             setShowLoginPromptModal(true);
                         }

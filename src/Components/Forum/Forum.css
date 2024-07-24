@@ -146,4 +146,7 @@
     justify-content: center;
   }
   
+  .view-all-posts.clicked::after, .your-posts.clicked::after {
+    width: 100%;
+  }
 
