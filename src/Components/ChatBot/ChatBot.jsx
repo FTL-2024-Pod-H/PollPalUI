@@ -1,5 +1,5 @@
 // ChatBot.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './ChatBot.css';
 import axios from "axios";
 import chatbotIcon from '/assets/icons8-chatbot-24.png';
@@ -16,6 +16,8 @@ const ChatBot = () => {
     const [chatHistory, setChatHistory] = useState([]);
     const [conversationId, setConversationId] = useState(null);
     const [loading, setLoading] = useState(false);
+    
+    const messagesEndRef = useRef(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,10 +46,25 @@ const ChatBot = () => {
     };
 
     useEffect(() => {
+        if (showChatBot && chatHistory.length === 0) {
+            const timer = setTimeout(() => {
+                setChatHistory([{role: 'bot', content: 'Welcome to PollPal, how can I help you today?'}]);
+            }, 1000);
+            return () => clearTimeout(timer);
+        }
+    }, [showChatBot, chatHistory]);
+
+    useEffect(() => {
         if (showEmojiPicker) {
             fetchEmojis();
         }
     }, [showEmojiPicker]);
+
+    useEffect(() => {
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+        }
+    }, [chatHistory]);
 
     const fetchEmojis = async () => {
         try {
@@ -59,13 +76,6 @@ const ChatBot = () => {
         }
     };
 
-    // const handleSendMessage = () => {
-    //     if (prompt.trim() !== '') {
-    //         setBotResponse([...botResponse, { text: prompt, from: 'user' }]);
-    //         setPrompt('');
-    //     }
-    // };
-
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             handleSubmit(e);
@@ -74,6 +84,7 @@ const ChatBot = () => {
 
     const handleClose = () => {
         setShowChatBot(false);
+        setChatHistory([]);
     };
 
     const handleCollapse = () => {
@@ -128,19 +139,28 @@ const ChatBot = () => {
                     {!isCollapsed && (
                         <>
                             <div className="messages-container">
+                                <div className="disclaimer">
+                                    <p>This chatbot is powered by OpenAI and may not always provide accurate or up-to-date information.</p>
+                                </div>
                                 {chatHistory.map((msg, index) => (
-                                    <div key={index} className={`message ${msg.role}`}>
-                                        {msg.content === 'loading' ? (
-                                            <div className="loader">
-                                                <li class="dots" id="dot-1"></li>
-                                                <li class="dots" id="dot-2"></li>
-                                                <li class="dots" id="dot-3"></li>
-                                            </div>
-                                        ) : (
-                                            msg.content
-                                        )}
+                                    <div key={index} className={`message-wrapper ${msg.role}`}>
+                                        <div className={`message-label ${msg.role === 'user' ? 'you' : 'bot'}`}>
+                                            {msg.role === 'user' ? 'You' : 'ChatBot'}
+                                        </div>
+                                        <div className={`message ${msg.role}`}>
+                                            {msg.content === 'loading' ? (
+                                                <div className="loader">
+                                                    <li className="dots" id="dot-1"></li>
+                                                    <li className="dots" id="dot-2"></li>
+                                                    <li className="dots" id="dot-3"></li>
+                                                </div>
+                                            ) : (
+                                                msg.content
+                                            )}
+                                        </div>
                                     </div>
                                 ))}
+                                <div ref={messagesEndRef} />
                             </div>
                             <div className="input-container">
                                 <input
@@ -188,3 +208,4 @@ const ChatBot = () => {
 };
 
 export default ChatBot;
+
