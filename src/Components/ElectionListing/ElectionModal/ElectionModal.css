@@ -1,5 +1,14 @@
+.election-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 950px;
+  height: auto;
+  position: relative;
+}
+
 h3 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .tabs {
@@ -37,4 +46,43 @@ h3 {
 
 .tabs .active::after {
   width: 100%;
+}
+
+.ballot-info {
+  max-height: 60vh; /* Adjust this to control the scrollable area height */
+  overflow-y: auto;
+}
+
+.candidates-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 35px 0;
+}
+
+.ballot-details,
+h4 {
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}
+
+.race-title {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.modal-election-name {
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 15px;
+}
+
+.reg-link-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 15px;
 }

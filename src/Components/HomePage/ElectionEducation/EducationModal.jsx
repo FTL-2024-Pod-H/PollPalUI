@@ -25,7 +25,7 @@ const EducationModal = ({
           &times;
         </span>
         <div className="modal-body">
-          <h3>{content.title}</h3>
+          <h3 className="modal-title">{content.title}</h3>
           <div className="modal-text">
             <img src={content.images[currentImageIndex]} alt={content.title} />
             <p>{content.blurbs[currentBlurbIndex]}</p>

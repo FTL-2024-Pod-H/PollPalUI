@@ -1,5 +1,9 @@
 .election-results{
   min-height: 100vh;
+  padding-top: 100px;
+}
+.no-elections-response{
+  color: white;
 }
 .title-section{
     position:relative;
@@ -13,12 +17,15 @@
     border-radius: 15px;
     max-width: 1000px;
     margin: 20px auto;
-    background: white;
+    /* background: white; */
     z-index: 1;
 }
 .change-address-button{
-    color: black;
-    background-color: white;
+    /* color: black;
+    background-color: white; */
+    color: white;
+    /* background-color: black; */
+    background: rgba(255, 255, 255, 0);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -41,6 +48,7 @@
 }
 .showing-elections-for{
     font-size: 20px;
+    color: white;
 }
 .address{
     font-size: 1rem;
@@ -54,13 +62,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100px; /* Adjust height as needed */
+    height: 100px; 
   }
   
   .dot {
     height: 20px;
     width: 20px;
-    margin: 0 5px; /* Adjust spacing between dots */
+    margin: 0 5px; 
     border-radius: 50%;
     background-color: #E6117C;
     animation: pulse 1.5s infinite ease-in-out;

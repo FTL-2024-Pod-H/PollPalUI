@@ -1,48 +1,86 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./Forum.css"
 import Post from "./Post/Post";
 import ForumModal from "./ForumModal/ForumModal";
 import NotLoggedPrompt from "./NotLoggedPrompt/NotLoggedPrompt";
+import axios from "axios";
+import Pagination from '@mui/material/Pagination';
+import PaginationItem from '@mui/material/PaginationItem';
+import Stack from '@mui/material/Stack';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+
+
+// DECODE TOKEN MANUALY
+function decodeJWT(token) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+}
+
+function getUserAvatar(username) {
+    // return `https://robohash.org/${username}.png?set=set1`;
+    return `https://ui-avatars.com/api/?name=${username}&background=random`;
+    // return `https://robohash.org/${username}.png?set=set2`;
+    // return `https://api.multiavatar.com/${username}.png`;
+}
 
 function Forum(){
 
     const [showCreatePostModal, setShowCreatePostModal] = useState(false);
     const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
-    // const [posts, setPosts] = useState([]);
-    // Test with already added (dummy data)
-
-
-     // logged-in user
-     // currentUser would be passed in data to userId
-
-    // const currentUser = "current_user"; //view signed in
-    // to test not logged in, change to none
-    const currentUser = null; 
-    // const currentUser = "alice_id";
-    const currentUserUsername = "alice";
-    const currentUserFullName = "Alice Smith";
-    
-    
-
-    const [posts, setPosts] = useState([
-        { userFullName: "Alice Smith", username: "alice", userPostContent: "This is Alice's post.", userId: "alice_id" },
-        { userFullName: "Bob Johnson", username: "bobj", userPostContent: "This is Bob's post.", userId: "bob_id" },
-        { userFullName: "Kiahna Isadore", username: "kisadore", userPostContent: "Hi, My name is Kiahna, who do I vote for!!!", userId: "k_isadore" },
-        { userFullName: "Kiahna Isadore", username: "kisadore", userPostContent: "Ughh Im so overwhelmed", userId: "k_isadore" }
-    ]);
-
+    const [currentUser, setCurrentUser] = useState(null);
+    const [posts, setPosts] = useState([ ]);
     const[viewMode, setViewMode] = useState("all");
     console.log("Current view mode: ", viewMode);
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage] = useState(6);
+    const [totalPosts, setTotalPosts] = useState(0);
+
+    const [clickedButton, setClickedButton] = useState(`all`);
+
+
+    useEffect(() => {
+        // CHECK IF LOGGED IN WITH TOKEN
+        const token = localStorage.getItem("token");
+        if (token) {
+            try {
+                const decodedToken = decodeJWT(token);
+                setCurrentUser(decodedToken.userId);
+            } catch (error) {
+                console.error("Error decoding token: ", error);
+            }
+        }
+
+        // fetchPosts();
+        fetchPosts(currentPage, postsPerPage);
+    }, [ viewMode, currentPage ]);
+
+
+    const fetchPosts = async (page = 1, limit = 10) => {
+        try {
+            const response = await axios.get(`http://localhost:3000/posts?page=${page}&limit=${limit}`);
+            console.log("Fetched Posts:", response.data.posts);
+            setPosts(response.data.posts);
+            setTotalPosts(response.data.totalPosts);
+        } catch (error) {
+            console.error("Error fetching posts:", error);
+        }
+    };
+
+
     const filteredPosts = viewMode === 'your'
-        ? posts.filter(post => post.userId === currentUser)
+        ? posts.filter(post => post.author_id === currentUser)
         : posts;
     
         console.log("Filtered Posts:", filteredPosts);
 
-    // const handleCreatePost = () => {
-    //     setShowCreatePostModal(true);
-    // };
+ 
     const handleCreatePost = () => {
         if (currentUser) {
             setShowCreatePostModal(true);
@@ -54,22 +92,48 @@ function Forum(){
         setShowCreatePostModal(false);
     };
 
-    const handleAddPost = (postContent) => {
-        // takes the current users info in order to create post
-        const newPost = {
-            userFullName: currentUserFullName,
-            username: currentUserUsername,
-            userPostContent: postContent,
-            userId: currentUser
-        };
-        setPosts([newPost, ...posts]);
+ 
+
+    const handleAddPost = async (postContent) => {
+        try {
+            const newPost = {
+                content: postContent,
+                author_id: currentUser
+            };
+            const response = await axios.post("http://localhost:3000/posts", newPost);
+            setPosts([response.data, ...posts]);
+            
+            setShowCreatePostModal(false);
+            
+            setTotalPosts(totalPosts + 1);
+            fetchPosts(currentPage, postsPerPage);
+            
+        } catch (error) {
+            console.error("Error adding posts:", error);
+        }
     };
 
-    const handleDeletePost = (index) => {
-        setPosts(posts.filter((_, postIndex) => postIndex !== index));
+    const handleDeletePost = async (postId) => {
+        try {
+            await axios.delete(`http://localhost:3000/posts/${postId}`);
+            setPosts(posts.filter(post => post.post_id !== postId));
+            setTotalPosts(totalPosts - 1);
+        } catch (error) {
+            console.error("Error deleting post: ", error);
+        }
     };
+
+    const totalPages = Math.ceil(totalPosts / postsPerPage);
+
+    const handlePageClick = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        fetchPosts(pageNumber, postsPerPage);
+    };
+
+
     return(
         <>
+            <div className="forum-page-container">
             <div className="form-title-button">
             <div className="forum-info-section">
                 <h1 className="forum-title">Forum</h1>
@@ -82,15 +146,19 @@ function Forum(){
                 <div className="text">Create</div>
             </button>
             <div className="switch-posts-buttons-container">
-                <button className="view-all-posts" onClick={() => setViewMode("all")}>
+                <button 
+                    className={`view-all-posts ${clickedButton === 'all' ? 'clicked' : ''}`} 
+                    onClick={() => {
+                        setViewMode("all");
+                        setClickedButton('all');
+                    }}
+                >
                     View All Posts
                 </button>
-                {/* <button className="your-posts" onClick={() => setViewMode("your")}>
-                    Your Posts
-                </button> */}
-                <button className="your-posts" onClick={() => {
+                <button className={`your-posts ${clickedButton === 'your' ? 'clicked' : ''}`} onClick={() => {
                         if (currentUser) {
                             setViewMode("your");
+                            setClickedButton('your');
                         } else {
                             setShowLoginPromptModal(true);
                         }
@@ -115,13 +183,55 @@ function Forum(){
                 {filteredPosts.map((post, index) => (
                     <Post
                         key={index}
-                        userFullName={post.userFullName}
-                        username={post.username}
-                        userPostContent={post.userPostContent}
-                        showDelete={post.userId === currentUser}
-                        onDelete={()=> handleDeletePost(index)}
+                        userFullName={post.author.name}
+                        username={post.author.username}
+                        userAvatar={getUserAvatar(post.author.username)}
+                        userPostContent={post.content}
+                        timestamp={post.createdAt}
+                        showDelete={post.author_id === currentUser}
+                        likeCount={post.likes.length}
+                        onDelete={()=> handleDeletePost(post.post_id)}
+                        postId={post.post_id}
+                        currentUser={currentUser}
+                        fetchPosts={fetchPosts}
+                        page={currentPage}
+                        limit={postsPerPage}
                     />
                 ))}
+            </div>
+                <Stack spacing={2}>
+                    <Pagination
+                        count={totalPages}
+                        page={currentPage}
+                        onChange={(event, page) => handlePageClick(page)}
+                        renderItem={(item) => (
+                        <PaginationItem
+                            slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+                            {...item}
+                            sx={{
+                                color: item.page === currentPage ? 'black' : 'white', 
+                                backgroundColor: item.page === currentPage ? '#E6117C' : 'transparent', 
+                                borderRadius: 1,
+                                border: '1px solid', 
+                                borderColor: item.page === currentPage ? '#E6117C' : 'transparent', 
+                                '&:hover': {
+                                  backgroundColor: item.page === currentPage ? 'yellow' : '#555', 
+                                },
+                                marginBottom: '30px',
+                              }}
+                        />
+                        )}
+                        sx={{
+                        '.MuiPaginationItem-root': {
+                            color: 'white', 
+                        },
+                        '.MuiPaginationItem-previousNext': {
+                            color: 'white', 
+                        }
+                        }}
+                    />
+                </Stack>
+               
             </div>
         </>
     )
