@@ -12,6 +12,7 @@ import Footer from './Components/Footer/Footer';
 import InteractiveMap from './Components/InteractiveMap/InteractiveMap';
 import Register from "./Components/Register/Register";
 import Login from "./Components/Login/Login";
+import ChatBot from "./Components/ChatBot/ChatBot.jsx";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
                   
 
               </Routes>
+              <ChatBot/>
               </main>
               <Footer />
           </div>

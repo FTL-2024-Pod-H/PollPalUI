@@ -1,32 +1,9 @@
 
-/* #initial-viewport {
-    height: 100%; 
-    overflow-y: auto; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-} */
-
 .homepage {
     display: flex;
     flex-direction: column;
     background-color: white;
-    /* height: 200vh; 
-    overflow: hidden;  */
 }
-
-/* .search-location,
-.about-section,
-.election-education {
-    height: 100vh; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    overflow-y: auto;
-} */
 
 .section {
     height: 100vh;
@@ -67,12 +44,6 @@
 .education-section {
     display: none;
     min-height: 100vh;
-    /* background: linear-gradient(to right, #1A6DFF, #E6ABFF); */
-    /* background: linear-gradient(to right, #4A3CDB, #E6117C); */
-    /* background: linear-gradient(to right, #2D0047, #000000); */
-    /* background: black; */
-    /* width: 100%; */
-    /* padding: 20px; */
     box-sizing: border-box;
 }
 
@@ -80,14 +51,6 @@
     display: block;
 }
 
-
-/* .footer {
-    min-height: 100vh; 
-    color: white; 
-    padding: 20px;
-} */
-
-/* Media Queries for Responsive Design */
 @media (max-width: 768px) {
     .search-about-container {
         padding: 10px;
