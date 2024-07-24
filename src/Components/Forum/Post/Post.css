@@ -17,8 +17,23 @@
     /* border-bottom: 1px solid black; */
     z-index: 1;
 }
+
+.forum-post:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -10px; 
+    width: 2px; 
+    /* box-shadow: -4px 10px 20px #E6117C;  */
+    
+    box-shadow: -4px 0 10px 2px #574b64;
+    /* box-shadow: -4px 0 10px 2px rgba(230, 17, 124, 0.8); */
+    z-index: -1; 
+}
 .forum-post:hover{
-    box-shadow: 0px 0px 10px #E6117C
+    /* box-shadow: 0px 0px 10px #E6117C; */
+    /* box-shadow: -4px 0 0 #E6117C; */
 }
 
 .forum-post::after {
@@ -27,7 +42,7 @@
     bottom: -5px; 
     left: 0;
     width: 100%;
-    height: 1px; 
+    height: 2px; 
     background: linear-gradient(144deg,#E6117C,#4A3CDB 50%,#00ddeb);
     /* background: black; */
     opacity: 0.7; /* Adjust opacity as desired */
@@ -63,14 +78,17 @@
 .forum-fullname{
     margin: 0;
     font-size: 1.2em;
-    color: white;
+    /* color: white; */
+    /* color: black; */
+    color: #4c4651;
 }
 
 .forum-post-text {
     /* margin: 6px 0; */
     margin-top: -10px;
     margin-left: 65px;
-    color: ghostwhite;
+    /* color: ghostwhite; */
+    color: black;
     font-size: 20px;
     
 }
@@ -93,7 +111,7 @@
     margin-right: 3px;
     transform: scale(1);
     transition: .2s linear;
-    color: white;
+    color: rgb(46, 19, 82);
 }
 .like-icon:hover{
     transform: scale(1.2);
@@ -101,7 +119,8 @@
 
 .like-count {
     font-size: 16px;
-    color: white;
+    /* color: white; */
+    color: black;
 }
 
 /* LIKE AND DELETE */
@@ -129,7 +148,7 @@
 .delete-icon {
     transform: scale(1.2);
     transition: .2s linear;
-    fill: rgb(255, 0, 0)
+    fill: rgb(154, 16, 16)
 }
   
 .delete-button:hover > .delete-icon {
@@ -137,7 +156,7 @@
 }
   
 .delete-button:hover > .delete-icon path {
-    fill: rgb(168, 7, 7);
+    fill: rgb(193, 111, 111);
 }
 
 /* REPLY BUTTON */
@@ -153,7 +172,7 @@
     border:none;
     background:none;
     margin-bottom: -17px;
-    stroke: #4A3CDB;
+    stroke: #8251bb;
 } 
   
 .comment-icon:hover {

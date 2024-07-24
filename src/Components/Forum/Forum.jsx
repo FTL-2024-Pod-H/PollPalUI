@@ -215,7 +215,7 @@ function Forum(){
                                 border: '1px solid', 
                                 borderColor: item.page === currentPage ? '#E6117C' : 'transparent', 
                                 '&:hover': {
-                                  backgroundColor: item.page === currentPage ? 'yellow' : '#555', 
+                                  backgroundColor: item.page === currentPage ? 'yellow' : '#999999', 
                                 },
                                 marginBottom: '30px',
                               }}
@@ -223,10 +223,10 @@ function Forum(){
                         )}
                         sx={{
                         '.MuiPaginationItem-root': {
-                            color: 'white', 
+                            color: 'black', 
                         },
                         '.MuiPaginationItem-previousNext': {
-                            color: 'white', 
+                            color: 'black', 
                         }
                         }}
                     />
