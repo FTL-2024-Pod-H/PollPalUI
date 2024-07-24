@@ -9,18 +9,19 @@
   position: relative;
   display: flex;
 
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: center;
-  border: 0.5px solid black;
-  box-shadow: 0 0px 6px;
-  padding: 20px;
-  border-radius: 15px;
-  margin: 20px auto;
-  background: white;
-  z-index: 1;
-  width: 100%;
-  max-width: 1000px;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    border: .5px solid black;
+    box-shadow: 0 0px 6px ;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px auto;
+    /* background: white; */
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 1;
+    width: 100%; 
+    max-width: 1000px; 
 }
 .each-election::before {
   content: "";
@@ -65,8 +66,10 @@
   font-size: 1.2rem;
   margin-bottom: 10px;
 }
-.election-day {
-  margin-top: 0px;
-  font-size: 0.9rem;
-  color: grey;
+
+.election-day{
+    margin-top: 0px;
+    font-size: .9rem;
+    color: rgb(65, 64, 64);
+
 }

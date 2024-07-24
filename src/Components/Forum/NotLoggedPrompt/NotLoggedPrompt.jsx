@@ -1,5 +1,6 @@
 import React from "react";
 import "./NotLoggedPrompt.css";
+import { useNavigate, Link } from "react-router-dom";
 
 const NotLoggedPrompt = ({onClose}) => {
 
@@ -18,8 +19,12 @@ const NotLoggedPrompt = ({onClose}) => {
                 <h2>Please Log In or Register</h2>
                 <p>You need to be logged in to create and view your posts.</p>
                 <div className="modal-buttons">
-                    <button onClick={() => window.location.href = '/login'}>Log In</button>
-                    <button onClick={() => window.location.href = '/register'}>Register</button>
+                    <Link to={`/login`}>
+                        <button type="button" class="glow-on-hover">Sign In </button>
+                    </Link>
+                    <Link to={`/register`}>
+                        <button type="button" class="glow-on-hover">Register</button>
+                    </Link>
                 </div>
             </div>
         </div>

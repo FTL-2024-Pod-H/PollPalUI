@@ -2,9 +2,11 @@
   display: flex;
   justify-content: center; 
   align-items: center;
-  padding: 10px 0; 
+  /* padding: 10px 0;  */
+  padding: 8px 0px;
   /* color: white; */
-  color: black;
+  /* color: black; */
+  background-color: white;
   transition: background-color 0.3s ease; 
   width: 100%; 
   position: fixed; 
@@ -15,6 +17,8 @@
 .header-scrolled {
   /* background-color: rgba(0, 0, 0, 0.8);  */
   background-color: rgba(211, 193, 215, 0.8);
+  /* background-color: rgba(255, 255, 255, .3); 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); */
 }
 
 .header-content {
