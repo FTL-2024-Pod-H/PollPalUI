@@ -1,3 +1,4 @@
+// HomePage.jsx
 import React, { useEffect } from "react";
 import "./HomePage.css";
 import SearchLocation from "../SearchLocation/SearchLocation";
