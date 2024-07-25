@@ -4,7 +4,8 @@
     padding: 20px;
     /* border-radius: 8px; */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color: white;
+    color: black;
+    
     text-align: center;
     /* background: linear-gradient(to right, #1A6DFF, #E6ABFF); */
     /* background-color: rgba(255, 255, 255, .2); */
@@ -38,7 +39,8 @@
 }
 
 .select-state-message {
-    color: white;
+    /* color: white; */
+    color:black;
     font-size: 1.2rem;
     font-weight: bold;
 }
