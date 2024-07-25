@@ -1,10 +1,12 @@
 .forum-page-container{
     padding-top: 100px;
+    /* background: linear-gradient(to right, #000000, #2D0047); */
     
 }
 .forum-title{
     margin-bottom: 13px;
-    color:white;
+    /* color:white; */
+    color: black;
 }
 .forum-description{
     color: gray;
@@ -47,9 +49,6 @@
     overflow: hidden;
     transition-duration: .3s;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
-    /* background: linear-gradient(144deg,#af40ff,#5b42f3 50%,#00ddeb); */
-    /* background: linear-gradient(to bottom right, #E6117C, #4A3CDB); */
-    /* background: linear-gradient(144deg,#E6117C,#4A3CDB 50%,#00ddeb); */
     background: linear-gradient( #E6117C, #4A3CDB);
 }
   
@@ -113,7 +112,8 @@
     margin:0 18%;
     position:relative;
     cursor: pointer;
-    color: white;
+    /* color: white; */
+    color: black;
 
 }
 .view-all-posts::after, .your-posts::after{
@@ -131,3 +131,22 @@
 .your-posts:hover::after {
     width: 100%;
 }
+
+.forum-page-container {
+    /* Your existing styles */
+  }
+  
+  .pagination-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .MuiPagination-ul {
+    justify-content: center;
+  }
+  
+  .view-all-posts.clicked::after, .your-posts.clicked::after {
+    width: 100%;
+  }
+

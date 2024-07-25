@@ -1,27 +1,37 @@
+/* ElectionEducation.css */
 .info-section{
   width: 90%;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  flex-direction: column;
+  justify-content: center;
   gap: 20px;
 }
 #education-section {
   display: flex;
+  flex-direction: row;
   align-items: flex-end;
+  align-items: center;
   justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 20px;
+  /* justify-content: center; */
+  /* flex-wrap: wrap; */
+  gap: 40px;
   padding: 20px;
+  scroll-behavior: smooth;
+  overflow-x: auto;
 }
 
-.info-title{
-  /* color: black; */
+.info-title, .info-title h2{
   font-family: 'Poppins', sans-serif;
   text-align: center;
-  font-size: 26px;
-    background: linear-gradient(to right, #E6117C, #4A3CDB);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background: linear-gradient(to right, #E6117C, #4A3CDB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.info-title h2{
+  font-size: 36px;
 }
 
 .info-item {
@@ -45,6 +55,7 @@
   color: white;
   font-size: 1.5em;
   text-align: center;
+  padding: 10px;
 }
 
 .info-item::before {
@@ -70,7 +81,6 @@
 .info-item::after {
   content: '';
   position: absolute;
-  /* background: #07182E; */
   background: linear-gradient(to right, #000000, #2D0047);
   inset: 5px;
   border-radius: 15px;
@@ -81,3 +91,52 @@
   transition: all 0.1s;
   box-shadow: 0px 0px 15px 5px rgb(0, 0, 0);
 }
+
+
+@media (max-width: 1500px) {
+  #education-section {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    max-width: 100%;
+  }
+
+  .info-item {
+    height: 350px;
+    min-width: 300px;
+  }
+
+  .info-title h2 {
+    font-size: 26px;
+    padding-top: 20px;
+  }
+
+  .info-title p {
+    font-size: 12px;
+  }
+
+  .arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-title h2 {
+    font-size: 22px;
+    padding-top: 0px;
+  }
+
+  .info-item h3 {
+    font-size: 1em;
+  }
+
+  .info-title p {
+    font-size: 12px;
+  }
+
+  .info-item {
+    height: 300px;
+    min-width: 250px;
+  }
+}
+

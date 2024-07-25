@@ -1,94 +1,143 @@
-.election-results{
+.election-results {
   min-height: 100vh;
+  padding-top: 100px;
+  background-color: white;
+  font-family: "poppins", arial;
 }
-.title-section{
-    position:relative;
-    display:flex;
-    flex-direction: column;
 
-    align-items: flex-start;
-    flex-direction: row;
-    justify-content: center;
-    padding: 20px;
-    border-radius: 15px;
-    max-width: 1000px;
-    margin: 20px auto;
-    background: white;
-    z-index: 1;
+.no-elections-response {
+  margin-top: 200px;
+  color: black;
+  text-align: center;
+  font-size: 30px;
 }
-.change-address-button{
-    color: black;
-    background-color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: -10px;
-    position:relative;
+.title-section {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 1000px;
+  margin: 20px auto;
+  /* background: white; */
+  /* z-index: 1; */
 }
-.change-address-button::after{
-    content: '';
-    /* text-decoration: underline; */
-    background: linear-gradient( #E6117C, #4A3CDB);
-    width:0;
-    height:2px;
-    position: absolute;
-    bottom: -2px; 
-    left: 0;
-    transition: width 0.3s ease-in-out;
+
+/* .change-address-button {
+  color: black;
+
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: -10px;
+  position: relative;
 }
-.change-address-button:hover::after{
-    width: 100%;
+.change-address-button::after {
+  content: "";
+  background: linear-gradient(#e6117c, #4a3cdb);
+  width: 0;
+  height: 2px;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  transition: width 0.3s ease-in-out;
+
 }
-.showing-elections-for{
-    font-size: 20px;
+.change-address-button:hover::after {
+  width: 100%;
+} */
+
+.showing-elections-for {
+  font-size: 23px;
+  background: linear-gradient(to right, #e6117c, #4a3cdb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.address{
-    font-size: 1rem;
-    color: grey;
-    margin-right: 5px;
+.address {
+  font-size: 21px;
+  font-weight: 500px;
+  background: black;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-right: 6px;
+  margin-left: 5px;
+  font-style: italic;
+}
+
+.change-address-button {
+  color: black;
+  background: linear-gradient(to right, #e6117c, #4a3cdb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  position: relative;
+  font-size: 21px;
+
+  cursor: pointer;
+}
+
+
+.change-address-button::after {
+  content: "";
+  background: linear-gradient(to right, #e6117c, #4a3cdb);
+  width: 0;
+  height: 2px;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  z-index: 1;
+  transition: width 0.3s ease-in-out;
+}
+
+.change-address-button:hover::after {
+  width: 100%;
 }
 
 /* LOADING.... */
 
 .custom-loader {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100px; /* Adjust height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+
+.dot {
+  height: 20px;
+  width: 20px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: #e6117c;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.dot:nth-child(2) {
+  animation-delay: -0.1s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: -0.2s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    background-color: #4a3cdb;
+    box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
   }
-  
-  .dot {
-    height: 20px;
-    width: 20px;
-    margin: 0 5px; /* Adjust spacing between dots */
-    border-radius: 50%;
-    background-color: #E6117C;
-    animation: pulse 1.5s infinite ease-in-out;
+  50% {
+    transform: scale(1.2);
+    background-color: #e6117c;
+    box-shadow: 0 0 0 10px rgba(178, 212, 252, 0);
   }
-  
-  .dot:nth-child(2) {
-    animation-delay: -0.1s;
+  100% {
+    transform: scale(0.8);
+    background-color: #b3d4fc;
+    box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
   }
-  
-  .dot:nth-child(3) {
-    animation-delay: -0.2s;
-  }
-  
-  @keyframes pulse {
-    0% {
-      transform: scale(0.8);
-      background-color: #4A3CDB;
-      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
-    }
-    50% {
-      transform: scale(1.2);
-      background-color: #E6117C;
-      box-shadow: 0 0 0 10px rgba(178, 212, 252, 0);
-    }
-    100% {
-      transform: scale(0.8);
-      background-color: #b3d4fc;
-      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
-    }
-  }
-  
+}

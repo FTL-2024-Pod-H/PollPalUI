@@ -10,19 +10,30 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-regular-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mui/icons-material": "^5.16.4",
+    "@mui/material": "^5.16.4",
     "@react-google-maps/api": "^2.19.3",
     "axios": "^1.7.2",
+    "bootstrap": "^5.3.3",
+    "jwt-decode": "^4.0.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
+    "react-bootstrap": "^2.10.4",
     "react-dom": "^18.3.1",
+    "react-password-checklist": "^1.6.0",
+    "react-password-strength-bar": "^0.4.1",
     "react-router-dom": "^6.25.1",
     "react-simple-maps": "^3.0.0",
+    "react-swipeable": "^7.0.1",
     "react-toastify": "^10.0.5",
-    "react-tooltip": "^5.27.1"
+    "react-tooltip": "^5.27.1",
+    "swiper": "^11.1.7"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

@@ -1,37 +1,44 @@
+// HomePage.jsx
 import React, { useEffect } from "react";
 import "./HomePage.css";
 import SearchLocation from "../SearchLocation/SearchLocation";
 import AboutSection from "./AboutSection/AboutSection";
 import ElectionEducation from "./ElectionEducation/ElectionEducation";
+// import ChatBot from "../ChatBot/ChatBot";
 
 function HomePage() {
     
+    // useEffect(() => {
+    //     const sections = document.querySelectorAll('.section');
+
+    //     const options = {
+    //         threshold: 0.1
+    //     };
+
+    //     const observer = new IntersectionObserver((entries) => {
+    //         entries.forEach(entry => {
+    //             if (entry.isIntersecting) {
+    //                 entry.target.classList.add('visible');
+    //             } else {
+    //                 entry.target.classList.remove('visible');
+    //             }
+    //         });
+    //     }, options);
+
+    //     sections.forEach(section => {
+    //         observer.observe(section);
+    //     });
+
+    //     return () => {
+    //         sections.forEach(section => {
+    //             observer.unobserve(section);
+    //         });
+    //     };
+    // }, []);
+
     useEffect(() => {
-        const sections = document.querySelectorAll('.section');
-
-        const options = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                } else {
-                    entry.target.classList.remove('visible');
-                }
-            });
-        }, options);
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        return () => {
-            sections.forEach(section => {
-                observer.unobserve(section);
-            });
-        };
+        const searchLocationSection = document.querySelector(".section");
+        searchLocationSection.classList.add("visible");
     }, []);
 
     return (
@@ -40,6 +47,7 @@ function HomePage() {
                 <h2>Get election info based on your location</h2>
                 <SearchLocation />
             </section>
+            {/* <ChatBot/> */}
             <section className="section about-section">
                 <AboutSection/>
             </section>

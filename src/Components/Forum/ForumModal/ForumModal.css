@@ -2,8 +2,9 @@
     display: flex;
     flex-direction:column;
     gap: 20px;
+    width: 100%;
      
-  }
+}
 .forum-modal {
      position: fixed;
      top: 0;
@@ -22,7 +23,6 @@
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
   
    
@@ -35,6 +35,8 @@
     margin: 20px auto;
     width:100%;
     height: 100%;
+    box-sizing: border-box
+    
 }
   
 .post-box h1 {
@@ -50,52 +52,86 @@
     padding: 10px;
     border: 1px solid black;
     border-radius: 4px;
-    font-size: 0.875rem; /* 14px */
+    font-size: 0.875rem; 
+    /* resize: none; */
     resize: vertical;
+    max-width: 500px; /* Set maximum width */
+    max-height: 350px;
     margin-top: 10px;
     outline: none;
-    /* transition: border-color 0.3s ease; */
     align-items: center;
+    /* margin-right: 40px; */
 }
   
 .post-content::placeholder {
     color: #718096;
     opacity: 0.7;
 }
-  
-/* .post-content:focus {
-    border-color: #4a90e2;
-} */
-  
+
 .post-button {
-    background-color: #fff;
-    border: 1px solid black;
-    border-radius: 4px;
-    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 15px;
+    background: rgb(80, 23, 141);
+    color: white;
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 13px;
+    overflow: hidden;
+    transition: all 0.2s;
     cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    margin-left: auto;
 }
   
-.post-button:hover {
-    /* background-color: #e2e8f0; */
-    background: linear-gradient(144deg,#E6117C,#4A3CDB 50%,#00ddeb);
-    border-color: #4a90e2;
+.post-button span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
 }
   
- .post-button svg {
-    height: 20px;
-    width: 20px;
-    fill: black;
+.post-button svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
 }
+  
+.post-button:hover .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+  
 .post-button:hover svg {
-    height: 20px;
-    width: 20px;
-    fill: white;
+    transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+  
+.post-button:hover span {
+    transform: translateX(5em);
+}
+  
+.post-button:active {
+    transform: scale(0.95);
+}
+  
+@keyframes fly-1 {
+    from {
+      transform: translateY(0.1em);
+    }
+  
+    to {
+      transform: translateY(-0.1em);
+    }
+}
+
+
+.post-box {
+    position: relative;
+}
+
+.forum-modal-content {
+    position: relative;
 }
 
   
-/* .post-button:focus {
-    outline: none;
-} */
-
-

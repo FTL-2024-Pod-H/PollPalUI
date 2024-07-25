@@ -3,9 +3,6 @@
     justify-content: space-between;
     padding: 40px 20px;
     flex-wrap: wrap;
-    /* height: 100%; */
-    /* background-color: white; */
-    /* background: linear-gradient(to bottom,rgb(227, 213, 255),rgb(255, 231, 231)); */
     background: linear-gradient(to right, #000000, #2D0047);
 }
 
@@ -16,7 +13,6 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    /* text-align: center; */
 }
 
 .about-title {
@@ -26,71 +22,44 @@
     background: linear-gradient(to right, #E6117C, #4A3CDB);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    /* font-family: 'Arial', sans-serif; */
-    /* font-family: 'Times New Roman', Times, serif; */
     font-family: 'Poppins', sans-serif;
 }
 
 
 .about-subtitle {
     font-size: 24px;
-    /* color: #333; */
     margin-bottom: 40px;
-    /* font-family: 'Arial', sans-serif; */
-    /* font-family: 'Times New Roman', Times, serif; */
     font-family: 'Poppins', sans-serif;
 }
 
 .features-container {
     flex: 2;
     display: flex;
-    gap: 10px;
-    justify-content: space-around;
+    gap: 30px;
+    /* justify-content: flex-end; */
     flex-wrap: wrap;
+    /* justify-content: space-around; */
     height: 80%;
-    /* width: 50%; */
 }
-/* .card {
-    display: flex;
-    align-items: center;
-    background: linear-gradient(to bottom,rgb(227, 213, 255),rgb(255, 231, 231));
-    padding: 20px;
-    border-radius:30%;
-    width: calc(30% - 20px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-} */
-
-/* .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-} */
 
 .feature-content {
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', sans-serif;
-    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
-    /* font-style: italic; */
 }
 
 
 
 .feature-title {
-    font-size: 16px;
-    /* font-weight: bold; */
-    /* color: #333; */
+    font-size: 20px;
     margin-bottom: 5px;
     display: flex;
     align-items: center;
-    /* color:white; */
 }
 
 .feature-description {
     font-size: 16px;
-    /* color: #333; */
     font-family: 'Poppins', sans-serif;
-    /* color: white; */
 }
 
 .info-icon {
@@ -113,60 +82,48 @@
     transform-origin: right bottom;
     transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
     align-items: center;
-  }
-  
-  .card .main-content {
+}
+
+.card .main-content {
     flex: 1;
-  }
-  
-  .card .header span:first-child {
+}
+
+.card .header span:first-child {
     font-weight: 600;
     color: #717171;
     margin-right: 4px;
-  }
-  
-  .card .heading {
+}
+
+.card .heading {
     font-size: 24px;
     margin: 24px 0 16px;
     font-weight: 600;
-  }
-  
-  .card .categories {
+}
+
+.card .categories {
     display: flex;
     gap: 8px;
-  }
-  
-  .card .categories span {
+}
+
+.card .categories span {
     background-color: #e81cff;
     padding: 4px 8px;
     font-weight: 600;
     text-transform: uppercase;
     font-size: 12px;
     border-radius: 50em;
-  }
-  
-  .card .footer {
+}
+
+.card .footer {
     font-weight: 600;
     color: #717171;
     margin-right: 4px;
-  }
-  
-  .card:hover {
+}
+
+.card:hover {
     rotate: 8deg;
-  }
+}
 
-/* Media Queries for Responsive Design */
-/* @media (max-width: 768px) {
-    .section {
-        padding: 10px;
-    }
-
-    .card {
-        width: 100%;
-    }
-} */
-
-/* Media Queries for Responsive Design */
 @media (max-width: 1200px) {
     .features-container {
         justify-content: center;
@@ -190,7 +147,16 @@
     }
 
     .card {
-        width: calc(45% - 20px);
+        width: calc(45% - 40px);
+        height: 150px;
+    }
+
+    .feature-title {
+        font-size: 16px;
+    }
+    
+    .feature-description {
+        font-size: 12px;
     }
 }
 
@@ -204,6 +170,14 @@
     }
 
     .card {
-        width: calc(100% - 40px);
+        width: calc(100% - 90px);
+        height: 100px;
+    }
+    .feature-title {
+        font-size: 16px;
+    }
+    
+    .feature-description {
+        font-size: 12px;
     }
 }
