@@ -31,19 +31,22 @@
   z-index: -1;
 }
 
-.card-details,
-.candidate-name,
+.card-details {
+  padding: 5px;
+}
+
 .candidate-party,
 .candidate-position {
   margin: 0;
   padding: 0;
-  font-size: 13px;
+  font-size: 15px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
 
 .candidate-name {
-  font-size: 17px;
+  font-size: 23px;
+  margin: 0 0 5px 0;
 }
 
 /* .star {

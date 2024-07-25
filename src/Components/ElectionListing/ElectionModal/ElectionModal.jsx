@@ -167,13 +167,14 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
     } else {
       return (
         <div className="ballot-info">
+          <h1 className="measures">Measures</h1>
           {ballotInfo.map((info, index) => (
             <details key={index} className="ballot-item">
               <summary className="race-title">
                 {info.race} ({info.party})
               </summary>
               <div className="ballot-details">
-                <h4>{info.district}</h4>
+                <h4 className="race-district">{info.district}</h4>
                 <ul className="candidates-list">
                   {info.candidates.map((candidate, idx) => (
                     <Candidate
