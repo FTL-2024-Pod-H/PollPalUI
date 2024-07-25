@@ -15,27 +15,21 @@
   font-family: "Poppins", sans-serif;
 }
 
-.modal-content {
-  background: black;
+.ee-modal-content {
+  /* background: black; */
+  /* background: #e8e3e3; */
+  background: #fff;
   padding: 20px;
-  border-radius: 5px;
-  width: 600px;
-  height: auto;
+  border-radius: 30px;
+  width: 700px;
+  height: 500px;
   position: relative;
-}
-
-.close-button {
-  background: linear-gradient(to bottom right, #e6117c, #4a3cdb);
-  color: white;
-  padding: 5px 15px;
-  cursor: pointer;
-  border-radius: 30%;
-  font-size: 16px;
-  border: none;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  overflow:auto;
+  display:flex;
+  flex-direction:column;
+  justify-content: space-between;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  
 }
 
 .modal-body {
@@ -43,6 +37,8 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  flex-grow:1;
+  overflow: auto;
 }
 
 .modal-body h3 {
@@ -50,8 +46,11 @@
 }
 
 .modal-title {
-  font-size: 25px;
+  font-size: 28px;
   font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color:  rgb(46, 19, 82);
+  margin-bottom: 20px;
 }
 
 .modal-text {
@@ -60,49 +59,33 @@
   align-items: center;
   gap: 20px;
   width: 100%;
+  flex-grow: 1;
+  justify-content: center;
 }
 .modal-text-ee{
-  font-family:   sans-serif;
+  /* font-family:   sans-serif; */
+  font-family: sans-serif;
+  font-weight: 300;
+  flex-grow: 1;
+  text-align: center;
+  color: #3e2f2f;
+  line-height: 1.5;
+  
 }
 
 .modal-text img {
-  width: 300px;
-  height: 350px;
+  width: 60%;
+  height: auto;
   border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 6px;
+  margin-bottom: 20px;
 }
+
 .modal-images{
   width: 100px;
   height:100px;
 }
 
-/* .next-button {
-  display:flex;
-  justify-content: center;
-  background: linear-gradient(to bottom right, #e6117c, #4a3cdb);
-  opacity: 0.8;
-  color: rgba(255, 255, 255, 0.7);
-  color: white;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 30%;
-  font-size: 24px;
-  width: 40px;
-  height: 40px;
-  border: none;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: -20px; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  transition: background 0.3s, color 0.3s;
-}
-
-.next-button:hover {
-  background: linear-gradient(to bottom right, #e6117c, #4a3cdb);
-  background: white;
-  opacity: 1;
-  color: rgba(255, 255, 255, 0.9);
-} */
 .next-button {
   display: flex;
   align-items: center;
@@ -114,8 +97,8 @@
   border:none;
   padding: 10px 20px;
   background-color: transparent;
+  color: black;
   margin-left:auto;
-  
 }
 
 .next-button:hover {

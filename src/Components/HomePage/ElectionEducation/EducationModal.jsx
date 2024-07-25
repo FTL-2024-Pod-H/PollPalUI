@@ -18,7 +18,7 @@ const EducationModal = ({
   return (
     <div className={`modal-overlay ${show ? "show" : ""}`} onClick={onClose}>
       <div
-        className={`modal-content ${modalAnimation}`}
+        className={`ee-modal-content ${modalAnimation}`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* <span className="close-button" onClick={onClose}>

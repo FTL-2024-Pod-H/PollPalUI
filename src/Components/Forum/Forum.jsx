@@ -46,7 +46,6 @@ function Forum(){
 
 
     useEffect(() => {
-        // CHECK IF LOGGED IN WITH TOKEN
         const token = localStorage.getItem("token");
         if (token) {
             try {
@@ -55,16 +54,16 @@ function Forum(){
             } catch (error) {
                 console.error("Error decoding token: ", error);
             }
+        }else{
+            setCurrentUser(null);
         }
-
-        // fetchPosts();
-        // fetchPosts(currentPage, postsPerPage);
         if (viewMode === "your" && currentUser) {
+            setCurrentPage(1)
             fetchUserPosts(currentUser, currentPage, postsPerPage);
         } else {
             fetchPosts(currentPage, postsPerPage);
         }
-    }, [ viewMode, currentPage, postsPerPage ]);
+    }, [ viewMode, currentPage, postsPerPage, currentUser]);
 
 
     const fetchPosts = async (page = 1, limit = 10) => {
@@ -183,6 +182,8 @@ function Forum(){
                         if (currentUser) {
                             setViewMode("your");
                             setClickedButton('your');
+                            setCurrentPage(1)
+                            fetchUserPosts(currentUser, currentPage, postsPerPage);
                         } else {
                             setShowLoginPromptModal(true);
                         }

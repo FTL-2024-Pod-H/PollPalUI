@@ -25,7 +25,6 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     font-style: italic;
     color: black;
-    
     width: 200px;
     text-align: center;
 }
@@ -38,7 +37,8 @@
 }
 
 .select-state-message {
-    color: white;
+    /* color: white; */
+    color:black;
     font-size: 1.2rem;
     font-weight: bold;
 }
