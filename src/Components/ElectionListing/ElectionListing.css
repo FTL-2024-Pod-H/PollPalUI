@@ -77,9 +77,8 @@
   margin-bottom: 10px;
 }
 
-.election-day{
-    margin-top: 0px;
-    font-size: .9rem;
-    color: rgb(65, 64, 64);
-
+.election-day {
+  margin-top: 0px;
+  font-size: 0.9rem;
+  color: rgb(65, 64, 64);
 }
