@@ -85,7 +85,9 @@ function ElectionResults() {
               uriAddress={encodeURIComponent(address)}
             />
           ) : (
-            <p className="no-elections-response">No elections in your area</p>
+            <p className="no-elections-response">
+              No elections for this area...
+            </p>
           )
         ) : null}
       </div>
