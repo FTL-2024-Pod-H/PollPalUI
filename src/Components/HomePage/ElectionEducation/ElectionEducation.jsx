@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import "./ElectionEducation.css";
 import EducationModal from "./EducationModal";
-// import ChatBot from "../../ChatBot/ChatBot";
 
 const ElectionEducation = () => {
   const [showModal, setShowModal] = useState(false);
@@ -86,7 +85,6 @@ const ElectionEducation = () => {
 
     setModalAnimation("slide-down");
     setTimeout(() => {
-      // Sets it for the next time so it slides up when called
       setModalAnimation("slide-up");
     }, 600);
   };
@@ -126,7 +124,6 @@ const ElectionEducation = () => {
           </div>
         ))}
       </div>
-      {/* <ChatBot/> */}
       <EducationModal
         show={showModal}
         onClose={handleCloseModal}

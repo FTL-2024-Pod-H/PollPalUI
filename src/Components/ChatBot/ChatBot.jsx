@@ -91,6 +91,10 @@ const ChatBot = () => {
         setIsCollapsed(!isCollapsed);
     };
 
+    const getCollapseTooltip = () => {
+        return isCollapsed ? 'Expand' : 'Minimize';
+    };
+
     const handleEmojiClick = (emoji) => {
         setPrompt(prompt + emoji.character);
         setShowEmojiPicker(false);
@@ -113,25 +117,35 @@ const ChatBot = () => {
                             <p>Hello, let's chat!</p>
                         </div>
                         <div className="button-group">
-                            <button onClick={handleCollapse} className="button collapse-button">
+                            <button 
+                                onClick={handleCollapse} 
+                                className="button collapse-button"
+                                // title={isCollapsed ? "Expand Chatbot" : "Collapse Chatbot"}
+                            >
                                 <div className="icon">
                                     {isCollapsed ? (
                                         <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M7.646 2.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 3.707 2.354 9.354a.5.5 0 1 1-.708-.708l6-6z" className="bi bi-x" fillRule="evenodd"></path>
                                             <path d="M7.646 6.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" fillRule="evenodd"></path>
                                         </svg>
-                                    ) : (
+                                    )  : (
                                         <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" fillRule="evenodd"></path>
                                             <path d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" fillRule="evenodd"></path>
                                         </svg>
                                     )}
+                                    <span className="tooltip-text">{getCollapseTooltip()}</span>
                                 </div>
                             </button>
-                            <button onClick={handleClose} className="button chat-close-button">
+                            <button 
+                                onClick={handleClose} 
+                                className="button chat-close-button"
+                                // title="Close Chatbot"
+                            >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
                                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                                 </svg>
+                                <span className="tooltip-text">Close</span>
                             </button>
                         </div>
                     </div>

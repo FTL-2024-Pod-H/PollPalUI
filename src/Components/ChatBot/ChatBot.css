@@ -2,7 +2,7 @@
 
 .floating-button {
     position: fixed;
-    bottom: 50px;
+    bottom: 130px;
     right: 30px;
     background-color: #c28eff;
     color: white;
@@ -108,6 +108,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    position: relative;
 }
 
 .button svg {
@@ -123,6 +124,31 @@
 
 .button:hover svg {
     fill: white; 
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 55px;
+    height: 15px;
+    font-size: 12px;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1001;
+    bottom: 90%; 
+    left: 90%;
+    margin-left: -80px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.button:hover .tooltip-text {
+    visibility: visible;
+    opacity: .6;
 }
 
 .messages-container {
@@ -346,27 +372,49 @@
 
 @media (max-width: 768px) {
     .chatbot-container {
-        width: 90%; 
-        height: 400px;
+        width: 80%; 
+        height: 550px;
         bottom: 20px; 
         right: 5%;
     }
 
     .floating-button {
-        bottom: 80px; 
+        bottom: 70px;
+        width: 60%;
+        height: 50px;
+    }
+
+    .floating-button span {
+        font-size: 14px;
+    }
+
+    .floating-button img {
+        width: 20px;
+        height: 20px;
     }
 }
 
 @media (max-width: 480px) {
     .chatbot-container {
-        width: 95%; 
-        height: 350px;
+        width: 85%; 
+        height: 500px;
         bottom: 10px; 
         right: 2.5%; 
     }
 
     .floating-button {
         bottom: 70px;
+        width: 60%;
+        height: 50px;
+    }
+
+    .floating-button span {
+        font-size: 14px;
+    }
+
+    .floating-button img {
+        width: 20px;
+        height: 20px;
     }
 }
 

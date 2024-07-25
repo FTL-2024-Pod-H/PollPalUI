@@ -4,15 +4,22 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
+  flex-direction: column;
+  justify-content: center;
   gap: 20px;
 }
 #education-section {
   display: flex;
+  flex-direction: row;
   align-items: flex-end;
+  align-items: center;
   justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 20px;
+  /* justify-content: center; */
+  /* flex-wrap: wrap; */
+  gap: 40px;
   padding: 20px;
+  scroll-behavior: smooth;
+  overflow-x: auto;
 }
 
 .info-title, .info-title h2{
@@ -24,7 +31,7 @@
 }
 
 .info-title h2{
-  font-size: 26px;
+  font-size: 36px;
 }
 
 .info-item {
@@ -74,7 +81,6 @@
 .info-item::after {
   content: '';
   position: absolute;
-  /* background: #07182E; */
   background: linear-gradient(to right, #000000, #2D0047);
   inset: 5px;
   border-radius: 15px;
@@ -86,4 +92,51 @@
   box-shadow: 0px 0px 15px 5px rgb(0, 0, 0);
 }
 
+
+@media (max-width: 1500px) {
+  #education-section {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    max-width: 100%;
+  }
+
+  .info-item {
+    height: 350px;
+    min-width: 300px;
+  }
+
+  .info-title h2 {
+    font-size: 26px;
+    padding-top: 20px;
+  }
+
+  .info-title p {
+    font-size: 12px;
+  }
+
+  .arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-title h2 {
+    font-size: 22px;
+    padding-top: 0px;
+  }
+
+  .info-item h3 {
+    font-size: 1em;
+  }
+
+  .info-title p {
+    font-size: 12px;
+  }
+
+  .info-item {
+    height: 300px;
+    min-width: 250px;
+  }
+}
 

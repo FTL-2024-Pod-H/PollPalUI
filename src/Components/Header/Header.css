@@ -2,10 +2,7 @@
   display: flex;
   justify-content: center; 
   align-items: center;
-  /* padding: 10px 0;  */
   padding: 8px 0px;
-  /* color: white; */
-  /* color: black; */
   background-color: white;
   transition: background-color 0.3s ease; 
   width: 100%; 
@@ -15,9 +12,9 @@
 }
 
 .header-scrolled {
-  /* background-color: rgba(0, 0, 0, 0.8);  */
   /* background-color: rgba(211, 193, 215, 0.8); */
-  /* background-color: rgba(255, 255, 255, .3);  */
+/*   background-color: WHITE; */
+/*   opacity: .8; */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -26,6 +23,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .logo-container {
@@ -46,8 +44,7 @@
 }
 
 .header-title .poll {
-  /* color: #fff; */
-  color: black
+  color: black;
 }
 
 .header-title .pal {
@@ -56,6 +53,16 @@
   -webkit-text-fill-color: transparent;
 }
 
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+/* Nav and auth buttons styling */
 .nav {
   flex-grow: 1;
   display: flex;
@@ -67,8 +74,6 @@
   list-style: none;
   display: flex;
   gap: 20px;
-  /* padding: 0; */
-  /* margin: 0; */
   color: white;
 }
 
@@ -88,41 +93,21 @@
   margin-top: 10px;
 }
 
-.auth-buttons{
+.auth-buttons {
   padding-top: 8px;
 }
 
-/* .sign-in-btn,
-.register-btn {
-  background-color: #f0f0f0;
-  color: black;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.sign-in-btn:hover,
-.register-btn:hover {
-  background: linear-gradient(to bottom right, #E6117C, #4A3CDB); 
-  color: white;
-} */
-
 .animated-button {
-  /* position: relative; */
   display: flex;
   align-items: center;
-  /* gap: 4px; */
   padding: 0px 15px;
-  /* border: 3px solid; */
   max-height: 40px;
   border-color: #E6117C;
-  /* border-color: linear-gradient(to right, #E6117C, #4A3CDB); */
   font-size: 16px;
   background-color: inherit;
   border-radius: 100px;
   font-weight: 900;
   font-family: 'Poppins', sans-serif;
-  /* color: white; */
   color: black;
   box-shadow: 0 0 0 .9px #4A3CDB;
   cursor: pointer;
@@ -130,63 +115,10 @@
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.animated-button svg {
-  position: absolute;
-  width: 24px;
-  fill: #E6117C;
-  z-index: 9;
-  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.animated-button .arr-1 {
-  right: 16px;
-}
-
-.animated-button .arr-2 {
-  left: -25%;
-}
-
-.animated-button .circle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
-  background-color: #E6117C;
-  border-radius: 50%;
-  opacity: 0;
-  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.animated-button .text {
-  position: relative;
-  z-index: 1;
-  transform: translateX(-12px);
-  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
 .animated-button:hover {
   box-shadow: 0 0 0 12px transparent;
-  /* color: white; */
   color: black;
   border-radius: 12px;
-}
-
-.animated-button:hover .arr-1 {
-  right: -25%;
-}
-
-.animated-button:hover .arr-2 {
-  left: 16px;
-}
-
-.animated-button:hover .text {
-  transform: translateX(12px);
-}
-
-.animated-button:hover svg {
-  fill: white;
 }
 
 .animated-button:active {
@@ -200,13 +132,12 @@
   opacity: 1;
 }
 
-
 .map-name-link,
 .home-name-link,
-.forum-name-link, .sign-in-link {
+.forum-name-link,
+.sign-in-link {
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
-  /* color: white; */
   color: black;
 }
 
@@ -215,4 +146,71 @@
 .forum-name-link:hover {
   text-decoration: none;
   color: #E6117C;
+}
+
+/* Responsive Design */
+@media (max-width: 850px) {
+  .header-content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .logo {
+    height: 40px;
+    width: 40px;
+  }
+  
+  .header-title {
+    font-size: 1.5rem;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-top: 10px;
+    padding: 8px 0px;
+  }
+
+  .nav-auth-container {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+
+  .nav-auth-container.open {
+    display: flex;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-item {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .auth-buttons {
+    margin: 0;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .animated-button{
+    font-size: 12px;
+  }
 }

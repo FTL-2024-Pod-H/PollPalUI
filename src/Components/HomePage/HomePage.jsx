@@ -8,32 +8,37 @@ import ElectionEducation from "./ElectionEducation/ElectionEducation";
 
 function HomePage() {
     
+    // useEffect(() => {
+    //     const sections = document.querySelectorAll('.section');
+
+    //     const options = {
+    //         threshold: 0.1
+    //     };
+
+    //     const observer = new IntersectionObserver((entries) => {
+    //         entries.forEach(entry => {
+    //             if (entry.isIntersecting) {
+    //                 entry.target.classList.add('visible');
+    //             } else {
+    //                 entry.target.classList.remove('visible');
+    //             }
+    //         });
+    //     }, options);
+
+    //     sections.forEach(section => {
+    //         observer.observe(section);
+    //     });
+
+    //     return () => {
+    //         sections.forEach(section => {
+    //             observer.unobserve(section);
+    //         });
+    //     };
+    // }, []);
+
     useEffect(() => {
-        const sections = document.querySelectorAll('.section');
-
-        const options = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                } else {
-                    entry.target.classList.remove('visible');
-                }
-            });
-        }, options);
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        return () => {
-            sections.forEach(section => {
-                observer.unobserve(section);
-            });
-        };
+        const searchLocationSection = document.querySelector(".section");
+        searchLocationSection.classList.add("visible");
     }, []);
 
     return (
