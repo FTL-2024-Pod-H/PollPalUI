@@ -78,19 +78,14 @@
 
 .feature-title {
     font-size: 16px;
-    /* font-weight: bold; */
-    /* color: #333; */
     margin-bottom: 5px;
     display: flex;
     align-items: center;
-    /* color:white; */
 }
 
 .feature-description {
     font-size: 16px;
-    /* color: #333; */
     font-family: 'Poppins', sans-serif;
-    /* color: white; */
 }
 
 .info-icon {
@@ -113,60 +108,48 @@
     transform-origin: right bottom;
     transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
     align-items: center;
-  }
-  
-  .card .main-content {
+}
+
+.card .main-content {
     flex: 1;
-  }
-  
-  .card .header span:first-child {
+}
+
+.card .header span:first-child {
     font-weight: 600;
     color: #717171;
     margin-right: 4px;
-  }
-  
-  .card .heading {
+}
+
+.card .heading {
     font-size: 24px;
     margin: 24px 0 16px;
     font-weight: 600;
-  }
-  
-  .card .categories {
+}
+
+.card .categories {
     display: flex;
     gap: 8px;
-  }
-  
-  .card .categories span {
+}
+
+.card .categories span {
     background-color: #e81cff;
     padding: 4px 8px;
     font-weight: 600;
     text-transform: uppercase;
     font-size: 12px;
     border-radius: 50em;
-  }
-  
-  .card .footer {
+}
+
+.card .footer {
     font-weight: 600;
     color: #717171;
     margin-right: 4px;
-  }
-  
-  .card:hover {
+}
+
+.card:hover {
     rotate: 8deg;
-  }
+}
 
-/* Media Queries for Responsive Design */
-/* @media (max-width: 768px) {
-    .section {
-        padding: 10px;
-    }
-
-    .card {
-        width: 100%;
-    }
-} */
-
-/* Media Queries for Responsive Design */
 @media (max-width: 1200px) {
     .features-container {
         justify-content: center;
@@ -190,7 +173,16 @@
     }
 
     .card {
-        width: calc(45% - 20px);
+        width: calc(45% - 40px);
+        height: 150px;
+    }
+
+    .feature-title {
+        font-size: 16px;
+    }
+    
+    .feature-description {
+        font-size: 12px;
     }
 }
 
@@ -204,6 +196,14 @@
     }
 
     .card {
-        width: calc(100% - 40px);
+        width: calc(100% - 90px);
+        height: 100px;
+    }
+    .feature-title {
+        font-size: 16px;
+    }
+    
+    .feature-description {
+        font-size: 12px;
     }
 }

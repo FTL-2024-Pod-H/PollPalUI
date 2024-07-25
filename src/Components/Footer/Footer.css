@@ -1,24 +1,24 @@
 .footer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    /* padding: 20px; */
-    background-color: #100720;
+    align-items: flex-start;
+    background-blend-mode: color;
     color: #fff;
     font-family: 'Poppins', sans-serif;
+    padding: 20px 50px;
+    position: relative;
 }
 
 .footer-left {
     display: flex;
-    align-items: center;
-    margin-left: 50px;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .branding {
     display: flex;
     align-items: center;
 }
-
 .poll-pal-icon {
     width: 50px; 
     height: auto;
@@ -39,31 +39,54 @@
     -webkit-text-fill-color: transparent;
 }
 
-.footer-center {
+/* .footer-center {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+} */
+
+.copyright {
+    font-size: 12px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10px;
+    margin-top: 20px;
+}
+
+.footer-right {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
 }
 
 .students {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
 }
 
 .student {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 0cqb;
+    margin-right: 20px;
 }
 
 .student-name {
-    margin-right: 10px;
+    margin-bottom: 10px;
     font-size: 14px;
 }
 
+.student-icons {
+    display: flex;
+    align-items: center;
+}
+
 .linkedin-link,
-.gmail-link {
+.github-link {
     margin-left: 5px;
 }
 
@@ -73,31 +96,11 @@
     height: 20px;
 }
 
-.github-icon{
+.github-icon {
     border-radius: 8px;
 }
 
-.footer-right {
-    display: flex;
-    align-items: center;
-    margin-right: 50px;
-}
-
-.copyright {
-    font-size: 14px;
-}
-
 @media (max-width: 768px) {
-    .description {
-        font-size: 20px; 
-    }
-
-    .copyright {
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 480px) {
     .footer {
         flex-direction: column;
         align-items: center;
@@ -105,22 +108,26 @@
 
     .footer-left,
     .footer-right {
-        align-items: center;
         margin: 10px 0;
     }
 
-    .students {
-        align-items: center;
+    .footer-center {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
     }
 
-    .student {
+    .students {
         flex-direction: column;
         align-items: center;
     }
 
-    .student-name,
-    .linkedin-link,
-    .gmail-link {
-        margin: 5px 0;
+    .student {
+        margin-bottom: 10px;
+    }
+
+    .student-name {
+        margin-bottom: 5px;
     }
 }

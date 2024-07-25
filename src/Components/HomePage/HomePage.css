@@ -6,11 +6,10 @@
 }
 
 .section {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
     transform: translateY(100px);
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
@@ -27,10 +26,14 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .search-location h2 {
-    font-size: 34px;
+    font-size: 42px;
+    padding-bottom: 20px;
     background: linear-gradient(to right, #E6117C, #4A3CDB);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -41,23 +44,46 @@
     padding: 80px;
 }
 
-.education-section {
-    display: none;
-    min-height: 100vh;
-    box-sizing: border-box;
-}
+/* .election-education {
+    height: calc(100vh - 500px); 
+    overflow-y: auto; 
+} */
 
-.homepage.scrolled .education-section {
-    display: block;
-}
 
-@media (max-width: 768px) {
+@media (max-width: 850px) {
     .search-about-container {
+        padding: 10px;
+        margin-bottom: 20px;
+        
+    }
+
+    .search-location h2 {
+        font-size: 28px; 
+        padding-bottom: 15px;
+        text-align: center;
         padding: 10px;
     }
 
     .education-section,
     .footer {
         padding: 10px;
+    }
+
+    .section{
+        height: auto;
+    }
+}
+
+
+@media (max-width: 480px){
+    .search-location h2 {
+        padding-bottom: 15px;
+        text-align: center;
+    }
+
+    .search-about-container {
+        padding: 10px;
+        margin-bottom: 20px;
+        
     }
 }

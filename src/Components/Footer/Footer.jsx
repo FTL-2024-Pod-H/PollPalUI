@@ -11,49 +11,58 @@ const Footer = () => {
                     <img src="/assets/poll-pal-icon.png" alt="Poll Pal Icon" className="poll-pal-icon" />
                     <p className="description">Poll<span className="poll-white">Pal</span></p>
                 </div>
+                <p className="copyright">© 2024 Future Force Tech Launchpad</p>
             </div>
-            <div className="footer-center">
+            {/* <div className="footer-center">
+                <p className="copyright">© 2024 Future Force Tech Launchpad</p>
+            </div> */}
+            <div className="footer-right">
                 <div className="students">
                     <div className="student">
                         <p className="student-name">Kiahna Isadore</p>
-                        <a href="https://www.linkedin.com/in/luckymuhoza/" target="_blank" rel="noopener noreferrer" className="linkedin-link">
-                            <img src={linkedinIcon} alt="LinkedIn" className="linkedin-icon" />
-                        </a>
-                        <a href="" target="_blank" rel="noopener noreferrer" className="gmail-link">
-                            <img src={githubIcon} alt="GitHub" className="github-icon" />
-                        </a>
+                        <div className="student-icons">
+                            <a href="https://www.linkedin.com/in/luckymuhoza/" target="_blank" rel="noopener noreferrer" className="linkedin-link">
+                                <img src={linkedinIcon} alt="LinkedIn" className="linkedin-icon" />
+                            </a>
+                            <a href="" target="_blank" rel="noopener noreferrer" className="github-link">
+                                <img src={githubIcon} alt="GitHub" className="github-icon" />
+                            </a>
+                        </div>
                     </div>
                     <div className="student">
-                        <p className="student-name">Hanna Abrahem </p>
-                        <a href="https://www.linkedin.com/in/samuelrubuelta/" target="_blank" rel="noopener noreferrer" className="linkedin-link">
-                            <img src={linkedinIcon} alt="LinkedIn" className="linkedin-icon" />
-                        </a>
-                        <a href="" target="_blank" rel="noopener noreferrer" className="gmail-link">
-                            <img src={githubIcon} alt="GitHub" className="github-icon" />
-                        </a>
+                        <p className="student-name">Hanna Abrahem</p>
+                        <div className="student-icons">
+                            <a href="https://www.linkedin.com/in/samuelrubuelta/" target="_blank" rel="noopener noreferrer" className="linkedin-link">
+                                <img src={linkedinIcon} alt="LinkedIn" className="linkedin-icon" />
+                            </a>
+                            <a href="" target="_blank" rel="noopener noreferrer" className="github-link">
+                                <img src={githubIcon} alt="GitHub" className="github-icon" />
+                            </a>
+                        </div>
                     </div>
                     <div className="student">
                         <p className="student-name">Lucky Beulla Muhoza</p>
-                        <a href="https://www.linkedin.com/in/hannaabrahem/" target="_blank" rel="noopener noreferrer" className="linkedin-link">
-                            <img src={linkedinIcon} alt="LinkedIn" className="linkedin-icon" />
-                        </a>
-                        <a href="https://github.com/luckybeulla" target="_blank" rel="noopener noreferrer" className="gmail-link">
-                            <img src={githubIcon} alt="GitHub" className="github-icon" />
-                        </a>
+                        <div className="student-icons">
+                            <a href="https://www.linkedin.com/in/hannaabrahem/" target="_blank" rel="noopener noreferrer" className="linkedin-link">
+                                <img src={linkedinIcon} alt="LinkedIn" className="linkedin-icon" />
+                            </a>
+                            <a href="https://github.com/luckybeulla" target="_blank" rel="noopener noreferrer" className="github-link">
+                                <img src={githubIcon} alt="GitHub" className="github-icon" />
+                            </a>
+                        </div>
                     </div>
                     <div className="student">
                         <p className="student-name">Samuel Rubuelta-Sanchez</p>
-                        <a href="https://www.linkedin.com/in/kiahnaisadore/" target="_blank" rel="noopener noreferrer" className="linkedin-link">
-                            <img src={linkedinIcon} alt="LinkedIn" className="linkedin-icon" />
-                        </a>
-                        <a href="" target="_blank" rel="noopener noreferrer" className="gmail-link">
-                            <img src={githubIcon} alt="GitHub" className="github-icon" />
-                        </a>
+                        <div className="student-icons">
+                            <a href="https://www.linkedin.com/in/kiahnaisadore/" target="_blank" rel="noopener noreferrer" className="linkedin-link">
+                                <img src={linkedinIcon} alt="LinkedIn" className="linkedin-icon" />
+                            </a>
+                            <a href="" target="_blank" rel="noopener noreferrer" className="github-link">
+                                <img src={githubIcon} alt="GitHub" className="github-icon" />
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="footer-right">
-                <p className="copyright">© 2024 Future Force Tech Launchpad</p>
             </div>
         </footer>
     );
