@@ -30,8 +30,10 @@
     "react-password-strength-bar": "^0.4.1",
     "react-router-dom": "^6.25.1",
     "react-simple-maps": "^3.0.0",
+    "react-swipeable": "^7.0.1",
     "react-toastify": "^10.0.5",
-    "react-tooltip": "^5.27.1"
+    "react-tooltip": "^5.27.1",
+    "swiper": "^11.1.7"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

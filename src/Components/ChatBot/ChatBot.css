@@ -128,7 +128,10 @@
 
 .tooltip-text {
     visibility: hidden;
-    width: 120px;
+    width: 55px;
+    height: 15px;
+    font-size: 12px;
+    font-family: 'Times New Roman', Times, serif;
     background-color: black;
     color: white;
     text-align: center;
@@ -136,16 +139,16 @@
     padding: 5px;
     position: absolute;
     z-index: 1001;
-    bottom: -90%; 
+    bottom: 90%; 
     left: 90%;
-    margin-left: -120px;
+    margin-left: -80px;
     opacity: 0;
     transition: opacity 0.3s;
 }
 
 .button:hover .tooltip-text {
     visibility: visible;
-    opacity: 1;
+    opacity: .6;
 }
 
 .messages-container {

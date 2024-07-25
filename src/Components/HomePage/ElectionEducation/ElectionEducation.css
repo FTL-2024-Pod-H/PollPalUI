@@ -12,12 +12,14 @@
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  /* align-items: center; */
+  align-items: center;
   justify-content: space-around;
   /* justify-content: center; */
-  flex-wrap: wrap;
-  gap: 20px;
+  /* flex-wrap: wrap; */
+  gap: 40px;
   padding: 20px;
+  scroll-behavior: smooth;
+  overflow-x: auto;
 }
 
 .info-title, .info-title h2{
@@ -91,32 +93,50 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 1500px) {
+  #education-section {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    max-width: 100%;
+  }
+
   .info-item {
-    width: 75%;
-    max-width: 90%;
-    height: 150px;
+    height: 350px;
+    min-width: 300px;
   }
 
   .info-title h2 {
-    font-size: 22px; 
+    font-size: 26px;
     padding-top: 20px;
   }
+
   .info-title p {
-    font-size: 12px; 
+    font-size: 12px;
+  }
+
+  .arrow {
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
   .info-title h2 {
-    font-size: 18px; 
+    font-size: 22px;
+    padding-top: 0px;
   }
 
   .info-item h3 {
-    font-size: 1em; 
+    font-size: 1em;
   }
 
   .info-title p {
-    font-size: 12px; 
+    font-size: 12px;
+  }
+
+  .info-item {
+    height: 300px;
+    min-width: 250px;
   }
 }
+

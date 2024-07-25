@@ -3,9 +3,6 @@
     justify-content: space-between;
     padding: 40px 20px;
     flex-wrap: wrap;
-    /* height: 100%; */
-    /* background-color: white; */
-    /* background: linear-gradient(to bottom,rgb(227, 213, 255),rgb(255, 231, 231)); */
     background: linear-gradient(to right, #000000, #2D0047);
 }
 
@@ -16,7 +13,6 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    /* text-align: center; */
 }
 
 .about-title {
@@ -26,58 +22,36 @@
     background: linear-gradient(to right, #E6117C, #4A3CDB);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    /* font-family: 'Arial', sans-serif; */
-    /* font-family: 'Times New Roman', Times, serif; */
     font-family: 'Poppins', sans-serif;
 }
 
 
 .about-subtitle {
     font-size: 24px;
-    /* color: #333; */
     margin-bottom: 40px;
-    /* font-family: 'Arial', sans-serif; */
-    /* font-family: 'Times New Roman', Times, serif; */
     font-family: 'Poppins', sans-serif;
 }
 
 .features-container {
     flex: 2;
     display: flex;
-    gap: 10px;
-    justify-content: flex-end;
+    gap: 30px;
+    /* justify-content: flex-end; */
     flex-wrap: wrap;
+    /* justify-content: space-around; */
     height: 80%;
-    /* width: 50%; */
 }
-/* .card {
-    display: flex;
-    align-items: center;
-    background: linear-gradient(to bottom,rgb(227, 213, 255),rgb(255, 231, 231));
-    padding: 20px;
-    border-radius:30%;
-    width: calc(30% - 20px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-} */
-
-/* .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-} */
 
 .feature-content {
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', sans-serif;
-    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
-    /* font-style: italic; */
 }
 
 
 
 .feature-title {
-    font-size: 16px;
+    font-size: 20px;
     margin-bottom: 5px;
     display: flex;
     align-items: center;

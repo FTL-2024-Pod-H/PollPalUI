@@ -72,6 +72,12 @@
     .section{
         height: auto;
     }
+
+    .education-section {
+        display: flex;
+        flex-direction: row;
+        overflow-x: scroll;
+    }
 }
 
 
