@@ -58,8 +58,13 @@ function Forum(){
         }
 
         // fetchPosts();
-        fetchPosts(currentPage, postsPerPage);
-    }, [ viewMode, currentPage ]);
+        // fetchPosts(currentPage, postsPerPage);
+        if (viewMode === "your" && currentUser) {
+            fetchUserPosts(currentUser, currentPage, postsPerPage);
+        } else {
+            fetchPosts(currentPage, postsPerPage);
+        }
+    }, [ viewMode, currentPage, postsPerPage ]);
 
 
     const fetchPosts = async (page = 1, limit = 10) => {
@@ -70,6 +75,17 @@ function Forum(){
             setTotalPosts(response.data.totalPosts);
         } catch (error) {
             console.error("Error fetching posts:", error);
+        }
+    };
+
+    const fetchUserPosts = async (userId, page = 1, limit = 10) => {
+        try {
+            const response = await axios.get(`http://localhost:3000/posts/user/${userId}?page=${page}&limit=${limit}`);
+            console.log("Fetched User Posts:", response.data.posts);
+            setPosts(response.data.posts);
+            setTotalPosts(response.data.totalPosts);
+        } catch (error) {
+            console.error("Error fetching user posts:", error);
         }
     };
 
@@ -125,9 +141,17 @@ function Forum(){
 
     const totalPages = Math.ceil(totalPosts / postsPerPage);
 
+    // const handlePageClick = (pageNumber) => {
+    //     setCurrentPage(pageNumber);
+    //     fetchPosts(pageNumber, postsPerPage);
+    // };
     const handlePageClick = (pageNumber) => {
         setCurrentPage(pageNumber);
-        fetchPosts(pageNumber, postsPerPage);
+        if (viewMode === "your" && currentUser) {
+            fetchUserPosts(currentUser, pageNumber, postsPerPage);
+        } else {
+            fetchPosts(pageNumber, postsPerPage);
+        }
     };
 
 
@@ -213,9 +237,9 @@ function Forum(){
                                 backgroundColor: item.page === currentPage ? '#E6117C' : 'transparent', 
                                 borderRadius: 1,
                                 border: '1px solid', 
-                                borderColor: item.page === currentPage ? '#E6117C' : 'transparent', 
+                                borderColor: item.page === currentPage ? '#E5E2E2' : 'transparent', 
                                 '&:hover': {
-                                  backgroundColor: item.page === currentPage ? 'yellow' : '#999999', 
+                                  backgroundColor: item.page === currentPage ? 'yellow' : '#E5E2E2', 
                                 },
                                 marginBottom: '30px',
                               }}
