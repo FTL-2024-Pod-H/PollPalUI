@@ -4,6 +4,7 @@
   background-color: white;
   font-family: "poppins", arial;
 }
+
 .no-elections-response {
   margin-top: 200px;
   color: black;
@@ -24,6 +25,7 @@
   /* background: white; */
   /* z-index: 1; */
 }
+
 /* .change-address-button {
   color: black;
 
@@ -42,6 +44,7 @@
   bottom: -2px;
   left: 0;
   transition: width 0.3s ease-in-out;
+
 }
 .change-address-button:hover::after {
   width: 100%;
@@ -77,6 +80,7 @@
 
   cursor: pointer;
 }
+
 
 .change-address-button::after {
   content: "";

@@ -46,7 +46,6 @@ function Forum(){
 
 
     useEffect(() => {
-        // CHECK IF LOGGED IN WITH TOKEN
         const token = localStorage.getItem("token");
         if (token) {
             try {
@@ -55,11 +54,16 @@ function Forum(){
             } catch (error) {
                 console.error("Error decoding token: ", error);
             }
+        }else{
+            setCurrentUser(null);
         }
-
-        // fetchPosts();
-        fetchPosts(currentPage, postsPerPage);
-    }, [ viewMode, currentPage ]);
+        if (viewMode === "your" && currentUser) {
+            setCurrentPage(1)
+            fetchUserPosts(currentUser, currentPage, postsPerPage);
+        } else {
+            fetchPosts(currentPage, postsPerPage);
+        }
+    }, [ viewMode, currentPage, postsPerPage, currentUser]);
 
 
     const fetchPosts = async (page = 1, limit = 10) => {
@@ -70,6 +74,17 @@ function Forum(){
             setTotalPosts(response.data.totalPosts);
         } catch (error) {
             console.error("Error fetching posts:", error);
+        }
+    };
+
+    const fetchUserPosts = async (userId, page = 1, limit = 10) => {
+        try {
+            const response = await axios.get(`http://localhost:3000/posts/user/${userId}?page=${page}&limit=${limit}`);
+            console.log("Fetched User Posts:", response.data.posts);
+            setPosts(response.data.posts);
+            setTotalPosts(response.data.totalPosts);
+        } catch (error) {
+            console.error("Error fetching user posts:", error);
         }
     };
 
@@ -125,9 +140,17 @@ function Forum(){
 
     const totalPages = Math.ceil(totalPosts / postsPerPage);
 
+    // const handlePageClick = (pageNumber) => {
+    //     setCurrentPage(pageNumber);
+    //     fetchPosts(pageNumber, postsPerPage);
+    // };
     const handlePageClick = (pageNumber) => {
         setCurrentPage(pageNumber);
-        fetchPosts(pageNumber, postsPerPage);
+        if (viewMode === "your" && currentUser) {
+            fetchUserPosts(currentUser, pageNumber, postsPerPage);
+        } else {
+            fetchPosts(pageNumber, postsPerPage);
+        }
     };
 
 
@@ -159,6 +182,8 @@ function Forum(){
                         if (currentUser) {
                             setViewMode("your");
                             setClickedButton('your');
+                            setCurrentPage(1)
+                            fetchUserPosts(currentUser, currentPage, postsPerPage);
                         } else {
                             setShowLoginPromptModal(true);
                         }
@@ -213,9 +238,9 @@ function Forum(){
                                 backgroundColor: item.page === currentPage ? '#E6117C' : 'transparent', 
                                 borderRadius: 1,
                                 border: '1px solid', 
-                                borderColor: item.page === currentPage ? '#E6117C' : 'transparent', 
+                                borderColor: item.page === currentPage ? '#E5E2E2' : 'transparent', 
                                 '&:hover': {
-                                  backgroundColor: item.page === currentPage ? 'yellow' : '#555', 
+                                  backgroundColor: item.page === currentPage ? 'yellow' : '#E5E2E2', 
                                 },
                                 marginBottom: '30px',
                               }}
@@ -223,10 +248,10 @@ function Forum(){
                         )}
                         sx={{
                         '.MuiPaginationItem-root': {
-                            color: 'white', 
+                            color: 'black', 
                         },
                         '.MuiPaginationItem-previousNext': {
-                            color: 'white', 
+                            color: 'black', 
                         }
                         }}
                     />
