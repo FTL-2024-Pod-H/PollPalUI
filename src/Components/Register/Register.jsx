@@ -108,7 +108,7 @@ const Register = () => {
 
       <div className="social-message">
         <div className="line"></div>
-        <p className="message">Login with social accounts</p>
+        <p className="message">Sign up with social accounts</p>
         <button onClick={handleGoogleSignup}>Google Login</button>
         <div className="line"></div>
       </div>

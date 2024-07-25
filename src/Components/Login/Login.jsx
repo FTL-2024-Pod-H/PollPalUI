@@ -55,6 +55,8 @@ const Login = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleLogin}>Login</button>
+      <p className="message">Login with social accounts</p>
+      <button onClick={handleGoogleLogin}>Google Login</button>
 
       <p className="signup"> Don&apos;t have an account? 
     <a rel="noopener noreferrer" href="http://localhost:5173/register" >Sign up</a>
