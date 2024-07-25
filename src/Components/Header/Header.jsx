@@ -4,6 +4,7 @@ import "./Header.css";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +20,11 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLogout = () => {
+    console.log("Logging out");
+    localStorage.removeItem("token");
+    navigate("/");
+  };
   return (
     <>
       <header className={`header ${scrolled ? "header-scrolled" : ""}`}>
@@ -65,8 +71,14 @@ const Header = () => {
               <Link to="/register" className="link-button">
               <button className="animated-button">Register</button>
               </Link> */}
+
+
+              {/* IF THE USER IS LOGIN*/}
               {localStorage.getItem("token") ? (
-                <p>user</p>
+                <>
+                  <button onClick={handleLogout} className="animated-button">Sign out</button>
+                  <p>user</p>
+                </>
               ) : (
                 <>
                   <Link to={`/login`} className="sign-in-link">
@@ -77,6 +89,8 @@ const Header = () => {
                     <button className="animated-button">Register</button>
                   </Link>
                 </>
+
+                
               )}
             </div>
           </div>
