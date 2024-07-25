@@ -1,5 +1,10 @@
-import React from "react";
-import { useLoadScript, GoogleMap, MarkerF } from "@react-google-maps/api";
+import React, { useState } from "react";
+import {
+  useLoadScript,
+  GoogleMap,
+  MarkerF,
+  InfoWindowF,
+} from "@react-google-maps/api";
 const LIBRARIES = ["places"];
 
 const MapContainer = ({ locations }) => {
@@ -7,7 +12,18 @@ const MapContainer = ({ locations }) => {
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
     libraries: LIBRARIES,
   });
-  console.log(locations);
+
+  const [selectedMarker, setSelectedMarker] = useState(null);
+
+  const handleMarkerClick = (location) => {
+    setSelectedMarker(location);
+  };
+
+  const handleInfoWindowClose = () => {
+    setSelectedMarker(null);
+  };
+
+  console.log("locations", locations);
   return (
     isLoaded && (
       <GoogleMap
@@ -22,8 +38,24 @@ const MapContainer = ({ locations }) => {
               lat: parseFloat(location.latitude),
               lng: parseFloat(location.longitude),
             }}
+            onClick={() => handleMarkerClick(location)}
           />
         ))}
+
+        {selectedMarker && (
+          <InfoWindowF
+            position={{
+              lat: parseFloat(selectedMarker.latitude),
+              lng: parseFloat(selectedMarker.longitude),
+            }}
+            onCloseClick={handleInfoWindowClose}
+          >
+            <div>
+              <h3>{selectedMarker.name}</h3>
+              <h4>{selectedMarker.address}</h4>
+            </div>
+          </InfoWindowF>
+        )}
       </GoogleMap>
     )
   );
