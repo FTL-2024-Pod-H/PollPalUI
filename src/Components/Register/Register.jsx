@@ -137,12 +137,14 @@ const Register = () => {
       </div>
       <div className="social-message">
         <div className="line"></div>
-        <p className="message">Login with social accounts</p>
+        <p className="message">Login with social accounts coming soon</p>
         <div className="line"></div>
       </div>
-      <p className="signup">
-        Don&apos;t have an account? <a rel="noopener noreferrer" href="#" className="">Sign up</a>
-      </p>
+
+//       <p className="signup">
+//         Don&apos;t have an account? <a rel="noopener noreferrer" href="#" className="">Sign up</a>
+//       </p>
+
     </div>
   );
 };
