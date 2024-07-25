@@ -51,8 +51,8 @@ const MapContainer = ({ locations }) => {
             onCloseClick={handleInfoWindowClose}
           >
             <div>
-              <h3>{selectedMarker.name}</h3>
-              <h4>{selectedMarker.address}</h4>
+              <h3 className="marker-name">{selectedMarker.name}</h3>
+              <h4 className="marker-address">{selectedMarker.address}</h4>
             </div>
           </InfoWindowF>
         )}

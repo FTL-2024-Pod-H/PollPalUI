@@ -133,6 +133,13 @@ details {
   margin-bottom: 15px;
 }
 
+.marker-name {
+  margin: 0 0 10px 0;
+}
+
+.gm-ui-hover-effect {
+  height: 40px;
+}
 .reg-link-buttons {
   display: flex;
   flex-direction: row;
