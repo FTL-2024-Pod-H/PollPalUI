@@ -1,10 +1,12 @@
 .forum-page-container{
     padding-top: 100px;
+    /* background: linear-gradient(to right, #000000, #2D0047); */
     
 }
 .forum-title{
     margin-bottom: 13px;
-    color:white;
+    /* color:white; */
+    color: black;
 }
 .forum-description{
     color: gray;
@@ -110,7 +112,8 @@
     margin:0 18%;
     position:relative;
     cursor: pointer;
-    color: white;
+    /* color: white; */
+    color: black;
 
 }
 .view-all-posts::after, .your-posts::after{

@@ -12,19 +12,18 @@
     align-items: flex-start;
     flex-direction: column;
     justify-content: center;
-    border: .5px solid black;
+    /* border: .5px solid black; */
     box-shadow: 0 0px 6px ;
     padding: 20px;
     border-radius: 15px;
     margin: 20px auto;
-    /* background: white; */
     background: rgba(255, 255, 255, 0.7);
     z-index: 1;
     width: 100%; 
     max-width: 1000px; 
 }
-.each-election::before {
-  content: "";
+.each-election::after {
+  /* content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -36,7 +35,18 @@
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: destination-out;
   mask-composite: exclude;
-  z-index: -1;
+  z-index: -1; */
+  content: '';
+    position: absolute;
+    bottom: -5px; 
+    left: 0;
+    width: 100%;
+    height: 1px; 
+    background: linear-gradient(144deg,#E6117C,#4A3CDB 50%,#00ddeb);
+    /* background: black; */
+    opacity: 0.7; /* Adjust opacity as desired */
+    z-index: -1;
+    border-radius: 15px; 
 }
 
 .election-name-link {

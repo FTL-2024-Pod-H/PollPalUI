@@ -3,7 +3,8 @@
   padding-top: 100px;
 }
 .no-elections-response{
-  color: white;
+  /* color: white; */
+  color: black;
 }
 .title-section{
     position:relative;
@@ -23,7 +24,8 @@
 .change-address-button{
     /* color: black;
     background-color: white; */
-    color: white;
+    /* color: white; */
+    color: black;
     /* background-color: black; */
     background: rgba(255, 255, 255, 0);
     border: none;
@@ -48,7 +50,8 @@
 }
 .showing-elections-for{
     font-size: 20px;
-    color: white;
+    /* color: white; */
+    color: black;
 }
 .address{
     font-size: 1rem;
