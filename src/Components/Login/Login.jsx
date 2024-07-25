@@ -50,7 +50,7 @@ const Login = () => {
       />
       <button onClick={handleLogin}>Login</button>
       <button onClick={() => navigate("/register")}>Go to register</button>
-      <p className="signup"> Don&apos;t have an account? <a rel="noopener noreferrer" href="#" class="">Sign up</a>
+      <p className="signup"> Don&apos;t have an account? <a rel="noopener noreferrer" href="/register" class="">Sign up</a>
       </p>
     </div>
 

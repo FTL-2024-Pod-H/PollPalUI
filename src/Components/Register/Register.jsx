@@ -141,9 +141,9 @@ const Register = () => {
         <div className="line"></div>
       </div>
 
-//       <p className="signup">
-//         Don&apos;t have an account? <a rel="noopener noreferrer" href="#" className="">Sign up</a>
-//       </p>
+       {/* <p className="signup">
+         Don&apos;t have an account? <a rel="noopener noreferrer" href="#" className="">Sign up</a>
+       </p> */}
 
     </div>
   );
