@@ -4,6 +4,7 @@ import "./Header.css";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,9 +20,14 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLogout = () => {
+    console.log("Logging out");
+    localStorage.removeItem("token");
+    navigate("/");
+  };
+
   return (
     <>
-
       <header className={`header ${scrolled ? "header-scrolled" : ""}`}>
         <div className="header-content">
           <div className="logo-container">
@@ -59,23 +65,31 @@ const Header = () => {
             </nav>
             <div className="auth-buttons">
               {/* <button className="sign-in-btn">Sign in</button>
-              <button className="register-btn">Register</button> */}
+              <button className="register-btn">Register</button> 
 
-              {/* <Link to="/login" className="link-button">
+              <Link to="/login" className="link-button">
               <button className="animated-button">Sign in</button>
               </Link>
               <Link to="/register" className="link-button">
               <button className="animated-button">Register</button>
-              </Link> */}
+              </Link>  */}
 
-              <Link to={`/login`} className="sign-in-link">
-                <button className="animated-button">Sign in</button>
-              </Link>
-              {/* <button className="animated-button">Register</button> */}
-               <Link to="/register" className="link-button">
-              <button className="animated-button">Register</button>
-              </Link>
-
+              {localStorage.getItem("token") ? (
+                <>
+                  <button onClick={handleLogout} className="animated-button">
+                    Sign out
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link to="/login" className="sign-in-link">
+                    <button className="animated-button">Sign in</button>
+                  </Link>
+                  <Link to="/register" className="link-button">
+                    <button className="animated-button">Register</button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -83,5 +97,4 @@ const Header = () => {
     </>
   );
 };
-
 export default Header;
