@@ -12,23 +12,24 @@
   z-index: 1000;
   color: black;
   text-align: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .modal-content {
   background: black;
   padding: 20px;
-  border-radius: 8px;
-  width: 900px;
+  border-radius: 5px;
+  width: 600px;
+  height: auto;
   position: relative;
 }
 
 .close-button {
   background: linear-gradient(to bottom right, #e6117c, #4a3cdb);
   color: white;
-  padding: 10px 20px;
+  padding: 5px 15px;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 30%;
   font-size: 16px;
   border: none;
   position: absolute;
@@ -46,6 +47,11 @@
 
 .modal-body h3 {
   margin: 0;
+}
+
+.modal-title {
+  font-size: 25px;
+  font-family: "Poppins", sans-serif;
 }
 
 .modal-text {
@@ -69,7 +75,7 @@
   color: white;
   padding: 10px 20px;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 30%;
   font-size: 24px;
   border: none;
   position: absolute;

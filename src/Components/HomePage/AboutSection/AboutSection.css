@@ -45,7 +45,7 @@
     flex: 2;
     display: flex;
     gap: 10px;
-    justify-content: space-around;
+    justify-content: flex-end;
     flex-wrap: wrap;
     height: 80%;
     /* width: 50%; */

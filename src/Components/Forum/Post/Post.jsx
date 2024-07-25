@@ -1,13 +1,10 @@
 import "./Post.css";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp as faThumbsUpRegular } from '@fortawesome/free-regular-svg-icons';
 import { faThumbsUp as faThumbsUpSolid, faReply } from '@fortawesome/free-solid-svg-icons';
-
-// DUMMY DATA
-const dummyUserFullName = "John Doe";
-const dummyUsername = "johndoe";
-const dummyUserPostContent = "This is a dummy post content. Lorem ipsum dolor sit amet.";
+import NotLoggedPrompt from "../NotLoggedPrompt/NotLoggedPrompt";
 
 function timeSince(date) {
     const seconds = Math.floor((new Date() - new Date(date)) / 1000);
@@ -35,25 +32,46 @@ function timeSince(date) {
 }
 
 
-// DUMMY DATA
-// COMMENT OUT AND UNCOMMENT WHEN READY TO PASS INFO
-function Post({userFullName, username, userPostContent, onDelete, originalLikeCount, showDelete, timestamp}){
-    
-    const initialLikeCount = 100;
-    const[likeCount, setLikeCount] = useState(initialLikeCount);
-    // const[likeCount, setLikeCount] = useState(original);
+
+function Post({userFullName, username, userAvatar, userPostContent, onDelete, likeCount, showDelete, timestamp, postId, currentUser, fetchPosts, page, limit}){
+
+    const[currentlikeCount, setCurrentLikeCount] = useState(likeCount);
     const[isLiked, setIsLiked] = useState(false);
+    const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
+
     
-    const handleLikeClick = () => {
-        if(isLiked){
-            setLikeCount(likeCount - 1);
+    const fetchLikeStatus = async () => {
+        try {
+            const response = await axios.get(`http://localhost:3000/posts/${postId}/liked-by/${currentUser}`);
+            setIsLiked(response.data.isLiked);
+        } catch (error) {
+            console.error('Error fetching like status:', error);
         }
-        else{
-            setLikeCount(likeCount + 1);
-        }
-        setIsLiked(!isLiked);
+    };
+
+    useEffect(() => {
         
-    }
+        fetchLikeStatus();
+    }, [postId, currentUser]);
+
+    const handleLikeClick = async () => {
+        if (!currentUser) {
+            setShowLoginPromptModal(true);
+            return;
+        }
+        try {
+            if (isLiked) {
+                await axios.post(`http://localhost:3000/posts/${postId}/unlike`, { user_id: currentUser });
+                fetchPosts(page, limit);
+            } else {
+                await axios.post(`http://localhost:3000/posts/${postId}/like`, { user_id: currentUser });
+                fetchPosts(page, limit);
+            }
+            setIsLiked(!isLiked);
+        } catch (error) {
+            console.error("Error liking/unliking post:", error);
+        }
+    };
     
     return (
         <>
@@ -62,20 +80,20 @@ function Post({userFullName, username, userPostContent, onDelete, originalLikeCo
                 <div className="forum-post-details">
                     <div className="userinformation">
                         <img
-                            src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
-                            alt="Default User"
+                            // src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+                            // alt="Default User"
+                            src={userAvatar}
+                            alt="User Avatar"
                             className="user-image"
                         />
-                        {/* <h2 className="forum-fullname">Full Name</h2> */}
-                        <h2 className="forum-fullname">{userFullName}</h2>
+                        {/* <h2 className="forum-fullname">{userFullName}</h2> */}
+                        <h2 className="forum-fullname">@{username}</h2>
                         <div className="forum-username-timestamp">
-                            {/* <h3 className="forum-username">@username</h3> */}
-                            <h3 className="forum-username">@{username}</h3>
+                            {/* <h3 className="forum-username">@{username}</h3> */}
                             <span className="timestamp">{timeSince(timestamp)}</span>
                         </div>
                     </div>
 
-                    {/* <p className="forum-post-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, neque, obcaecati laboriosam dolores ratione ullam commodi porro, voluptas earum suscipit esse? Numquam obcaecati veritatis ullam voluptas dolorum quam asperiores iure.</p> */}
                     <p className="forum-post-text">{userPostContent}</p>
 
                     <div className="like-and-delete">
@@ -113,6 +131,7 @@ function Post({userFullName, username, userPostContent, onDelete, originalLikeCo
                                 ></path>
                                 </svg>
                             </button>
+                            <span className="tooltip">Replies coming soon</span>
                             {/* <span class="tooltip">Comment</span> */}
                         </div>
                         {showDelete && (
@@ -125,7 +144,9 @@ function Post({userFullName, username, userPostContent, onDelete, originalLikeCo
                     </div>
                 </div>
             </div>
-        
+            {showLoginPromptModal && (
+                <NotLoggedPrompt onClose={() => setShowLoginPromptModal(false)} />
+            )}
         </>
     )
 };

@@ -1,3 +1,4 @@
+/* ElectionEducation.css */
 .info-section{
   width: 90%;
   min-height: 100vh;
@@ -14,14 +15,16 @@
   padding: 20px;
 }
 
-.info-title{
-  /* color: black; */
+.info-title, .info-title h2{
   font-family: 'Poppins', sans-serif;
   text-align: center;
+  background: linear-gradient(to right, #E6117C, #4A3CDB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.info-title h2{
   font-size: 26px;
-    background: linear-gradient(to right, #E6117C, #4A3CDB);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .info-item {
@@ -45,6 +48,7 @@
   color: white;
   font-size: 1.5em;
   text-align: center;
+  padding: 10px;
 }
 
 .info-item::before {
@@ -81,3 +85,5 @@
   transition: all 0.1s;
   box-shadow: 0px 0px 15px 5px rgb(0, 0, 0);
 }
+
+

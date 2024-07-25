@@ -1,6 +1,8 @@
+// ElectionEducation.jsx
 import React, { useState } from "react";
 import "./ElectionEducation.css";
 import EducationModal from "./EducationModal";
+// import ChatBot from "../../ChatBot/ChatBot";
 
 const ElectionEducation = () => {
   const [showModal, setShowModal] = useState(false);
@@ -44,13 +46,31 @@ const ElectionEducation = () => {
     },
     {
       title: "Political Parties",
-      images: ["assets/parties.png"],
-      blurbs: ["blurb 1", "blurb 2", "blurb 3"],
+      images: [
+        "assets/parties1.webp",
+        "assets/parties4.png",
+        "assets/parties.png",
+        "assets/oneparty.webp",
+      ],
+      blurbs: [
+        "Political parties are groups of people that work to be in charge of a government. The main way in which a political party gains power is through the election of its members to office. In many countries the party with the most members in the legislature has great control over the government",
+        "The number of political parties differs from country to country. Some countries have several parties, and all of them may be represented in the government. Many European countries have three or more major political parties",
+        "Other countries function with only two major parties. In the United States the two main political parties are the Democratic Party and the Republican Party. Other parties, called third parties, may exist in such a system. However, most people support either of the two main parties. It is almost impossible for third parties to gain power.",
+        "Still other countries have one-party systems. China, Cuba, and several African countries have such systems. There all members of the government must belong to the same party. People might form opposing parties, but their candidates may not run for office. Opposing parties may even be illegal. Such groups are sometimes called underground political parties.",
+      ],
     },
     {
       title: "Congress & Terms",
-      images: ["assets/congress.png"],
-      blurbs: ["blurb 1", "blurb 2", "blurb 3"],
+      images: [
+        "assets/congress.png",
+        "assets/congress2.jpg",
+        "assets/congress3.png",
+      ],
+      blurbs: [
+        "Congress is the legislative branch of the federal government that represents the American people and makes the nation's laws. It shares power with the executive branch, led by the president, and the judicial branch, whose highest body is the Supreme Court of the United States. Of the three branches of government, Congress is the only one elected directly by the people.",
+        "Congress has the power to make laws, declare war, raise and provide public money and oversee its proper expenditure, impeach and try federal officers, approve presidential appointments, and approve treaties negotiated by the president",
+        "Congress is divided into two institutions: the House of Representatives and the Senate. While both share legislative responsibilities, each house also has special constitutional duties and powers. Every state has an equal voice in the Senate, while representation in the House of Representatives is based on the size of each state’s population.",
+      ],
     },
   ];
 
@@ -106,6 +126,7 @@ const ElectionEducation = () => {
           </div>
         ))}
       </div>
+      {/* <ChatBot/> */}
       <EducationModal
         show={showModal}
         onClose={handleCloseModal}

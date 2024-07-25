@@ -1,4 +1,4 @@
-
+/* SearchLocation.css */
 .search-location-container {
     /* width: 100%;
     max-width: 600px;
@@ -72,4 +72,29 @@
 
 .input::placeholder{
     color: white;
+}
+
+.toast-container {
+    position: fixed;
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; 
+    max-width: 30%;
+    width: auto;
+    padding: 0;
+}
+
+.toast-container .Toastify__toast {
+    margin: 0 auto;
+}
+
+.toast-container .Toastify__toast--error {
+    background-color: white; 
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.toast-container .Toastify__toast-body {
+    text-align: center;
 }

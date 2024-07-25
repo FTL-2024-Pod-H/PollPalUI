@@ -13,6 +13,8 @@ import InteractiveMap from "./Components/InteractiveMap/InteractiveMap";
 import Register from "./Components/Register/Register";
 import Login from "./Components/Login/Login";
 import Callback from "./Callback.jsx";
+import ChatBot from "./Components/ChatBot/ChatBot.jsx";
+
 
 function App() {
   return (
@@ -23,7 +25,6 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/callback" element={<Callback />} />
-
             <Route path="/results" element={<ElectionResults />} />
             <Route path="/search" element={<SearchLocation />} />
             <Route path="/forum" element={<Forum />} />
@@ -31,10 +32,12 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
           </Routes>
+          <ChatBot/>
         </main>
         <Footer />
       </div>
     </BrowserRouter>
+
   );
 }
 

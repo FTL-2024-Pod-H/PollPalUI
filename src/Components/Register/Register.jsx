@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Register.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ReactPasswordChecklist from "react-password-checklist";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -12,6 +13,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const navigate = useNavigate(); //navigating through different pages
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
 
   //handle register and toast errors
   const handleRegister = async () => {
@@ -19,8 +21,12 @@ const Register = () => {
       toast.error("Please fill in all fields.");
       return;
     }
-    if (password !== confirmPassword) {
-      toast.error("Passwords do not match!");
+    // if (password !== confirmPassword) {
+    //   toast.error("Passwords do not match!");
+    //   return;
+    // }
+    if (!isPasswordValid) {
+      toast.error("Password does not meet the checklist requirements.");
       return;
     }
     try {
@@ -84,6 +90,15 @@ const Register = () => {
         placeholder="Confirm Password"
         onChange={(e) => setConfirmedPassword(e.target.value)}
       />
+      <div className="password-checklist">
+        <ReactPasswordChecklist
+          rules={["minLength", "specialChar", "number", "capital", "match"]}
+          minLength={8}
+          value={password}
+          valueAgain={confirmPassword}
+          onChange={(isValid) => {setIsPasswordValid(isValid)}}
+        />
+      </div>
       <input
         type="address"
         placeholder="Address"
