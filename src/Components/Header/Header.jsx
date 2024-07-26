@@ -84,7 +84,7 @@ const Header = () => {
                        {/* <button onClick={handleLogout} className="animated-button" >
                          Sign out
                        </button> */}
-                       <Link className="sign-in-link">
+                       <Link to={`/`} className="sign-in-link">
                          <button onClick={handleLogout} className="animated-button">Sign out</button>
                        </Link>
                      </>

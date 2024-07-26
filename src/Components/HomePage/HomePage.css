@@ -44,6 +44,17 @@
     padding: 80px;
 }
 
+#fade-in-section {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 2s ease-out, transform 2s ease-out; 
+}
+
+#fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* .election-education {
     height: calc(100vh - 500px); 
     overflow-y: auto; 
