@@ -35,7 +35,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <ToastContainer position="top-center" autoClose={3000} hideProgressBar={true}/>
-      <h1>Login to Poll Pal</h1>
+      <h1>Login to PollPal</h1>
       <input
         type="text"
         placeholder="Username"
