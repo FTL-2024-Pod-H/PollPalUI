@@ -137,7 +137,7 @@ const Register = () => {
       </div>
       <div className="social-message">
         <div className="line"></div>
-        <p className="message">Login with social accounts coming soon</p>
+        <p className="message">Register with social accounts coming soon</p>
         <div className="line"></div>
       </div>
 

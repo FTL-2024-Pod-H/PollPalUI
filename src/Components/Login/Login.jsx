@@ -48,8 +48,10 @@ const Login = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleLogin}>Login</button>
-      <button onClick={() => navigate("/register")}>Go to register</button>
+      <div className="login-buttons">
+      <button onClick={handleLogin} className="animated-button" >Login</button>
+      <button onClick={() => navigate("/register")} className="animated-button" >Go to register</button>
+      </div>
       <p className="signup"> Don&apos;t have an account? <a rel="noopener noreferrer" href="/register" class="">Sign up</a>
       </p>
     </div>

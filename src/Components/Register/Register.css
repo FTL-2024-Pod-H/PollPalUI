@@ -113,6 +113,7 @@
     display: flex;
     align-items: center;
     margin: 20px 0;
+    align-items: center;
 }
 
 .social-message .line {
@@ -124,6 +125,8 @@
 .social-message .message {
     margin: 0 10px;
     font-family: 'Poppins', sans-serif;
+    align-items: center;
+    
 }
 
 .password-strength-bar {
