@@ -36,11 +36,11 @@ const Register = () => {
 
     try {
       await axios.post(
-        "http://localhost:3000/users/register",
+        "https://pollpalapi.onrender.com/users/register",
         { name, username, password, address }
       );
       const loginResponse = await axios.post(
-        "http://localhost:3000/users/login",
+        "https://pollpalapi.onrender.com/users/login",
         { username, password }
       );
       localStorage.setItem("token", loginResponse.data.token);

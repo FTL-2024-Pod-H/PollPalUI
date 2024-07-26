@@ -42,7 +42,7 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
     
     const fetchLikeStatus = async () => {
         try {
-            const response = await axios.get(`http://localhost:3000/posts/${postId}/liked-by/${currentUser}`);
+            const response = await axios.get(`https://pollpalapi.onrender.com/posts/${postId}/liked-by/${currentUser}`);
             setIsLiked(response.data.isLiked);
         } catch (error) {
             console.error('Error fetching like status:', error);
@@ -61,10 +61,10 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
         }
         try {
             if (isLiked) {
-                await axios.post(`http://localhost:3000/posts/${postId}/unlike`, { user_id: currentUser });
+                await axios.post(`https://pollpalapi.onrender.com/posts/${postId}/unlike`, { user_id: currentUser });
                 fetchPosts(page, limit);
             } else {
-                await axios.post(`http://localhost:3000/posts/${postId}/like`, { user_id: currentUser });
+                await axios.post(`https://pollpalapi.onrender.com/posts/${postId}/like`, { user_id: currentUser });
                 fetchPosts(page, limit);
             }
             setIsLiked(!isLiked);

@@ -89,7 +89,7 @@ function Forum(){
 
     const fetchPosts = async (page = 1, limit = 10) => {
         try {
-            const response = await axios.get(`http://localhost:3000/posts?page=${page}&limit=${limit}`);
+            const response = await axios.get(`https://pollpalapi.onrender.com/posts?page=${page}&limit=${limit}`);
             console.log("Fetched Posts:", response.data.posts);
             setPosts(response.data.posts);
             setTotalPosts(response.data.totalPosts);
@@ -100,7 +100,7 @@ function Forum(){
 
     const fetchUserPosts = async (userId, page = 1, limit = 10) => {
         try {
-            const response = await axios.get(`http://localhost:3000/posts/user/${userId}?page=${page}&limit=${limit}`);
+            const response = await axios.get(`https://pollpalapi.onrender.com/posts/user/${userId}?page=${page}&limit=${limit}`);
             console.log("Fetched User Posts:", response.data.posts);
             setPosts(response.data.posts);
             setTotalPosts(response.data.totalPosts);
@@ -137,7 +137,7 @@ function Forum(){
                 content: postContent,
                 author_id: currentUser
             };
-            const response = await axios.post("http://localhost:3000/posts", newPost);
+            const response = await axios.post("https://pollpalapi.onrender.com/posts", newPost);
             setPosts([response.data, ...posts]);
             
             setShowCreatePostModal(false);
@@ -156,7 +156,7 @@ function Forum(){
 
     const handleDeletePost = async (postId) => {
         try {
-            await axios.delete(`http://localhost:3000/posts/${postId}`);
+            await axios.delete(`https://pollpalapi.onrender.com/posts/${postId}`);
             setPosts(posts.filter(post => post.post_id !== postId));
             if(viewMode === "your"){
                 setTotalPosts(totalPosts - 1);

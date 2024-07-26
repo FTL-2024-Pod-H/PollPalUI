@@ -13,7 +13,7 @@ const Login = () => {
   // handle login
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/users/login", {
+      const response = await axios.post("https://pollpalapi.onrender.com/users/login", {
         username,
         password,
       });
