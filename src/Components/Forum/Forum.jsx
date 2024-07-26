@@ -159,8 +159,8 @@ function Forum(){
             <div className="forum-page-container">
             <div className="form-title-button">
             <div className="forum-info-section">
-                <h1 className="forum-title">Forum</h1>
-                <h2 className="forum-description">See what other Poll Pals have to say</h2>
+                <h3 className="forum-title">Forum</h3>
+                <p className="forum-description">See what other PollPals have to say</p>
             </div>
             <button className="Btn"
                 onClick={handleCreatePost}
