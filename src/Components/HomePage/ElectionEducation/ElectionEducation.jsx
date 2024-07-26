@@ -22,7 +22,7 @@ const ElectionEducation = () => {
       blurbs: [
         "Let's take a general look at the difference between Primary and General Elections",
         "A primary election is held by political parties to choose their candidates for various offices. There are different types of primaries, such as open primaries, where any registerd voter can participate, and closed primaries, where only registered party members can vote.",
-        "The general election is the 'big' election you hear about in the news. The is where everyone votes among the candiates nominated by each party.",
+        "The general election is the 'big' election you hear about in the news. This is where everyone votes among the candiates nominated by each party.",
         "Primary and General elections are held for all offices, including presidents. The general election chooses between the winners of each primary election, and typically takes place on the Tuesday after the first Monday in November",
       ],
     },
