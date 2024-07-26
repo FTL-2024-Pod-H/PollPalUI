@@ -81,7 +81,7 @@ const Header = () => {
              </Link> */}
                  {localStorage.getItem("token") ? (
                      <>
-                       <button onClick={handleLogout} className="animated-button">
+                       <button onClick={handleLogout} className="animated-button" >
                          Sign out
                        </button>
                      </>
