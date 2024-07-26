@@ -1,10 +1,15 @@
 .login-container {
     padding: 40px 20px;
-    width: 400px;
-    margin: 50px auto;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    margin: 200px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     background-color: #fff;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .login-container h1 {
     text-align: center;
@@ -21,20 +26,41 @@
 .login-container input {
     display: flex;
     flex-direction: column;
-    padding: 5px;
-    width: 300px;
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
     border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
 
 }
-.login-container button {
-    background-color: #fff;
-    border: 1px solid black;
-    border-radius: 4px;
-    padding: 4px 8px;
+
+.login-container .animated-button {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    max-height: 35px;
+    border-color: #E6117C;
+    font-size: 15px;
+    background-color: inherit;
+    border-radius: 100px;
+    font-weight: 900;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+    box-shadow: 0 0 0 .9px #4A3CDB;
     cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    margin: 10px 0;
 }
-.login-container button:hover {
-    background: linear-gradient(144deg,#E6117C,#4A3CDB 50%,#00ddeb);
-    border-color: #4a90e2;
+.login-container .animated-button:hover {
+    box-shadow: 0 0 0 12px transparent;
+    color: black;
+    border-radius: 12px;
   }
+  .register-container .animated-button:active {
+    scale: 0.95;
+    box-shadow: 0 0 0 4px #E6117C;
+}
