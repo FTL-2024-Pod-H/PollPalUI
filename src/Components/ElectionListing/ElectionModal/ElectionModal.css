@@ -2,7 +2,7 @@
   background: white;
   padding: 20px;
   border-radius: 10px;
-  width: 950px;
+  width: 75%;
   height: auto;
   position: relative;
 }
@@ -64,14 +64,16 @@ h3 {
 
 .race-district {
   padding: 10px 0;
+  text-align: start;
 }
 
 .candidates-list {
   padding: 0;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: stretch;
   gap: 10px;
   margin: 0;
   padding: 0 0 35px 0;
@@ -181,4 +183,51 @@ details::after {
   justify-content: space-around;
   align-items: center;
   margin-top: 15px;
+}
+
+.reg-button {
+  width: 210px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 980px) {
+  .election-modal-content {
+    padding: 20px;
+    border-radius: 10px;
+    width: 85%;
+    height: auto;
+    position: relative;
+  }
+}
+
+/* @media (max-width: 670px) {
+  .election-modal-content {
+    padding: 20px;
+    border-radius: 10px;
+    width: 680px;
+    height: auto;
+    position: relative;
+  }
+} */
+
+@media (max-width: 670px) {
+  .reg-link-buttons {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around;
+    align-items: center;
+    margin-top: 15px; */
+    gap: 10px;
+  }
+  .reg-button {
+    width: 90%;
+    font-size: large;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

@@ -1,8 +1,11 @@
 .candidate-card {
   display: flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid black;
   border-radius: 5px;
-  width: max-content;
+  width: 275px;
+  height: auto;
   padding: 10px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
@@ -59,3 +62,6 @@
 .star.favorited {
   color: rgb(225, 225, 0);
 } */
+
+@media (max-width: 768px) {
+}

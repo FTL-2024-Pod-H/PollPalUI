@@ -33,7 +33,7 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
     setBallotInfo(
       data.contests
         ? data.contests.map((contest) => ({
-            race: contest.office,
+            race: contest.ballotTitle,
             party: contest.primaryParties,
             district: contest.district.name,
             candidates: contest.candidates,
@@ -171,7 +171,7 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
           {ballotInfo.map((info, index) => (
             <details key={index} className="ballot-item">
               <summary className="race-title">
-                {info.race} ({info.party})
+                {info.race}, {info.party}
               </summary>
               <div className="ballot-details">
                 <h4 className="race-district">{info.district}</h4>
@@ -254,19 +254,19 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
           <div className="tab-content">{renderContent()}</div>
           <div className="reg-link-buttons">
             <button
-              className="animated-button"
+              className="animated-button reg-button"
               onClick={() => handleRedirect(moreInfo)}
             >
               More Info
             </button>
             <button
-              className="animated-button"
+              className="animated-button reg-button"
               onClick={() => handleRedirect(regToVote)}
             >
               Register to Vote
             </button>
             <button
-              className="animated-button"
+              className="animated-button reg-button"
               onClick={() => handleRedirect(checkReg)}
             >
               Check Registration

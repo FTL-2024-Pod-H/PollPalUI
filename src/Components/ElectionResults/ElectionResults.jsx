@@ -61,15 +61,14 @@ function ElectionResults() {
     <>
       <div className="election-results">
         <div className="title-section">
-          <h1 className="showing-elections-for">
-            Showing Elections for <span className="address">{address} </span>
-            <button
-              className="change-address-button"
-              onClick={() => navigate("/")}
-            >
-              Change Address
-            </button>{" "}
-          </h1>
+          <h1 className="showing-elections-for">Showing Elections for </h1>
+          <h1 className="address">{address} </h1>
+          <button
+            className="change-address-button"
+            onClick={() => navigate("/")}
+          >
+            Change Address
+          </button>{" "}
           {/* <button className="change-address-button" onClick={() => navigate('/')}>Change Address</button> */}
         </div>
         {loading ? (

@@ -28,7 +28,7 @@ const MapContainer = ({ locations }) => {
     isLoaded && (
       <GoogleMap
         mapContainerStyle={{ height: "600px", width: "100%" }}
-        zoom={11}
+        zoom={10}
         center={{ lat: locations[0].latitude, lng: locations[0].longitude }} // Default center
       >
         {locations.map((location, index) => (
