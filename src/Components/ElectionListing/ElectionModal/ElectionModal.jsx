@@ -37,6 +37,7 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
             party: contest.primaryParties,
             district: contest.district.name,
             candidates: contest.candidates,
+            measure: contest.referendumText,
           }))
         : "No ballot information available"
     );
@@ -190,15 +191,21 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
               <div className="ballot-details">
                 <h4 className="race-district">{info.district}</h4>
                 <ul className="candidates-list">
-                  {info.candidates.map((candidate, idx) => (
-                    <Candidate
-                      key={idx}
-                      name={candidate.name}
-                      party={info.party}
-                      position={info.race}
-                      district={info.district}
-                    />
-                  ))}
+                  {info.candidates && info.candidates.length > 0 ? (
+                    info.candidates.map((candidate, idx) => (
+                      <Candidate
+                        key={idx}
+                        name={candidate.name}
+                        party={info.party}
+                        position={info.race}
+                        district={info.district}
+                      />
+                    ))
+                  ) : info.measure ? (
+                    <li className="measure-text">{info.measure}</li>
+                  ) : (
+                    <li>No further info available</li>
+                  )}
                 </ul>
               </div>
             </details>
