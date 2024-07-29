@@ -4,6 +4,7 @@ import "./HomePage.css";
 import SearchLocation from "../SearchLocation/SearchLocation";
 import AboutSection from "./AboutSection/AboutSection";
 import ElectionEducation from "./ElectionEducation/ElectionEducation";
+import Notify from "../Notify/Notify";
 // import ChatBot from "../ChatBot/ChatBot";
 
 function HomePage() {
@@ -83,8 +84,15 @@ function HomePage() {
     }, []);
 
     return (
+        <>
+            
+            
         <div className="homepage" id="fade-in-section" ref={searchLocationRef}>
+            
             <section className="section search-location" id="initial-viewport">
+            <div className="notify-container">
+                <Notify />
+            </div>
                 <h2>Get election info based on your location</h2>
                 <SearchLocation />
             </section>
@@ -96,6 +104,7 @@ function HomePage() {
                 <ElectionEducation />
             </section>
         </div>
+        </>
     );
 }
 
