@@ -1,0 +1,238 @@
+.reply-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    /* bottom: 0; */
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.reply-modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 800px;
+    max-width: 80%;
+    position: relative;
+    max-height: 80vh; 
+    overflow-y: auto; 
+}
+
+.replies-container {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    /* border: 1px solid #ccc; */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.reply-box {
+    color: black;
+    background: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    /* border: 1px solid #ddd; */
+}
+
+.reply-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.reply-input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.reply-button {
+    padding: 10px;
+    background-color:  #6F4E37;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.reply-button:hover{
+    background: linear-gradient(to right, #9F8170, #D5CFAC);
+}
+.userinformation-replies{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.username-replies{
+    margin-left: 5px;
+    color: gray;
+    font-size: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* .original-post-details:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -10px; 
+    width: 1.5px; 
+    box-shadow: -4px .5px 5px #d99df3; 
+    z-index: -1; 
+}  */
+.original-post-details{
+    position:relative;
+    color:black;
+
+    position:relative;
+    display:flex;
+
+    /* align-items: flex-start; */
+    flex-direction: column;
+    justify-content: center;
+    /* padding: 20px; */
+    border-radius: 15px;
+    /* max-width: 1000px; */
+    /* margin: 20px auto; */
+    z-index: 1;
+}
+.original-post-details::after{
+    content: '';
+    position: absolute;
+    top: 60px;
+    bottom: -5px;
+    left: 28px; 
+    
+    width: 1.5px; 
+    /* box-shadow: -4px .5px 5px #d99df3;  */
+    box-shadow: -4px 0px 0px #a3a3a3;
+    z-index: -1; 
+}
+.original-post-content-reply{
+    margin-top: -10px;
+    margin-left: 65px;
+    /* color: ghostwhite; */
+    color: black;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* .post-box {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    width:100%;
+    height: 100%;
+    box-sizing: border-box
+    
+}
+  
+.post-box h1 {
+    text-align: center;
+    color: black;
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+} */
+  
+.reply-post-content {
+    width: 96%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-size: 0.875rem; 
+    font-family: 'Poppins', sans-serif;
+    /* resize: none; */
+    resize: vertical;
+    max-width: 800px; 
+    max-height: 250px;
+    margin-top: 10px;
+    outline: none;
+    align-items: center;
+    /* margin-right: 40px; */
+}
+  
+.reply-post-content::placeholder {
+    color: #718096;
+    opacity: 0.7;
+}
+
+.reply-post-button {
+    /* font-family: inherit; */
+    margin-top: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    background: rgb(80, 23, 141);
+    color: white;
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 13px;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+    margin-left: auto;
+}
+  
+.reply-post-button span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
+}
+  
+.reply-post-button svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+}
+  
+.reply-post-button:hover .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+  
+.reply-post-button:hover svg {
+    transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+  
+.reply-post-button:hover span {
+    transform: translateX(5em);
+}
+  
+.reply-post-button:active {
+    transform: scale(0.95);
+}
+  
+@keyframes fly-1 {
+    from {
+      transform: translateY(0.1em);
+    }
+  
+    to {
+      transform: translateY(-0.1em);
+    }
+}
+
+
+.post-box {
+    position: relative;
+}
+
+.like-reply{
+    margin-left: 62px;
+}
+

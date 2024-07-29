@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp as faThumbsUpRegular } from '@fortawesome/free-regular-svg-icons';
 import { faThumbsUp as faThumbsUpSolid, faReply } from '@fortawesome/free-solid-svg-icons';
 import NotLoggedPrompt from "../NotLoggedPrompt/NotLoggedPrompt";
+import Replies from "../Replies/Replies";
 
 function timeSince(date) {
     const seconds = Math.floor((new Date() - new Date(date)) / 1000);
@@ -30,6 +31,18 @@ function timeSince(date) {
     }
     return Math.floor(seconds) + " seconds ago";
 }
+const mockReplies = [
+    {
+        reply_id: 1,
+        content: "This is a mock reply",
+        createdAt: new Date(),
+        author: {
+            user_id: 1,
+            username: "mockUser",
+            avatar: "https://via.placeholder.com/40"
+        }
+    }
+];
 
 
 
@@ -38,6 +51,37 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
     const[currentlikeCount, setCurrentLikeCount] = useState(likeCount);
     const[isLiked, setIsLiked] = useState(false);
     const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
+
+    const [replies, setReplies] = useState([]);
+    const [showReplies, setShowReplies] = useState(false);
+
+    // const handleAddReply = (reply) => {
+    //     setReplies([...replies, reply]);
+    // };
+    const handleAddReply = (replyContent) => {
+        const newReply = {
+          reply_id: replies.length + 1,
+          content: replyContent,
+          createdAt: new Date(),
+          author: {
+            user_id: currentUser,
+            username: "currentUser",
+            avatar: "https://via.placeholder.com/40" 
+          }
+        };
+        setReplies([...replies, newReply]);
+    };
+
+
+    const handleShowReplies = () => {
+        setShowReplies(true);
+    };
+
+    const handleCloseReplies = () => {
+        setShowReplies(false);
+    };
+
+
 
     
     const fetchLikeStatus = async () => {
@@ -75,7 +119,7 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
     
     return (
         <>
-            <div className="forum-post">
+            <div className="forum-post" onClick={handleShowReplies}>
                 
                 <div className="forum-post-details">
                     <div className="userinformation">
@@ -110,7 +154,7 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
                         </button>
                         {/* REPLY BUTTON */}
                         <div className="group relative">
-                            <button className="comment-button">
+                            <button className="comment-button" onClick={handleShowReplies}>
                                 <svg
                                     strokeLinejoin="round"
                                     strokeLinecap="round"
@@ -147,6 +191,20 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
             {showLoginPromptModal && (
                 <NotLoggedPrompt onClose={() => setShowLoginPromptModal(false)} />
             )}
+            {showReplies && (
+                <Replies 
+                    onClose={handleCloseReplies} 
+                    replies={replies} 
+                    addReply={handleAddReply} 
+                    userAvatar={userAvatar}
+                    username={username}
+                    userPostContent={userPostContent}
+                    currentlikeCount={currentlikeCount}
+                    isLiked={isLiked}
+                    handleLikeClick={handleLikeClick}
+                    timestamp={timestamp}
+                />
+        )}
         </>
     )
 };
