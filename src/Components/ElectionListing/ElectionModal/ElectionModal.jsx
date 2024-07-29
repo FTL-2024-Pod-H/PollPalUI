@@ -43,76 +43,84 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
 
     console.log("ballot INFO: ", ballotInfo);
 
-    console.log(
-      "drop off place name: ",
-      data.dropOffLocations[0].address.locationName
-    );
-    console.log(
-      `dropp of lcation address is ${data.dropOffLocations[0].address.line1}, ${data.dropOffLocations[0].address.city}, ${data.dropOffLocations[0].address.state}`
-    );
-
     //------------------------------------------------------------------------------------------------------
     // FORMATTING POLLING LOCATION COORDS FOR MAP USE
-    const pollingLocationCoords = {
-      address: data.pollingLocations.map(
-        (location) =>
-          `${location.address.line1}, ${location.address.city}, ${location.address.state}`
-      ),
-      name: data.pollingLocations.map(
-        (location) => location.address.locationName
-      ),
-      latitude: data.pollingLocations.map((location) => location.latitude),
-      longitude: data.pollingLocations.map((location) => location.longitude),
-    };
+    const pollingLocationCoords = data.pollingLocations
+      ? {
+          address: data.pollingLocations.map(
+            (location) =>
+              `${location.address.line1}, ${location.address.city}, ${location.address.state}`
+          ),
+          name: data.pollingLocations.map(
+            (location) => location.address.locationName
+          ),
+          latitude: data.pollingLocations.map((location) => location.latitude),
+          longitude: data.pollingLocations.map(
+            (location) => location.longitude
+          ),
+        }
+      : null;
     setPollingLocations(
-      pollingLocationCoords.address.map((_, index) => ({
-        address: pollingLocationCoords.address[index],
-        name: pollingLocationCoords.name[index],
-        latitude: pollingLocationCoords.latitude[index],
-        longitude: pollingLocationCoords.longitude[index],
-      }))
+      pollingLocationCoords
+        ? pollingLocationCoords.address.map((_, index) => ({
+            address: pollingLocationCoords.address[index],
+            name: pollingLocationCoords.name[index],
+            latitude: pollingLocationCoords.latitude[index],
+            longitude: pollingLocationCoords.longitude[index],
+          }))
+        : null
     );
     //------------------------------------------------------------------------------------------------------
     // FORMATTING DROP-OFF LOCATION COORDS FOR MAP USE
-    const dropOffCoords = {
-      address: data.dropOffLocations.map(
-        (location) =>
-          `${location.address.line1}, ${location.address.city}, ${location.address.state}`
-      ),
-      name: data.dropOffLocations.map(
-        (location) => location.address.locationName
-      ),
-      latitude: data.dropOffLocations.map((location) => location.latitude),
-      longitude: data.dropOffLocations.map((location) => location.longitude),
-    };
+    const dropOffCoords = data.dropOffLocations
+      ? {
+          address: data.dropOffLocations.map(
+            (location) =>
+              `${location.address.line1}, ${location.address.city}, ${location.address.state}`
+          ),
+          name: data.dropOffLocations.map(
+            (location) => location.address.locationName
+          ),
+          latitude: data.dropOffLocations.map((location) => location.latitude),
+          longitude: data.dropOffLocations.map(
+            (location) => location.longitude
+          ),
+        }
+      : null;
     setDropOffLocations(
-      dropOffCoords.address.map((_, index) => ({
-        address: dropOffCoords.address[index],
-        name: dropOffCoords.name[index],
-        latitude: dropOffCoords.latitude[index],
-        longitude: dropOffCoords.longitude[index],
-      }))
+      dropOffCoords
+        ? dropOffCoords.address.map((_, index) => ({
+            address: dropOffCoords.address[index],
+            name: dropOffCoords.name[index],
+            latitude: dropOffCoords.latitude[index],
+            longitude: dropOffCoords.longitude[index],
+          }))
+        : null
     );
     //------------------------------------------------------------------------------------------------------
     // FORMATTING EARLY VOTE SITE LOCATION COORDS FOR MAP USE
-    const earlyVoteCoords = {
-      address: data.earlyVoteSites.map(
-        (location) =>
-          `${location.address.line1}, ${location.address.city}, ${location.address.state}`
-      ),
-      name: data.earlyVoteSites.map(
-        (location) => location.address.locationName
-      ),
-      latitude: data.earlyVoteSites.map((location) => location.latitude),
-      longitude: data.earlyVoteSites.map((location) => location.longitude),
-    };
+    const earlyVoteCoords = data.earlyVoteSites
+      ? {
+          address: data.earlyVoteSites.map(
+            (location) =>
+              `${location.address.line1}, ${location.address.city}, ${location.address.state}`
+          ),
+          name: data.earlyVoteSites.map(
+            (location) => location.address.locationName
+          ),
+          latitude: data.earlyVoteSites.map((location) => location.latitude),
+          longitude: data.earlyVoteSites.map((location) => location.longitude),
+        }
+      : null;
     setEarlyVoteSites(
-      earlyVoteCoords.address.map((_, index) => ({
-        address: earlyVoteCoords.address[index],
-        name: earlyVoteCoords.name[index],
-        latitude: earlyVoteCoords.latitude[index],
-        longitude: earlyVoteCoords.longitude[index],
-      }))
+      dropOffCoords
+        ? earlyVoteCoords.address.map((_, index) => ({
+            address: earlyVoteCoords.address[index],
+            name: earlyVoteCoords.name[index],
+            latitude: earlyVoteCoords.latitude[index],
+            longitude: earlyVoteCoords.longitude[index],
+          }))
+        : null
     );
     //------------------------------------------------------------------------------------------------------
 
@@ -125,11 +133,17 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
     setRegToVote(
       data.state[0].electionAdministrationBody.electionRegistrationUrl
     );
+    console.log("reg to vote link: ", regToVote);
     setCheckReg(
       data.state[0].electionAdministrationBody
         .electionRegistrationConfirmationUrl
     );
-    setMoreInfo(data.state[0].electionAdministrationBody.ballotInfoUrl);
+    console.log("check reg link: ", checkReg);
+    setMoreInfo(
+      data.state[0].electionAdministrationBody.ballotInfoUrl ||
+        data.state[0].electionAdministrationBody.electionInfoUrl
+    );
+    console.log("more info link: ", moreInfo);
   };
 
   useEffect(() => {
@@ -214,7 +228,11 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
   };
 
   const handleRedirect = (url) => {
-    window.open(url, "_blank");
+    if (url) {
+      window.open(url, "_blank");
+    } else {
+      alert("No Link Available");
+    }
   };
 
   return (
