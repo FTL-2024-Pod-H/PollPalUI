@@ -44,7 +44,7 @@ const Register = () => {
         { username, password }
       );
       localStorage.setItem("token", loginResponse.data.token);
-      navigate("/");
+      navigate("/forum");
     } catch (error) {
       if (error.response && error.response.status === 400) {
         toast.error(

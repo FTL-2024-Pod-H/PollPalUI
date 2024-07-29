@@ -20,8 +20,8 @@ const Login = () => {
 
       //store the token in the localStorage as token
       localStorage.setItem("token", response.data.token);
-      //navigating to homepage
-      navigate("/");
+      //navigating to forum
+      navigate("/forum");
     } catch (error) {
       if (error.response && error.response.status === 401) {
         toast.error("Invalid username or password");
