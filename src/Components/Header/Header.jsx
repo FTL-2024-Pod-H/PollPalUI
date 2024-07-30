@@ -3,22 +3,18 @@ import { useNavigate, Link } from "react-router-dom";
 import "./Header.css";
 import Modal from "react-modal";
 import axios from "axios"; // Import axios for API requests
-
+import UserProfileModal from "./UserProfileModal";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [id, setId] = useState(0);
   const [userAvatar, setUserAvatar] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false); // controlling visibility of modal
   // storing form data for edit profile modal
-  const [formData, setFormData] = useState({
-    name: "",
-    username: "",
-    password: "",
-    address: "",
-  });
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
   const navigate = useNavigate();
-
-
 
   useEffect(() => {
     // const payload = decodeJWT(localStorage.getItem("token"));
@@ -29,9 +25,10 @@ const Header = () => {
 
     if (token) {
       const payload = decodeJWT(token);
-      console.log("payload", payload)
-  
+      console.log("payload", payload);
+
       if (payload) {
+        setId(payload.userId);
         setUserAvatar(getUserAvatar(payload.userName));
         fetchUserData(payload.userName);
       } else {
@@ -44,7 +41,6 @@ const Header = () => {
       // Handle missing token case (e.g., redirect to login)
       navigate("/login");
     }
-
 
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -59,30 +55,32 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const fetchUserData = async (username) => {
+  const fetchUserData = async () => {
     /**
      * Function to fetch user data from backend based on the username
      */
     try {
-      const response = await axios.get(
-        `http://localhost:3000/users/${username}`
-      );
+      const response = await axios.get(`http://localhost:3000/users/${id}`);
       const user = response.data;
-      setFormData({
-        name: user.name,
-        username: user.username,
-        password: "",
-        address: user.address,
-      });
+      setName(user.name)
+      setAddress(user.address)
+      setPassword(user)
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
   };
+  // variables: name, address, password
 
-  // function to handle changes in input
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+
+  // on change for each input
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+  const handleAddressChange = (e) => {
+    setAddress(e.target.value);
+  };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
 
   // Function to handle saving changes in the edit profile form
@@ -207,9 +205,12 @@ const Header = () => {
                     src={userAvatar}
                     alt="User Avatar"
                     className="user-image"
-                    onClick={() => {console.log("clicked"); setIsModalOpen(true)}}
+                    onClick={() => {
+                      console.log("clicked");
+                      setIsModalOpen(true);
+                    }}
                   />
-
+                  {/* 
                   <Modal
                     isOpen={isModalOpen}
                     onRequestClose={() => setIsModalOpen(false)}
@@ -267,7 +268,7 @@ const Header = () => {
                         </button>
                       </div>
                     </form>
-                  </Modal>
+                  </Modal> */}
                 </>
               ) : (
                 <>
