@@ -14,6 +14,8 @@ const Header = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
+
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // controlling visibility of dropdown
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -205,11 +207,18 @@ const Header = () => {
                     src={userAvatar}
                     alt="User Avatar"
                     className="user-image"
-                    onClick={() => {
-                      console.log("clicked");
-                      setIsModalOpen(true);
-                    }}
-                  />
+                    onClick={() => { console.log("clicked");
+                    setIsDropdownOpen(!isDropdownOpen);}}/>
+                    {isDropdownOpen && (
+                  <div className="dropdown-menu">
+                    <Link to="#" className="dropdown-item">
+                      Edit User Information
+                    </Link>
+                    <button onClick={handleLogout} className="dropdown-item">
+                      Logout
+                    </button>
+                  </div>
+                )}
                   {/* 
                   <Modal
                     isOpen={isModalOpen}
