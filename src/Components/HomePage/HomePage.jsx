@@ -75,6 +75,22 @@ function HomePage() {
         };
     }, []);
 
+    // window.addEventListener('scroll', function() {
+    //     const downArrows = document.querySelector('.arrows');
+    //     const section = document.querySelector('.section');
+        
+    //     if (downArrows && section) {
+    //         const sectionBottom = section.getBoundingClientRect().bottom;
+    //         const windowHeight = window.innerHeight;
+            
+    //         if (sectionBottom <= windowHeight) {
+    //             downArrows.classList.add('hidden');
+    //         } else {
+    //             downArrows.classList.remove('hidden');
+    //         }
+    //     }
+    // });
+
     
 
     useEffect(() => {
@@ -87,10 +103,30 @@ function HomePage() {
             <section className="section search-location" id="initial-viewport">
                 <h2>Get election info based on your location</h2>
                 <SearchLocation />
+                {/* <div className="scrolldown" style={{ color: "skyblue" }}>
+                    <div className="chevrons">
+                        <div className="chevrondown"></div>
+                        <div className="chevrondown"></div>
+                    </div>
+                </div> */}
+                {/* <div class="down-arrows">
+                    <div class="down-arrow"></div>
+                    <div class="down-arrow"></div>
+                </div> */}
+                <svg className="arrows">
+                    <path className="a1" d="M0 0 L30 32 L60 0"></path>
+                    <path className="a2" d="M0 20 L30 52 L60 20"></path>
+                    <path className="a3" d="M0 40 L30 72 L60 40"></path>
+                </svg>
             </section>
             {/* <ChatBot/> */}
             <section className="section about-section" id="fade-in-section" ref={aboutSectionRef}>
                 <AboutSection/>
+                {/* <svg className="arrows">
+                    <path className="a1" d="M0 0 L30 32 L60 0"></path>
+                    <path className="a2" d="M0 20 L30 52 L60 20"></path>
+                    <path className="a3" d="M0 40 L30 72 L60 40"></path>
+                </svg> */}
             </section>
             <section className="section election-education" id="fade-in-section" ref={electionEducationRef}>
                 <ElectionEducation />

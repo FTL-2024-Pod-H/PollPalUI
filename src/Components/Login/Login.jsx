@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const renderBackend = import.meta.env.VITE_RENDER_BACKEND;
+const localhostBackend = import.meta.env.VITE_LOCALHOST_BACKEND;
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +16,8 @@ const Login = () => {
   // handle login
   const handleLogin = async () => {
     try {
-      const response = await axios.post("https://pollpalapi.onrender.com/users/login", {
+      // const response = await axios.post(`${renderBackend}/users/login`, {
+      const response = await axios.post(`${localhostBackend}/users/login`, {
         username,
         password,
       });
@@ -50,7 +54,8 @@ const Login = () => {
       />
       <button onClick={handleLogin} className="animated-button">Login</button>
       {/* <button onClick={() => navigate("/register")}>Go to register</button> */}
-      <p className="signup"> Don&apos;t have an account? <a rel="noopener noreferrer" href="/register" class="">Sign up</a>
+      <a rel="noopener noreferrer" href="/forgot" className="forgot">Forgot password?</a>
+      <p className="signup"> Don&apos;t have an account? <a rel="noopener noreferrer" href="/register" className="sign-up-link-login">Sign up</a>
       </p>
     </div>
 

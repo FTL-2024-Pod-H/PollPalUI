@@ -16,6 +16,9 @@ const ChatBot = () => {
     const [chatHistory, setChatHistory] = useState([]);
     const [conversationId, setConversationId] = useState(null);
     const [loading, setLoading] = useState(false);
+
+    const renderBackend = import.meta.env.VITE_RENDER_BACKEND;
+    const localhostBackend = import.meta.env.VITE_LOCALHOST_BACKEND;
     
     const messagesEndRef = useRef(null);
 
@@ -30,7 +33,8 @@ const ChatBot = () => {
         setLoading(true);
 
         try{
-            const res = await axios.post("https://pollpalapi.onrender.com/chat", {
+            const res = await axios.post(`${renderBackend}/chat`, {
+            // const res = await axios.post(`${localhostBackend}/chat`, {
                 prompt,
                 conversationId,
             });

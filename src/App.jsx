@@ -13,6 +13,8 @@ import InteractiveMap from './Components/InteractiveMap/InteractiveMap';
 import Register from "./Components/Register/Register";
 import Login from "./Components/Login/Login";
 import ChatBot from "./Components/ChatBot/ChatBot.jsx";
+import ForgotPswd from "./Components/Login/ForgotPswd.jsx";
+import ResetPswd from "./Components/Login/ResetPswd.jsx";
 
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
                   <Route path="/map" element={<InteractiveMap/>} />
                   <Route path="/register" element={<Register/>} />
                   <Route path="/login" element={<Login/>} />
+                  <Route path="/forgot" element={<ForgotPswd/>} />
+                  <Route path="/reset" element={<ResetPswd/>} />
                   
 
               </Routes>

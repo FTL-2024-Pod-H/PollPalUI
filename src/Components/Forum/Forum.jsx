@@ -11,6 +11,9 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 
+const renderBackend = import.meta.env.VITE_RENDER_BACKEND;
+const localhostBackend = import.meta.env.VITE_LOCALHOST_BACKEND;
+
 // DECODE TOKEN MANUALY
 function decodeJWT(token) {
     const base64Url = token.split('.')[1];

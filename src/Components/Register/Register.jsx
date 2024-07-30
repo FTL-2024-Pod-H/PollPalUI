@@ -6,13 +6,17 @@ import "./Register.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PasswordStrengthBar from "react-password-strength-bar";
+// import { SignUp } from "@clerk/clerk-react";
+
+const renderBackend = import.meta.env.VITE_RENDER_BACKEND;
+const localhostBackend = import.meta.env.VITE_LOCALHOST_BACKEND;
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmedPassword] = useState("");
   const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(0);
   const navigate = useNavigate();
@@ -36,11 +40,13 @@ const Register = () => {
 
     try {
       await axios.post(
-        "https://pollpalapi.onrender.com/users/register",
-        { name, username, password, address }
+        // `${renderBackend}/users/register`,
+        `${localhostBackend}/users/register`,
+        { email, name, username, password}
       );
       const loginResponse = await axios.post(
-        "https://pollpalapi.onrender.com/users/login",
+        // `${renderBackend}/users/login`,
+        `${localhostBackend}/users/login`,
         { username, password }
       );
       localStorage.setItem("token", loginResponse.data.token);
@@ -90,6 +96,7 @@ const Register = () => {
   };
 
   return (
+    // <SignUp />
     <div className="register-container">
       <ToastContainer
         position="top-center"
@@ -97,6 +104,11 @@ const Register = () => {
         hideProgressBar={true}
       />
       <h1>Welcome to PollPal, please register!</h1>
+      <input
+        type="email"
+        placeholder="Email"
+        onChange={(e) => setEmail(e.target.value)}
+      />
       <input
         type="text"
         placeholder="Name"
@@ -126,11 +138,6 @@ const Register = () => {
         placeholder="Confirm Password"
         onChange={handleConfirmPasswordChange}
       />
-      <input
-        type="text"
-        placeholder="Address"
-        onChange={(e) => setAddress(e.target.value)}
-      />
       <div className="register-buttons">
         <button onClick={handleRegister} className="animated-button">Register</button>
         <button onClick={() => navigate("/login")} className="animated-button">Go to login</button>
@@ -141,9 +148,9 @@ const Register = () => {
         <div className="line"></div>
       </div>
 
-       {/* <p className="signup">
-         Don&apos;t have an account? <a rel="noopener noreferrer" href="#" className="">Sign up</a>
-       </p> */}
+      {/* <p className="signup">
+        Don&apos;t have an account? <a rel="noopener noreferrer" href="#" className="">Sign up</a>
+      </p> */}
 
     </div>
   );
