@@ -41,10 +41,30 @@ function Forum(){
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(6);
     const [totalPosts, setTotalPosts] = useState(0);
+    const [loading, setLoading] = useState(true);
 
     const [clickedButton, setClickedButton] = useState(`all`);
 
 
+    // useEffect(() => {
+    //     const token = localStorage.getItem("token");
+    //     if (token) {
+    //         try {
+    //             const decodedToken = decodeJWT(token);
+    //             setCurrentUser(decodedToken.userId);
+    //         } catch (error) {
+    //             console.error("Error decoding token: ", error);
+    //         }
+    //     }else{
+    //         setCurrentUser(null);
+    //     }
+    //     if (viewMode === "your" && currentUser) {
+    //         setCurrentPage(1)
+    //         fetchUserPosts(currentUser, currentPage, postsPerPage);
+    //     } else {
+    //         fetchPosts(currentPage, postsPerPage);
+    //     }
+    // }, [ viewMode, currentPage, postsPerPage, currentUser]);
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
@@ -54,21 +74,24 @@ function Forum(){
             } catch (error) {
                 console.error("Error decoding token: ", error);
             }
-        }else{
+        } else {
             setCurrentUser(null);
         }
+    }, []);
+
+    useEffect(() => {
+        setLoading(true);
         if (viewMode === "your" && currentUser) {
-            setCurrentPage(1)
-            fetchUserPosts(currentUser, currentPage, postsPerPage);
+            fetchUserPosts(currentUser, currentPage, postsPerPage).finally(() => setLoading(false));
         } else {
-            fetchPosts(currentPage, postsPerPage);
+            fetchPosts(currentPage, postsPerPage).finally(() => setLoading(false));
         }
-    }, [ viewMode, currentPage, postsPerPage, currentUser]);
+    }, [viewMode, currentPage, postsPerPage, currentUser]);
 
 
     const fetchPosts = async (page = 1, limit = 10) => {
         try {
-            const response = await axios.get(`http://localhost:3000/posts?page=${page}&limit=${limit}`);
+            const response = await axios.get(`https://pollpalapi.onrender.com/posts?page=${page}&limit=${limit}`);
             console.log("Fetched Posts:", response.data.posts);
             setPosts(response.data.posts);
             setTotalPosts(response.data.totalPosts);
@@ -79,7 +102,7 @@ function Forum(){
 
     const fetchUserPosts = async (userId, page = 1, limit = 10) => {
         try {
-            const response = await axios.get(`http://localhost:3000/posts/user/${userId}?page=${page}&limit=${limit}`);
+            const response = await axios.get(`https://pollpalapi.onrender.com/posts/user/${userId}?page=${page}&limit=${limit}`);
             console.log("Fetched User Posts:", response.data.posts);
             setPosts(response.data.posts);
             setTotalPosts(response.data.totalPosts);
@@ -103,6 +126,7 @@ function Forum(){
             setShowLoginPromptModal(true);
         }
     };
+
     const handleCloseCreatePost = () => {
         setShowCreatePostModal(false);
     };
@@ -115,24 +139,36 @@ function Forum(){
                 content: postContent,
                 author_id: currentUser
             };
-            const response = await axios.post("http://localhost:3000/posts", newPost);
+            const response = await axios.post("https://pollpalapi.onrender.com/posts", newPost);
             setPosts([response.data, ...posts]);
             
             setShowCreatePostModal(false);
             
             setTotalPosts(totalPosts + 1);
+            setViewMode("all");
+            setClickedButton('all');
+
+            setCurrentPage(1);
             fetchPosts(currentPage, postsPerPage);
-            
         } catch (error) {
             console.error("Error adding posts:", error);
         }
+       
     };
 
     const handleDeletePost = async (postId) => {
         try {
-            await axios.delete(`http://localhost:3000/posts/${postId}`);
+            await axios.delete(`https://pollpalapi.onrender.com/posts/${postId}`);
             setPosts(posts.filter(post => post.post_id !== postId));
-            setTotalPosts(totalPosts - 1);
+            if(viewMode === "your"){
+                setTotalPosts(totalPosts - 1);
+                // setCurrentPage(1)
+                fetchUserPosts(currentUser, currentPage, postsPerPage);
+            }else{
+                setTotalPosts(totalPosts - 1);
+                // setCurrentPage(1);
+                fetchPosts(currentPage, postsPerPage);
+            }
         } catch (error) {
             console.error("Error deleting post: ", error);
         }
@@ -144,13 +180,16 @@ function Forum(){
     //     setCurrentPage(pageNumber);
     //     fetchPosts(pageNumber, postsPerPage);
     // };
+    // const handlePageClick = (pageNumber) => {
+    //     setCurrentPage(pageNumber);
+    //     if (viewMode === "your" && currentUser) {
+    //         fetchUserPosts(currentUser, pageNumber, postsPerPage);
+    //     } else {
+    //         fetchPosts(pageNumber, postsPerPage);
+    //     }
+    // };
     const handlePageClick = (pageNumber) => {
         setCurrentPage(pageNumber);
-        if (viewMode === "your" && currentUser) {
-            fetchUserPosts(currentUser, pageNumber, postsPerPage);
-        } else {
-            fetchPosts(pageNumber, postsPerPage);
-        }
     };
 
 
@@ -159,8 +198,8 @@ function Forum(){
             <div className="forum-page-container">
             <div className="form-title-button">
             <div className="forum-info-section">
-                <h1 className="forum-title">Forum</h1>
-                <h2 className="forum-description">See what other Poll Pals have to say</h2>
+                <h3 className="forum-title">Forum</h3>
+                <p className="forum-description">See what other PollPals have to say</p>
             </div>
             <button className="Btn"
                 onClick={handleCreatePost}
@@ -174,6 +213,7 @@ function Forum(){
                     onClick={() => {
                         setViewMode("all");
                         setClickedButton('all');
+                        setCurrentPage(1);
                     }}
                 >
                     View All Posts
@@ -204,6 +244,13 @@ function Forum(){
             {showLoginPromptModal && (
                 <NotLoggedPrompt onClose={() => setShowLoginPromptModal(false)} />
             )}
+            {loading ? (
+                <div className="custom-loader">
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+              </div>
+            ) : (
             <div className="posts-container">
                 {filteredPosts.map((post, index) => (
                     <Post
@@ -224,6 +271,7 @@ function Forum(){
                     />
                 ))}
             </div>
+            )}
                 <Stack spacing={2}>
                     <Pagination
                         count={totalPages}

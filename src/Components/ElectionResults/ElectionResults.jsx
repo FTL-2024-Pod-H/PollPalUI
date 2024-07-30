@@ -7,6 +7,7 @@ function ElectionResults() {
   const [electionData, setElectionData] = useState(null);
   const [filteredElectionData, setFilteredElectionData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentElections, setCurrentElections] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
   const address = location.state?.address;
@@ -27,6 +28,8 @@ function ElectionResults() {
         }
         const data = await response.json();
         console.log("Election Data:", data);
+        setCurrentElections(data.elections);
+        console.log("current elections", currentElections);
         setElectionData(data);
         setLoading(false);
       } catch (error) {
@@ -61,15 +64,14 @@ function ElectionResults() {
     <>
       <div className="election-results">
         <div className="title-section">
-          <h1 className="showing-elections-for">
-            Showing Elections for <span className="address">{address} </span>
-            <button
-              className="change-address-button"
-              onClick={() => navigate("/")}
-            >
-              Change Address
-            </button>{" "}
-          </h1>
+          <h1 className="showing-elections-for">Showing Elections for </h1>
+          <h1 className="address">{address} </h1>
+          <button
+            className="change-address-button"
+            onClick={() => navigate("/")}
+          >
+            Change Address
+          </button>{" "}
           {/* <button className="change-address-button" onClick={() => navigate('/')}>Change Address</button> */}
         </div>
         {loading ? (
@@ -85,9 +87,19 @@ function ElectionResults() {
               uriAddress={encodeURIComponent(address)}
             />
           ) : (
-            <p className="no-elections-response">
-              No elections for this area...
-            </p>
+            <div className="no-elections-response">
+              <p className="no-elections-text">No elections for this area...</p>
+              <details className="current-elections-menu">
+                <summary>Current Elections</summary>
+                <ul className="current-elections-list">
+                  {currentElections.map((election, idx) => (
+                    <li key={idx} className="current-election">
+                      {election.name}
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </div>
           )
         ) : null}
       </div>

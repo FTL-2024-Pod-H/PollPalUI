@@ -13,7 +13,7 @@ const Login = () => {
   // handle login
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/users/login", {
+      const response = await axios.post("https://pollpalapi.onrender.com/users/login", {
         username,
         password,
       });
@@ -35,7 +35,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <ToastContainer position="top-center" autoClose={3000} hideProgressBar={true}/>
-      <h1>Login to Poll Pal</h1>
+      <h1>Login to PollPal</h1>
       <input
         type="text"
         placeholder="Username"
@@ -48,8 +48,8 @@ const Login = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleLogin}>Login</button>
-      <button onClick={() => navigate("/register")}>Go to register</button>
+      <button onClick={handleLogin} className="animated-button">Login</button>
+      {/* <button onClick={() => navigate("/register")}>Go to register</button> */}
       <p className="signup"> Don&apos;t have an account? <a rel="noopener noreferrer" href="/register" class="">Sign up</a>
       </p>
     </div>

@@ -42,8 +42,9 @@
 .post-box h1 {
     text-align: center;
     color: black;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: bold;
+    font-family: 'Poppins', sans-serif;
 }
   
 .post-content {
@@ -53,6 +54,7 @@
     border: 1px solid black;
     border-radius: 4px;
     font-size: 0.875rem; 
+    font-family: 'Poppins', sans-serif;
     /* resize: none; */
     resize: vertical;
     max-width: 500px; /* Set maximum width */
@@ -69,7 +71,8 @@
 }
 
 .post-button {
-    font-family: inherit;
+    /* font-family: inherit; */
+    font-family: 'Poppins', sans-serif;
     font-size: 15px;
     background: rgb(80, 23, 141);
     color: white;

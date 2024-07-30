@@ -121,9 +121,9 @@ const Header = () => {
             </Link> */}
             {localStorage.getItem("token") ? (
               <>
-                <button onClick={handleLogout} className="animated-button">
+                {/* <button onClick={handleLogout} className="animated-button">
                   Sign out
-                </button>
+                </button> */}
                 <img
                     // src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
                     // alt="Default User"
@@ -135,9 +135,9 @@ const Header = () => {
                     {isDropdownOpen && (
                   <div className="dropdown-menu">
                     <Link to="#" className="dropdown-item">
-                      Edit User Information
+                    Edit User
                     </Link>
-                    <button onClick={handleLogout} className="animated-button">
+                    <button onClick={handleLogout} className="dropdown-item">
                       Log out
                     </button>
                   </div>

@@ -7,11 +7,19 @@
     margin-bottom: 13px;
     /* color:white; */
     color: black;
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    /* font-weight: bold; */
 }
 .forum-description{
     color: gray;
-    font-size: 0.9em;
+    /* font-size: 0.9em; */
+    font-size: 15px;
     margin-top: -10px;
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-weight: bold; */
 }
 .forum-info-section{
    /* margin: 0px 20px; */
@@ -72,6 +80,8 @@
     font-size: 1.4em;
     font-weight: 500;
     transition-duration: .3s;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
     
 }
  
@@ -108,12 +118,15 @@
 .view-all-posts, .your-posts{
     border:none;
     background: rgba(255, 255, 255, 0);
-    font-size: 22px;
+    font-size: 23px;
     margin:0 18%;
     position:relative;
     cursor: pointer;
     /* color: white; */
     color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-weight: bold; */
+    /* font-weight: bold; */
 
 }
 .view-all-posts::after, .your-posts::after{
@@ -150,3 +163,46 @@
     width: 100%;
   }
 
+/* LOADING.... */
+
+.custom-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+  }
+  
+  .dot {
+    height: 20px;
+    width: 20px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background-color: #e6117c;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  .dot:nth-child(2) {
+    animation-delay: -0.1s;
+  }
+  
+  .dot:nth-child(3) {
+    animation-delay: -0.2s;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.8);
+      background-color: #4a3cdb;
+      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+    }
+    50% {
+      transform: scale(1.2);
+      background-color: #e6117c;
+      box-shadow: 0 0 0 10px rgba(178, 212, 252, 0);
+    }
+    100% {
+      transform: scale(0.8);
+      background-color: #b3d4fc;
+      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+    }
+  }

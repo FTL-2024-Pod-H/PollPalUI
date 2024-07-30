@@ -30,7 +30,7 @@ const ChatBot = () => {
         setLoading(true);
 
         try{
-            const res = await axios.post("http://localhost:3000/chat", {
+            const res = await axios.post("https://pollpalapi.onrender.com/chat", {
                 prompt,
                 conversationId,
             });

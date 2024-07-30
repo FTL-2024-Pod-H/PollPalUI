@@ -24,41 +24,45 @@ const MapContainer = ({ locations }) => {
   };
 
   console.log("locations", locations);
-  return (
-    isLoaded && (
-      <GoogleMap
-        mapContainerStyle={{ height: "600px", width: "100%" }}
-        zoom={11}
-        center={{ lat: locations[0].latitude, lng: locations[0].longitude }} // Default center
-      >
-        {locations.map((location, index) => (
-          <MarkerF
-            key={index}
-            position={{
-              lat: parseFloat(location.latitude),
-              lng: parseFloat(location.longitude),
-            }}
-            onClick={() => handleMarkerClick(location)}
-          />
-        ))}
+  if (locations && locations.length > 0) {
+    return (
+      isLoaded && (
+        <GoogleMap
+          mapContainerStyle={{ height: "600px", width: "100%" }}
+          zoom={10}
+          center={{ lat: locations[0].latitude, lng: locations[0].longitude }} // Default center
+        >
+          {locations.map((location, index) => (
+            <MarkerF
+              key={index}
+              position={{
+                lat: parseFloat(location.latitude),
+                lng: parseFloat(location.longitude),
+              }}
+              onClick={() => handleMarkerClick(location)}
+            />
+          ))}
 
-        {selectedMarker && (
-          <InfoWindowF
-            position={{
-              lat: parseFloat(selectedMarker.latitude),
-              lng: parseFloat(selectedMarker.longitude),
-            }}
-            onCloseClick={handleInfoWindowClose}
-          >
-            <div>
-              <h3 className="marker-name">{selectedMarker.name}</h3>
-              <h4 className="marker-address">{selectedMarker.address}</h4>
-            </div>
-          </InfoWindowF>
-        )}
-      </GoogleMap>
-    )
-  );
+          {selectedMarker && (
+            <InfoWindowF
+              position={{
+                lat: parseFloat(selectedMarker.latitude),
+                lng: parseFloat(selectedMarker.longitude),
+              }}
+              onCloseClick={handleInfoWindowClose}
+            >
+              <div>
+                <h3 className="marker-name">{selectedMarker.name}</h3>
+                <h4 className="marker-address">{selectedMarker.address}</h4>
+              </div>
+            </InfoWindowF>
+          )}
+        </GoogleMap>
+      )
+    );
+  } else {
+    return <p>No locations available</p>;
+  }
 };
 
 export default MapContainer;
