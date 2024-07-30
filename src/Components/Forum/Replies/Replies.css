@@ -216,6 +216,9 @@
 .reply-post-button:active {
     transform: scale(0.95);
 }
+.reply-content{
+    color: black;
+}
   
 @keyframes fly-1 {
     from {

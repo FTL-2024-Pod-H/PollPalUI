@@ -7,6 +7,8 @@ import { faThumbsUp as faThumbsUpSolid, faReply } from '@fortawesome/free-solid-
 import NotLoggedPrompt from "../NotLoggedPrompt/NotLoggedPrompt";
 import Replies from "../Replies/Replies";
 
+const API_BASE_URL =import.meta.env.REACT_APP_API_BASE_URL;
+
 function timeSince(date) {
     const seconds = Math.floor((new Date() - new Date(date)) / 1000);
     let interval = seconds / 31536000;
@@ -31,18 +33,7 @@ function timeSince(date) {
     }
     return Math.floor(seconds) + " seconds ago";
 }
-const mockReplies = [
-    {
-        reply_id: 1,
-        content: "This is a mock reply",
-        createdAt: new Date(),
-        author: {
-            user_id: 1,
-            username: "mockUser",
-            avatar: "https://via.placeholder.com/40"
-        }
-    }
-];
+
 
 
 
@@ -52,26 +43,25 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
     const[isLiked, setIsLiked] = useState(false);
     const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
 
-    const [replies, setReplies] = useState([]);
+    const [replies, setReplies] = useState([ ]);
     const [showReplies, setShowReplies] = useState(false);
 
-    // const handleAddReply = (reply) => {
-    //     setReplies([...replies, reply]);
-    // };
-    const handleAddReply = (replyContent) => {
-        const newReply = {
-          reply_id: replies.length + 1,
-          content: replyContent,
-          createdAt: new Date(),
-          author: {
-            user_id: currentUser,
-            username: "currentUser",
-            avatar: "https://via.placeholder.com/40" 
-          }
-        };
-        setReplies([...replies, newReply]);
+    const handleAddReply = (reply) => {
+        setReplies([...replies, reply]);
     };
-
+    // const handleAddReply = (replyContent) => {
+    //     const newReply = {
+    //       reply_id: replies.length + 1,
+    //       content: replyContent,
+    //       createdAt: new Date(),
+    //       author: {
+    //         user_id: currentUser,
+    //         username: "currentUser",
+    //         avatar: "https://via.placeholder.com/40" 
+    //       }
+    //     };
+    //     setReplies([...replies, newReply]);
+    // };
 
     const handleShowReplies = () => {
         setShowReplies(true);
@@ -80,10 +70,7 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
     const handleCloseReplies = () => {
         setShowReplies(false);
     };
-
-
-
-    
+ 
     const fetchLikeStatus = async () => {
         try {
             const response = await axios.get(`https://pollpalapi.onrender.com/posts/${postId}/liked-by/${currentUser}`);
@@ -192,19 +179,21 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
                 <NotLoggedPrompt onClose={() => setShowLoginPromptModal(false)} />
             )}
             {showReplies && (
-                <Replies 
-                    onClose={handleCloseReplies} 
-                    replies={replies} 
-                    addReply={handleAddReply} 
-                    userAvatar={userAvatar}
-                    username={username}
-                    userPostContent={userPostContent}
-                    currentlikeCount={currentlikeCount}
-                    isLiked={isLiked}
-                    handleLikeClick={handleLikeClick}
-                    timestamp={timestamp}
-                />
-        )}
+                 <Replies
+                 onClose={handleCloseReplies}
+                 replies={replies}
+                 addReply={handleAddReply}
+                 userAvatar={userAvatar}
+                 username={username}
+                 userPostContent={userPostContent}
+                 currentlikeCount={currentlikeCount}
+                 isLiked={isLiked}
+                 handleLikeClick={handleLikeClick}
+                 timestamp={timestamp}
+                 currentUser={currentUser}
+             />
+                
+            )}
         </>
     )
 };

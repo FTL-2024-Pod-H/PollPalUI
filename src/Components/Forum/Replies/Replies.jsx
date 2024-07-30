@@ -4,13 +4,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp as faThumbsUpRegular } from '@fortawesome/free-regular-svg-icons';
 import { faThumbsUp as faThumbsUpSolid, faReply } from '@fortawesome/free-solid-svg-icons';
 
-function Replies({onClose, replies, addReply, userAvatar, username, userPostContent, currentlikeCount, isLiked, handleLikeClick, timestamp}){
+
+function getUserAvatar(username) {
+    // return `https://robohash.org/${username}.png?set=set1`;
+    return `https://ui-avatars.com/api/?name=${username}&background=random`;
+    // return `https://robohash.org/${username}.png?set=set2`;
+    // return `https://api.multiavatar.com/${username}.png`;
+}
+
+function Replies({onClose, replies, addReply, userAvatar, username, userPostContent, currentlikeCount, isLiked, handleLikeClick, timestamp, currentUser}){
 
     const [newReply, setNewReply] = useState("");
 
     const handleAddReply = (e) => {
         e.preventDefault();
         if (newReply.trim() !== "") {
+            // const reply = {
+            //     avatar: currentUserAvatar,
+            //     username: currentUsername,
+            //     content: newReply,
+            //     timestamp: new Date()
+            // };
             addReply(newReply);
             setNewReply("");
         }
@@ -46,6 +60,16 @@ function Replies({onClose, replies, addReply, userAvatar, username, userPostCont
                     </div>
                     {/* <h3>Replies</h3> */}
                     <div className="replies-container">
+                    {/* {replies.map((reply, index) => (
+                            <div key={index} className="reply-box">
+                                <div className="reply-header">
+                                    <img src={getUserAvatar(reply.author.username)} alt="Reply Avatar" className="reply-avatar" />
+                                    <span className="reply-username">@{reply.author.username}</span>
+                                    <span className="reply-timestamp">{new Date(reply.timestamp).toLocaleString()}</span>
+                                </div>
+                                <p className="reply-content">{reply.content}</p>
+                            </div>
+                        ))} */}
                         {replies.map((reply, index) => (
                             <div key={index} className="reply-box">
                                 {reply}
