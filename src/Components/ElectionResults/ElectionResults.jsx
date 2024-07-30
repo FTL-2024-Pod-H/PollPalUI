@@ -7,6 +7,7 @@ function ElectionResults() {
   const [electionData, setElectionData] = useState(null);
   const [filteredElectionData, setFilteredElectionData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentElections, setCurrentElections] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
   const address = location.state?.address;
@@ -27,6 +28,8 @@ function ElectionResults() {
         }
         const data = await response.json();
         console.log("Election Data:", data);
+        setCurrentElections(data.elections);
+        console.log("current elections", currentElections);
         setElectionData(data);
         setLoading(false);
       } catch (error) {
@@ -84,9 +87,19 @@ function ElectionResults() {
               uriAddress={encodeURIComponent(address)}
             />
           ) : (
-            <p className="no-elections-response">
-              No elections for this area...
-            </p>
+            <div className="no-elections-response">
+              <p className="no-elections-text">No elections for this area...</p>
+              <details className="current-elections-menu">
+                <summary>Current Elections</summary>
+                <ul className="current-elections-list">
+                  {currentElections.map((election, idx) => (
+                    <li key={idx} className="current-election">
+                      {election.name}
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </div>
           )
         ) : null}
       </div>
