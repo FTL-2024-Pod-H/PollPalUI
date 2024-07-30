@@ -64,4 +64,70 @@
 } */
 
 @media (max-width: 768px) {
+  .candidate-card {
+    width: 225px;
+    height: auto;
+    padding: 5px;
+  }
+  .card-details {
+    padding: 0;
+  }
+  .candidate-name {
+    font-size: 18px;
+    margin: 0 0 5px 0;
+  }
+  .candidate-party,
+  .candidate-position {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+}
+
+@media (max-width: 430px) {
+  .candidate-card {
+    width: 133px;
+    height: auto;
+    padding: 5px;
+  }
+  .card-details {
+    padding: 0;
+  }
+  .candidate-name {
+    font-size: 12px;
+    margin: 0 0 5px 0;
+  }
+  .candidate-party,
+  .candidate-position {
+    margin: 0;
+    padding: 0;
+    font-size: 9px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+}
+
+@media (max-width: 375px) {
+  .candidate-card {
+    width: 105px;
+    height: auto;
+    padding: 5px;
+  }
+  .card-details {
+    padding: 0;
+  }
+  .candidate-name {
+    font-size: 10px;
+    margin: 0 0 5px 0;
+  }
+  .candidate-party,
+  .candidate-position {
+    margin: 0;
+    padding: 0;
+    font-size: 7.5px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
 }
