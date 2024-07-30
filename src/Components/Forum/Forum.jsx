@@ -41,6 +41,7 @@ function Forum(){
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(6);
     const [totalPosts, setTotalPosts] = useState(0);
+    const [loading, setLoading] = useState(true);
 
     const [clickedButton, setClickedButton] = useState(`all`);
 
@@ -79,10 +80,11 @@ function Forum(){
     }, []);
 
     useEffect(() => {
+        setLoading(true);
         if (viewMode === "your" && currentUser) {
-            fetchUserPosts(currentUser, currentPage, postsPerPage);
+            fetchUserPosts(currentUser, currentPage, postsPerPage).finally(() => setLoading(false));
         } else {
-            fetchPosts(currentPage, postsPerPage);
+            fetchPosts(currentPage, postsPerPage).finally(() => setLoading(false));
         }
     }, [viewMode, currentPage, postsPerPage, currentUser]);
 
@@ -242,6 +244,13 @@ function Forum(){
             {showLoginPromptModal && (
                 <NotLoggedPrompt onClose={() => setShowLoginPromptModal(false)} />
             )}
+            {loading ? (
+                <div className="custom-loader">
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+              </div>
+            ) : (
             <div className="posts-container">
                 {filteredPosts.map((post, index) => (
                     <Post
@@ -262,6 +271,7 @@ function Forum(){
                     />
                 ))}
             </div>
+            )}
                 <Stack spacing={2}>
                     <Pagination
                         count={totalPages}
