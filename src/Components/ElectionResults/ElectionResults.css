@@ -5,12 +5,6 @@
   font-family: "poppins", arial;
 }
 
-.no-elections-response {
-  margin-top: 200px;
-  color: black;
-  text-align: center;
-  font-size: 30px;
-}
 .title-section {
   display: flex;
   flex-wrap: wrap;
@@ -95,6 +89,37 @@
 
 .change-address-button:hover::after {
   width: 100%;
+}
+
+.no-elections-response {
+  margin-top: 75px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-family: arial;
+  gap: 60px;
+}
+
+.no-elections-text {
+  margin: 0;
+}
+
+.current-elections-menu {
+  width: 700px;
+  text-align: center;
+  padding: 0;
+}
+.current-elections-list {
+  padding-left: 15px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-size: 24px;
+  gap: 3.5px;
 }
 
 /* LOADING.... */

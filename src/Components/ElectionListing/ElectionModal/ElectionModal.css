@@ -58,16 +58,13 @@ h3 {
   text-decoration: underline;
 }
 
-.ballot-item {
-  padding: 15px;
-}
-
 .race-district {
   padding: 10px 0;
   text-align: start;
 }
 
 .candidates-list {
+  list-style-type: none;
   padding: 0;
   display: flex;
   flex-direction: row;
@@ -133,6 +130,7 @@ details[open] summary {
 }
 
 details {
+  padding: 15px;
   cursor: pointer;
   border-radius: 5px;
   position: relative;
@@ -162,6 +160,10 @@ details::after {
   opacity: 0.7; /* Adjust opacity as desired */
   z-index: -1;
   border-radius: 15px;
+}
+
+.measure-text {
+  font-family: arial;
 }
 
 .modal-election-name {
