@@ -234,3 +234,35 @@
     opacity: 1;
     visibility: visible;
 }
+
+@media (max-width: 768px) {
+    .forum-post {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .forum-post-details {
+        font-size: 1em;
+    }
+
+    .forum-post-text {
+        font-size: .9em;
+    }
+
+    .user-image{
+        width: 40px;
+        height: 40px;
+    }
+
+    .like-icon{
+        width: 20px;
+    }
+
+    .delete-button svg{
+        width: 12px;
+    }
+
+    .comment-button svg{
+        width: 20px;
+    }
+}

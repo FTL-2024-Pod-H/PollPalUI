@@ -372,20 +372,28 @@
 
 @media (max-width: 768px) {
     .chatbot-container {
-        width: 80%; 
-        height: 550px;
+        width: 50%; 
+        height: 600px;
         bottom: 20px; 
         right: 5%;
     }
 
+    .message{
+        font-size: 14px;
+    }
+
+    .disclaimer {
+        font-size: 14px;
+    }
+
     .floating-button {
         bottom: 70px;
-        width: 60%;
+        width: 35%;
         height: 50px;
     }
 
     .floating-button span {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .floating-button img {
@@ -396,25 +404,39 @@
 
 @media (max-width: 480px) {
     .chatbot-container {
-        width: 85%; 
-        height: 500px;
+        width: 75%; 
+        height: 450px;
         bottom: 10px; 
         right: 2.5%; 
+        font-size: 12px;
+    }
+
+    .message{
+        font-size: 11px;
+    }
+
+    .disclaimer {
+        font-size: 11px;
+    }
+
+    .chatbot-container.collapsed {
+        height: 60px;
     }
 
     .floating-button {
         bottom: 70px;
-        width: 60%;
-        height: 50px;
+        width: 40%;
+        height: 30px;
     }
 
     .floating-button span {
-        font-size: 14px;
+        font-size: 10px;
+        text-align: left;
     }
 
     .floating-button img {
-        width: 20px;
-        height: 20px;
+        width: 15px;
+        height: 15px;
     }
 }
 
