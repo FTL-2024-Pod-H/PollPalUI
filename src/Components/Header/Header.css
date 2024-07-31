@@ -278,3 +278,6 @@
 .sign-out:hover {
   color: #555;
 }
+.user-image{
+  margin-top: -12px;
+}

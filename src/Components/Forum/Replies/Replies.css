@@ -68,6 +68,7 @@
     flex-direction: column;
     /* margin-bottom: auto; */
     margin-top: auto;
+    
 }
 
 .reply-input {
@@ -75,6 +76,7 @@
     margin-bottom: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    
 }
 
 .userinformation-replies{
@@ -157,7 +159,8 @@
     border: 1px solid black;
     border-radius: 4px;
     font-size: 0.875rem; 
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: Geneva, Verdana, sans-serif;
     /* resize: none; */
     resize: vertical;
     max-width: 800px; 
