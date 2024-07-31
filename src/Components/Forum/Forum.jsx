@@ -41,30 +41,10 @@ function Forum(){
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(6);
     const [totalPosts, setTotalPosts] = useState(0);
+    const [clickedButton, setClickedButton] = useState(`all`);
     const [loading, setLoading] = useState(true);
 
-    const [clickedButton, setClickedButton] = useState(`all`);
 
-
-    // useEffect(() => {
-    //     const token = localStorage.getItem("token");
-    //     if (token) {
-    //         try {
-    //             const decodedToken = decodeJWT(token);
-    //             setCurrentUser(decodedToken.userId);
-    //         } catch (error) {
-    //             console.error("Error decoding token: ", error);
-    //         }
-    //     }else{
-    //         setCurrentUser(null);
-    //     }
-    //     if (viewMode === "your" && currentUser) {
-    //         setCurrentPage(1)
-    //         fetchUserPosts(currentUser, currentPage, postsPerPage);
-    //     } else {
-    //         fetchPosts(currentPage, postsPerPage);
-    //     }
-    // }, [ viewMode, currentPage, postsPerPage, currentUser]);
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
@@ -176,18 +156,6 @@ function Forum(){
 
     const totalPages = Math.ceil(totalPosts / postsPerPage);
 
-    // const handlePageClick = (pageNumber) => {
-    //     setCurrentPage(pageNumber);
-    //     fetchPosts(pageNumber, postsPerPage);
-    // };
-    // const handlePageClick = (pageNumber) => {
-    //     setCurrentPage(pageNumber);
-    //     if (viewMode === "your" && currentUser) {
-    //         fetchUserPosts(currentUser, pageNumber, postsPerPage);
-    //     } else {
-    //         fetchPosts(pageNumber, postsPerPage);
-    //     }
-    // };
     const handlePageClick = (pageNumber) => {
         setCurrentPage(pageNumber);
     };

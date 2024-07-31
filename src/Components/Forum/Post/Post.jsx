@@ -5,6 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp as faThumbsUpRegular } from '@fortawesome/free-regular-svg-icons';
 import { faThumbsUp as faThumbsUpSolid, faReply } from '@fortawesome/free-solid-svg-icons';
 import NotLoggedPrompt from "../NotLoggedPrompt/NotLoggedPrompt";
+import Replies from "../Replies/Replies";
+
+const API_BASE_URL =import.meta.env.REACT_APP_API_BASE_URL;
 
 function timeSince(date) {
     const seconds = Math.floor((new Date() - new Date(date)) / 1000);
@@ -33,13 +36,62 @@ function timeSince(date) {
 
 
 
+
 function Post({userFullName, username, userAvatar, userPostContent, onDelete, likeCount, showDelete, timestamp, postId, currentUser, fetchPosts, page, limit}){
 
     const[currentlikeCount, setCurrentLikeCount] = useState(likeCount);
     const[isLiked, setIsLiked] = useState(false);
     const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
 
+    const [replies, setReplies] = useState([ ]);
+    const [showReplies, setShowReplies] = useState(false);
+    const [replyCount, setReplyCount] = useState(0);
+
+    const fetchReplies = async () => {
+        try{
+            const response = await axios.get(`https://pollpalapi.onrender.com/posts/${postId}/replies`);
+            setReplies(response.data);
+            setReplyCount(response.data.length);
+        }catch(error) {
+            console.error("Error fetching replies:" , error);
+        };
+    };
+
+    const handleAddReply = async (replyContent) => {
+        try {
+          const newReply = {
+            content: replyContent,
+            author_id: parseInt(currentUser)
+          };
+          const response = await axios.post(`https://pollpalapi.onrender.com/posts/${postId}/replies`, newReply);
+          setReplies([ ...replies, response.data,]);
+          fetchReplies();
+        } catch (error) {
+          console.error('Error adding reply:', error);
+        }
+      };
+
+      const handleDeleteReply = async (replyId) => {
+        try {
+            await axios.delete(`https://pollpalapi.onrender.com/posts/${postId}/replies/${replyId}`);
+            setReplies(replies.filter(reply => reply.reply_id !== replyId));
+            fetchReplies();
+        } catch (error) {
+            console.error('Error deleting reply:', error);
+        }
+    };
     
+
+
+    const handleShowReplies = () => {
+        fetchReplies();
+        setShowReplies(true);
+    };
+
+    const handleCloseReplies = () => {
+        setShowReplies(false);
+    };
+ 
     const fetchLikeStatus = async () => {
         try {
             const response = await axios.get(`https://pollpalapi.onrender.com/posts/${postId}/liked-by/${currentUser}`);
@@ -50,7 +102,7 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
     };
 
     useEffect(() => {
-        
+        fetchReplies();
         fetchLikeStatus();
     }, [postId, currentUser]);
 
@@ -75,13 +127,11 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
     
     return (
         <>
-            <div className="forum-post">
+            <div className="forum-post" >
                 
                 <div className="forum-post-details">
                     <div className="userinformation">
                         <img
-                            // src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
-                            // alt="Default User"
                             src={userAvatar}
                             alt="User Avatar"
                             className="user-image"
@@ -109,8 +159,8 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
                             <span className="like-count">{likeCount}</span>
                         </button>
                         {/* REPLY BUTTON */}
-                        <div className="group relative">
-                            <button className="comment-button">
+                        <div className="group-relative">
+                            <button className="comment-button" onClick={handleShowReplies}>
                                 <svg
                                     strokeLinejoin="round"
                                     strokeLinecap="round"
@@ -130,9 +180,9 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
                                     d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"
                                 ></path>
                                 </svg>
+                                <span className="reply-count">{replyCount}</span> 
                             </button>
-                            <span className="tooltip">Replies coming soon</span>
-                            {/* <span class="tooltip">Comment</span> */}
+                            {/* <span className="tooltip">Replies coming soon</span> */}
                         </div>
                         {showDelete && (
                             <button className="delete-button" onClick={onDelete}>
@@ -146,6 +196,23 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
             </div>
             {showLoginPromptModal && (
                 <NotLoggedPrompt onClose={() => setShowLoginPromptModal(false)} />
+            )}
+            {showReplies && (
+                 <Replies
+                 onClose={handleCloseReplies}
+                 replies={replies}
+                 addReply={handleAddReply}
+                 userAvatar={userAvatar}
+                 username={username}
+                 userPostContent={userPostContent}
+                 currentlikeCount={currentlikeCount}
+                 isLiked={isLiked}
+                 handleLikeClick={handleLikeClick}
+                 timestamp={timestamp}
+                 currentUser={currentUser}
+                 deleteReply={handleDeleteReply}
+             />
+                
             )}
         </>
     )

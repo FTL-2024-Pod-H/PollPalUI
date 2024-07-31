@@ -206,3 +206,17 @@
       box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
     }
   }
+
+/*   @media (max-width: 820px) {
+    .view-all-posts, .your-posts{
+        font-size: 20px
+    }
+    .forum-description{
+        font-size: 12px;
+    }
+    .forum-title{
+        font-size: 24px
+    }
+} */
+
+
