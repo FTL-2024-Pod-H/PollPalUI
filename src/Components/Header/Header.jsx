@@ -138,7 +138,7 @@ const Header = () => {
           </nav>
           <div className="auth-buttons">
           
-// ----------- 
+{/* // -----------  */}
 
            {/* {localStorage.getItem("token") ? (
                 <>
@@ -158,7 +158,7 @@ const Header = () => {
               )} */}
 
 
-// ------------
+{/* // ------------ */}
             {/* <Link to={`/login`} className="sign-in-link">
               <button className="animated-button">Sign in</button>
             </Link>
