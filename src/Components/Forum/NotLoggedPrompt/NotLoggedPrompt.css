@@ -149,6 +149,12 @@
   margin-top: 10px;
 }
 
+@media (max-width: 768px) {
+  .nl-modal-content {
+    width: 280px;
+  }
+}
+
 /* .glow-on-hover {
     width: 90px;
     height: 35px;
