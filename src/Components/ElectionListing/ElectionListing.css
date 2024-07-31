@@ -83,11 +83,54 @@
   color: rgb(65, 64, 64);
 }
 
-@media (max-width: 390px) {
+@media (max-width: 1024px) {
+  .each-election {
+    padding: 20px 0 0 0;
+    width: 80%;
+  }
+  .election-name {
+    font-size: 21px;
+  }
+  .election-day {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .each-election {
+    padding: 10px 0 0 0;
+    width: 90%;
+  }
+  .election-name {
+    font-size: 21px;
+  }
+  .election-day {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 430px) {
+  .each-election {
+    padding: 10px 0 0 0;
+    width: 90%;
+  }
   .election-name {
     font-size: 17px;
   }
+  .election-day {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 375px) {
   .each-election {
-    width: 350px;
+    padding: 10px 0 0 0;
+    width: 90%;
+  }
+  .election-name {
+    font-size: 15px;
+  }
+  .election-day {
+    font-size: 12px;
   }
 }

@@ -204,7 +204,9 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
                   ) : info.measure ? (
                     <li className="measure-text">{info.measure}</li>
                   ) : (
-                    <li>No further info available</li>
+                    <li className="no-further-info">
+                      No further info available
+                    </li>
                   )}
                 </ul>
               </div>
@@ -238,7 +240,7 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
     if (url) {
       window.open(url, "_blank");
     } else {
-      alert("No Link Available");
+      alert("No Link Available Currently...");
     }
   };
 
