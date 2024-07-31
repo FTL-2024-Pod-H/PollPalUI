@@ -25,6 +25,18 @@
     position: relative;
     /* max-height: 80vh;  */
 }
+.close-reply-modal-button{
+    border: none;
+    background: white;
+    font-size: 2rem; 
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    cursor: pointer;
+    padding: 0;
+    color:grey;
+    z-index: 1000;
+}
 
 .replies-container {
     max-height: 410px;
@@ -75,15 +87,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* .original-post-details{
-    position:relative;
-    color:black;
-    position:relative;
-    display:flex;
-    flex-direction: column;
-
-    z-index: 1;
-} */
 .original-post-details {
     position: relative;
     color: black;
@@ -105,20 +108,11 @@
     height: 2px; 
     background: linear-gradient(144deg,#E6117C,#4A3CDB 50%,#00ddeb);
     /* background: black; */
-    opacity: 0.7; /* Adjust opacity as desired */
+    opacity: 0.7; 
     z-index: -1;
     border-radius: 15px; 
 }
-/* .original-post-details::after{
-    content: '';
-    position: absolute;
-    top: 60px;
-    bottom: 2px;
-    left: 28px; 
-    width: 1.5px; 
-    box-shadow: -4px 0px 0px #a3a3a3;
-    z-index: -1; 
-} */
+
 .original-post-content-reply{
     margin-top: -10px;
     margin-left: 65px;

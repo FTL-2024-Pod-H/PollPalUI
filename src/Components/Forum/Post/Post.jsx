@@ -185,7 +185,7 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
                                 </svg>
                                 <span className="reply-count">{replyCount}</span> 
                             </button>
-                            <span className="tooltip">Replies coming soon</span>
+                            {/* <span className="tooltip">Replies coming soon</span> */}
                         </div>
                         {showDelete && (
                             <button className="delete-button" onClick={onDelete}>

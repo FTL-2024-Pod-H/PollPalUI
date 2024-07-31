@@ -3,6 +3,7 @@ import "./Replies.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp as faThumbsUpRegular } from '@fortawesome/free-regular-svg-icons';
 import { faThumbsUp as faThumbsUpSolid, faReply } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
 
 
@@ -34,6 +35,9 @@ function Replies({onClose, replies, addReply, userAvatar, username, userPostCont
         <>  
             <div className="reply-modal" onClick={onClose}>
                 <div className="reply-modal-content" onClick={(e) => e.stopPropagation()}>
+                <button className="close-reply-modal-button" onClick={onClose}>
+                    <FontAwesomeIcon icon={faTimes} />
+                </button>
                     <div className="original-post-details">
                         <div className="userinformation-replies">
                             <img src={userAvatar} alt="User Avatar" className="user-image" />
