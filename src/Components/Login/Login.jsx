@@ -26,7 +26,7 @@ const Login = () => {
       if (error.response && error.response.status === 401) {
         toast.error("Invalid username or password");
       } else {
-        toast.error("Login failed, please try again later");
+        toast.error("Signin failed, please try again later");
       }
     }
   };
@@ -35,7 +35,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <ToastContainer position="top-center" autoClose={3000} hideProgressBar={true}/>
-      <h1>Login to PollPal</h1>
+      <h1>Sign in to PollPal</h1>
       <input
         type="text"
         placeholder="Username"
@@ -48,7 +48,7 @@ const Login = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleLogin} className="animated-button">Login</button>
+      <button onClick={handleLogin} className="animated-button">Sign in</button>
       {/* <button onClick={() => navigate("/register")}>Go to register</button> */}
       <p className="signup"> Don&apos;t have an account? <a rel="noopener noreferrer" href="/register" class="">Sign up</a>
       </p>

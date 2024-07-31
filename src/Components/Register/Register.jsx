@@ -135,11 +135,11 @@ const Register = () => {
       />
       <div className="register-buttons">
         <button onClick={handleRegister} className="animated-button">Register</button>
-        <button onClick={() => navigate("/login")} className="animated-button">Go to login</button>
+        <button onClick={() => navigate("/login")} className="animated-button">Go to Sign in</button>
       </div>
       <div className="social-message">
         <div className="line"></div>
-        <p className="message">Login with social accounts coming soon</p>
+        <p className="message">Sign in with social accounts coming soon</p>
         <div className="line"></div>
       </div>
 
