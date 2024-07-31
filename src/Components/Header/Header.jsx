@@ -134,11 +134,11 @@ const Header = () => {
                     setIsDropdownOpen(!isDropdownOpen);}}/>
                     {isDropdownOpen && (
                   <div className="dropdown-menu">
-                    <Link to="#" className="dropdown-item">
-                    Edit User
-                    </Link>
-                    <button onClick={handleLogout} className="dropdown-item">
-                      Log out
+                    {/* <Link to="#" className="dropdown-item">
+                    <button>Edit User</button>
+                    </Link> */}
+                    <button onClick={handleLogout} className="sign-out">
+                      Sign out
                     </button>
                   </div>
                     )}
