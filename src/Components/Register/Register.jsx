@@ -7,6 +7,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PasswordStrengthBar from "react-password-strength-bar";
 
+const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL;
+
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -36,11 +38,11 @@ const Register = () => {
 
     try {
       await axios.post(
-        "https://pollpalapi.onrender.com/users/register",
+        "${API_BASE_URL}/users/register",
         { name, username, password, address }
       );
       const loginResponse = await axios.post(
-        "https://pollpalapi.onrender.com/users/login",
+        "${API_BASE_URL}/users/login",
         { username, password }
       );
       localStorage.setItem("token", loginResponse.data.token);

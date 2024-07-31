@@ -48,20 +48,21 @@
 }
   
 .post-content {
-    width: 90%;
+    /* width: 90%; */
+    width:530px;
     min-height: 100px;
     padding: 10px;
     border: 1px solid black;
     border-radius: 4px;
     font-size: 0.875rem; 
-    font-family: 'Poppins', sans-serif;
-    /* resize: none; */
+    /* font-family: 'Poppins', sans-serif; */
     resize: vertical;
-    max-width: 500px; /* Set maximum width */
-    max-height: 350px;
+    /* max-width: 500px;  */
+    max-height: 250px;
     margin-top: 10px;
     outline: none;
     align-items: center;
+    font-family: Geneva, Verdana, sans-serif;
     /* margin-right: 40px; */
 }
   

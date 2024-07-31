@@ -5,19 +5,13 @@
   font-family: "poppins", arial;
 }
 
-.no-elections-response {
-  margin-top: 200px;
-  color: black;
-  text-align: center;
-  font-size: 30px;
-}
 .title-section {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   flex-direction: row;
   justify-content: center;
-  padding: 20px;
+  padding: 40px 20px 20px 20px;
   border-radius: 15px;
   max-width: 1000px;
   margin: 20px auto;
@@ -97,6 +91,37 @@
   width: 100%;
 }
 
+.no-elections-response {
+  margin-top: 75px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-family: arial;
+  gap: 60px;
+}
+
+.no-elections-text {
+  margin: 0;
+}
+
+.current-elections-menu {
+  width: 700px;
+  text-align: center;
+  padding: 0;
+}
+.current-elections-list {
+  padding-left: 15px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-size: 24px;
+  gap: 3.5px;
+}
+
 /* LOADING.... */
 
 .custom-loader {
@@ -141,24 +166,66 @@
   }
 }
 
-@media (max-width: 768px) {
-  .showing-elections-for {
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
+@media (max-width: 1024px) {
+  .title-section {
+    padding: 30px 0 0 0;
+    gap: 5px;
   }
-}
-
-@media (max-width: 548px) {
   .showing-elections-for,
   .address,
   .change-address-button {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
 
-@media (max-width: 390px) {
-  .address {
-    font-size: 15px;
+@media (max-width: 820px) {
+  .title-section {
+    flex-direction: column;
+    padding: 20px 0 0 0;
+    gap: 5px;
+  }
+  .showing-elections-for,
+  .address,
+  .change-address-button {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title-section {
+    flex-direction: column;
+    padding: 20px 0 0 0;
+    gap: 5px;
+  }
+  .showing-elections-for,
+  .address,
+  .change-address-button {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 430px) {
+  .title-section {
+    flex-direction: column;
+    padding: 10px 0 0 0;
+    gap: 5px;
+  }
+  .showing-elections-for,
+  .address,
+  .change-address-button {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 375px) {
+  .title-section {
+    flex-direction: column;
+    padding: 0;
+    gap: 5px;
+  }
+  .showing-elections-for,
+  .address,
+  .change-address-button {
+    font-size: 12px;
   }
 }

@@ -65,7 +65,7 @@ const AboutSection = () => {
         <div className="card">
           <div className="feature-content">
             <h4 className="feature-title">
-              <img className="info-icon" src={infoIcon} />
+              <img className="info-icon"  src={infoIcon} />
               Reminders
             </h4>
             <p className="feature-description">

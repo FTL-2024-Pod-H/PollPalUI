@@ -58,16 +58,13 @@ h3 {
   text-decoration: underline;
 }
 
-.ballot-item {
-  padding: 15px;
-}
-
 .race-district {
   padding: 10px 0;
   text-align: start;
 }
 
 .candidates-list {
+  list-style-type: none;
   padding: 0;
   display: flex;
   flex-direction: row;
@@ -77,6 +74,10 @@ h3 {
   gap: 10px;
   margin: 0;
   padding: 0 0 35px 0;
+}
+
+.no-further-info {
+  font-family: arial;
 }
 
 .ballot-details,
@@ -120,12 +121,11 @@ summary::after {
   transition: 0.2s;
 }
 
-details[open] > summary::after {
-  transform: rotate(180deg);
-}
-
 summary::-webkit-details-marker {
   display: none;
+}
+details[open] > summary::after {
+  transform: rotate(180deg);
 }
 
 details[open] summary {
@@ -133,6 +133,7 @@ details[open] summary {
 }
 
 details {
+  padding: 15px;
   cursor: pointer;
   border-radius: 5px;
   position: relative;
@@ -162,6 +163,10 @@ details::after {
   opacity: 0.7; /* Adjust opacity as desired */
   z-index: -1;
   border-radius: 15px;
+}
+
+.measure-text {
+  font-family: arial;
 }
 
 .modal-election-name {
@@ -203,31 +208,262 @@ details::after {
   }
 }
 
-/* @media (max-width: 670px) {
+@media (max-width: 768px) {
   .election-modal-content {
-    padding: 20px;
-    border-radius: 10px;
-    width: 680px;
+    width: 80%;
     height: auto;
-    position: relative;
+    padding: 15px;
   }
-} */
+  .modal-election-name {
+    font-size: 26px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10px 0 15px 0;
+  }
+  .tabs {
+    justify-content: space-between;
+  }
 
-@media (max-width: 670px) {
+  .tabs button {
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding: 0;
+  }
+  .measures {
+    font-family: arial;
+    font-size: 20px;
+
+    margin: 10px 0;
+  }
+
+  .ballot-info {
+    max-height: 50vh; /* Adjust this to control the scrollable area height */
+    overflow-y: auto;
+  }
+
+  details {
+    padding: 20px 0;
+    margin: 5px 0;
+  }
+
+  details:hover::before {
+    top: 0;
+    bottom: 0;
+    left: -10px;
+    width: 1.5px;
+  }
+
+  details::after {
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+  }
+  summary {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  summary::after {
+    width: 18px;
+    height: 10px;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  .race-district {
+    font-size: 16px;
+    padding: 20px 0 10px 0;
+    text-align: center;
+  }
+  .candidates-list {
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+  .no-further-info,
+  .measure-text {
+    font-size: 16px;
+  }
+  .map-container {
+    height: 40vh;
+  }
   .reg-link-buttons {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: space-around;
-    align-items: center;
-    margin-top: 15px; */
     gap: 10px;
   }
   .reg-button {
-    width: 90%;
-    font-size: large;
-    height: 40px;
-    display: flex;
+    width: 80%;
+    font-size: 12px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 430px) {
+  .election-modal-content {
+    width: 70%;
+    height: auto;
+    padding: 15px;
+  }
+  .modal-election-name {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10px 0 15px 0;
+  }
+  .tabs button {
+    font-size: 11px;
+    margin-bottom: 5px;
+    padding: 0;
+  }
+  .measures {
+    font-family: arial;
+    font-size: 14px;
+
+    margin: 5px 0;
+  }
+
+  .ballot-info {
+    max-height: 45vh; /* Adjust this to control the scrollable area height */
+    overflow-y: auto;
+  }
+
+  details {
+    padding: 12px 0;
+    margin: 5px 0;
+  }
+
+  details:hover::before {
+    top: 0;
+    bottom: 0;
+    left: -10px;
+    width: 1.5px;
+  }
+
+  details::after {
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+  }
+  summary {
+    font-size: 15px;
+    margin: 0;
+  }
+
+  summary::after {
+    width: 18px;
+    height: 10px;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  .race-district {
+    font-size: 12px;
+    padding: 15px 0 5px 0;
+    text-align: center;
+  }
+  .candidates-list {
     justify-content: center;
-    align-items: center;
+    padding-bottom: 20px;
+  }
+  .no-further-info,
+  .measure-text {
+    font-size: 12px;
+  }
+  .map-container {
+    height: 40vh;
+  }
+  .reg-link-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .reg-button {
+    width: 80%;
+    font-size: 12px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 375px) {
+  .election-modal-content {
+    width: 65%;
+    height: auto;
+    padding: 15px;
+  }
+  .modal-election-name {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10px 0 15px 0;
+  }
+  .tabs button {
+    font-size: 10px;
+    margin-bottom: 5px;
+    padding: 0;
+  }
+  .measures {
+    font-family: arial;
+    font-size: 13px;
+    margin: 5px 0;
+  }
+
+  .ballot-info {
+    max-height: 42.5vh; /* Adjust this to control the scrollable area height */
+    overflow-y: auto;
+  }
+
+  details {
+    padding: 12px 0;
+    margin: 5px 0;
+  }
+
+  details:hover::before {
+    top: 0;
+    bottom: 0;
+    left: -10px;
+    width: 1.5px;
+  }
+
+  details::after {
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+  }
+  summary {
+    font-size: 13px;
+    margin: 0;
+  }
+
+  summary::after {
+    width: 18px;
+    height: 10px;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  .race-district {
+    font-size: 10px;
+    padding: 15px 0 5px 0;
+    text-align: center;
+  }
+  .candidates-list {
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+  .no-further-info,
+  .measure-text {
+    font-size: 10px;
+  }
+  .map-container {
+    height: 40vh;
+  }
+  .reg-link-buttons {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .reg-button {
+    width: 80%;
+    font-size: 11px;
+    height: 30px;
   }
 }

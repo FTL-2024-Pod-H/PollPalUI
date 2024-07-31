@@ -17,8 +17,6 @@
 }
 
 .ee-modal-content {
-  /* background: black; */
-  /* background: #e8e3e3; */
   background: #fff;
   padding: 20px;
   border-radius: 30px;
@@ -92,20 +90,8 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-
-/*   border-radius: 30%;
-  font-size: 24px;
-  border: none;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: -30px; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  transition: background 0.3s, color 0.3s; */
-  
   transition: all 0.3s linear;
   border-radius: 10px;
-  /* border: 1px solid #4a00e0; */
   border:none;
   padding: 10px 20px;
   background-color: transparent;
