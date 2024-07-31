@@ -12,6 +12,11 @@
     font-size: 30px;
     /* font-weight: bold; */
 }
+/* .forum-title{
+    background: linear-gradient(to right, #E6117C, #4A3CDB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
 .forum-description{
     color: gray;
     /* font-size: 0.9em; */

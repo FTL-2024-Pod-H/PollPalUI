@@ -30,7 +30,9 @@
     left: 0;
     width: 100%;
     height: 2px; 
-    background: linear-gradient(144deg,#E6117C,#4A3CDB 50%,#00ddeb);
+    /* background: linear-gradient(144deg,#E6117C,#4A3CDB 50%,#00ddeb); */
+    background: linear-gradient(144deg,#E6117C,#4A3CDB );
+
     /* background: black; */
     opacity: 0.7; 
     z-index: -1;
