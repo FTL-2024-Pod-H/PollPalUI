@@ -5,7 +5,6 @@
     /* border-radius: 8px; */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     color: black;
-    
     text-align: center;
     /* background: linear-gradient(to right, #000000, #2D0047); */
     background: white;
@@ -44,8 +43,13 @@
     font-weight: bold;
 }
 .representatives-container h3 {
-    font-size: 22px;
+    font-size: 18px;
 }
+
+.representatives-container h1 {
+    font-size: 26px;
+}
+
 .representatives-image {
     display: flex;
     justify-content: center;
@@ -66,13 +70,20 @@
         padding: 10px;
     }
 
-    .representatives-container h2 {
-        font-size: 1.5rem;
+    .representatives-container h1 {
+        font-size: 1.2rem;
     }
 
     .representatives-container h3 {
-        font-size: 1.2rem;
+        font-size: .9rem;
     }
+
+    /* .representatives-list{
+        display: flex;
+        flex-direction: row;
+        overflow-x: scroll;
+        max-width: 100%;
+    } */
 
     .representative-card {
         width: 150px; 

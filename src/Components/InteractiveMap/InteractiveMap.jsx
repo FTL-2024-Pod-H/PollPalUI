@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+// InteractiveMap.jsx
+import React, { useState, useRef } from 'react';
 import Map from './Map';
 import Representatives from './Representatives';
 import './InteractiveMap.css';
@@ -7,6 +8,7 @@ const InteractiveMap = () => {
     const [representatives, setRepresentatives] = useState([]);
     const [selectedState, setSelectedState] = useState("");
     const apiKey = import.meta.env.VITE_CONGRESS_API_KEY;
+    const representativesRef = useRef(null);
 
 
     const stateNameToCode = {
@@ -70,6 +72,7 @@ const InteractiveMap = () => {
             }
             const data = await response.json();
             setRepresentatives(data.members || []);
+            representativesRef.current.scrollIntoView({ behavior: 'smooth' });
         } catch (error) {
             console.error('Error fetching representatives:', error);
         }
@@ -90,7 +93,9 @@ const InteractiveMap = () => {
             <h1>Interactive Map</h1>
             <p>Click on state to view current representatives</p>
             <Map onStateClick={handleStateClick} selectedState={selectedState} />
-            <Representatives representatives={representatives} selectedState={selectedState}/>
+            <div ref={representativesRef}>
+                <Representatives representatives={representatives} selectedState={selectedState}/>
+            </div>
         </div>
     );
 };
