@@ -45,25 +45,49 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
 
     const [replies, setReplies] = useState([ ]);
     const [showReplies, setShowReplies] = useState(false);
+    const [replyCount, setReplyCount] = useState(0);
 
-    const handleAddReply = (reply) => {
-        setReplies([...replies, reply]);
-    };
-    // const handleAddReply = (replyContent) => {
-    //     const newReply = {
-    //       reply_id: replies.length + 1,
-    //       content: replyContent,
-    //       createdAt: new Date(),
-    //       author: {
-    //         user_id: currentUser,
-    //         username: "currentUser",
-    //         avatar: "https://via.placeholder.com/40" 
-    //       }
-    //     };
-    //     setReplies([...replies, newReply]);
+    // const handleAddReply = (reply) => {
+    //     setReplies([...replies, reply]);
     // };
+    const fetchReplies = async () => {
+        try{
+            const response = await axios.get(`https://pollpalapi.onrender.com/posts/${postId}/replies`);
+            setReplies(response.data);
+            setReplyCount(response.data.length);
+        }catch(error) {
+            console.error("Error fetching replies:" , error);
+        };
+    };
+
+    const handleAddReply = async (replyContent) => {
+        try {
+          const newReply = {
+            content: replyContent,
+            author_id: parseInt(currentUser)
+          };
+          const response = await axios.post(`https://pollpalapi.onrender.com/posts/${postId}/replies`, newReply);
+          setReplies([ ...replies, response.data,]);
+          fetchReplies();
+        } catch (error) {
+          console.error('Error adding reply:', error);
+        }
+      };
+
+      const handleDeleteReply = async (replyId) => {
+        try {
+            await axios.delete(`https://pollpalapi.onrender.com/posts/${postId}/replies/${replyId}`);
+            setReplies(replies.filter(reply => reply.reply_id !== replyId));
+            fetchReplies();
+        } catch (error) {
+            console.error('Error deleting reply:', error);
+        }
+    };
+    
+
 
     const handleShowReplies = () => {
+        fetchReplies();
         setShowReplies(true);
     };
 
@@ -81,7 +105,7 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
     };
 
     useEffect(() => {
-        
+        fetchReplies();
         fetchLikeStatus();
     }, [postId, currentUser]);
 
@@ -106,13 +130,11 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
     
     return (
         <>
-            <div className="forum-post" onClick={handleShowReplies}>
+            <div className="forum-post" >
                 
                 <div className="forum-post-details">
                     <div className="userinformation">
                         <img
-                            // src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
-                            // alt="Default User"
                             src={userAvatar}
                             alt="User Avatar"
                             className="user-image"
@@ -140,7 +162,7 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
                             <span className="like-count">{likeCount}</span>
                         </button>
                         {/* REPLY BUTTON */}
-                        <div className="group relative">
+                        <div className="group-relative">
                             <button className="comment-button" onClick={handleShowReplies}>
                                 <svg
                                     strokeLinejoin="round"
@@ -161,9 +183,9 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
                                     d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"
                                 ></path>
                                 </svg>
+                                <span className="reply-count">{replyCount}</span> 
                             </button>
                             <span className="tooltip">Replies coming soon</span>
-                            {/* <span class="tooltip">Comment</span> */}
                         </div>
                         {showDelete && (
                             <button className="delete-button" onClick={onDelete}>
@@ -191,6 +213,7 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
                  handleLikeClick={handleLikeClick}
                  timestamp={timestamp}
                  currentUser={currentUser}
+                 deleteReply={handleDeleteReply}
              />
                 
             )}

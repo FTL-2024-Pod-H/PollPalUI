@@ -123,6 +123,13 @@
     /* color: white; */
     color: black;
 }
+.reply-count{
+    font-size: 16px;
+    /* color: white; */
+    color: black;
+    /* margin-top: 7px; */
+    margin-left: 2px;
+}
 
 /* LIKE AND DELETE */
 
@@ -162,8 +169,21 @@
 
 /* REPLY BUTTON */
 
-.group {
+.group-relative {
     position: relative;
+}
+
+.comment-button{
+    background:none;
+    border:none;
+    outline:none;
+    padding: 5px;
+    border: none;
+    background: rgba(255, 255, 255, 0);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    /* margin-bottom: 13px; */
 }
   
 .comment-icon {
@@ -172,7 +192,7 @@
     transition: transform 0.2s;
     border:none;
     background:none;
-    margin-bottom: -17px;
+    margin-bottom: -3px;
     stroke: #8251bb;
 } 
   
@@ -185,13 +205,7 @@
 .group:hover .tooltip {
     transform: scale(1);
 }
-.comment-button{
-    background:none;
-    border:none;
-    cursor:pointer;
-    padding:0;
-    outline:none;
-}
+
 
 .forum-username-timestamp {
     display: flex;
