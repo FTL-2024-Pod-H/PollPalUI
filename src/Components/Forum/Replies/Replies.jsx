@@ -11,6 +11,28 @@ function getUserAvatar(username) {
     return `https://ui-avatars.com/api/?name=${username}&background=random`;
 }
 
+const timeSince = (date) => {
+    const now = new Date();
+    const seconds = Math.floor((now - new Date(date)) / 1000);
+    
+    const interval = Math.floor(seconds / 31536000); // Seconds in a year
+    if (interval > 1) return `${interval} years later`;
+    
+    const monthInterval = Math.floor(seconds / 2592000); // Seconds in a month
+    if (monthInterval > 1) return `${monthInterval} months later`;
+    
+    const dayInterval = Math.floor(seconds / 86400); // Seconds in a day
+    if (dayInterval > 1) return `${dayInterval} days later`;
+    
+    const hourInterval = Math.floor(seconds / 3600); // Seconds in an hour
+    if (hourInterval > 1) return `${hourInterval} hours later`;
+    
+    const minuteInterval = Math.floor(seconds / 60); // Seconds in a minute
+    if (minuteInterval > 1) return `${minuteInterval} minutes later`;
+    
+    return 'Just now'; // Default case
+};
+
 
 function Replies({onClose, replies, addReply, userAvatar, username, userPostContent, currentlikeCount, isLiked, handleLikeClick, timestamp, currentUser, deleteReply}){
 
@@ -63,7 +85,8 @@ function Replies({onClose, replies, addReply, userAvatar, username, userPostCont
                             <div className="userinformation-replies">
                                 <img src={getUserAvatar(reply.author.username)} alt="Reply Avatar" className="user-image" />
                                 <h2 className="username-replies">@{reply.author.username}</h2>
-                                <span className="timestamp">{new Date(reply.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                                <span className="timestamp">{new Date(reply.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })} </span>
+                                {/* <span className="timestamp">{timeSince(reply.createdAt)}</span> */}
                             </div>
                             <p className="original-post-content-reply">{reply.content}</p>
                             <div className="like-reply-class">

@@ -49,6 +49,8 @@
     border-radius: 5px;
     margin-left: -10px;
     overflow-y: auto;
+    /* background-color: #4A3CDB; */
+    margin-left: 5px;
 
 }
 
@@ -278,8 +280,8 @@
     text-align: center;
     color: red;
     font-size: 1.2rem; 
-    font-family: Geneva, Verdana, sans-serif;
-    /* font-family: 'Poppins', sans-serif; */
+    /* font-family: Geneva, Verdana, sans-serif; */
+    font-family: 'Poppins', sans-serif;
 }
 .login-message {
     background: linear-gradient(to right, #E6117C, #4A3CDB);

@@ -47,9 +47,6 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
     const [showReplies, setShowReplies] = useState(false);
     const [replyCount, setReplyCount] = useState(0);
 
-    // const handleAddReply = (reply) => {
-    //     setReplies([...replies, reply]);
-    // };
     const fetchReplies = async () => {
         try{
             const response = await axios.get(`https://pollpalapi.onrender.com/posts/${postId}/replies`);
