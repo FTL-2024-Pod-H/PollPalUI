@@ -15,16 +15,16 @@ const Header = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-
     if (token) {
       const payload = decodeJWT(token);
       console.log("payload", payload);
-
       if (payload) {
         setId(payload.userId);
         setUserAvatar(getUserAvatar(payload.userName));
-        //fetchUserData(payload.userName);
       }
+    } else {
+      setId(null);
+      setUserAvatar("");
     }
 
     const handleScroll = () => {
@@ -38,8 +38,8 @@ const Header = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-    
-  }, []);
+  }, [localStorage.getItem("token")]);
+
 
   useEffect(() => {
     const handleSignOut = (event) => {
@@ -70,6 +70,7 @@ const Header = () => {
   const handleLogout = () => {
     console.log("Logging out");
     localStorage.removeItem("token");
+    setId(null);
     navigate("/");
   };
   

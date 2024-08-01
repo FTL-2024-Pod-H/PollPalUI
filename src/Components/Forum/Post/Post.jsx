@@ -37,54 +37,38 @@ function timeSince(date) {
   return Math.floor(seconds) + " seconds ago";
 }
 
-function Post({
-  userFullName,
-  username,
-  userAvatar,
-  userPostContent,
-  onDelete,
-  likeCount,
-  showDelete,
-  timestamp,
-  postId,
-  currentUser,
-  fetchPosts,
-  page,
-  limit,
-}) {
-  const [currentlikeCount, setCurrentLikeCount] = useState(likeCount);
-  const [isLiked, setIsLiked] = useState(false);
-  const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
+function Post({userFullName, username, userAvatar, userPostContent, onDelete, likeCount, showDelete, timestamp, postId, currentUser, fetchPosts, page, limit}){
 
-  const [replies, setReplies] = useState([]);
-  const [showReplies, setShowReplies] = useState(false);
-  const [replyCount, setReplyCount] = useState(0);
+    const[currentlikeCount, setCurrentLikeCount] = useState(likeCount);
+    const[isLiked, setIsLiked] = useState(false);
+    const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
 
-  const fetchReplies = async () => {
-    try {
-      const response = await axios.get(`${PROD_LINK}/posts/${postId}/replies`);
-      setReplies(response.data);
-      setReplyCount(response.data.length);
-    } catch (error) {
-      console.error("Error fetching replies:", error);
-    }
-  };
+    const [replies, setReplies] = useState([ ]);
+    const [showReplies, setShowReplies] = useState(false);
+    const [replyCount, setReplyCount] = useState(0);
 
-  const handleAddReply = async (replyContent) => {
-    try {
-      const newReply = {
-        content: replyContent,
-        author_id: parseInt(currentUser),
-      };
-      const response = await axios.post(
-        `${PROD_LINK}/posts/${postId}/replies`,
-        newReply
-      );
-      setReplies([...replies, response.data]);
-      fetchReplies();
-    } catch (error) {
-      console.error("Error adding reply:", error);
-    }
+    const fetchReplies = async () => {
+        try{
+            const response = await axios.get(`${PROD_LINK}/posts/${postId}/replies`);
+            setReplies(response.data);
+            setReplyCount(response.data.length);
+        }catch(error) {
+            console.error("Error fetching replies:" , error);
+        };
+    };
+
+    const handleAddReply = async (replyContent) => {
+        try {
+          const newReply = {
+            content: replyContent,
+            author_id: parseInt(currentUser)
+          };
+          const response = await axios.post(`${PROD_LINK}/posts/${postId}/replies`, newReply);
+          setReplies([ response.data, ...replies]);
+          fetchReplies();
+        } catch (error) {
+          console.error('Error adding reply:', error);
+        }
   };
 
   const handleDeleteReply = async (replyId) => {
@@ -132,11 +116,13 @@ function Post({
         await axios.post(`${PROD_LINK}/posts/${postId}/unlike`, {
           user_id: currentUser,
         });
+        setCurrentLikeCount(currentlikeCount - 1);
         fetchPosts(page, limit);
       } else {
         await axios.post(`${PROD_LINK}/posts/${postId}/like`, {
           user_id: currentUser,
         });
+        setCurrentLikeCount(currentlikeCount + 1);
         fetchPosts(page, limit);
       }
       setIsLiked(!isLiked);

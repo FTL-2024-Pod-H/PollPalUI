@@ -68,6 +68,7 @@ const AboutSection = () => {
               <img className="info-icon"  src={infoIcon} />
               Reminders
             </h4>
+              <p className="coming-soon-reminders">* Coming Soon</p>
             <p className="feature-description">
               Set up reminders for election dates and deadlines.
             </p>

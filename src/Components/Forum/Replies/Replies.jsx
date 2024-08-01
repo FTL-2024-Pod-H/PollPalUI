@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./Replies.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp as faThumbsUpRegular } from '@fortawesome/free-regular-svg-icons';
@@ -52,6 +52,7 @@ function Replies({onClose, replies, addReply, userAvatar, username, userPostCont
         day: 'numeric',
         year: 'numeric'
     });
+    
 
     return(
         <>  
@@ -136,7 +137,9 @@ function Replies({onClose, replies, addReply, userAvatar, username, userPostCont
                         {/* </div> */}
                     </form> 
                     ) : (
-                        <div className="login-message">Please log in to post a reply.</div>
+                        <div className="login-message">
+                            Please <a href="/login" className="sign-up-replies">Sign in</a> to post a reply.
+                        </div>
                     )}
 
                 </div>
