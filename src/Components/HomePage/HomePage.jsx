@@ -7,35 +7,6 @@ import ElectionEducation from "./ElectionEducation/ElectionEducation";
 // import ChatBot from "../ChatBot/ChatBot";
 
 function HomePage() {
-    
-    // useEffect(() => {
-    //     const sections = document.querySelectorAll('.section');
-
-    //     const options = {
-    //         threshold: 0.1
-    //     };
-
-    //     const observer = new IntersectionObserver((entries) => {
-    //         entries.forEach(entry => {
-    //             if (entry.isIntersecting) {
-    //                 entry.target.classList.add('visible');
-    //             } else {
-    //                 entry.target.classList.remove('visible');
-    //             }
-    //         });
-    //     }, options);
-
-    //     sections.forEach(section => {
-    //         observer.observe(section);
-    //     });
-
-    //     return () => {
-    //         sections.forEach(section => {
-    //             observer.unobserve(section);
-    //         });
-    //     };
-    // }, []);
-
     const searchLocationRef = useRef(null);
     const aboutSectionRef = useRef(null);
     const electionEducationRef = useRef(null);
@@ -87,6 +58,11 @@ function HomePage() {
             <section className="section search-location" id="initial-viewport">
                 <h2>Get election info based on your location</h2>
                 <SearchLocation />
+                <svg className="arrows">
+                    <path className="a1" d="M0 0 L30 32 L60 0"></path>
+                    <path className="a2" d="M0 20 L30 52 L60 20"></path>
+                    <path className="a3" d="M0 40 L30 72 L60 40"></path>
+                </svg>
             </section>
             {/* <ChatBot/> */}
             <section className="section about-section" id="fade-in-section" ref={aboutSectionRef}>

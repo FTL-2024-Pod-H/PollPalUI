@@ -11,6 +11,7 @@ const Header = () => {
   const [id, setId] = useState(0);
 
   const dropdownRef = useRef(null);
+  const menuRef = useRef(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -52,6 +53,19 @@ const Header = () => {
       document.removeEventListener("mousedown", handleSignOut);
     };
   }, [dropdownRef]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuRef]);
 
   const handleLogout = () => {
     console.log("Logging out");
@@ -110,10 +124,17 @@ const Header = () => {
             <span className="pal">Pal</span>
           </h1>
         </div>
-        <button className="menu-toggle" onClick={toggleMenu}>
+        <button 
+          className="menu-toggle" 
+          onClick={toggleMenu}
+          // onClick={() => {{toggleMenu} {onclose}}}
+        >
           &#9776;
         </button>
-        <div className={`nav-auth-container ${menuOpen ? "open" : ""}`}>
+        <div 
+          ref={menuRef}
+          className={`nav-auth-container ${menuOpen ? "open" : ""}`}
+        >
           <nav className="nav">
             <ul className="nav-links">
               <li className="nav-item">
@@ -134,6 +155,35 @@ const Header = () => {
             </ul>
           </nav>
           <div className="auth-buttons">
+          
+{/* // -----------  */}
+
+           {/* {localStorage.getItem("token") ? (
+                <>
+                  <Link to={`/`} className="sign-in-link">
+                    <button onClick={handleLogout} className="animated-button">Sign out</button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link to={`/login`} className="sign-in-link">
+                    <button className="animated-button">Sign in</button>
+                  </Link>
+                  <Link to="/register" className="sign-in-link">
+                    <button className="animated-button">Register</button>
+                  </Link>
+                </>
+              )} */}
+
+
+{/* // ------------ */}
+            {/* <Link to={`/login`} className="sign-in-link">
+              <button className="animated-button">Sign in</button>
+            </Link>
+            <Link to="/register" className="sign-in-link">
+              <button className="animated-button">Register</button>
+            </Link> */}
+            
             {localStorage.getItem("token") ? (
               <>
                   <img

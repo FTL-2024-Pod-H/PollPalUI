@@ -266,3 +266,6 @@
 .menu-signout {
   display: none;
 }
+.user-image{
+  margin-top: -12px;
+}
