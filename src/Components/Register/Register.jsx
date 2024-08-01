@@ -41,7 +41,7 @@ const Register = () => {
         name,
         username,
         password,
-        address,
+        address: " ",
       });
       const loginResponse = await axios.post(`${PROD_LINK}/users/login`, {
         username,
@@ -130,11 +130,11 @@ const Register = () => {
         placeholder="Confirm Password"
         onChange={handleConfirmPasswordChange}
       />
-      <input
+      {/* <input
         type="text"
         placeholder="Address"
         onChange={(e) => setAddress(e.target.value)}
-      />
+      /> */}
       <div className="register-buttons">
         <button onClick={handleRegister} className="animated-button">
           Register
@@ -148,10 +148,6 @@ const Register = () => {
         <p className="message">Login with social accounts coming soon</p>
         <div className="line"></div>
       </div>
-
-      {/* <p className="signup">
-         Don&apos;t have an account? <a rel="noopener noreferrer" href="#" className="">Sign up</a>
-       </p> */}
     </div>
   );
 };
