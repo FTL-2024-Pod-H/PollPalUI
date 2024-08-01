@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Login.css";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -13,6 +13,14 @@ const Login = () => {
 
   // Get the previous location
   const from = location.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) { 
+      navigate("/")
+    }
+  }, [navigate]);
 
   // handle login
   const handleLogin = async () => {
