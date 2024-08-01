@@ -81,7 +81,7 @@ const Register = () => {
     setIsPasswordValid(minLength && specialChar && number && capital);
     setPasswordStrength(calculatePasswordStrength(password));
   };
-
+  
   const calculatePasswordStrength = (password) => {
     let strength = 0;
     if (password.length >= 6) strength += 1;
