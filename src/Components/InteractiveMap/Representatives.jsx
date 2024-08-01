@@ -29,15 +29,13 @@ const Representatives = ({ representatives, selectedState }) => {
                       {rep.terms.item[rep.terms.item.length - 1].chamber}
                     </p>
                     {rep.district && (
-                      <h4 className="representative-district">
-                        District: {rep.district}
-                      </h4>
+                      <p className="representative-district">
+                        District {rep.district}
+                      </p>
                     )}
-                    <p className="representative-party">
-                      Party: {rep.partyName}
-                    </p>
+                    <p className="representative-party">{rep.partyName}</p>
                     <p className="representative-start-year">
-                      Start Year: {rep.terms.item[0].startYear}
+                      Since {rep.terms.item[0].startYear}
                     </p>
                   </div>
                 </div>

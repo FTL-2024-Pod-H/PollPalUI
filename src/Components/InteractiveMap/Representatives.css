@@ -30,7 +30,9 @@
   width: 15%;
   text-align: center;
   /* font-family: arial; */
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  /* font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; */
+
+  font-family: Geneva;
 }
 
 .representative-img {
@@ -44,7 +46,7 @@
 }
 
 .representative-name {
-  font-size: 18px;
+  font-size: 19px;
   /* margin-bottom: 10px; */
 }
 
@@ -52,8 +54,8 @@
 .representative-party,
 .representative-start-year,
 .representative-district {
-  margin: 2px;
-  font-size: 18px;
+  margin: 5px 0;
+  font-size: 16px;
   font-weight: 400;
 }
 
