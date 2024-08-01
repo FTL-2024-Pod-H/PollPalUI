@@ -80,6 +80,10 @@ h3 {
   font-family: arial;
 }
 
+.ballot-details {
+  cursor: text;
+}
+
 .ballot-details,
 h4 {
   margin: 0;

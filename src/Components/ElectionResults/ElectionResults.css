@@ -108,9 +108,18 @@
 }
 
 .current-elections-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   width: 700px;
   text-align: center;
   padding: 0;
+}
+
+.current-elections-menu p {
+  margin: 40px 0 0 0;
+  text-decoration: underline;
+  font-size: 26px;
 }
 .current-elections-list {
   padding-left: 15px;
@@ -118,8 +127,31 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  font-size: 24px;
+  font-size: 22px;
   gap: 3.5px;
+  cursor: text;
+}
+
+.current-elections-menu {
+  padding: 15px;
+  cursor: text;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+  margin: 10px 0;
+}
+
+.current-elections-menu::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(144deg, #e6117c, #4a3cdb 50%, #00ddeb);
+  opacity: 0.7; /* Adjust opacity as desired */
+  z-index: -1;
+  border-radius: 15px;
 }
 
 /* LOADING.... */
@@ -183,6 +215,26 @@
     width: 90%;
     text-align: center;
     padding: 0;
+    margin: 40px 0 0 0;
+  }
+
+  .current-elections-menu p {
+    margin: 0;
+    text-decoration: underline;
+    font-size: 24px;
+  }
+
+  .current-elections-menu::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(144deg, #e6117c, #4a3cdb 50%, #00ddeb);
+    opacity: 0.7; /* Adjust opacity as desired */
+    z-index: -1;
+    border-radius: 15px;
   }
   .current-elections-list {
     padding-left: 15px;
@@ -190,7 +242,7 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    font-size: 26px;
+    font-size: 22px;
     gap: 3.5px;
   }
 }
@@ -213,6 +265,26 @@
     width: 90%;
     text-align: center;
     padding: 0;
+    margin: 30px 0 0 0;
+  }
+
+  .current-elections-menu p {
+    margin: 0;
+    text-decoration: underline;
+    font-size: 21px;
+  }
+
+  .current-elections-menu::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(144deg, #e6117c, #4a3cdb 50%, #00ddeb);
+    opacity: 0.7; /* Adjust opacity as desired */
+    z-index: -1;
+    border-radius: 15px;
   }
   .current-elections-list {
     padding-left: 15px;
@@ -243,6 +315,26 @@
     width: 90%;
     text-align: center;
     padding: 0;
+    margin: 20px 0 0 0;
+  }
+
+  .current-elections-menu p {
+    margin: 0;
+    text-decoration: underline;
+    font-size: 19px;
+  }
+
+  .current-elections-menu::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(144deg, #e6117c, #4a3cdb 50%, #00ddeb);
+    opacity: 0.7; /* Adjust opacity as desired */
+    z-index: -1;
+    border-radius: 15px;
   }
   .current-elections-list {
     padding-left: 15px;
@@ -250,7 +342,7 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    font-size: 16px;
+    font-size: 17px;
     gap: 3.5px;
   }
 }
@@ -273,6 +365,26 @@
     width: 90%;
     text-align: center;
     padding: 0;
+    margin: 0;
+  }
+
+  .current-elections-menu p {
+    margin: 0;
+    text-decoration: underline;
+    font-size: 15px;
+  }
+
+  .current-elections-menu::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(144deg, #e6117c, #4a3cdb 50%, #00ddeb);
+    opacity: 0.7; /* Adjust opacity as desired */
+    z-index: -1;
+    border-radius: 15px;
   }
   .current-elections-list {
     padding-left: 15px;
@@ -300,9 +412,29 @@
     font-size: 16px;
   }
   .current-elections-menu {
-    width: 90%;
+    width: 85%;
     text-align: center;
     padding: 0;
+    margin: 0;
+  }
+
+  .current-elections-menu p {
+    margin: 0;
+    text-decoration: underline;
+    font-size: 15px;
+  }
+
+  .current-elections-menu::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(144deg, #e6117c, #4a3cdb 50%, #00ddeb);
+    opacity: 0.7; /* Adjust opacity as desired */
+    z-index: -1;
+    border-radius: 15px;
   }
   .current-elections-list {
     padding-left: 15px;

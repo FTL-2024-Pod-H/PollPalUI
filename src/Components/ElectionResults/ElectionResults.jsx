@@ -89,7 +89,7 @@ function ElectionResults() {
           ) : (
             <div className="no-elections-response">
               <p className="no-elections-text">No elections for this area...</p>
-              <details className="current-elections-menu">
+              {/* <details className="current-elections-menu">
                 <summary>Current Elections</summary>
                 <ul className="current-elections-list">
                   {currentElections.map((election, idx) => (
@@ -98,7 +98,17 @@ function ElectionResults() {
                     </li>
                   ))}
                 </ul>
-              </details>
+              </details> */}
+              <div className="current-elections-menu">
+                <p>Current Elections</p>
+                <ul className="current-elections-list">
+                  {currentElections.map((election, idx) => (
+                    <li key={idx} className="current-election">
+                      {election.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           )
         ) : null}
