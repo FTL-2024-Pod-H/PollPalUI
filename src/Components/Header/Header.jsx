@@ -6,12 +6,12 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const menuRef = useRef(null);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // adding dropdown to profile picture
-  const [userAvatar, setUserAvatar] = useState(""); // used to get profile picture on header when loggedin
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
+  const [userAvatar, setUserAvatar] = useState(""); 
   const [id, setId] = useState(0);
 
+  const dropdownRef = useRef(null);
+  const menuRef = useRef(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -38,8 +38,21 @@ const Header = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+    
   }, []);
 
+  useEffect(() => {
+    const handleSignOut = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleSignOut);
+    return () => {
+      document.removeEventListener("mousedown", handleSignOut);
+    };
+  }, [dropdownRef]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -62,6 +75,10 @@ const Header = () => {
   
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   function decodeJWT(token) {
@@ -90,6 +107,7 @@ const Header = () => {
     return `https://ui-avatars.com/api/?name=${username}&background=random`;
   }
 
+  
   return (
     <header className={`header ${scrolled ? "header-scrolled" : ""}`}>
       <div className="header-content">
@@ -165,29 +183,29 @@ const Header = () => {
             <Link to="/register" className="sign-in-link">
               <button className="animated-button">Register</button>
             </Link> */}
+            
             {localStorage.getItem("token") ? (
               <>
-                {/* <button onClick={handleLogout} className="animated-button">
-                  Sign out
-                </button> */}
-                <img
-                    // src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
-                    // alt="Default User"
+                  <img
                     src={userAvatar}
                     alt="User Avatar"
                     className="user-image"
-                    onClick={() => { console.log("clicked");
-                    setIsDropdownOpen(!isDropdownOpen);}}/>
-                    {isDropdownOpen && (
-                  <div className="dropdown-menu">
-                    {/* <Link to="#" className="dropdown-item">
-                    <button>Edit User</button>
-                    </Link> */}
-                    <button onClick={handleLogout} className="sign-out">
+                    onClick={toggleDropdown}
+                    // onClick={() => { console.log("clicked");
+                    // setIsDropdownOpen(!isDropdownOpen);}}
+                  />
+                  {isDropdownOpen && (
+                    <div className="dropdown-menu" ref={dropdownRef}>
+                      <button onClick={handleLogout} className="animated-button">
+                        Sign out
+                      </button>
+                    </div>
+                  )}
+                  <div className="menu-signout open">
+                    <button onClick={handleLogout} className="animated-button">
                       Sign out
                     </button>
                   </div>
-                    )}
               </>
             ) : (
               <>
