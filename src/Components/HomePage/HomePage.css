@@ -55,14 +55,52 @@
     transform: translateY(0);
 }
 
-/* .election-education {
-    height: calc(100vh - 500px); 
-    overflow-y: auto; 
-} */
+.arrows {
+    width: 60px;
+    height: 72px;
+    position: absolute;
+    left: 50%;
+    margin-left: -20px;
+    bottom: 20px;
+}
+.arrows.hidden {
+    opacity: 0;
+}
+.arrows path {
+    stroke: #c929d1;
+    fill: transparent;
+    stroke-width: 1px;  
+    animation: arrow 2s infinite;
+    -webkit-animation: arrow 2s infinite; 
+}
+@keyframes arrow {
+    0% {opacity:0}
+    40% {opacity:1}
+    80% {opacity:0}
+    100% {opacity:0}
+}
+@-webkit-keyframes arrow {
+    0% {opacity:0}
+    40% {opacity:1}
+    80% {opacity:0}
+    100% {opacity:0}
+}
+.arrows path.a1 {
+    animation-delay:-1s;
+    -webkit-animation-delay:-1s; 
+}
+.arrows path.a2 {
+    animation-delay:-0.5s;
+    -webkit-animation-delay:-0.5s; 
+}  
+.arrows path.a3 { 
+    animation-delay:0s;
+    -webkit-animation-delay:0s;
+}
 
 
 @media (max-width: 850px) {
-    .search-about-container {
+    .search-location {
         padding: 10px;
         margin-bottom: 20px;
         
@@ -95,10 +133,11 @@
 @media (max-width: 480px){
     .search-location h2 {
         padding-bottom: 15px;
+        font-size: 24px;
         text-align: center;
     }
 
-    .search-about-container {
+    .search-location {
         padding: 10px;
         margin-bottom: 20px;
         

@@ -103,6 +103,10 @@
         margin: 10px 0;
     }
 
+    .footer-right{
+        font-size: 0px;
+    }
+
     .footer-center {
         position: relative;
         bottom: auto;
@@ -116,10 +120,11 @@
     }
 
     .student {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
 
     .student-name {
-        margin-bottom: 5px;
+        margin-bottom: 2px;
+        font-size: 12px;
     }
 }

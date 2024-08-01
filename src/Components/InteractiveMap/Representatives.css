@@ -8,12 +8,12 @@
   /* border-radius: 8px; */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   color: black;
-
   text-align: center;
   /* background: linear-gradient(to right, #000000, #2D0047); */
   background: white;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   font-family: "Poppins", sans-serif;
+
 }
 
 .representatives-container:hover {
@@ -98,6 +98,7 @@
     width: 150px;
     padding: 10px;
   }
+
 
   .select-state-message {
     font-size: 0.9rem;

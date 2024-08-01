@@ -42,6 +42,10 @@
     height: 80%;
 }
 
+.features-container .arrows {
+    bottom: 110px;
+}
+
 .feature-content {
     display: flex;
     flex-direction: column;
@@ -157,6 +161,10 @@
     
     .feature-description {
         font-size: 12px;
+    }
+
+    .features-container .arrows {
+        bottom: 20px;
     }
 }
 

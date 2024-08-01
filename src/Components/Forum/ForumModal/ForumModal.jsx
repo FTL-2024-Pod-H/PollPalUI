@@ -22,11 +22,11 @@ function ForumModal({onClose, onAddPost}){
         >
           {/* <div className="forum-modal-body"> */}
             <form className="new-card-form" onSubmit={handleSubmit} >
-              <div class="post-box">
-                <h1 class="text-center text-slate-200 text-xl font-bold">Add a Post</h1>
+              <div className="post-box">
+                <h1 className="text-center text-slate-200 text-xl font-bold">Add a Post</h1>
                 <textarea 
                     placeholder="Your content..." 
-                    class="post-content" 
+                    className="post-content" 
                     rows="5"
                     value={userContent}
                     onChange={(e) => setUserContent(e.target.value)}
