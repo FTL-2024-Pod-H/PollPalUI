@@ -31,19 +31,24 @@ const Register = () => {
       return;
     }
 
-    if (passwordStrength < 3) { 
+    if (passwordStrength < 3) {
       toast.error("Password not strong enough.");
       return;
     }
 
     try {
-      await axios.post(
-        "${API_BASE_URL}/users/register",
-        { name, username, password, address }
-      );
+      await axios.post("https://pollpalapi.onrender.com/users/register", {
+        name,
+        username,
+        password,
+        address,
+      });
       const loginResponse = await axios.post(
-        "${API_BASE_URL}/users/login",
-        { username, password }
+        "https://pollpalapi.onrender.com/users/login",
+        {
+          username,
+          password,
+        }
       );
       localStorage.setItem("token", loginResponse.data.token);
       navigate("/");
@@ -119,7 +124,7 @@ const Register = () => {
           className="bar"
           password={password}
           minLength={6}
-          scoreWords={['Too Weak', 'Weak', 'Okay', 'Good', 'Strong']}
+          scoreWords={["Too Weak", "Weak", "Okay", "Good", "Strong"]}
           onChangeScore={(score) => setPasswordStrength(score)}
         />
       </div>
@@ -134,8 +139,12 @@ const Register = () => {
         onChange={(e) => setAddress(e.target.value)}
       />
       <div className="register-buttons">
-        <button onClick={handleRegister} className="animated-button">Register</button>
-        <button onClick={() => navigate("/login")} className="animated-button">Go to login</button>
+        <button onClick={handleRegister} className="animated-button">
+          Register
+        </button>
+        <button onClick={() => navigate("/login")} className="animated-button">
+          Go to login
+        </button>
       </div>
       <div className="social-message">
         <div className="line"></div>
@@ -143,13 +152,11 @@ const Register = () => {
         <div className="line"></div>
       </div>
 
-       {/* <p className="signup">
+      {/* <p className="signup">
          Don&apos;t have an account? <a rel="noopener noreferrer" href="#" className="">Sign up</a>
        </p> */}
-
     </div>
   );
 };
 
 export default Register;
-
