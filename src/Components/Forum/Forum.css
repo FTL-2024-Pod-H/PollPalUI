@@ -3,20 +3,34 @@
     /* background: linear-gradient(to right, #000000, #2D0047); */
     
 }
+.no-posts{
+  color:black;
+  /* font-family: Geneva, Verdana, sans-serif;  */
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 28px;
+  background: linear-gradient(to right, #E6117C, #4A3CDB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.no-posts-container{
+  /* border: 1px solid black; */
+  display:flex;
+  justify-content: center;
+  /* padding: 20px; */
+  border-radius: 15px;
+  max-width: 1000px;
+  margin: 20px auto;
+  z-index: 1;
+    
+}
 .forum-title{
     margin-bottom: 13px;
     /* color:white; */
     color: black;
-    /* font-family: 'Poppins', sans-serif; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 30px;
-    /* font-weight: bold; */
 }
-/* .forum-title{
-    background: linear-gradient(to right, #E6117C, #4A3CDB);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-} */
 .forum-description{
     color: gray;
     /* font-size: 0.9em; */
@@ -170,28 +184,31 @@
 
 
 @media (max-width: 768px) {
-    .forum-title {
-        font-size: 22px;
-    }
+  .no-posts{
+    font-size: 20px;
+  }
+  .forum-title {
+    font-size: 22px;
+  }
 
-    .forum-description {
-        font-size: 12px;
-    }
+  .forum-description {
+    font-size: 12px;
+  }
 
-    .forum-title, .forum-description{
-        margin-left: 20px;
-    }
+  .forum-title, .forum-description{
+    margin-left: 20px;
+  }
 
-    .Btn{
-        margin-right: 20px;
-        height: 35px;
-        padding-top: 0;
-    }
+  .Btn{
+    margin-right: 20px;
+    height: 35px;
+    padding-top: 0;
+  }
 
-    .switch-posts-buttons-container button{
-        font-size: 15px;
-        /* text-align: left; */
-    }
+  .switch-posts-buttons-container button{
+    font-size: 15px;
+     /* text-align: left; */
+  }
 }
 
 /* LOADING.... */
@@ -238,17 +255,7 @@
     }
   }
 
-/*   @media (max-width: 820px) {
-    .view-all-posts, .your-posts{
-        font-size: 20px
-    }
-    .forum-description{
-        font-size: 12px;
-    }
-    .forum-title{
-        font-size: 24px
-    }
-} */
+
 
 
 

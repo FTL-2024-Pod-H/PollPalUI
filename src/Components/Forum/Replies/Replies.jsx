@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./Replies.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp as faThumbsUpRegular } from '@fortawesome/free-regular-svg-icons';
@@ -52,6 +52,7 @@ function Replies({onClose, replies, addReply, userAvatar, username, userPostCont
         day: 'numeric',
         year: 'numeric'
     });
+    
 
     return(
         <>  

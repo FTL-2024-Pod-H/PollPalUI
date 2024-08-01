@@ -29,10 +29,7 @@ function decodeJWT(token) {
 }
 
 function getUserAvatar(username) {
-  // return `https://robohash.org/${username}.png?set=set1`;
   return `https://ui-avatars.com/api/?name=${username}&background=random`;
-  // return `https://robohash.org/${username}.png?set=set2`;
-  // return `https://api.multiavatar.com/${username}.png`;
 }
 
 function Forum() {
@@ -231,7 +228,14 @@ function Forum() {
           </div>
         ) : (
           <div className="posts-container">
-            {filteredPosts.map((post, index) => (
+            {filteredPosts.length === 0 ? (
+              <div className="no-posts-container"> 
+                 <p className="no-posts">Don't be shy, make a post ;)</p>
+              </div>
+             
+
+            ) : ( 
+            filteredPosts.map((post, index) => (
               <Post
                 key={index}
                 userFullName={post.author.name}
@@ -248,7 +252,8 @@ function Forum() {
                 page={currentPage}
                 limit={postsPerPage}
               />
-            ))}
+            ))
+            )}
           </div>
         )}
         <Stack spacing={2}>

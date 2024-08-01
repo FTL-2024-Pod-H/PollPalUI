@@ -116,11 +116,13 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
         await axios.post(`${PROD_LINK}/posts/${postId}/unlike`, {
           user_id: currentUser,
         });
+        setCurrentLikeCount(currentlikeCount - 1);
         fetchPosts(page, limit);
       } else {
         await axios.post(`${PROD_LINK}/posts/${postId}/like`, {
           user_id: currentUser,
         });
+        setCurrentLikeCount(currentlikeCount + 1);
         fetchPosts(page, limit);
       }
       setIsLiked(!isLiked);
