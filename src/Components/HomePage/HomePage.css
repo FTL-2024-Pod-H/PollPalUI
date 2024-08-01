@@ -3,6 +3,10 @@
     display: flex;
     flex-direction: column;
     background-color: white;
+    width: 100vw;
+    max-width: 100%;
+    overflow-x:hidden;
+    align-items: center;
 }
 
 .section {
@@ -100,6 +104,9 @@
 
 
 @media (max-width: 850px) {
+    .arrows {
+        margin-left: -30px;
+    }
     .search-location {
         padding: 10px;
         margin-bottom: 20px;
@@ -131,6 +138,9 @@
 
 
 @media (max-width: 480px){
+    .arrows {
+        margin-left: -30px;
+    }
     .search-location h2 {
         padding-bottom: 15px;
         font-size: 24px;

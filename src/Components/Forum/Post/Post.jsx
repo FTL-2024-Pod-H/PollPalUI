@@ -64,7 +64,7 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
             author_id: parseInt(currentUser)
           };
           const response = await axios.post(`https://pollpalapi.onrender.com/posts/${postId}/replies`, newReply);
-          setReplies([ ...replies, response.data,]);
+          setReplies([ response.data, ...replies]);
           fetchReplies();
         } catch (error) {
           console.error('Error adding reply:', error);

@@ -136,7 +136,9 @@ function Replies({onClose, replies, addReply, userAvatar, username, userPostCont
                         {/* </div> */}
                     </form> 
                     ) : (
-                        <div className="login-message">Please Sign in to post a reply.</div>
+                        <div className="login-message">
+                            Please <a href="/login" className="sign-up-replies">Sign in</a> to post a reply.
+                        </div>
                     )}
 
                 </div>
