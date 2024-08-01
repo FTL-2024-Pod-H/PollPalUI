@@ -139,7 +139,11 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 780px) {
+    .post-content{
+        max-height: 150px;
+        max-width: 235px;
+    }
     .post-box {
         width: 300px;
     }
@@ -154,5 +158,11 @@
 
     .post-button span{
         font-size: 13px;
+    }
+}
+@media (max-height: 780px) {
+    .post-content{
+        max-height: 150px;
+        max-width: 235px;
     }
 }
