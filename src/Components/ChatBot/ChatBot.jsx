@@ -5,7 +5,7 @@ import axios from "axios";
 import chatbotIcon from "/assets/icons8-chatbot-24.png";
 // import useIcon from '/assets/icons8-user-30.png';
 
-const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL;
+const PROD_LINK = import.meta.env.VITE_PROD_LINK;
 
 const emojiApi = import.meta.env.VITE_EMOJI_API_KEY;
 
@@ -32,7 +32,7 @@ const ChatBot = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post("https://pollpalapi.onrender.com/chat", {
+      const res = await axios.post(`${PROD_LINK}/chat`, {
         prompt,
         conversationId,
       });
