@@ -78,6 +78,7 @@ const InteractiveMap = () => {
         }
       });
       setRepresentatives(currentReps);
+      representativesRef.current.scrollIntoView({ behavior: 'smooth' });
       console.log("reps: ", representatives);
     } catch (error) {
       console.error("Error fetching representatives:", error);

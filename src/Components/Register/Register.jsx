@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PasswordStrengthBar from "react-password-strength-bar";
 
-const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL;
+const PROD_LINK = import.meta.env.VITE_PROD_LINK;
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -31,20 +31,22 @@ const Register = () => {
       return;
     }
 
-    if (passwordStrength < 3) { 
+    if (passwordStrength < 3) {
       toast.error("Password not strong enough.");
       return;
     }
 
     try {
-      await axios.post(
-        "${API_BASE_URL}/users/register",
-        { name, username, password, address }
-      );
-      const loginResponse = await axios.post(
-        "${API_BASE_URL}/users/login",
-        { username, password }
-      );
+      await axios.post(`${PROD_LINK}/users/register`, {
+        name,
+        username,
+        password,
+        address,
+      });
+      const loginResponse = await axios.post(`${PROD_LINK}/users/login`, {
+        username,
+        password,
+      });
       localStorage.setItem("token", loginResponse.data.token);
       navigate("/");
     } catch (error) {
@@ -119,7 +121,7 @@ const Register = () => {
           className="bar"
           password={password}
           minLength={6}
-          scoreWords={['Too Weak', 'Weak', 'Okay', 'Good', 'Strong']}
+          scoreWords={["Too Weak", "Weak", "Okay", "Good", "Strong"]}
           onChangeScore={(score) => setPasswordStrength(score)}
         />
       </div>
@@ -143,13 +145,11 @@ const Register = () => {
         <div className="line"></div>
       </div>
 
-       {/* <p className="signup">
+      {/* <p className="signup">
          Don&apos;t have an account? <a rel="noopener noreferrer" href="#" className="">Sign up</a>
        </p> */}
-
     </div>
   );
 };
 
 export default Register;
-
