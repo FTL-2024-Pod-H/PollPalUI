@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Header.css";
+import { Troubleshoot } from "@mui/icons-material";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -42,13 +43,13 @@ const Header = () => {
     localStorage.removeItem("token");
     navigate("/");
   };
-  
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
   function decodeJWT(token) {
-    // decodes the JSON web token to returns the profile picture 
+    // decodes the JSON web token to returns the profile picture
     try {
       const base64Url = token.split(".")[1];
       const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
@@ -69,7 +70,7 @@ const Header = () => {
   }
 
   function getUserAvatar(username) {
-    // returns the URL of the user's avatar image 
+    // returns the URL of the user's avatar image
     return `https://ui-avatars.com/api/?name=${username}&background=random`;
   }
 
@@ -125,14 +126,17 @@ const Header = () => {
                   Sign out
                 </button> */}
                 <img
-                    // src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
-                    // alt="Default User"
-                    src={userAvatar}
-                    alt="User Avatar"
-                    className="user-image"
-                    onClick={() => { console.log("clicked");
-                    setIsDropdownOpen(!isDropdownOpen);}}/>
-                    {isDropdownOpen && (
+                  // src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+                  // alt="Default User"
+                  src={userAvatar}
+                  alt="User Avatar"
+                  className="user-image"
+                  onClick={() => {
+                    console.log("clicked");
+                    setIsDropdownOpen(!isDropdownOpen);
+                  }}
+                />
+                {isDropdownOpen && (
                   <div className="dropdown-menu">
                     {/* <Link to="#" className="dropdown-item">
                     <button>Edit User</button>
@@ -141,7 +145,7 @@ const Header = () => {
                       Sign out
                     </button>
                   </div>
-                    )}
+                )}
               </>
             ) : (
               <>
