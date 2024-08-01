@@ -154,36 +154,7 @@ const Header = () => {
               </li>
             </ul>
           </nav>
-          <div className="auth-buttons">
-          
-{/* // -----------  */}
-
-           {/* {localStorage.getItem("token") ? (
-                <>
-                  <Link to={`/`} className="sign-in-link">
-                    <button onClick={handleLogout} className="animated-button">Sign out</button>
-                  </Link>
-                </>
-              ) : (
-                <>
-                  <Link to={`/login`} className="sign-in-link">
-                    <button className="animated-button">Sign in</button>
-                  </Link>
-                  <Link to="/register" className="sign-in-link">
-                    <button className="animated-button">Register</button>
-                  </Link>
-                </>
-              )} */}
-
-
-{/* // ------------ */}
-            {/* <Link to={`/login`} className="sign-in-link">
-              <button className="animated-button">Sign in</button>
-            </Link>
-            <Link to="/register" className="sign-in-link">
-              <button className="animated-button">Register</button>
-            </Link> */}
-            
+          <div className="auth-buttons">            
             {localStorage.getItem("token") ? (
               <>
                   <img
