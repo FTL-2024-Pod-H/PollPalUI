@@ -230,7 +230,7 @@ function Forum() {
           <div className="posts-container">
             {filteredPosts.length === 0 ? (
               <div className="no-posts-container"> 
-                 <p className="no-posts">Don't be shy, make a post ;)</p>
+                 <p className="no-posts">Don't be shy, create a post ;)</p>
               </div>
              
 
