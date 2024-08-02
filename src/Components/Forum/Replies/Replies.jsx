@@ -73,7 +73,7 @@ function Replies({onClose, replies, addReply, userAvatar, username, userPostCont
                         <p className="original-post-content-reply">{userPostContent}</p>
                     
                         <div className="like-reply">
-                            <button className="forum-like-button" onClick={handleLikeClick}>
+                            <button className="forum-replies-like-button" onClick={handleLikeClick}>
                                 <FontAwesomeIcon icon={isLiked ? faThumbsUpSolid : faThumbsUpRegular} className="like-icon" />
                                 <span className="like-count">{currentlikeCount}</span>
                             </button>
