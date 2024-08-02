@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Header.css";
+import { Troubleshoot } from "@mui/icons-material";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -73,7 +74,7 @@ const Header = () => {
     setId(null);
     navigate("/");
   };
-  
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -83,7 +84,7 @@ const Header = () => {
   };
 
   function decodeJWT(token) {
-    // decodes the JSON web token to returns the profile picture 
+    // decodes the JSON web token to returns the profile picture
     try {
       const base64Url = token.split(".")[1];
       const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
@@ -104,7 +105,7 @@ const Header = () => {
   }
 
   function getUserAvatar(username) {
-    // returns the URL of the user's avatar image 
+    // returns the URL of the user's avatar image
     return `https://ui-avatars.com/api/?name=${username}&background=random`;
   }
 

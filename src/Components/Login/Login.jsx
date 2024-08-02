@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Login.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -11,6 +11,18 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Get the previous location
+  const from = location.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) { 
+      navigate("/")
+    }
+  }, [navigate]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -36,8 +48,8 @@ const Login = () => {
 
       //store the token in the localStorage as token
       localStorage.setItem("token", response.data.token);
-      //navigating to homepage
-      navigate("/");
+      // Navigate to the previous location or homepage if no previous location is available
+      navigate(from, { replace: true });
     } catch (error) {
       if (error.response && error.response.status === 401) {
         toast.error("Invalid username or password");

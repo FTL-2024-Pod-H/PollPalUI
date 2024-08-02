@@ -1,7 +1,7 @@
 // Register.jsx
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Register.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,6 +18,10 @@ const Register = () => {
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(0);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Get the previous location
+  const from = location.state?.from?.pathname || "/";
 
   // Handle register and toast errors
   const handleRegister = async () => {
@@ -48,7 +52,8 @@ const Register = () => {
         password,
       });
       localStorage.setItem("token", loginResponse.data.token);
-      navigate("/");
+      // Navigate to the previous location or homepage if no previous location is available
+      navigate(from, { replace: true });
     } catch (error) {
       if (error.response && error.response.status === 400) {
         toast.error(
