@@ -49,7 +49,7 @@ const Login = () => {
       //store the token in the localStorage as token
       localStorage.setItem("token", response.data.token);
       // Navigate to the previous location or homepage if no previous location is available
-      navigate(from, { replace: true });
+      navigate("/forum");
     } catch (error) {
       if (error.response && error.response.status === 401) {
         toast.error("Invalid username or password");
