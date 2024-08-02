@@ -1,3 +1,4 @@
+/* InteractiveMap.css */
 .interactive-map-container {
     display: flex;
     flex-direction: column;
@@ -5,4 +6,14 @@
     color: black;
     padding-top: 100px;
     font-family: 'Poppins', sans-serif;
+    width: 100vw;
+    max-width: 100%;
+    overflow-x:hidden;
+}
+
+
+@media (max-width: 768px) {
+    .interactive-map-container {
+        font-size: 10px;
+    }
 }

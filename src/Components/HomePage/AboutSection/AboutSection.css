@@ -42,6 +42,10 @@
     height: 80%;
 }
 
+.features-container .arrows {
+    bottom: 110px;
+}
+
 .feature-content {
     display: flex;
     flex-direction: column;
@@ -60,6 +64,15 @@
 .feature-description {
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
+}
+.coming-soon-reminders{
+    font-size: 14px;
+    margin-left: 32px;
+    margin-top: -10px;
+    background: linear-gradient(to right, #E6117C, #4A3CDB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
 }
 
 .info-icon {
@@ -133,6 +146,7 @@
 @media (max-width: 992px) {
     .about-section {
         flex-direction: column;
+        margin-bottom: 16px;
     }
 
     .text-container {
@@ -157,6 +171,10 @@
     
     .feature-description {
         font-size: 12px;
+    }
+
+    .features-container .arrows {
+        bottom: 20px;
     }
 }
 

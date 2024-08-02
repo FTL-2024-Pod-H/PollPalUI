@@ -1,12 +1,14 @@
-import React, { useState } from "react";
-import Map from "./Map";
-import Representatives from "./Representatives";
-import "./InteractiveMap.css";
+// InteractiveMap.jsx
+import React, { useState, useRef } from 'react';
+import Map from './Map';
+import Representatives from './Representatives';
+import './InteractiveMap.css';
 
 const InteractiveMap = () => {
-  const [representatives, setRepresentatives] = useState([]);
-  const [selectedState, setSelectedState] = useState("");
-  const apiKey = import.meta.env.VITE_CONGRESS_API_KEY;
+    const [representatives, setRepresentatives] = useState([]);
+    const [selectedState, setSelectedState] = useState("");
+    const apiKey = import.meta.env.VITE_CONGRESS_API_KEY;
+    const representativesRef = useRef(null);
 
   const stateNameToCode = {
     Alabama: "AL",
@@ -60,7 +62,6 @@ const InteractiveMap = () => {
     Wisconsin: "WI",
     Wyoming: "WY",
   };
-
   const fetchRepresentatives = async (stateCode) => {
     try {
       const response = await fetch(
@@ -77,6 +78,7 @@ const InteractiveMap = () => {
         }
       });
       setRepresentatives(currentReps);
+      representativesRef.current.scrollIntoView({ behavior: 'smooth' });
       console.log("reps: ", representatives);
     } catch (error) {
       console.error("Error fetching representatives:", error);
@@ -93,17 +95,16 @@ const InteractiveMap = () => {
     }
   };
 
-  return (
-    <div className="interactive-map-container">
-      <h1>Interactive Map</h1>
-      <p>Click on state to view current representatives</p>
-      <Map onStateClick={handleStateClick} selectedState={selectedState} />
-      <Representatives
-        representatives={representatives}
-        selectedState={selectedState}
-      />
-    </div>
-  );
+    return (
+        <div className="interactive-map-container">
+            <h1>Interactive Map</h1>
+            <p>Click on state to view current representatives</p>
+            <Map onStateClick={handleStateClick} selectedState={selectedState} />
+            <div ref={representativesRef}>
+                <Representatives representatives={representatives} selectedState={selectedState}/>
+            </div>
+        </div>
+    );
 };
 
 export default InteractiveMap;

@@ -65,14 +65,20 @@ const AboutSection = () => {
         <div className="card">
           <div className="feature-content">
             <h4 className="feature-title">
-              <img className="info-icon" src={infoIcon} />
+              <img className="info-icon"  src={infoIcon} />
               Reminders
             </h4>
+              <p className="coming-soon-reminders">* Coming Soon</p>
             <p className="feature-description">
               Set up reminders for election dates and deadlines.
             </p>
           </div>
         </div>
+        <svg className="arrows">
+          <path className="a1" d="M0 0 L30 32 L60 0"></path>
+          <path className="a2" d="M0 20 L30 52 L60 20"></path>
+          <path className="a3" d="M0 40 L30 72 L60 40"></path>
+        </svg>
       </div>
     </section>
   );

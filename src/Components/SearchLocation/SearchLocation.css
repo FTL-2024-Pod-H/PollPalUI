@@ -1,7 +1,9 @@
 /* SearchLocation.css */
 .search-location-container {
-    width: 530px;
-    height: 50px;
+    /* width: 530px; */
+    width: 650px;
+    /* height: 50px; */
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,8 +33,8 @@
 }
 
 .input {
-    width: 500px;
-    height: 40px;
+    width: 610px;
+    height: 45px;
     border: none;
     outline: none;
     background-color: black;

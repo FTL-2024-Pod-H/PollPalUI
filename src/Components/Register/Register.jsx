@@ -7,6 +7,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PasswordStrengthBar from "react-password-strength-bar";
 
+const PROD_LINK = import.meta.env.VITE_PROD_LINK;
+
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -33,20 +35,22 @@ const Register = () => {
       return;
     }
 
-    if (passwordStrength < 3) { 
+    if (passwordStrength < 3) {
       toast.error("Password not strong enough.");
       return;
     }
 
     try {
-      await axios.post(
-        "https://pollpalapi.onrender.com/users/register",
-        { name, username, password, address }
-      );
-      const loginResponse = await axios.post(
-        "https://pollpalapi.onrender.com/users/login",
-        { username, password }
-      );
+      await axios.post(`${PROD_LINK}/users/register`, {
+        name,
+        username,
+        password,
+        address: " ",
+      });
+      const loginResponse = await axios.post(`${PROD_LINK}/users/login`, {
+        username,
+        password,
+      });
       localStorage.setItem("token", loginResponse.data.token);
       // Navigate to the previous location or homepage if no previous location is available
       navigate(from, { replace: true });
@@ -84,7 +88,7 @@ const Register = () => {
     setIsPasswordValid(minLength && specialChar && number && capital);
     setPasswordStrength(calculatePasswordStrength(password));
   };
-
+  
   const calculatePasswordStrength = (password) => {
     let strength = 0;
     if (password.length >= 6) strength += 1;
@@ -122,7 +126,7 @@ const Register = () => {
           className="bar"
           password={password}
           minLength={6}
-          scoreWords={['Too Weak', 'Weak', 'Okay', 'Good', 'Strong']}
+          scoreWords={["Too Weak", "Weak", "Okay", "Good", "Strong"]}
           onChangeScore={(score) => setPasswordStrength(score)}
         />
       </div>
@@ -131,28 +135,22 @@ const Register = () => {
         placeholder="Confirm Password"
         onChange={handleConfirmPasswordChange}
       />
-      <input
+      {/* <input
         type="text"
         placeholder="Address"
         onChange={(e) => setAddress(e.target.value)}
-      />
+      /> */}
       <div className="register-buttons">
         <button onClick={handleRegister} className="animated-button">Register</button>
-        <button onClick={() => navigate("/login")} className="animated-button">Go to login</button>
+        <button onClick={() => navigate("/login")} className="animated-button">Go to Sign in</button>
       </div>
       <div className="social-message">
         <div className="line"></div>
-        <p className="message">Login with social accounts coming soon</p>
+        <p className="message">Sign in with social accounts coming soon</p>
         <div className="line"></div>
       </div>
-
-       {/* <p className="signup">
-         Don&apos;t have an account? <a rel="noopener noreferrer" href="#" className="">Sign up</a>
-       </p> */}
-
     </div>
   );
 };
 
 export default Register;
-

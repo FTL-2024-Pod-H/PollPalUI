@@ -1,6 +1,8 @@
 // EducationModal.jsx
 import React, { useState } from "react";
 import "./EducationModal.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const EducationModal = ({
   show,
@@ -25,6 +27,9 @@ const EducationModal = ({
         {/* <span className="close-button" onClick={onClose}>
           &times;
         </span> */}
+        <button className="close-reply-modal-button"onClick={onClose}>
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
         <div className="modal-body">
           <h3 className="modal-title">{content.title}</h3>
           <div className="modal-text">
