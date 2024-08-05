@@ -114,3 +114,15 @@
   font-size: 1.2em;
   transform: translateX(6px);
 }
+
+@media (max-width: 780px) {
+  .ee-modal-content{
+    max-width: 300px;
+  }
+  .close-reply-modal-button{
+    /* margin-top: -10px; */
+  }
+  .modal-title{
+    padding: 3px;
+  }
+}
