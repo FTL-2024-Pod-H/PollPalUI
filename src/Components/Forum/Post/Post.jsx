@@ -163,7 +163,7 @@ function Post({userFullName, username, userAvatar, userPostContent, onDelete, li
                   strokeLinejoin="round"
                   strokeLinecap="round"
                   stroke="currentColor"
-                  stroke-width="1.3"
+                  strokeWidth="1.3"
                   viewBox="0 0 24 24"
                   height="44"
                   width="44"
