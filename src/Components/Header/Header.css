@@ -289,4 +289,5 @@
 }
 .user-image {
   margin-top: -12px;
+  cursor: pointer;
 }
