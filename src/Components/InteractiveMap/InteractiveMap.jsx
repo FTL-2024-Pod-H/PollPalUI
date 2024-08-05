@@ -65,7 +65,7 @@ const InteractiveMap = () => {
   const fetchRepresentatives = async (stateCode) => {
     try {
       const response = await fetch(
-        `https://api.congress.gov/v3/member/${stateCode}?api_key=${apiKey}`
+        `https://api.congress.gov/v3/member/${stateCode}?limit=70&api_key=${apiKey}`
       );
       if (!response.ok) {
         throw new Error(`Error fetching data: ${response.statusText}`);
