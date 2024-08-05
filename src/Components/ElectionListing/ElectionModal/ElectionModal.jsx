@@ -33,7 +33,7 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
     setBallotInfo(
       data.contests
         ? data.contests.map((contest) => ({
-            race: contest.ballotTitle,
+            race: contest.ballotTitle || contest.office,
             party: contest.primaryParties,
             district: contest.district.name,
             candidates: contest.candidates,
@@ -185,9 +185,11 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
           <h1 className="measures">Measures</h1>
           {ballotInfo.map((info, index) => (
             <details key={index} className="ballot-item">
-              <summary className="race-title">
-                {info.race}, {info.party}
-              </summary>
+              {(info.party && (
+                <summary className="race-title">
+                  {info.race}, {info.party}
+                </summary>
+              )) || <summary className="race-title">{info.race}</summary>}
               <div className="ballot-details">
                 <h4 className="race-district">{info.district}</h4>
                 <ul className="candidates-list">
@@ -196,7 +198,7 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
                       <Candidate
                         key={idx}
                         name={candidate.name}
-                        party={info.party}
+                        party={info.party || candidate.party}
                         position={info.race}
                         district={info.district}
                       />
