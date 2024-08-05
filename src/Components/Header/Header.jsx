@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import "./Header.css";
 import { Troubleshoot } from "@mui/icons-material";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -15,6 +16,14 @@ const Header = () => {
   const dropdownRef = useRef(null);
   const menuRef = useRef(null);
 
+  const handleLoginClick = () => {
+    navigate("/login", { state: { from: location.pathname } });
+  };
+
+  const handleRegisterClick = () => {
+    navigate("/register", { state: { from: location.pathname } });
+  };
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -24,7 +33,6 @@ const Header = () => {
         setId(payload.userId);
         setUserAvatar(getUserAvatar(payload.userName));
         setUsername(`@${payload.userName}`);
-        console.log(username);
       }
     } else {
       setId(null);
@@ -189,12 +197,22 @@ const Header = () => {
               </>
             ) : (
               <>
-                <Link to={`/login`} className="sign-in-link">
-                  <button className="animated-button">Sign in</button>
-                </Link>
-                <Link to="/register" className="sign-in-link">
-                  <button className="animated-button">Register</button>
-                </Link>
+                <div className="sign-in-link">
+                  <button
+                    className="animated-button"
+                    onClick={handleLoginClick}
+                  >
+                    Sign in
+                  </button>
+                </div>
+                <div>
+                  <button
+                    className="animated-button sign-in-link"
+                    onClick={handleRegisterClick}
+                  >
+                    Register
+                  </button>
+                </div>
               </>
             )}
           </div>
