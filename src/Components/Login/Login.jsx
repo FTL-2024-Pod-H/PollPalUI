@@ -88,7 +88,7 @@ const Login = () => {
         {" "}
         Don&apos;t have an account?{" "}
         <a rel="noopener noreferrer" href="/register" class="">
-          Sign up
+          Register
         </a>
       </p>
     </div>
