@@ -289,5 +289,7 @@
 }
 .user-image {
   margin-top: -12px;
+}
+#header-user-image {
   cursor: pointer;
 }

@@ -173,6 +173,7 @@ const Header = () => {
                     src={userAvatar}
                     alt="User Avatar"
                     className="user-image"
+                    id="header-user-image"
                     onClick={toggleDropdown}
                     // onClick={() => { console.log("clicked");
                     // setIsDropdownOpen(!isDropdownOpen);}}
