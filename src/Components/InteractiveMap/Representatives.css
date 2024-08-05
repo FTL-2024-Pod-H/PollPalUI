@@ -13,7 +13,6 @@
   background: white;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   font-family: "Poppins", sans-serif;
-
 }
 
 .representatives-container:hover {
@@ -27,7 +26,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  width: 15%;
+  /* width: 20%; */
   text-align: center;
   /* font-family: arial; */
   /* font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; */
@@ -98,7 +97,6 @@
     width: 150px;
     padding: 10px;
   }
-
 
   .select-state-message {
     font-size: 0.9rem;
