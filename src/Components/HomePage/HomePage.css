@@ -3,10 +3,7 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    width: 100vw;
-    max-width: 100%;
     overflow-x:hidden;
-    align-items: center;
 }
 
 .section {
@@ -24,6 +21,7 @@
 }
 
 .search-location {
+    align-items: center;
     margin-bottom: 40px; 
     margin-top: 0;
     display: flex;
@@ -33,6 +31,9 @@
     opacity: 0;
     transform: translateY(100px);
     transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.about-section{
+    align-items: center;
 }
 
 .search-location h2 {
