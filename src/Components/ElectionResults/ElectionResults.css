@@ -130,6 +130,8 @@
   font-size: 22px;
   gap: 3.5px;
   cursor: text;
+  max-height: 25vh;
+  overflow-y: auto;
 }
 
 .current-elections-menu {
