@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp as faThumbsUpRegular } from '@fortawesome/free-regular-svg-icons';
 import { faThumbsUp as faThumbsUpSolid, faReply } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate, useLocation, Link } from "react-router-dom";
+
 import axios from "axios";
 
 
@@ -37,6 +39,12 @@ const timeSince = (date) => {
 function Replies({onClose, replies, addReply, userAvatar, username, userPostContent, currentlikeCount, isLiked, handleLikeClick, timestamp, currentUser, deleteReply}){
 
     const [newReply, setNewReply] = useState("");
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleLoginClick = () => {
+        navigate("/login", { state: { from: location.pathname } });
+    };
 
     const handleAddReply = (e) => {
         e.preventDefault();
@@ -138,7 +146,8 @@ function Replies({onClose, replies, addReply, userAvatar, username, userPostCont
                     </form> 
                     ) : (
                         <div className="login-message">
-                            Please <a href="/login" className="sign-up-replies">Sign in</a> to post a reply.
+                            Please <button className="sign-up-replies" onClick={handleLoginClick}>Sign in</button> to post a reply.
+                            
                         </div>
                     )}
 

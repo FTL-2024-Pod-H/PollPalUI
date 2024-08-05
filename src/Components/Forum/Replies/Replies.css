@@ -289,6 +289,13 @@
 }
 
 .sign-up-replies{
+    font-family: 'Poppins', sans-serif;
+    border:none;
+    cursor: pointer;
+    /* padding: 10px; */
+    font-size: 20px;
+    margin-left: -8px;
+    margin-right: -6px;
     text-decoration: underline;
     color:  #c28eff;
     background: linear-gradient(to right, #E6117C, #4A3CDB);
