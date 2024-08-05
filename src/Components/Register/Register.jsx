@@ -142,10 +142,22 @@ const Register = () => {
       /> */}
       <div className="register-buttons">
         <button onClick={handleRegister} className="animated-button">Register</button>
-        <button onClick={() => navigate("/login")} className="animated-button">Go to Sign in</button>
+        {/* <button onClick={() => navigate("/login")} className="animated-button">Go to Sign in</button> */}
+      </div>
+      <div>
+        <p className="signup">
+        {" "}
+        {/* Don&apos;t have an account?{" "} */}
+        Already have an account?{" "}
+        <a rel="noopener noreferrer" href="/login" class="">
+          Sign in
+        </a>
+      </p>
+
       </div>
       <div className="social-message">
         <div className="line"></div>
+        
         <p className="message">Sign in with social accounts coming soon</p>
         <div className="line"></div>
       </div>

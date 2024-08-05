@@ -21,6 +21,7 @@
 }
 
 .search-location {
+    margin-left: -9px;
     align-items: center;
     margin-bottom: 40px; 
     margin-top: 0;
