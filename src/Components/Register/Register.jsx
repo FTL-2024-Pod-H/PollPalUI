@@ -53,7 +53,8 @@ const Register = () => {
       });
       localStorage.setItem("token", loginResponse.data.token);
       // Navigate to the previous location or homepage if no previous location is available
-      navigate(from, { replace: true });
+      const from = location.state?.from || "/";
+      navigate(from);
     } catch (error) {
       if (error.response && error.response.status === 400) {
         toast.error(
@@ -88,7 +89,7 @@ const Register = () => {
     setIsPasswordValid(minLength && specialChar && number && capital);
     setPasswordStrength(calculatePasswordStrength(password));
   };
-  
+
   const calculatePasswordStrength = (password) => {
     let strength = 0;
     if (password.length >= 6) strength += 1;
@@ -153,7 +154,6 @@ const Register = () => {
           Sign in
         </a>
       </p>
-
       </div>
       <div className="social-message">
         <div className="line"></div>

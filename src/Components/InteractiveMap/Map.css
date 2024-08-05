@@ -9,6 +9,7 @@
     margin: 0 auto;
     padding: 20px;
     position: relative;
+    /* overflow: hidden; */
 }
 
 .selected-state {

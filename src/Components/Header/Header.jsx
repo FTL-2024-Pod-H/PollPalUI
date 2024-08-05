@@ -1,18 +1,28 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import "./Header.css";
 import { Troubleshoot } from "@mui/icons-material";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
-  const [userAvatar, setUserAvatar] = useState(""); 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [userAvatar, setUserAvatar] = useState("");
   const [id, setId] = useState(0);
+  const [username, setUsername] = useState("");
 
   const dropdownRef = useRef(null);
   const menuRef = useRef(null);
+
+  const handleLoginClick = () => {
+    navigate("/login", { state: { from: location.pathname } });
+  };
+
+  const handleRegisterClick = () => {
+    navigate("/register", { state: { from: location.pathname } });
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -22,6 +32,7 @@ const Header = () => {
       if (payload) {
         setId(payload.userId);
         setUserAvatar(getUserAvatar(payload.userName));
+        setUsername(`@${payload.userName}`);
       }
     } else {
       setId(null);
@@ -40,7 +51,6 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [localStorage.getItem("token")]);
-
 
   useEffect(() => {
     const handleSignOut = (event) => {
@@ -109,7 +119,6 @@ const Header = () => {
     return `https://ui-avatars.com/api/?name=${username}&background=random`;
   }
 
-  
   return (
     <header className={`header ${scrolled ? "header-scrolled" : ""}`}>
       <div className="header-content">
@@ -126,14 +135,14 @@ const Header = () => {
             <span className="pal">Pal</span>
           </h1>
         </div>
-        <button 
-          className="menu-toggle" 
+        <button
+          className="menu-toggle"
           onClick={toggleMenu}
           // onClick={() => {{toggleMenu} {onclose}}}
         >
           &#9776;
         </button>
-        <div 
+        <div
           ref={menuRef}
           className={`nav-auth-container ${menuOpen ? "open" : ""}`}
         >
@@ -156,38 +165,55 @@ const Header = () => {
               </li>
             </ul>
           </nav>
-          <div className="auth-buttons">            
+          <div className="auth-buttons">
             {localStorage.getItem("token") ? (
               <>
+                <div className="phone-nav">
                   <img
                     src={userAvatar}
                     alt="User Avatar"
                     className="user-image"
+                    id="header-user-image"
                     onClick={toggleDropdown}
                     // onClick={() => { console.log("clicked");
                     // setIsDropdownOpen(!isDropdownOpen);}}
                   />
-                  {isDropdownOpen && (
-                    <div className="dropdown-menu" ref={dropdownRef}>
-                      <button onClick={handleLogout} className="animated-button">
-                        Sign out
-                      </button>
-                    </div>
-                  )}
-                  <div className="menu-signout open">
+                  <p className="username open" id="phone-username">
+                    {username}
+                  </p>
+                </div>
+                {isDropdownOpen && (
+                  <div className="dropdown-menu" ref={dropdownRef}>
+                    <p className="username open">{username}</p>
                     <button onClick={handleLogout} className="animated-button">
                       Sign out
                     </button>
                   </div>
+                )}
+                <div className="menu-signout open">
+                  <button onClick={handleLogout} className="animated-button">
+                    Sign out
+                  </button>
+                </div>
               </>
             ) : (
               <>
-                <Link to={`/login`} className="sign-in-link">
-                  <button className="animated-button">Sign in</button>
-                </Link>
-                <Link to="/register" className="sign-in-link">
-                  <button className="animated-button">Register</button>
-                </Link>
+                <div className="sign-in-link">
+                  <button
+                    className="animated-button"
+                    onClick={handleLoginClick}
+                  >
+                    Sign in
+                  </button>
+                </div>
+                <div>
+                  <button
+                    className="animated-button sign-in-link"
+                    onClick={handleRegisterClick}
+                  >
+                    Register
+                  </button>
+                </div>
               </>
             )}
           </div>

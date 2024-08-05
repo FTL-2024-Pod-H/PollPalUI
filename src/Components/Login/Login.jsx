@@ -14,13 +14,13 @@ const Login = () => {
   const location = useLocation();
 
   // Get the previous location
-  const from = location.state?.from?.pathname || "/";
+  // const from = location.state?.from || "/";
 
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    if (token) { 
-      navigate("/")
+    if (token) {
+      navigate(from);
     }
   }, [navigate]);
 
@@ -49,7 +49,8 @@ const Login = () => {
       //store the token in the localStorage as token
       localStorage.setItem("token", response.data.token);
       // Navigate to the previous location or homepage if no previous location is available
-      navigate("/forum");
+      const from = location.state?.from || "/";
+      navigate(from);
     } catch (error) {
       if (error.response && error.response.status === 401) {
         toast.error("Invalid username or password");
@@ -61,7 +62,11 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <ToastContainer position="top-center" autoClose={3000} hideProgressBar={true}/>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={true}
+      />
       <h1>Sign in to PollPal</h1>
       <input
         type="text"
@@ -75,7 +80,9 @@ const Login = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleLogin} className="animated-button">Sign in</button>
+      <button onClick={handleLogin} className="animated-button">
+        Sign in
+      </button>
       {/* <button onClick={() => navigate("/register")}>Go to register</button> */}
       <p className="signup">
         {" "}

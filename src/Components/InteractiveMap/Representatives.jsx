@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Representatives.css";
-
-const defaultImagePath = "/assets/no-image.jpg";
+import defaultImagePath from "/assets/no-image.jpg";
 
 const Representatives = ({ representatives, selectedState }) => {
   return (
@@ -12,16 +11,16 @@ const Representatives = ({ representatives, selectedState }) => {
           <>
             <h3>Selected State: {selectedState}</h3>
             <h1>Representatives</h1>
-            <div className="representatives-list">
+            <div className="representatives-list" >
               {representatives.map((rep) => (
                 <div key={rep.id} className="representative-card">
-                  {rep.depiction && (
+                  {/* {rep.depiction && ( */}
                     <img
-                      src={rep.depiction.imageUrl || defaultImagePath}
+                      src={rep.depiction?.imageUrl|| defaultImagePath}
                       alt={`${rep.name}`}
                       className="representative-img"
                     />
-                  )}
+                  {/* )} */}
 
                   <div className="representative-details">
                     <h3 className="representative-name">{rep.name}</h3>
