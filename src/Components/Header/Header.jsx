@@ -18,7 +18,7 @@ const Header = () => {
     const token = localStorage.getItem("token");
     if (token) {
       const payload = decodeJWT(token);
-      console.log("payload", payload);
+      // console.log("payload", payload);
       if (payload) {
         setId(payload.userId);
         setUserAvatar(getUserAvatar(payload.userName));
@@ -69,7 +69,7 @@ const Header = () => {
   }, [menuRef]);
 
   const handleLogout = () => {
-    console.log("Logging out");
+    // console.log("Logging out");
     localStorage.removeItem("token");
     setId(null);
     navigate("/");

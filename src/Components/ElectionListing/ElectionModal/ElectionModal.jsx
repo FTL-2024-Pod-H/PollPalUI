@@ -28,7 +28,7 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
       `https://www.googleapis.com/civicinfo/v2/voterinfo?key=${apiKey}&address=${address}&electionId=${electionId}`
     );
     const data = await response.json();
-    console.log("Election infooo:", data);
+    // console.log("Election infooo:", data);
 
     setBallotInfo(
       data.contests
@@ -42,7 +42,7 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
         : "No ballot information available"
     );
 
-    console.log("ballot INFO: ", ballotInfo);
+    // console.log("ballot INFO: ", ballotInfo);
 
     //------------------------------------------------------------------------------------------------------
     // FORMATTING POLLING LOCATION COORDS FOR MAP USE
@@ -125,26 +125,26 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
     );
     //------------------------------------------------------------------------------------------------------
 
-    console.log("polling location COOOOORDS", pollingLocationCoords);
-    console.log("dropoff COOOOORDS", dropOffCoords);
-    console.log("polling locations: ", pollingLocations); // RETURNS POLLING LOCATION CORDS
-    console.log("drop off locations : ", dropOffLocations); // RETURNS DROP OFF LOCATION COORS
-    console.log("early vote sites: ", earlyVoteSites); //RETURNS EARLY VOTING SITES COORDS
+    // console.log("polling location COOOOORDS", pollingLocationCoords);
+    // console.log("dropoff COOOOORDS", dropOffCoords);
+    // console.log("polling locations: ", pollingLocations); 
+    // console.log("drop off locations : ", dropOffLocations); 
+    // console.log("early vote sites: ", earlyVoteSites); 
 
     setRegToVote(
       data.state[0].electionAdministrationBody.electionRegistrationUrl
     );
-    console.log("reg to vote link: ", regToVote);
+    // console.log("reg to vote link: ", regToVote);
     setCheckReg(
       data.state[0].electionAdministrationBody
         .electionRegistrationConfirmationUrl
     );
-    console.log("check reg link: ", checkReg);
+    // console.log("check reg link: ", checkReg);
     setMoreInfo(
       data.state[0].electionAdministrationBody.ballotInfoUrl ||
         data.state[0].electionAdministrationBody.electionInfoUrl
     );
-    console.log("more info link: ", moreInfo);
+    // console.log("more info link: ", moreInfo);
   };
 
   useEffect(() => {

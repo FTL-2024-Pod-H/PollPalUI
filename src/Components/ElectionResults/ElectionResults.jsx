@@ -27,9 +27,9 @@ function ElectionResults() {
           throw new Error("Failed to fetch elections");
         }
         const data = await response.json();
-        console.log("Election Data:", data);
+        // console.log("Election Data:", data);
         setCurrentElections(data.elections);
-        console.log("current elections", currentElections);
+        // console.log("current elections", currentElections);
         setElectionData(data);
         setLoading(false);
       } catch (error) {
@@ -48,14 +48,14 @@ function ElectionResults() {
       const parts = address.split(",");
       const stateZip = parts[parts.length - 2].trim();
       const stateAbbreviation = stateZip.split(" ")[0].toLowerCase();
-      console.log("State Abbreviation:", stateAbbreviation);
+      // console.log("State Abbreviation:", stateAbbreviation);
 
       const filteredData = electionData.elections.filter((election) =>
         election.ocdDivisionId.includes(
           `ocd-division/country:us/state:${stateAbbreviation}`
         )
       );
-      console.log("Filtered Data:", filteredData);
+      // console.log("Filtered Data:", filteredData);
       setFilteredElectionData(filteredData);
     }
   }, [electionData, address]);

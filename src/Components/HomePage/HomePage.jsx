@@ -20,7 +20,7 @@ function HomePage() {
 
         const handleIntersection = (entries, observer) => {
             entries.forEach(entry => {
-                console.log('Entry:', entry);  // Add this line
+                // console.log('Entry:', entry); 
                 if (entry.isIntersecting) {
                     entry.target.classList.add("visible");
                     observer.unobserve(entry.target);

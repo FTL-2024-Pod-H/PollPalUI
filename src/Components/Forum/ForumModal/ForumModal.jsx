@@ -7,7 +7,7 @@ function ForumModal({onClose, onAddPost}){
     const handleSubmit = (e) => {
         e.preventDefault();
         // const newPost = { userPostContent: userContent};
-        console.log("Content: ", userContent)
+        // console.log("Content: ", userContent)
         onAddPost(userContent);
         // setUserContent("");
         onClose();
