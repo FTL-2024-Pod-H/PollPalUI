@@ -40,7 +40,7 @@ function Replies({onClose, replies, addReply, userAvatar, username, userPostCont
 
     const handleAddReply = (e) => {
         e.preventDefault();
-        console.log("Reply: ", newReply)
+        // console.log("Reply: ", newReply)
         if (newReply.trim() !== "") {
             addReply(newReply);
             setNewReply("");

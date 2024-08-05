@@ -28,12 +28,12 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
       `https://www.googleapis.com/civicinfo/v2/voterinfo?key=${apiKey}&address=${address}&electionId=${electionId}`
     );
     const data = await response.json();
-    console.log("Election infooo:", data);
+    // console.log("Election infooo:", data);
 
     setBallotInfo(
       data.contests
         ? data.contests.map((contest) => ({
-            race: contest.ballotTitle,
+            race: contest.ballotTitle || contest.office,
             party: contest.primaryParties,
             district: contest.district.name,
             candidates: contest.candidates,
@@ -42,7 +42,7 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
         : "No ballot information available"
     );
 
-    console.log("ballot INFO: ", ballotInfo);
+    // console.log("ballot INFO: ", ballotInfo);
 
     //------------------------------------------------------------------------------------------------------
     // FORMATTING POLLING LOCATION COORDS FOR MAP USE
@@ -125,26 +125,26 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
     );
     //------------------------------------------------------------------------------------------------------
 
-    console.log("polling location COOOOORDS", pollingLocationCoords);
-    console.log("dropoff COOOOORDS", dropOffCoords);
-    console.log("polling locations: ", pollingLocations); // RETURNS POLLING LOCATION CORDS
-    console.log("drop off locations : ", dropOffLocations); // RETURNS DROP OFF LOCATION COORS
-    console.log("early vote sites: ", earlyVoteSites); //RETURNS EARLY VOTING SITES COORDS
+    // console.log("polling location COOOOORDS", pollingLocationCoords);
+    // console.log("dropoff COOOOORDS", dropOffCoords);
+    // console.log("polling locations: ", pollingLocations); 
+    // console.log("drop off locations : ", dropOffLocations); 
+    // console.log("early vote sites: ", earlyVoteSites); 
 
     setRegToVote(
       data.state[0].electionAdministrationBody.electionRegistrationUrl
     );
-    console.log("reg to vote link: ", regToVote);
+    // console.log("reg to vote link: ", regToVote);
     setCheckReg(
       data.state[0].electionAdministrationBody
         .electionRegistrationConfirmationUrl
     );
-    console.log("check reg link: ", checkReg);
+    // console.log("check reg link: ", checkReg);
     setMoreInfo(
       data.state[0].electionAdministrationBody.ballotInfoUrl ||
         data.state[0].electionAdministrationBody.electionInfoUrl
     );
-    console.log("more info link: ", moreInfo);
+    // console.log("more info link: ", moreInfo);
   };
 
   useEffect(() => {
@@ -185,9 +185,11 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
           <h1 className="measures">Measures</h1>
           {ballotInfo.map((info, index) => (
             <details key={index} className="ballot-item">
-              <summary className="race-title">
-                {info.race}, {info.party}
-              </summary>
+              {(info.party && (
+                <summary className="race-title">
+                  {info.race}, {info.party}
+                </summary>
+              )) || <summary className="race-title">{info.race}</summary>}
               <div className="ballot-details">
                 <h4 className="race-district">{info.district}</h4>
                 <ul className="candidates-list">
@@ -196,7 +198,7 @@ const ElectionModal = ({ onClose, electionId, electionName, address }) => {
                       <Candidate
                         key={idx}
                         name={candidate.name}
-                        party={info.party}
+                        party={info.party || candidate.party}
                         position={info.race}
                         district={info.district}
                       />

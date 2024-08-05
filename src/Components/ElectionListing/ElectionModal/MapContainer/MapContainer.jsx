@@ -41,7 +41,7 @@ const MapContainer = ({ locations }) => {
     }
   `;
 
-  console.log("locations", locations);
+  // console.log("locations", locations);
   if (locations && locations.length > 0) {
     return (
       isLoaded && (

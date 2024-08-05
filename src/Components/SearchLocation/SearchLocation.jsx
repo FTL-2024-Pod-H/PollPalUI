@@ -41,13 +41,13 @@ const SearchLocation = () => {
             const place = autocompleteRef.current.getPlace();
             if (isValidAddress(place)) {
                 setAddress(place.formatted_address);
-                console.log("selected address", place.formatted_address);
+                // console.log("selected address", place.formatted_address);
                 navigate('/results', { state: { address: place.formatted_address } });
             } else {
                 toast.error("Incomplete Address: Please select an address with street, city and state :)");
             }
         } else {
-            console.log("Missing Address");
+            // console.log("Missing Address");
         }
     }
 

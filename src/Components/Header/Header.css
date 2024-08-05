@@ -1,25 +1,25 @@
 .header {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   padding: 8px 0px;
   background-color: white;
-  transition: background-color 0.3s ease; 
-  width: 100%; 
-  position: fixed; 
+  transition: background-color 0.3s ease;
+  width: 100%;
+  position: fixed;
   top: 0;
   z-index: 1000;
 }
 
 .header-scrolled {
   /* background-color: rgba(211, 193, 215, 0.8);  */
-  background-color: WHITE; 
-  opacity: .8;
+  background-color: WHITE;
+  opacity: 0.8;
   /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); */
 }
 
 .header-content {
-  width: 80%; 
+  width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,7 +38,7 @@
 }
 
 .header-title {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 2rem;
 }
@@ -48,7 +48,7 @@
 }
 
 .header-title .pal {
-  background: linear-gradient(to right, #E6117C, #4A3CDB);
+  background: linear-gradient(to right, #e6117c, #4a3cdb);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -97,19 +97,33 @@
   padding-top: 8px;
 }
 
+.username {
+  color: black;
+  margin: 0;
+  text-align: center;
+  margin-bottom: 12px;
+  font-family: arial;
+}
+
+#phone-username {
+  text-align: start;
+  /* font-family: "Poppins"; */
+  display: none;
+}
+
 .animated-button {
   display: flex;
   align-items: center;
   padding: 0px 15px;
   max-height: 40px;
-  border-color: #E6117C;
+  border-color: #e6117c;
   font-size: 16px;
   background-color: inherit;
   border-radius: 100px;
   font-weight: 900;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: black;
-  box-shadow: 0 0 0 .9px #4A3CDB;
+  box-shadow: 0 0 0 0.9px #4a3cdb;
   cursor: pointer;
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
@@ -123,7 +137,7 @@
 
 .animated-button:active {
   scale: 0.95;
-  box-shadow: 0 0 0 4px #E6117C;
+  box-shadow: 0 0 0 4px #e6117c;
 }
 
 .animated-button:hover .circle {
@@ -137,7 +151,7 @@
 .forum-name-link,
 .sign-in-link {
   text-decoration: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: black;
 }
 
@@ -145,21 +159,22 @@
 .home-name-link:hover,
 .forum-name-link:hover {
   text-decoration: none;
-  color: #E6117C;
+  color: #e6117c;
 }
 
 /* Responsive Design */
+
 @media (max-width: 850px) {
   .header-content {
     flex-direction: row;
     align-items: flex-start;
   }
-  
+
   .logo {
     height: 40px;
     width: 40px;
   }
-  
+
   .header-title {
     font-size: 1.5rem;
   }
@@ -210,7 +225,22 @@
     width: 100%;
   }
 
-  .animated-button{
+  .phone-nav {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .phone-nav > .user-image {
+    margin-left: 0;
+  }
+
+  #phone-username {
+    display: contents;
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .animated-button {
     font-size: 12px;
   }
 
@@ -239,18 +269,17 @@
   display: block;
   text-decoration: none;
 }
-.user-image{
+.user-image {
   margin-top: -12px;
 }
-
 
 .dropdown-menu {
   position: absolute;
   top: 90%;
-  right: -1.7%;
+  right: -2.6%;
   background-color: white;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 30px;
+  padding: 20px;
   border-radius: 5px;
   z-index: 1001;
 }
@@ -258,6 +287,6 @@
 .menu-signout {
   display: none;
 }
-.user-image{
+.user-image {
   margin-top: -12px;
 }

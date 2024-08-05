@@ -38,7 +38,7 @@ function Forum() {
   const [currentUser, setCurrentUser] = useState(null);
   const [posts, setPosts] = useState([]);
   const [viewMode, setViewMode] = useState("all");
-  console.log("Current view mode: ", viewMode);
+  // console.log("Current view mode: ", viewMode);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(6);
@@ -76,7 +76,7 @@ function Forum() {
       const response = await axios.get(
         `${PROD_LINK}/posts?page=${page}&limit=${limit}`
       );
-      console.log("Fetched Posts:", response.data.posts);
+      // console.log("Fetched Posts:", response.data.posts);
       setPosts(response.data.posts);
       setTotalPosts(response.data.totalPosts);
     } catch (error) {
@@ -89,7 +89,7 @@ function Forum() {
       const response = await axios.get(
         `${PROD_LINK}/posts/user/${userId}?page=${page}&limit=${limit}`
       );
-      console.log("Fetched User Posts:", response.data.posts);
+      // console.log("Fetched User Posts:", response.data.posts);
       setPosts(response.data.posts);
       setTotalPosts(response.data.totalPosts);
     } catch (error) {
@@ -102,7 +102,7 @@ function Forum() {
       ? posts.filter((post) => post.author_id === currentUser)
       : posts;
 
-  console.log("Filtered Posts:", filteredPosts);
+  // console.log("Filtered Posts:", filteredPosts);
 
   const handleCreatePost = () => {
     if (currentUser) {
