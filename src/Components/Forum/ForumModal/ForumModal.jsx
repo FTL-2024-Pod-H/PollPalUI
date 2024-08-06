@@ -1,5 +1,8 @@
 import React, {useState} from "react";
 import"./ForumModal.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function ForumModal({onClose, onAddPost}){
     const [userContent, setUserContent] = useState("");
@@ -23,6 +26,9 @@ function ForumModal({onClose, onAddPost}){
           {/* <div className="forum-modal-body"> */}
             <form className="new-card-form" onSubmit={handleSubmit} >
               <div className="post-box">
+                <button className="close-post-modal-button" onClick={onClose}>
+                  <FontAwesomeIcon icon={faTimes} />
+                </button>
                 <h1 className="text-center text-slate-200 text-xl font-bold">Add a Post</h1>
                 <textarea 
                     placeholder="Your content..." 

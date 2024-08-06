@@ -58,6 +58,10 @@
   font-size: 16px;
   font-weight: 400;
 }
+.representative-start-year{
+  font-style: italic;
+  font-size: 15px;
+}
 
 .representatives-list {
   display: flex;
