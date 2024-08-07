@@ -11,15 +11,15 @@ const Representatives = ({ representatives, selectedState }) => {
           <>
             <h3>Selected State: {selectedState}</h3>
             <h1>Representatives</h1>
-            <div className="representatives-list" >
+            <div className="representatives-list">
               {representatives.map((rep) => (
                 <div key={rep.id} className="representative-card">
                   {/* {rep.depiction && ( */}
-                    <img
-                      src={rep.depiction?.imageUrl|| defaultImagePath}
-                      alt={`${rep.name}`}
-                      className="representative-img"
-                    />
+                  <img
+                    src={rep.depiction?.imageUrl || defaultImagePath}
+                    alt={`${rep.name}`}
+                    className="representative-img"
+                  />
                   {/* )} */}
 
                   <div className="representative-details">
@@ -42,7 +42,7 @@ const Representatives = ({ representatives, selectedState }) => {
             </div>
           </>
         ) : (
-          <p>No representatives found for {selectedState}.</p>
+          <p>Loading...</p>
         )
       ) : (
         <p className="select-state-message">No state selected on the map.</p>
